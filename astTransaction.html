@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "style.css" />
+        <title>MyWallet - Aurexia</title>
+    </head>
+
+    <body>
+        <div id="block_page">
+            <header>
+                <div id="logo">
+                    <img src="images/aurexia_logo.jpg" alt="Logo Aurexia" />
+                </div>
+                <div id="titre_principal">MyWallet</div>
+                <nav>
+                    <div id="nom_utilisateur">Antoine CAVELIUS</div>
+                    <img src="images/notifs.png" alt="boutton notifications" class="button"/>
+                    <img src="images/settings.png" alt="boutton settings" class="button"/>
+                    <img src="images/logout.png" alt="boutton logout" class="button"/>
+                </nav>
+            </header>
+  
+            <section id="upper_section">
+                <div id="ast_balance" />
+                    <img src="images/ast.png" alt="icon ast" />
+                    <p>100,00 AST <br/>Rank : 1rst</p>
+                </div>
+                <form>
+                    <div class="form">
+                        <label for="name">Select Collegue: </label>
+                        <select id="dest-select">
+                            <option value="">--A qui voulez-vous envoyer des AST ?--</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="hamster">Hamster</option>
+                            <option value="parrot">Parrot</option>
+                            <option value="spider">Spider</option>
+                            <option value="goldfish">Goldfish</option>
+                        </select>
+                    </div>
+                    <div class="form">
+                        <label for="amount">Amount: </label>
+                        <input type="number" name="amount" id="amount" required>
+                    </div>
+                    <div class="form">
+                        <input type="submit" value="SEND !">
+                    </div>
+                </form>
+            </section>
+            <footer>
+                <p>Copyright Aurexia - Tous droits réservés<br />
+            </footer>
+        </div>
+    </body>
+</html>
