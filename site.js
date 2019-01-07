@@ -579,15 +579,17 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
+var Balance
+
 function myBalance() {
 	Token.balanceOf("0x9a1a785ef4906e1e29e96e3eb5fa4dae8bf4c599", function(err,result) {
-		if (!err) {var Balance = parseInt(result) ; console.log("")}
+		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
 	})
-	return web3.fromWei(Balance)
 }
 
-document.getElementById("astValue").innerHTML = myBalance() + " AST"
+document.getElementById("astValue").innerHTML = Balance + " AST"
 
 window.setInterval(function() {
-	document.getElementById("astValue").innerHTML = myBalance() + " AST"
+	myBalance()
+	document.getElementById("astValue").innerHTML = Balance + " AST"
 }, 1000);
