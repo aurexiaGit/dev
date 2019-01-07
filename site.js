@@ -586,7 +586,7 @@ function myBalance() {
 		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
 	})
 }
-
+myBalance()
 document.getElementById("astValue").innerHTML = Balance + " AST"
 
 window.setInterval(function() {
