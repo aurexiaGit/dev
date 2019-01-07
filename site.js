@@ -551,9 +551,7 @@ var TokenABI = web3.eth.contract([
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 
-
-var myBalance = Token.balanceOf("0x9a1a785ef4906e1e29e96e3eb5fa4dae8bf4c599").c[0] * 0.0001
-
 window.setInterval(function() {
+	var myBalance = Token.balanceOf("0x9a1a785ef4906e1e29e96e3eb5fa4dae8bf4c599").c[0] * 0.0001
 	document.getElementById("astValue").innerHTML = myBalance.toString() + " AST"
 }, 1000);
