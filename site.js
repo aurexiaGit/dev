@@ -25,7 +25,10 @@ function home() {
 	window.location="homePage.html"
 }
 
-var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/fb7c0bd217a740f6981ed2274e40d771"))
+window.ethereum
+ethereum.enable()
+
+var web3 = new Web3(web3.currentProvider)
 
 var TokenABI = web3.eth.contract([
 	{
