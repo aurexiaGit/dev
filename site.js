@@ -30,7 +30,7 @@ ethereum.enable()
 
 var web3 = new Web3(web3.currentProvider)
 
-var myABI = [
+var TokenABI = web3.eth.contract([
 	{
 		"constant": false,
 		"inputs": [
@@ -575,10 +575,9 @@ var myABI = [
 		"name": "Burn",
 		"type": "event"
 	}
-];
+]);
 
-var myContractAdress = '0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C';
-var Token = new web3.eth.Contract(myABI, myContractAdress);
+var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var myBalance = Token.balanceOf("0x9a1a785ef4906e1e29e96e3eb5fa4dae8bf4c599").c[0] * 0.0001
 document.getElementById("astValue").innerHTML = myBalance.toString() + " AST"
