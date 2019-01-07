@@ -1,6 +1,5 @@
 
-var web3 = new Web3(Web3.currentProvider)
-window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/fb7c0bd217a740f6981ed2274e40d771"))
+var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/fb7c0bd217a740f6981ed2274e40d771"))
 
 
 // Import the contract artifact and turn it into usable an abstraction
