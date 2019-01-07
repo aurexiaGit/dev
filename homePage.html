@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <link rel = "stylesheet" href = "style.css" />
         <title>MyWallet - Aurexia</title>
+        <script type="text/javascript" src="site.js"></script>  
     </head>
 
     <body>
@@ -15,9 +16,9 @@
                 <div id="titre_principal">MyWallet</div>
                 <nav>
                     <div id="nom_utilisateur">Antoine CAVELIUS</div>
-                    <img src="images/notifs.png" alt="boutton notifications" class="button"/>
+                    <img src="images/home.png" alt="boutton home" class="button" onclick="home()"/>
                     <img src="images/settings.png" alt="boutton settings" class="button"/>
-                    <img src="images/logout.png" alt="boutton logout" class="button"/>
+                    <img src="images/logout.png" alt="boutton logout" class="button" onclick="logOut()"/>
                 </nav>
             </header>
   
@@ -53,5 +54,4 @@
     </body>
     <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="web3/dist/web3.min.js"></script>
-    <script type="text/javascript" src="site.js"></script>
 </html>
