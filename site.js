@@ -601,4 +601,5 @@ function sendToken(adress,amount) {
 
 function Transfer() {
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
+	return false
 }
