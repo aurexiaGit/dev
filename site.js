@@ -591,10 +591,14 @@ document.getElementById("astValue").innerHTML = Balance + " AST"
 
 window.setInterval(function() {
 	myBalance()
-	document.getElementById("astValue").innerHTML = Balance + " AST"
+	document.getElementById("astValue").innerHTML = Balance.substring(0,Balance.indexOf("."))+Balance.substring(Balance.indexOf("."),Balance.indexOf(".")+3) + " AST"
 }, 1000);
 
 
 function sendToken(adress,amount) {
 	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
+
+function Transfer() {
+	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 }
