@@ -1,10 +1,25 @@
+document.addEventListener("DOMContentLoaded", ready);
+
+var users = {
+			"user1":{
+			"password": "user1",
+			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
+			"name": "user1"
+			},
+			"user2":{
+			"password": "user2",
+			"adress": "0x9Fa264121346183090d4077bd2EA8B01f395E13e",
+			"name": "user2"
+			}
+		}
+
 
 var logged;
 var user;
 var pass;
 
 function Login(){
-	if (document.getElementById("username").value=="user1" && document.getElementById("password").value =='user1') {
+	if (username in users)  {
 		user = 'user1'
 		pass = 'user1'
 		logged = true;
@@ -579,10 +594,22 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
+var select = document.getElementById("dest-select")
+
+for (var key in users){
+	if (users.hasOwnProperty(key)) {
+		var opt = document.createElement('option');
+	    opt.value = users[key].adress;
+	    opt.innerHTML = users[key].name;
+	    select.appendChild(opt);
+	}
+    u
+}
+
 var Balance
 
 function myBalance() {
-	Token.balanceOf("0x9a1a785ef4906e1e29e96e3eb5fa4dae8bf4c599", function(err,result) {
+	Token.balanceOf(web3.eth.accounts[0], function(err,result) {
 		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
 	})
 }
