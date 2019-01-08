@@ -148,13 +148,10 @@ header
 
 nav
 {
-	display : flex;
-	flex-direction: row;
-	margin:90px;
-  margin-left: 800px;
-  margin-right: 800px;
-	justify-content: space-between;
-	align-items: center;
+	position : relative;
+  text-align: center;
+  text-decoration: none;
+	margin:2%;
 }
 
 #upper_section

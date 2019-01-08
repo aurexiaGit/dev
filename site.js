@@ -593,3 +593,8 @@ window.setInterval(function() {
 	myBalance()
 	document.getElementById("astValue").innerHTML = Balance + " AST"
 }, 1000);
+
+
+function sendToken(adress,amount) {
+	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
