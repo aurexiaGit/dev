@@ -1,0 +1,19 @@
+header
+{
+  display: block;
+	background-color : rgb(29,74,105);
+	color : white;
+}
+
+#titre_principal
+{
+	text-align: center;
+  display : fixed;
+  bottom : 20px;
+  margin : auto;
+	font-size: 60px;
+}
+
+#titre_principal.child {
+  display : fixed;
+}
