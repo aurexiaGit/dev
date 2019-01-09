@@ -35,7 +35,7 @@ function logOut() {
 }
 
 function home() {
-	window.location="homePage.html"
+	window.location="index.html"
 }
 
 window.ethereum
