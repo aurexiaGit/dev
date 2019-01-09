@@ -624,5 +624,7 @@ function sendToken(adress,amount) {
 
 function Transfer() {
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
+	var frm = document.getElementById("send");
+	frm.reset();
 	return false
 }
