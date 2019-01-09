@@ -602,7 +602,11 @@ for (var key in users){
 	    select.appendChild(opt);
 	}
 }
+
 var curAccount = web3.eth.accounts[0]
+while (curAccount === undefined) {
+	var curAccount = web3.eth.accounts[0]
+}
 
 var Balance
 
