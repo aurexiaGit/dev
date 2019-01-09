@@ -612,9 +612,6 @@ function myBalance() {
 	})
 }
 
-window.setTimeout(myBalance,3000)
-document.getElementById("astValue").innerHTML = Balance.toString() + " AST"
-
 window.setInterval(function() {
 	myBalance()
 	document.getElementById("astValue").innerHTML = Balance.toString() + " AST"
