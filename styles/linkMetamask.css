@@ -1,0 +1,12 @@
+#goMetamask {
+	font-color : grey;
+	text-align: center;
+	margin: 30px;
+}
+#metamaskText {
+	 	color : grey;
+}
+
+#metamaskText:hover {
+	 	color : black;
+}

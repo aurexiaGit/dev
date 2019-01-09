@@ -38,6 +38,7 @@ function home() {
 	window.location="index.html"
 }
 
+
 window.ethereum
 ethereum.enable()
 
