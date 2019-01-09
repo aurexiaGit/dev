@@ -5,8 +5,9 @@
 }
 #metamaskText {
 	 	color : grey;
+	 	text-decoration:none;
 }
 
 #metamaskText:hover {
-	 	color : black;
+	 	text-decoration: underline;
 }
