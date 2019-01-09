@@ -615,10 +615,10 @@ function myBalance() {
 window.setTimeout(myBalance,3000)
 document.getElementById("astValue").innerHTML = Balance + " AST"
 
-window.setInterval(function() {
-	myBalance()
-	document.getElementById("astValue").innerHTML = Balance.substring(0,Balance.indexOf("."))+Balance.substring(Balance.indexOf("."),Balance.indexOf(".")+3) + " AST"
-}, 1000);
+//window.setInterval(function() {
+//	myBalance()
+//	document.getElementById("astValue").innerHTML = Balance.substring(0,Balance.indexOf("."))+Balance.substring(Balance.indexOf("."),Balance.indexOf(".")+3) + " AST"
+//}, 1000);
 
 
 function sendToken(adress,amount) {
