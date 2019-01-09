@@ -608,17 +608,17 @@ var Balance
 function myBalance() {
 	var curAccount = web3.eth.accounts[0]
 	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
+		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
 	})
 }
 
 window.setTimeout(myBalance,3000)
-document.getElementById("astValue").innerHTML = Balance + " AST"
+document.getElementById("astValue").innerHTML = Balance.toString() + " AST"
 
-//window.setInterval(function() {
-//	myBalance()
-//	document.getElementById("astValue").innerHTML = Balance.substring(0,Balance.indexOf("."))+Balance.substring(Balance.indexOf("."),Balance.indexOf(".")+3) + " AST"
-//}, 1000);
+window.setInterval(function() {
+	myBalance()
+	document.getElementById("astValue").innerHTML = Balance.toString() + " AST"
+}, 1000);
 
 
 function sendToken(adress,amount) {
