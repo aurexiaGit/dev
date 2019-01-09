@@ -603,19 +603,16 @@ for (var key in users){
 	}
 }
 
-var curAccount = web3.eth.accounts[0]
-while (curAccount === undefined) {
-	var curAccount = web3.eth.accounts[0]
-}
-
 var Balance
 
 function myBalance() {
+	var curAccount = web3.eth.accounts[0]
 	Token.balanceOf(curAccount, function(err,result) {
 		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
 	})
 }
-myBalance()
+
+window.setTimeout(myBalance,3000)
 document.getElementById("astValue").innerHTML = Balance + " AST"
 
 window.setInterval(function() {

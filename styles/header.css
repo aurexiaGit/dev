@@ -1,19 +1,28 @@
 header
 {
-  display: block;
 	background-color : rgb(29,74,105);
-	color : white;
+}
+
+#logo {
+	float : left;
+	position : fixed;
+}
+
+#logoutButton {
+	float : right;
+	position : relative;
+	bottom : 20px;
 }
 
 #titre_principal
 {
-	text-align: center;
+  text-align: center;
   display : fixed;
   bottom : 20px;
   margin : auto;
-	font-size: 60px;
+  padding-bottom: 25px;
+  padding-top: 25px;
+  font-size: 60px;
+  color : white;
 }
 
-#titre_principal.child {
-  display : fixed;
-}
