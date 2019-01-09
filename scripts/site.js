@@ -602,11 +602,12 @@ for (var key in users){
 	    select.appendChild(opt);
 	}
 }
+var curAccount = web3.eth.accounts[0]
 
 var Balance
 
 function myBalance() {
-	Token.balanceOf(web3.eth.accounts[0], function(err,result) {
+	Token.balanceOf(curAccount, function(err,result) {
 		if (!err) {Balance = web3.fromWei(parseInt(result)) ; console.log("")}
 	})
 }
