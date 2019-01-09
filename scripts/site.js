@@ -629,3 +629,14 @@ function Transfer() {
 	frm.reset();
 	return false
 }
+
+function newMember(adress) {
+	Token.assignMember(adress,true,function(err,result) {console.log("")})
+}
+
+function Member() {
+	newMember(document.getElementById("adress").value)
+	var frm = document.getElementById("member");
+	frm.reset();
+	return false
+}
