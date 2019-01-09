@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", ready);
-
 var users = {
 			"user1":{
 			"password": "user1",
@@ -603,7 +601,6 @@ for (var key in users){
 	    opt.innerHTML = users[key].name;
 	    select.appendChild(opt);
 	}
-    u
 }
 
 var Balance
