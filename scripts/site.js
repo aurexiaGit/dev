@@ -17,7 +17,7 @@ var user;
 var pass;
 
 function Login(){
-	if (username in users)  {
+	if (username.value in users && users[username.value].password === password.value)  {
 		user = 'user1'
 		pass = 'user1'
 		logged = true;
