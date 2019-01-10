@@ -36,7 +36,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["Dominique","Eric","David","Charles"]
-		y = [20,20,20,20]
+		y = [getBalance("0xC88c287C1bB453B930f35d78F67929cdc437c485"),20,20,20]
 		data = [
 		  {
 		    histfunc:"sum",
