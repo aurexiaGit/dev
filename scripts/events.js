@@ -644,8 +644,7 @@ function myBalance() {
 }
 
 function getBalance(Account) {
-	var Account = Account
-	Token.balanceOf(this.Account, function(err,result) {
+	Token.balanceOf(Account, function(err,result) {
 		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
 	})
 	return Balance
