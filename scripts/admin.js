@@ -7,7 +7,7 @@ var users = {
 			},
 			"dominique":{
 			"password": "user2",
-			"adress": "0xC88c287C1bB453B930f35d78F67929cdc437c485",
+			"adress": "",
 			"name": "Dominique HERROU",
 			"pic":"images/dherrou.jpg"
 			},
@@ -65,29 +65,6 @@ function adminPage() {
 function eventsPage() {
 	window.location="events.html"
 }
-
-function makeGraph() {
-	var elmt = document.getElementById("rankPage")
-	if (elmt!==undefined) {
-	    x = ["Dominique","Eric","David","Charles"]
-		y = [20,20,20,20]
-		data = [
-		  {
-		    histfunc:"sum",
-		    y: y,
-		    x: x,
-		    type: "histogram",
-		    name:"sum"
-		  }
-		]
-		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
-	}
-	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
-}
-makeGraph()
-
-window.onload=makeGraph;
 
 document.getElementById("adminPage").style.display = "none"
 
@@ -657,17 +634,6 @@ var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var curAccount = web3.eth.accounts[0]
 
-var select = document.getElementById("dest-select")
-
-for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
-		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
-	}
-}
-
 var Balance
 
 function myBalance() {
@@ -685,25 +651,7 @@ function getBalance(Account) {
 	return Balance
 }
 
-function createPage() {
-	myBalance()
-	makeGraph()
-	var curAccount = web3.eth.accounts[0]
-	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
-			var identity = document.getElementById("identity");
-			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
-				if (users.hasOwnProperty(key) && key==="admin") {
-			document.getElementById("adminPage").style.display = "inline-block"
-			}
-		}
-	}
-}
 
-
-window.setInterval(function() {
-	createPage()
-}, 1000);
 
 
 function sendToken(adress,amount) {
