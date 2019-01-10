@@ -32,29 +32,6 @@ function eventsPage() {
 	window.location="events.html"
 }
 
-function makeGraph() {
-	var elmt = document.getElementById("rankPage")
-	if (elmt!==undefined) {
-	    x = ["Dominique","Eric","David","Charles"]
-		y = [getBalance("0xC88c287C1bB453B930f35d78F67929cdc437c485"),20,20,20]
-		data = [
-		  {
-		    histfunc:"sum",
-		    y: y,
-		    x: x,
-		    type: "histogram",
-		    name:"sum"
-		  }
-		]
-		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
-	}
-	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
-}
-makeGraph()
-
-window.onload=makeGraph;
-
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
@@ -633,6 +610,27 @@ for (var key in users){
 	    select.appendChild(opt);
 	}
 }
+
+function makeGraph() {
+	var elmt = document.getElementById("rankPage")
+	if (elmt!==undefined) {
+	    x = ["Dominique","Eric","David","Charles"]
+		y = [getBalance("0xC88c287C1bB453B930f35d78F67929cdc437c485"),20,20,20]
+		data = [
+		  {
+		    histfunc:"sum",
+		    y: y,
+		    x: x,
+		    type: "histogram",
+		    name:"sum"
+		  }
+		]
+		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
+	}
+	var leader = document.getElementById("leader")
+	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
+}
+makeGraph()
 
 var Balance
 
