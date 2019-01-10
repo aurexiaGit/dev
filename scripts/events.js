@@ -657,7 +657,7 @@ function createPage() {
 
 window.setInterval(function() {
 	createPage()
-}, 1000);
+}, 3000);
 
 
 function sendToken(adress,amount) {
