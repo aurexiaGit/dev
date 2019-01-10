@@ -11,6 +11,7 @@
 
     <body>
         <div id="block_page">
+
             <header>
                 <div id="logo">
                     <img id = "logo" src="images/aurexia_logo.jpg" alt="Logo Aurexia" />
@@ -26,26 +27,30 @@
                 <button id = eventsPage onclick="eventsPage()">EVENTS</button>
                 <button id = adminPage onclick="adminPage()">ADMIN</button>
             </nav>
-  
-            <section id="transactionPage">
-                <div id="ast_balance">
-                  <div class="form">
-                    <form id="send">
-                      <input type="number" placeholder="amount" id="amount" required/>
-                      <select id="dest-select" required>
-                            <option value="init">Select Collegue</option>
-                        </select>
-                      <button onclick="return Transfer()">send</button>
-                    </form>
-                  </div>
-                </div>
-            </section>
-            <section id = "goMetamask">
-                <a target="_blank" rel="noopener noreferrer" id="metamaskText" href="https://metamask.io" ">Don't have a Metamask account yet ?</a>
-            </section>
+
+            <div id="middlePage"
+                <section id="transactionPage">
+                    <div id="ast_balance">
+                      <div class="form">
+                        <form id="send">
+                          <input type="number" placeholder="amount" id="amount" required/>
+                          <select id="dest-select" required>
+                                <option value="init">Select Player</option>
+                            </select>
+                          <button onclick="return Transfer()">send</button>
+                        </form>
+                      </div>
+                    </div>
+                </section>
+                <section id="rankPage">
+
+                </section>
+            </div>
+
             <footer>
                 <p>Copyright Aurexia - Tous droits réservés<br />
             </footer>
+
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/site.js"></script>
