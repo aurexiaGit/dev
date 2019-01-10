@@ -1,36 +1,3 @@
-var users = {
-			"admin":{
-			"password": "admin",
-			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
-			"name": "Antoine CAVELIUS",
-			"pic":"images/acavelius.png"
-			},
-			"dominique":{
-			"password": "user2",
-			"adress": "",
-			"name": "Dominique HERROU",
-			"pic":"images/dherrou.jpg"
-			},
-			"eric":{
-			"password": "user2",
-			"adress": "",
-			"name": "Eric VERNHES",
-			"pic":"images/evernhes.png"
-			},
-			"david":{
-			"password": "user2",
-			"adress": "",
-			"name": "David VILLARD",
-			"pic":"images/dvillard.jpg"
-			},
-			"charles":{
-			"password": "user2",
-			"adress": "",
-			"name": "Charles BAIN DE LA COCQUERIE",
-			"pic":"images/cbain.jpg"
-			}
-		}
-
 
 var logged;
 var user;
