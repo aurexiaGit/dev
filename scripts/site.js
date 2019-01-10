@@ -70,7 +70,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["Dominique","Eric","David","Charles"]
-		y = [getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599").toString(),"20","20","20"]
+		y = [20,20,20,20]
 		data = [
 		  {
 		    histfunc:"sum",
@@ -82,6 +82,8 @@ function makeGraph() {
 		]
 		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
 	}
+	var leader = document.getElementById("leader")
+	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
 }
 makeGraph()
 
