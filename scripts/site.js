@@ -612,6 +612,8 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
+var curAccount = web3.eth.accounts[0]
+
 var select = document.getElementById("dest-select")
 
 for (var key in users){
