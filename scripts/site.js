@@ -92,15 +92,16 @@ window.onload=makeGraph;
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
-	if (window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
+	if(window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
 		{
 		window.location.href='https://metamask.io';
 	}
-	else {
+}
+else {
 		window.ethereum
 		ethereum.enable()
-	}
 }
+
 
 
 var web3 = new Web3(web3.currentProvider)
@@ -677,7 +678,8 @@ function myBalance() {
 }
 
 function getBalance(Account) {
-	Token.balanceOf(Account, function(err,result) {
+	var Account = Account
+	Token.balanceOf(this.Account, function(err,result) {
 		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
 	})
 	return Balance
