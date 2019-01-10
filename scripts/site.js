@@ -634,7 +634,7 @@ function myBalance() {
 
 function createPage() {
 	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress===web3.eth.accounts[0]) {
+		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
 			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
 		}
@@ -643,6 +643,7 @@ function createPage() {
 		}
 	}
 }
+createPage()
 
 window.setInterval(function() {
 	myBalance()
