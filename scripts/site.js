@@ -34,18 +34,28 @@ function logOut() {
 	window.location="login.html"
 }
 
-function home() {
+function homePage() {
 	window.location="index.html"
 }
+
+function adminPage() {
+	window.location="admin.html"
+}
+
+function eventsPage() {
+	window.location="events.html"
+}
+
 document.getElementById("goMetamask").style.display = "none"
 
 window.ethereum
-ethereum.enable()
 
 if (window.ethereum===undefined) {
 	prompt("You need to use google Chrome and have Metamask installed - Click on the link below")
 	document.getElementById("goMetamask").style.display = "block"
 }
+
+ethereum.enable()
 
 var web3 = new Web3(web3.currentProvider)
 
