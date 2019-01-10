@@ -37,10 +37,15 @@ function logOut() {
 function home() {
 	window.location="index.html"
 }
-
+document.getElementById("goMetamask").style.display = "none"
 
 window.ethereum
 ethereum.enable()
+
+if (window.ethereum===undefined) {
+	prompt("You need to use google Chrome and have Metamask installed - Click on the link below")
+	document.getElementById("goMetamask").style.display = "block"
+}
 
 var web3 = new Web3(web3.currentProvider)
 
