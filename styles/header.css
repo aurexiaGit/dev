@@ -1,18 +1,19 @@
 header
 {
+	display : flex;
 	background-color : rgb(29,74,105);
 	margin-bottom: 50px;
 }
 
-#logo {
-	float : left;
-	position : relative;
-}
 
-#logoutButton {
+
+#identity {
+	display : flex;
+	flex-direction: column;
+	align-items: center;
 	float : right;
 	position : relative;
-	bottom : 20px;
+	color : white;
 }
 
 #titre_principal
@@ -27,3 +28,11 @@ header
   color : white;
 }
 
+.pic {
+	overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:90px;
+    height:90px;
+}
