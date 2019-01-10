@@ -632,14 +632,12 @@ function makeGraph() {
 }
 makeGraph()
 
-var Balance
-
-
 function getBalance(Account) {
+	var accountBalance = 0
 	Token.balanceOf(Account, function(err,result) {
-		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
+		if (!err) {accountBalance = result.c[0]*0.0001 ; console.log("")}
 	})
-	return Balance
+	return accountBalance
 }
 
 function createPage() {
