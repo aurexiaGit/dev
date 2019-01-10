@@ -51,7 +51,7 @@ document.getElementById("goMetamask").style.display = "none"
 window.ethereum
 
 if (window.ethereum===undefined) {
-	prompt("You need to use google Chrome and have Metamask installed - Click on the link below")
+	window.alert("You need to use google Chrome and have Metamask installed - Click on the link below")
 	document.getElementById("goMetamask").style.display = "block"
 }
 

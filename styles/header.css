@@ -6,7 +6,7 @@ header
 
 #logo {
 	float : left;
-	position : fixed;
+	position : relative;
 }
 
 #logoutButton {
