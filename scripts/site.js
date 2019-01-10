@@ -633,6 +633,7 @@ function myBalance() {
 }
 
 function createPage() {
+	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
