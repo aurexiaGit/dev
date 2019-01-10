@@ -66,9 +66,6 @@ function eventsPage() {
 	window.location="events.html"
 }
 
-
-window.onload=makeGraph;
-
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
