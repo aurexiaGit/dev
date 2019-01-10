@@ -672,9 +672,9 @@ function createPage() {
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
 			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
-		}
-		if (users.hasOwnProperty(key) && key==="admin") {
+				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "inline-block"
+			}
 		}
 	}
 }
