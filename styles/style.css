@@ -61,6 +61,19 @@ nav
     margin: 10px 0;
 }
 
+#new_member
+{
+  display : flex;
+  flex-direction : column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+#new_member > * {
+    margin: 10px 0;
+}
+
 
 #profile_picture
 {
