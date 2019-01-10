@@ -6,6 +6,8 @@
         <link rel = "stylesheet" href = "styles/login_form.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
         <link rel = "stylesheet" href = "styles/linkMetamask.css" />
+        <link rel = "stylesheet" href = "styles/graph.css" />
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -26,9 +28,11 @@
                 <button id = homePage onclick="homePage()">HOME</button>
                 <button id = eventsPage onclick="eventsPage()">EVENTS</button>
                 <button id = adminPage onclick="adminPage()">ADMIN</button>
+                <br>
+                <h1> Welcome to the first Aurexia Blockchain Event !</h1>
             </nav>
 
-            <div id="middlePage"
+            <div id="middlePage">
                 <section id="transactionPage">
                     <div id="ast_balance">
                       <div class="form">
@@ -41,10 +45,11 @@
                         </form>
                       </div>
                     </div>
+                <br>
+                <h1 id="leader"> Current Leader </h1>
                 </section>
-                <section id="rankPage">
-
-                </section>
+                <div id="rankPage">
+                </div>
             </div>
 
             <footer>

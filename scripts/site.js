@@ -5,10 +5,29 @@ var users = {
 			"name": "Antoine CAVELIUS",
 			"pic":"images/acavelius.png"
 			},
-			"user2":{
+			"dominique":{
 			"password": "user2",
-			"adress": "0x9Fa264121346183090d4077bd2EA8B01f395E13e",
-			"name": "user2"
+			"adress": "",
+			"name": "Dominique HERROU",
+			"pic":"images/dherrou.jpg"
+			},
+			"eric":{
+			"password": "user2",
+			"adress": "",
+			"name": "Eric VERNHES",
+			"pic":"images/evernhes.png"
+			},
+			"david":{
+			"password": "user2",
+			"adress": "",
+			"name": "David VILLARD",
+			"pic":"images/dvillard.jpg"
+			},
+			"charles":{
+			"password": "user2",
+			"adress": "",
+			"name": "Charles BAIN DE LA COCQUERIE",
+			"pic":"images/cbain.jpg"
 			}
 		}
 
@@ -47,19 +66,40 @@ function eventsPage() {
 	window.location="events.html"
 }
 
-document.getElementById("goMetamask").style.display = "none"
-document.getElementById("adminPage").style.display = "none"
+function makeGraph() {
+	var elmt = document.getElementById("rankPage")
+	if (elmt!==undefined) {
+	    x = ["Dominique","Eric","David","Charles"]
+		y = [getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599").toString(),"20","20","20"]
+		data = [
+		  {
+		    histfunc:"sum",
+		    y: y,
+		    x: x,
+		    type: "histogram",
+		    name:"sum"
+		  }
+		]
+		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
+	}
+}
+makeGraph()
 
-window.ethereum
+window.onload=makeGraph;
+
+document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
 	if (window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
 		{
 		window.location.href='https://metamask.io';
-		};
+	}
+	else {
+		window.ethereum
+		ethereum.enable()
+	}
 }
 
-ethereum.enable()
 
 var web3 = new Web3(web3.currentProvider)
 
@@ -617,7 +657,7 @@ var curAccount = web3.eth.accounts[0]
 var select = document.getElementById("dest-select")
 
 for (var key in users){
-	if (users.hasOwnProperty(key)) {
+	if (users.hasOwnProperty(key) && key !== "admin") {
 		var opt = document.createElement('option');
 	    opt.value = users[key].adress;
 	    opt.innerHTML = users[key].name;
@@ -634,8 +674,16 @@ function myBalance() {
 	})
 }
 
+function getBalance(Account) {
+	Token.balanceOf(Account, function(err,result) {
+		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
+	})
+	return Balance
+}
+
 function createPage() {
 	myBalance()
+	makeGraph()
 	document.getElementById("astValue").innerHTML = Balance.toString() + " AST"
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
