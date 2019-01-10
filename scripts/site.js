@@ -1,8 +1,9 @@
 var users = {
-			"user1":{
-			"password": "user1",
+			"admin":{
+			"password": "admin",
 			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
-			"name": "user1"
+			"name": "Antoine CAVELIUS",
+			"pic":"images/acavelius.png"
 			},
 			"user2":{
 			"password": "user2",
@@ -51,8 +52,10 @@ document.getElementById("goMetamask").style.display = "none"
 window.ethereum
 
 if (window.ethereum===undefined) {
-	window.alert("You need to use google Chrome and have Metamask installed - Click on the link below")
-	document.getElementById("goMetamask").style.display = "block"
+	if (window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
+		{
+		window.location.href='https://metamask.io';
+		};
 }
 
 ethereum.enable()
@@ -626,6 +629,15 @@ function myBalance() {
 	Token.balanceOf(curAccount, function(err,result) {
 		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
 	})
+}
+
+function createPage() {
+	for (var key in users){
+		if (users.hasOwnProperty(key) && users[key].adress===web3.eth.accounts[0]) {
+			var identity = document.getElementById("identity");
+			identity.innerHTML="Welcome to your Wallet ! <br> <img class = 'pic' scr='" + users[key].pic + "' alt='profile pic'> " + users[key].name 
+		}
+	}
 }
 
 window.setInterval(function() {
