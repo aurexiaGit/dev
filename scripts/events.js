@@ -618,14 +618,12 @@ function makeGraph() {
 		y = [getBalance("0xC88c287C1bB453B930f35d78F67929cdc437c485"),20,20,20]
 		data = [
 		  {
-		    histfunc:"sum",
 		    y: y,
 		    x: x,
-		    type: "histogram",
-		    name:"sum"
+		    type: "bar",
 		  }
 		]
-		Plotly.newPlot('rankPage', data, {}, {displayModeBar: false})
+		Plotly.newPlot('rankPage', data, {displayModeBar: false})
 	}
 	var leader = document.getElementById("leader")
 	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
