@@ -682,11 +682,21 @@ function Member() {
 	return false
 }
 
+
 function loading() {
-	var curTokens = getBalance(web3.eth.accounts[0])
 	var elmt = document.getElementById("loading")
-	while (getBalance(web3.eth.accounts[0]) === curTokens )  {
-		elmt.innerHTML = "<br>Sending tokens ... "
-	}
-	elmt.innerHTML = "<br>Sent ! "
+	var curTokens = getBalance(web3.eth.accounts[0])
+	var done = false
+	window.intervalId = window.setInterval( function() {
+		if (getBalance(web3.eth.accounts[0])===curTokens) {
+			elmt.innerHTML = "<br>Sending tokens <img src='images/Spinner-1s-40px.gif'/>"
+		}
+		else {
+			elmt.innerHTML = "<br>Sent ! "
+			window.setTimeout(function () {elmt.innerHTML = ""},2000)
+			done = true
+		}
+	},2000)
+	window.setInterval(function() {if (done) {window.clearInterval(intervalId)}},2000)
 }
+
