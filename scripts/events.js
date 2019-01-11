@@ -667,6 +667,7 @@ function Transfer() {
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
+	loading()
 	return false
 }
 
@@ -679,4 +680,13 @@ function Member() {
 	var frm = document.getElementById("member");
 	frm.reset();
 	return false
+}
+
+function loading() {
+	var curTokens = getBalance(web3.eth.accounts[0])
+	var elmt = document.getElementById("loading")
+	while (getBalance(web3.eth.accounts[0]) === curTokens )  {
+		elmt.innerHTML = "<br>Sending tokens ... "
+	}
+	elmt.innerHTML = "<br>Sent ! "
 }
