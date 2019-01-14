@@ -637,10 +637,9 @@ function getBalance(Account) {
 }
 
 function balanceOf(Account) {
-	Token.balanceOf(Account, function(err,result) {
-		if (!err) {accountBalance = result.c[0]*0.0001; console.log("")}
+	return Token.balanceOf(Account, function(err,result) {
+		if (!err) {return result.c[0]*0.0001; console.log("")}
 	})
-	return accountBalance
 }
 
 function balances() {
@@ -652,9 +651,9 @@ var user = users[key]
 
 
 
-window.setInterval(function() {
-	createPage()
-}, 5000);
+//window.setInterval(function() {
+//	createPage()
+//}, 5000);
 
 
 function sendToken(adress,amount) {
