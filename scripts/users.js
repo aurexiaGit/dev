@@ -13,19 +13,19 @@ var users = {
 			},
 			"eric":{
 			"password": "user2",
-			"adress": "",
+			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
 			"name": "Eric VERNHES",
 			"pic":"images/evernhes.png"
 			},
 			"david":{
 			"password": "user2",
-			"adress": "",
+			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
 			"name": "David VILLARD",
 			"pic":"images/dvillard.jpg"
 			},
 			"charles":{
 			"password": "user2",
-			"adress": "",
+			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
 			"name": "Charles BAIN DE LA COCQUERIE",
 			"pic":"images/cbain.jpg"
 			}

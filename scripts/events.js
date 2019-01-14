@@ -615,7 +615,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["Dominique","Eric","David","Charles"]
-		y = [getBalance("0xC88c287C1bB453B930f35d78F67929cdc437c485"),20,20,20]
+		y = [users.dominique.balance,20,20,20]
 		data = [
 		  {
 		    y: y,
@@ -631,18 +631,23 @@ function makeGraph() {
 
 
 function getBalance(Account) {
-	var accountBalance
+	var accountBalance = 0
+	accountBalance = balanceOf(Account)
+	return accountBalance
+}
+
+function balanceOf(Account) {
 	Token.balanceOf(Account, function(err,result) {
 		if (!err) {accountBalance = result.c[0]*0.0001; console.log("")}
 	})
 	return accountBalance
 }
 
-function balanceOf(Account) {
-	var test
-	Token.balanceOf(Account, function(err,result) {
-		if (!err) {test = result.c[0]*0.0001; console.log(test)}
-	})
+function balances() {
+	for (key in users) {
+var user = users[key]
+		user['balance']=getBalance(user.adress)
+	}
 }
 
 
@@ -708,6 +713,7 @@ function createHistory() {
 
 
 function createPage() {
+	balances()
 	makeGraph()
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
