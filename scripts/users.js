@@ -13,7 +13,7 @@ var users = {
 			},
 			"eric":{
 			"password": "user2",
-			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
+			"adress": "0xcf37772538838Cd2A78D83E1Daef8Acb6cA034bB",
 			"name": "Eric VERNHES",
 			"pic":"images/evernhes.png"
 			},

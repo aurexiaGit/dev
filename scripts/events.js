@@ -653,7 +653,7 @@ function balances() {
 }
 
 function attributeBalances() {
-	window.i = 0
+	var i = 0
 	balances()
 }
 attributeBalances()
