@@ -631,29 +631,28 @@ function makeGraph() {
 
 
 function getBalance(account) {
-	var accountBalance = 0
-	accountBalance = balanceOf(account)
-	return accountBalance
-}
-
-function balanceOf(account) {
-	return Token.balanceOf(account, function(err,result) {
-		if (!err) {return result.c[0]*0.0001; console.log("")}
+	window.b
+	Token.balanceOf(account, function(err,result) {
+		if (!err) {b=result.c[0]*0.0001; console.log("")}
 	})
 }
 
+
 function balances() {
-	for (key in users) {
-		var user = users[key]
-		window.setTimeout(function () {user['balance']=getBalance(user.adress)},500)
-	}
+	keys = Object.keys(users)
+	var user = users[keys[i]]
+	getBalance(user.adress)
+	setTimeout( function () {
+	user['balance']=b
+	i++
+	if (i < keys.length) {balances()}},1000)
 }
 
+function attributeBalances() {
+	var i = 0
+	balances()
+}
 
-
-//window.setInterval(function() {
-//	createPage()
-//}, 5000);
 
 
 function sendToken(adress,amount) {
@@ -725,3 +724,10 @@ function createPage() {
 		}
 	}
 }
+
+
+
+
+//window.setInterval(function() {
+//	createPage()
+//}, 5000);
