@@ -615,7 +615,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["Dominique","Eric","David","Charles"]
-		y = [users.dominique.balance,20,20,20]
+		y = [users.dominique.balance,users.eric.balance,users.dominique.balance,users.eric.balance]
 		data = [
 		  {
 		    y: y,
@@ -725,8 +725,7 @@ function createPage() {
 			}
 		}
 	}
-	window.setTimeout(function() {window.oldValue = users.admin.balance},2000)
-	window.setTimeout(function() {createHistory()},2100)
+	window.setTimeout(function() {createHistory()},2000)
 }
 
 
