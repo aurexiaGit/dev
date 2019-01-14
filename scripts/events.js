@@ -642,18 +642,19 @@ function getBalance(account) {
 //Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
 //Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
 
-function balances() {
-	keys = Object.keys(users)
-	var user = users[keys[i]]
-	getBalance(user.adress)
-	setTimeout( function () {
-	user['balance']=b
-	i++
-	if (i < keys.length) {balances()}},200)
-}
+
 
 function attributeBalances() {
 	var i = 0
+	function balances() {
+		keys = Object.keys(users)
+		var user = users[keys[i]]
+		getBalance(user.adress)
+		setTimeout( function () {
+		user['balance']=b
+		i++
+		if (i < keys.length) {balances()}},200)
+	}
 	balances()
 }
 attributeBalances()

@@ -3,8 +3,7 @@ body
 	font-family: Calibri;
 }
 
-button {
-  background-color: rgb(255;92,96); 
+button { 
   border: none;
   color: white;
   padding: 12px 32px;
@@ -27,13 +26,6 @@ h1 {
   margin : 20px;
 }
 
-nav
-{
-	position : relative;
-  text-align: center;
-  text-decoration: none;
-  margin-top: 10px;
-}
 
 #upper_section
 {

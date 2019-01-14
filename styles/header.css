@@ -14,17 +14,6 @@ header
 	color : white;
 }
 
-#titre_principal
-{
-  text-align: center;
-  display : fixed;
-  bottom : 20px;
-  margin : auto;
-  padding-bottom: 25px;
-  padding-top: 25px;
-  font-size: 60px;
-  color : white;
-}
 
 .pic {
 	overflow:hidden;
@@ -33,4 +22,14 @@ header
     border-radius:50px;
     width:90px;
     height:90px;
+}
+
+.button {
+  color : white;
+  font-size: 30px
+}
+
+nav {
+  display : flex;
+  margin-left: 100px;
 }
