@@ -16,9 +16,10 @@ header
 }
 
 #name {
-position:relative;
-height:50%;
-margin:5px;
+  position:relative;
+  height:50%;
+  margin:5px;
+  font-weight: bold;
 }
 
 
