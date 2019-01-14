@@ -630,22 +630,22 @@ function makeGraph() {
 }
 
 
-function getBalance(Account) {
+function getBalance(account) {
 	var accountBalance = 0
-	accountBalance = balanceOf(Account)
+	accountBalance = balanceOf(account)
 	return accountBalance
 }
 
-function balanceOf(Account) {
-	return Token.balanceOf(Account, function(err,result) {
+function balanceOf(account) {
+	return Token.balanceOf(account, function(err,result) {
 		if (!err) {return result.c[0]*0.0001; console.log("")}
 	})
 }
 
 function balances() {
 	for (key in users) {
-var user = users[key]
-		user['balance']=getBalance(user.adress)
+		var user = users[key]
+		window.setTimeout(function () {user['balance']=getBalance(user.adress)},500)
 	}
 }
 
