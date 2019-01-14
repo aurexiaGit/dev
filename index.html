@@ -17,11 +17,12 @@
                     <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
                 </div>
                 <nav>
-                <p class = button id = homePage onclick="homePage()">HOME <img src = "images/pageArrow.png"></p>
-                <p class = button id = eventsPage onclick="eventsPage()">EVENTS <img src = "images/pageArrow.png"></p>
-                <p class = button id = adminPage onclick="adminPage()">ADMIN <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "homePage" onclick="homePage()">HOME <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "eventsPage" onclick="eventsPage()">EVENTS <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "adminPage" onclick="adminPage()">ADMIN <img src = "images/pageArrow.png"></p>
                 </nav>
                 <div id="identity">
+                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> James SMITH </div>
                 </div>
                 </div>
             </header>
@@ -33,7 +34,7 @@
                     <img src="images/ast.png" alt="icon ast" />
                     <div id="astValue">0 AST</div>
                     <form id="send">
-                      <input type="number" placeholder="amount" id="amount" required/>
+                      <input type="number" placeholder="Amount" id="amount" required/>
                       <select id="dest-select" required>
                             <option value="init">Select Beneficiary</option>
                         </select>
