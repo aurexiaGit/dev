@@ -719,7 +719,7 @@ function createPage() {
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
-			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'>" + users[key].name
 				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "inline-block"
 			}
