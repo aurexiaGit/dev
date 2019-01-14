@@ -628,35 +628,28 @@ function makeGraph() {
 	var leader = document.getElementById("leader")
 	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
 }
-makeGraph()
 
-var accountBalance
 
 function getBalance(Account) {
+	var accountBalance
 	Token.balanceOf(Account, function(err,result) {
 		if (!err) {accountBalance = result.c[0]*0.0001; console.log("")}
 	})
 	return accountBalance
 }
 
-function createPage() {
-	makeGraph()
-	var curAccount = web3.eth.accounts[0]
-	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
-			var identity = document.getElementById("identity");
-			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
-				if (users.hasOwnProperty(key) && key==="admin") {
-			document.getElementById("adminPage").style.display = "inline-block"
-			}
-		}
-	}
+function balanceOf(Account) {
+	var test
+	Token.balanceOf(Account, function(err,result) {
+		if (!err) {test = result.c[0]*0.0001; console.log(test)}
+	})
 }
+
 
 
 window.setInterval(function() {
 	createPage()
-}, 3000);
+}, 5000);
 
 
 function sendToken(adress,amount) {
@@ -667,7 +660,6 @@ function Transfer() {
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
-	loading()
 	return false
 }
 
@@ -700,3 +692,31 @@ function loading() {
 	window.setInterval(function() {if (done) {window.clearInterval(intervalId)}},2000)
 }
 
+function createHistory() {
+	var oldValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
+	window.setInterval( function () {
+		var newValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
+		if (newValue !== oldValue) {
+			oldValue = newValue
+			var value = document.createTextNode("the value has changed")	
+			document.getElementById("history").appendChild(value)
+		}
+	},2000)
+}
+
+
+
+
+function createPage() {
+	makeGraph()
+	var curAccount = web3.eth.accounts[0]
+	for (var key in users){
+		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
+			var identity = document.getElementById("identity");
+			identity.innerHTML="Welcome to your Wallet <br>" + users[key].name + "! <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> "
+				if (users.hasOwnProperty(key) && key==="admin") {
+			document.getElementById("adminPage").style.display = "inline-block"
+			}
+		}
+	}
+}
