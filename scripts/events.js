@@ -638,6 +638,10 @@ function getBalance(account) {
 }
 
 
+//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
+//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
+//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
+
 function balances() {
 	keys = Object.keys(users)
 	var user = users[keys[i]]
@@ -645,14 +649,14 @@ function balances() {
 	setTimeout( function () {
 	user['balance']=b
 	i++
-	if (i < keys.length) {balances()}},1000)
+	if (i < keys.length) {balances()}},200)
 }
 
 function attributeBalances() {
-	var i = 0
+	window.i = 0
 	balances()
 }
-
+attributeBalances()
 
 
 function sendToken(adress,amount) {
@@ -696,23 +700,20 @@ function loading() {
 }
 
 function createHistory() {
-	var oldValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
-	window.setInterval( function () {
-		var newValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
-		if (newValue !== oldValue) {
-			oldValue = newValue
-			var value = document.createTextNode("the value has changed")	
-			document.getElementById("history").appendChild(value)
-		}
-	},2000)
+	var newValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
+	if (newValue !== oldValue) {
+		var value = document.createTextNode("the value has changed")	
+		document.getElementById("history").appendChild(value)
+	}
 }
 
 
 
 
 function createPage() {
-	balances()
-	makeGraph()
+	window.oldValue = users.admin.balance
+	attributeBalances()
+	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -723,11 +724,14 @@ function createPage() {
 			}
 		}
 	}
+	window.setTimeout(function() {window.oldValue = users.admin.balance},2000)
+	window.setTimeout(function() {createHistory()},2100)
 }
 
 
 
 
-//window.setInterval(function() {
-//	createPage()
-//}, 5000);
+window.setTimeout(function() {window.setInterval(function() {
+	createPage()
+}, 5000);
+},2000)
