@@ -700,7 +700,7 @@ function loading() {
 }
 
 function createHistory() {
-	var newValue = getBalance("0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599")
+	var newValue = users.admin.balance
 	if (newValue !== oldValue) {
 		var value = document.createTextNode("the value has changed")	
 		document.getElementById("history").appendChild(value)
