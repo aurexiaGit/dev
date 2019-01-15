@@ -32,6 +32,10 @@ function eventsPage() {
 	window.location="events.html"
 }
 
+function donationPage() {
+	window.location="donation.html"
+}
+
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {

@@ -656,13 +656,14 @@ window.setInterval(function() {
 }, 1000);
 
 
-function sendToken(adress,amount) {
-	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+function burnTokens() {
+	console.log(Balance)
+	Token.burn(parseInt(web3.toWei((10).toString(),"ether")),function(err,result) {console.log("")})
 }
 
-function Transfer() {
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
-	var frm = document.getElementById("send");
+function Burn() {
+	burnTokens()
+	var frm = document.getElementById("donate");
 	frm.reset();
 	return false
 }
