@@ -619,7 +619,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["Dominique","Eric","David","Charles"]
-		y = [users.dominique.balance,users.eric.balance,users.david.balance,users.eric.balance]
+		y = [users.dominique.balance,users.eric.balance,users.david.balance,users.charles.balance]
 		data = [
 		  {
 		    y: y,
