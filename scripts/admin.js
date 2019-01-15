@@ -668,16 +668,12 @@ function remMember() {
 	return false
 }
 
-function initialDonations() {
-	for (key in users) {
-		mintTokens(users[key].adress,20)
-	}
-}
-
 function mintTokens(adress,amount) {
 	Token.mintToken(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
 }
 
-function Burn(adress,amount) {
-	mintTokens(adress,amount)
+function initialDonations() {
+	for (key in users) {
+		mintTokens(users[key].adress,20)
+	}
 }
