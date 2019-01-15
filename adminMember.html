@@ -5,7 +5,7 @@
         <link rel = "stylesheet" href = "styles/style.css" />
         <link rel = "stylesheet" href = "styles/login_form.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/admin.css" />
+        <link rel = "stylesheet" href = "styles/adminMember.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -26,12 +26,29 @@
                 </div>
                 </div>
             </header>
-
-            <section id = "buttons">
-                <button id = homePage onclick="initialDonations()">INITIAL DONATIONS <img src="images/exchange.png"/> </button>
-                <button id = eventsPage onclick="manageMembership()">MANAGE MEMBERSHIP <img src="images/memberIcon.png"/> </button>
-                <button id = adminPage onclick="createdestroyTokens()">CREATE / DESTROY TOKENS <img src="images/token.png"/> </button>
+            <section id="assignMember">
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/member.png" alt="icon member" />
+                    <h1>Assign a new member</h1>
+                    <form id="addMember">
+                      <input type="text" placeholder="adress" id="adress1" required/>
+                      <button onclick="return addMember()">ADD</button>
+                    </form>
+                  </div>
+                </div>
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/remMember.png" alt="icon member" />
+                    <h1>Remove a member</h1>
+                    <form id="remMember">
+                      <input type="text" placeholder="adress" id="adress2" required/>
+                      <button onclick="return remMember()">REMOVE</button>
+                    </form>
+                  </div>
+                </div>
             </section>
+
             <footer>
                 <p>© Copyright Aurexia – All rights reserved<br />
             </footer>

@@ -37,6 +37,16 @@ function donationPage() {
 	window.location="donation.html"
 }
 
+
+
+function manageMembership() {
+	window.location="adminMember.html"
+}
+
+function createdestroyTokens() {
+	window.location="adminToken.html"
+}
+
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
@@ -640,9 +650,34 @@ function newMember(adress) {
 	Token.assignMember(adress,true,function(err,result) {console.log("")})
 }
 
-function Member() {
-	newMember(document.getElementById("adress").value)
-	var frm = document.getElementById("member");
+function addMember() {
+	newMember(document.getElementById("adress1").value)
+	var frm = document.getElementById("addMember");
 	frm.reset();
 	return false
+}
+
+function delMember(adress) {
+	Token.assignMember(adress,false,function(err,result) {console.log("")})
+}
+
+function remMember() {
+	delMember(document.getElementById("adress2").value)
+	var frm = document.getElementById("remMember");
+	frm.reset();
+	return false
+}
+
+function initialDonations() {
+	for (key in users) {
+		mintTokens(users[key].adress,20)
+	}
+}
+
+function mintTokens(adress,amount) {
+	Token.mintToken(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
+
+function Burn(adress,amount) {
+	mintTokens(adress,amount)
 }

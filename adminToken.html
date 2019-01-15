@@ -5,7 +5,7 @@
         <link rel = "stylesheet" href = "styles/style.css" />
         <link rel = "stylesheet" href = "styles/login_form.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/admin.css" />
+        <link rel = "stylesheet" href = "styles/adminTokens.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -27,10 +27,29 @@
                 </div>
             </header>
 
-            <section id = "buttons">
-                <button id = homePage onclick="initialDonations()">INITIAL DONATIONS <img src="images/exchange.png"/> </button>
-                <button id = eventsPage onclick="manageMembership()">MANAGE MEMBERSHIP <img src="images/memberIcon.png"/> </button>
-                <button id = adminPage onclick="createdestroyTokens()">CREATE / DESTROY TOKENS <img src="images/token.png"/> </button>
+            <section id="Tokens">
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/addTokens.png"/>
+                    <h1>Create Tokens</h1>
+                    <form id="member">
+                      <input placeholder="Amount" id="amount1" required/>
+                      <input type="text" placeholder="adress1" id="adress" required/>
+                      <button onclick="return createTokens()">CREATE</button>
+                    </form>
+                  </div>
+                </div>
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/delete.png" alt="icon member" />
+                    <h1>Destroy Tokens</h1>
+                    <form id="member">
+                      <input placeholder="Amount" id="amount2" required/>  
+                      <input type="text" placeholder="adress2" id="adress" required/>
+                      <button onclick="return destroyTokens()">DESTROY</button>
+                    </form>
+                  </div>
+                </div>
             </section>
             <footer>
                 <p>© Copyright Aurexia – All rights reserved<br />
