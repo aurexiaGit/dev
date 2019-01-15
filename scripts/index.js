@@ -642,7 +642,7 @@ function createPage() {
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'>" + users[key].name
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div>"
 				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "block"
 			}

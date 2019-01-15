@@ -607,14 +607,6 @@ var curAccount = web3.eth.accounts[0]
 
 var select = document.getElementById("dest-select")
 
-for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
-		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
-	}
-}
 
 var Balance
 
@@ -642,7 +634,7 @@ function createPage() {
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'>" + users[key].name
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div>"
 				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "block"
 			}
@@ -657,8 +649,8 @@ window.setInterval(function() {
 
 
 function burnTokens() {
-	console.log(Balance)
-	Token.burn(parseInt(web3.toWei((10).toString(),"ether")),function(err,result) {console.log("")})
+	myBalance()
+	Token.burn(parseInt(web3.toWei(Balance.toString(),"ether")),function(err,result) {console.log("")})
 }
 
 function Burn() {
