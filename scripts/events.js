@@ -33,7 +33,7 @@ function eventsPage() {
 }
 
 function donationPage() {
-	window.location="donation.html"
+	window.location="donationError.html"
 }
 
 document.getElementById("adminPage").style.display = "none"
@@ -630,9 +630,8 @@ function makeGraph() {
 		Plotly.newPlot('rankPage', data, {displayModeBar: false})
 	}
 	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : " + x[y.indexOf(Math.max.apply(null,y))]
+	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLocaleLowerCase()].pic + "'/>"
 }
-
 
 function getBalance(account) {
 	window.b

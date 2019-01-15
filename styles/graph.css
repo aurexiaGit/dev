@@ -9,3 +9,11 @@
    visibility: hidden;
    background-repeat:repeat-y;
 }
+
+#photos {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 280px;
+    margin-right: 280px;
+}
