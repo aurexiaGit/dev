@@ -677,3 +677,16 @@ function initialDonations() {
 		mintTokens(users[key].adress,20)
 	}
 }
+
+function createPage() {
+	var curAccount = web3.eth.accounts[0]
+	for (var key in users){
+		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
+			var identity = document.getElementById("identity");
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div>"
+				if (users.hasOwnProperty(key) && key==="admin") {
+			document.getElementById("adminPage").style.display = "block"
+			}
+		}
+	}
+}
