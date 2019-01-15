@@ -706,3 +706,5 @@ function destroyTokens() {
 	var adress = document.getElementById("adress2").value
 	burnTokens(adress,amount)
 }
+
+window.setTimeout(function() {createPage()},1000)
