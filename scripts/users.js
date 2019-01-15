@@ -19,7 +19,7 @@ var users = {
 			},
 			"david":{
 			"password": "user2",
-			"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
+			"adress": "0x9C71D4EBE39CAf12c1461466697B0816Ab86b95b",
 			"name": "David VILLARD",
 			"pic":"images/dvillard.jpg"
 			},
