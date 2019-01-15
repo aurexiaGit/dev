@@ -710,11 +710,11 @@ function createHistory() {
 		}
 	}
 	if (difference < 0) {
-		var value = document.createTextNode("You sent " + (-difference).toString() + " Aurexia Social Tokens"	
+		var value = document.createTextNode("You sent " + (-difference).toString() + " Aurexia Social Tokens")	
 		document.getElementById("history").appendChild(value)
 	}
 	if (difference > 0) {
-		var value = document.createTextNode("You recieved " + difference.toString() + " Aurexia Social Tokens"	
+		var value = document.createTextNode("You recieved " + difference.toString() + " Aurexia Social Tokens")
 		document.getElementById("history").appendChild(value)
 	}
 }
