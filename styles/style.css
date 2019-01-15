@@ -21,14 +21,10 @@ h1 {
   align-items: center;
   margin-left: 40%;
   margin-right: 40%;
+  background-color: white;
 }
 
 
-#astValue {
-  font-size : 40px;
-  color : grey;
-  margin : 20px;
-}
 
 
 #upper_section
@@ -97,4 +93,5 @@ footer
 	position : fixed;
 	bottom :0;
   font-weight: bold;
+  color:white;
 }
