@@ -1,6 +1,7 @@
 header
 {
 	background-color : rgb(29,74,105);
+  background-size: 100%;
   display :flex;
   justify-content: space-between;
   align-items: center;
