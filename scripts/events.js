@@ -659,6 +659,7 @@ function attributeBalances() {
 	balances()
 }
 attributeBalances()
+window.setTimeout(function() {makeGraph()},1000)
 
 
 function sendToken(adress,amount) {
@@ -723,8 +724,8 @@ function createHistory() {
 
 
 function createPage() {
-	window.oldValues = users
 	attributeBalances()
+	window.setTimeout(function() {window.oldValues = users},1000)
 	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
@@ -736,7 +737,7 @@ function createPage() {
 			}
 		}
 	}
-	window.setTimeout(function() {createHistory()},2000)
+	window.setTimeout(function() {createHistory()},4500)
 }
 
 
@@ -745,4 +746,4 @@ function createPage() {
 window.setTimeout(function() {window.setInterval(function() {
 	createPage()
 }, 5000);
-},2000)
+},1000)
