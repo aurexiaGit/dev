@@ -690,3 +690,19 @@ function createPage() {
 		}
 	}
 }
+
+function createTokens() {
+	var amount = document.getElementById("amount1").value
+	var adress = document.getElementById("adress1").value
+	mintTokens(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
+
+function burnTokens(adress,amount) {
+	Token.burn(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
+
+function destroyTokens() {
+	var amount = document.getElementById("amount2").value
+	var adress = document.getElementById("adress2").value
+	burnTokens(adress,amount)
+}
