@@ -1,8 +1,10 @@
 #assignMember {
-	display : flex;
-	align-items: center;
-	justify-content: space-between;
-	margin: 50px;
-  	margin-left: 500px;
-  	margin-right: 500px;
+	display: flex;
+    justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  color:grey;
+
 }

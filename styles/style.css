@@ -1,17 +1,26 @@
 body
 {
 	font-family: Calibri;
+	background-image: url("../images/test.png");
+	margin:0px;
+}
+
+body::after {
+	opacity:0.5;
 }
 
 
 h1 {
   text-align: center;
-  color:grey;
+  color:white;
+}
+
+#leader {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 
 
@@ -40,7 +49,7 @@ h1 {
 	display : flex;
 	flex-direction : column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
   	margin: 30px;
 }
 
@@ -50,11 +59,7 @@ h1 {
 
 #new_member
 {
-  display : flex;
-  flex-direction : column;
-  align-items: center;
-  justify-content: space-between;
-  margin: 30px;
+  margin: 40px;
 }
 
 #new_member > * {
