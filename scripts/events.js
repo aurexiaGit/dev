@@ -646,6 +646,7 @@ function getBalance(account) {
 
 function attributeBalances() {
 	var i = 0
+	window.b
 	function balances() {
 		keys = Object.keys(users)
 		var user = users[keys[i]]
@@ -701,9 +702,19 @@ function loading() {
 }
 
 function createHistory() {
-	var newValue = users.admin.balance
-	if (newValue !== oldValue) {
-		var value = document.createTextNode("the value has changed")	
+	var newValue = users
+	var difference = 0
+	for (key in newValue) {
+		if (users[key].adress === curAccount && newValue[key].balance !== oldValue[key].balance) {
+			differences.push(newValue[key].balance - oldValue[key].balance)
+		}
+	}
+	if (difference < 0) {
+		var value = document.createTextNode("You sent " + (-difference).toString() + " Aurexia Social Tokens"	
+		document.getElementById("history").appendChild(value)
+	}
+	if (difference > 0) {
+		var value = document.createTextNode("You recieved " + difference.toString() + " Aurexia Social Tokens"	
 		document.getElementById("history").appendChild(value)
 	}
 }
@@ -712,7 +723,7 @@ function createHistory() {
 
 
 function createPage() {
-	window.oldValue = users.admin.balance
+	window.oldValues = users
 	attributeBalances()
 	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
