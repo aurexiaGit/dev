@@ -630,7 +630,7 @@ function makeGraph() {
 		Plotly.newPlot('rankPage', data, {displayModeBar: false})
 	}
 	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLocaleLowerCase()].pic + "'/>"
+	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLowerCase()].pic + "'/>"
 }
 
 function getBalance(account) {
