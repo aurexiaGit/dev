@@ -5,68 +5,37 @@
         <link rel = "stylesheet" href = "styles/style.css" />
         <link rel = "stylesheet" href = "styles/login_form.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/linkMetamask.css" />
-        <link rel = "stylesheet" href = "styles/graph.css" />
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link rel = "stylesheet" href = "styles/admin.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
     <body>
         <div id="block_page">
-
             <header>
                 <div id="logo">
                     <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
                 </div>
                 <nav>
-                <p class = button id = homePage onclick="homePage()">HOME <img src = "images/pageArrow.png"></p>
-                <p class = button id = eventsPage onclick="eventsPage()">EVENTS <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "homePage" onclick="homePage()">HOME <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "eventsPage" onclick="eventsPage()">EVENTS <img src = "images/pageArrow.png"></p>
                 <p class = "button" id = "donationPage" onclick="donationPage()">DONATION <img src = "images/pageArrow.png"></p>
-                <p class = button id = adminPage onclick="adminPage()">ADMIN <img src = "images/pageArrow.png"></p>
+                <p class = "button" id = "adminPage" onclick="adminPage()">ADMIN <img src = "images/pageArrow.png"></p>
                 </nav>
                 <div id="identity">
+                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
                 </div>
                 </div>
             </header>
-            <h1> Welcome to the first Aurexia Blockchain Event !</h1>
 
-            <div id="middlePage">
-                <section id="transactionPage">
-                    <div id="ast_balance">
-                      <div class="form">
-                        <form id="send">
-                          <input placeholder="Amount" id="amount" required/>
-                          <select id="dest-select" required>
-                                <option value="init">Select Player</option>
-                            </select>
-                          <button onclick="return Transfer()">send</button>
-                          <div id="loading"></div>
-                        </form>
-                      </div>
-                    </div>
-                    <div id="history">
-                    </div>
-                </section>
-                <br>
-                <h1 id="leader"> Current Leader </h1>
-                <div id="rankPage">
-                </div>
-                <br>
-                <div id="photos">
-                    <img src="images/dherrou.jpg"/>
-                    <img src="images/evernhes.png"/>
-                    <img src="images/dvillard.jpg"/>
-                    <img src="images/cbain.jpg"/>
-                </div>
-            </div>
-
+            <section id = "buttons">
+                <button id = aurexiaQuiz onclick="aurexiaQuiz()">AUREXIA QUIZ<img src="images/quiz.png"/> </button>
+            </section>
             <footer>
                 <p>© Copyright Aurexia – All rights reserved<br />
             </footer>
-
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
+        <script type="text/javascript" src="scripts/users.js"></script>        
         <script type="text/javascript" src="scripts/events.js"></script>
     </body>
 </html>

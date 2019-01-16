@@ -36,6 +36,10 @@ function donationPage() {
 	window.location="donationError.html"
 }
 
+function aurexiaQuiz() {
+	window.location="eventsInit.html"
+}
+
 document.getElementById("adminPage").style.display = "none"
 
 if (window.ethereum===undefined) {
