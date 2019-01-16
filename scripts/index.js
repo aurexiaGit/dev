@@ -694,6 +694,7 @@ function createPage() {
 			}
 		}
 	}
+	window.setTimeout(function() {createHistory()},4500)
 }
 
 

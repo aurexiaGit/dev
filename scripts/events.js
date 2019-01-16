@@ -751,7 +751,6 @@ function loading() {
 
 function createPage() {
 	attributeBalances()
-	window.setTimeout(function() {window.oldValues = users},1000)
 	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
