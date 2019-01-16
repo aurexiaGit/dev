@@ -605,6 +605,52 @@ var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var curAccount = web3.eth.accounts[0]
 
+var eventSent = Token.Transfer()
+var transactionSentList = []
+eventSent.watch(function(error, result) {
+ 			if (!error) {
+ 				transactionSentList.push(result);
+ 				console.log("");
+ 			}
+ 		})
+
+function createHistory() {
+	var curAccount = web3.eth.accounts[0]
+	if (transactionSentList !== undefined) {
+		var name
+		var history = document.getElementById("history")
+		history.innerHTML = ""
+		transactionSentList.forEach(function(transactionSent) {
+			if (curAccount.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+				for (var key in users) {
+					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+						name = users[key].name
+					}
+				}
+				var posList = document.createElement("ul")
+				posList.id = "sending"
+				var notif = document.createElement("li")
+				notif.innerHTML = "You sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
+				posList.appendChild(notif)
+				history.appendChild(posList)
+			}
+			if (curAccount.toLowerCase() === transactionSent.args.to.toLowerCase()) { 
+				for (var key in users) {
+					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+						name = users[key].name
+					}
+				}
+				var negList = document.createElement("ul")
+				negList.id = "receiving"
+				var notif = document.createElement("li")
+				notif.innerHTML = "You received <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> from <strong>" + name + "</strong>"
+				negList.appendChild(notif)
+				history.appendChild(negList)
+			}
+		})
+	}	
+}
+
 var select = document.getElementById("dest-select")
 
 for (var key in users){

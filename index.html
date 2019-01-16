@@ -3,9 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/login_form.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/linkMetamask.css" />
+        <link rel = "stylesheet" href = "styles/index.css" />
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <title>MyWallet - Aurexia</title> 
     </head>
@@ -26,10 +25,7 @@
                 </div>
                 </div>
             </header>
-
-  
             <section id="transactionPage">
-                <div id="ast_balance">
                   <div class="form">
                     <img src="images/ast.png" alt="icon ast" /> <br>
                     <h1> Aurexia Social Token </h1>
@@ -43,8 +39,13 @@
                       <button onclick="return Transfer()">send</button>
                     </form>
                   </div>
+                <div class="form">
+                    <h1> History </h1>
+                    <div id="history">
+                    </div>
                 </div>
             </section>
+
 
             <footer>
                 <p>© Copyright Aurexia – All rights reserved<br /></p>
