@@ -666,7 +666,7 @@ function sendToken(adress,amount) {
 
 function Transfer() {
 	myBalance()
-	sendToken(document.getElementById("dest-select").value,parseInt(web3.toWei(Balance.toString(),"ether")))
+	sendToken(document.getElementById("dest-select").value,Balance)
 	var frm = document.getElementById("donate");
 	frm.reset();
 	return false
