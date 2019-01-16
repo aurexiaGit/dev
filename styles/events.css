@@ -110,3 +110,11 @@
     text-align: justify;
     overflow: auto;
 }
+
+#sending {
+  list-style-image: url('../images/sendTokens.png');
+}
+
+#receiving {
+  list-style-image: url('../images/receiveTokens.png');
+}

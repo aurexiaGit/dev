@@ -621,15 +621,19 @@ function createHistory() {
 	if (transactionSentList !== undefined) {
 		var name
 		var history = document.getElementById("history")
-		history.innerHTML = "<h1> History </h1>"
+		history.innerHTML = ""
 		transactionSentList.forEach(function(transactionSent) {
 			for (var key in users) {
 				if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
 					name = users[key].name
 				}
 			}
-			history.appendChild(document.createTextNode("You sent " + (transactionSent.args.value.c[0]*0.0001).toString() + " Aurexia Social Tokens to " + name))
-			history.appendChild(document.createElement("br"))	
+			var posList = document.createElement("ul")
+			posList.id = "sending"
+			var notif = document.createElement("li")
+			notif.innerHTML = "You sent " + (transactionSent.args.value.c[0]*0.0001).toString() + " Aurexia Social Tokens to " + name
+			posList.appendChild(notif)
+			history.appendChild(posList)
 		})
 	}	
 }
