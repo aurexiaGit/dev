@@ -626,10 +626,6 @@ function getBalance(Account) {
 }
 
 function createPage() {
-	myBalance()
-	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
-	}
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
