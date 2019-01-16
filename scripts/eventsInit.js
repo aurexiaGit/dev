@@ -656,6 +656,15 @@ function createHistory() {
 
 var select = document.getElementById("dest-select")
 
+for (var key in users){
+	if (users.hasOwnProperty(key) && key !== "admin") {
+		var opt = document.createElement('option');
+	    opt.value = users[key].adress;
+	    opt.innerHTML = users[key].name;
+	    select.appendChild(opt);
+	}
+}
+
 function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
