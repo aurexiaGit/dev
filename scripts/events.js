@@ -33,7 +33,7 @@ function eventsPage() {
 }
 
 function donationPage() {
-	window.location="donationError.html"
+	window.location="donation.html"
 }
 
 function aurexiaQuiz() {
