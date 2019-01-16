@@ -674,7 +674,7 @@ function mintTokens(adress,amount) {
 
 function initialDonations() {
 	for (key in users) {
-		mintTokens(users[key].adress,20)
+		mintTokens(users[key].adress,50)
 	}
 }
 

@@ -660,6 +660,18 @@ function Burn() {
 	return false
 }
 
+function sendToken(adress,amount) {
+	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+}
+
+function Transfer() {
+	myBalance()
+	sendToken(document.getElementById("dest-select").value,parseInt(web3.toWei(Balance.toString(),"ether")))
+	var frm = document.getElementById("donate");
+	frm.reset();
+	return false
+}
+
 function newMember(adress) {
 	Token.assignMember(adress,true,function(err,result) {console.log("")})
 }
