@@ -608,6 +608,32 @@ var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var curAccount = web3.eth.accounts[0]
 
+var eventSent = Token.Transfer()
+var transactionSentList = []
+eventSent.watch(function(error, result) {
+ 			if (!error) {
+ 				transactionSentList.push(result);
+ 				console.log("");
+ 			}
+ 		})
+
+function createHistory() {
+	if (transactionSentList !== undefined) {
+		var name
+		var history = document.getElementById("history")
+		history.innerHTML = "<h1> History </h1>"
+		transactionSentList.forEach(function(transactionSent) {
+			for (var key in users) {
+				if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+					name = users[key].name
+				}
+			}
+			history.appendChild(document.createTextNode("You sent " + (transactionSent.args.value.c[0]*0.0001).toString() + " Aurexia Social Tokens to " + name))
+			history.appendChild(document.createElement("br"))	
+		})
+	}	
+}
+
 var select = document.getElementById("dest-select")
 
 for (var key in users){
@@ -707,24 +733,6 @@ function loading() {
 		}
 	},2000)
 	window.setInterval(function() {if (done) {window.clearInterval(intervalId)}},2000)
-}
-
-function createHistory() {
-	var newValue = users
-	var difference = 0
-	for (key in newValue) {
-		if (users[key].adress === curAccount && newValue[key].balance !== oldValue[key].balance) {
-			differences.push(newValue[key].balance - oldValue[key].balance)
-		}
-	}
-	if (difference < 0) {
-		var value = document.createTextNode("You sent " + (-difference).toString() + " Aurexia Social Tokens")	
-		document.getElementById("history").appendChild(value)
-	}
-	if (difference > 0) {
-		var value = document.createTextNode("You recieved " + difference.toString() + " Aurexia Social Tokens")
-		document.getElementById("history").appendChild(value)
-	}
 }
 
 

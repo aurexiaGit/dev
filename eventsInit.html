@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/login_form.css" />
+        <link rel = "stylesheet" href = "styles/events.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
         <link rel = "stylesheet" href = "styles/linkMetamask.css" />
         <link rel = "stylesheet" href = "styles/graph.css" />
@@ -32,7 +32,7 @@
             <h1 id = "title"> AUREXIA QUIZ </h1>
 
             <div id="middlePage">
-                <section id="transactionPage">
+                <section id="introduction">
                     <div id="ast_balance">
                       <div class="form">
                         <form id="send">
@@ -40,17 +40,27 @@
                           You will have to answer a series of questions about Aurexia and Blockchain technology. If you get the right answer first, all the other players will send you 5 tokens. The bellow form allows you to send tokens to players when they get a correct answer.
                           <br><br><strong>Let the best win !</strong>
                           <br><br>    
-                          <input placeholder="Amount" id="amount" required/>
-                          <select id="dest-select" required>
-                                <option value="init">Select Player</option>
-                            </select>
-                          <button onclick="return Transfer()">send</button>
-                          <div id="loading"></div>
                         </form>
                       </div>
                     </div>
-                    <div id="history">
+                <section id="second_layer">
+                    <div class="form">
+                        <form id="send"> 
+                          <h1> You just lost ? Send 5 tokens to the winner ! </h1> 
+                          <input placeholder="Amount" id="amount" required/>
+                          <select id="dest-select" required>
+                          <option value="init">Select Player</option>
+                          </select>
+                          <button onclick="return Transfer()">send</button>
+                          <div id="loading"></div>
+                        </form>
                     </div>
+                    <div class="form">
+                                                    <h1> History </h1>
+                        <form id="history">
+                        </form>
+                    </div>
+                </section>
                 </section>
                 <br>
                 <h1 id="leader"> Current Leader </h1>
