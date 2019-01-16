@@ -698,7 +698,7 @@ function createTokens() {
 }
 
 function burnTokens(adress,amount) {
-	Token.burn(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+	Token.burnFrom(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
 }
 
 function destroyTokens() {
