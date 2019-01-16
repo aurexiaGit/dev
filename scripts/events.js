@@ -618,22 +618,38 @@ eventSent.watch(function(error, result) {
  		})
 
 function createHistory() {
+	var curAccount = web3.eth.accounts[0]
 	if (transactionSentList !== undefined) {
 		var name
 		var history = document.getElementById("history")
 		history.innerHTML = ""
 		transactionSentList.forEach(function(transactionSent) {
-			for (var key in users) {
-				if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-					name = users[key].name
+			if (curAccount.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+				for (var key in users) {
+					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+						name = users[key].name
+					}
 				}
+				var posList = document.createElement("ul")
+				posList.id = "sending"
+				var notif = document.createElement("li")
+				notif.innerHTML = "You sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
+				posList.appendChild(notif)
+				history.appendChild(posList)
 			}
-			var posList = document.createElement("ul")
-			posList.id = "sending"
-			var notif = document.createElement("li")
-			notif.innerHTML = "You sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
-			posList.appendChild(notif)
-			history.appendChild(posList)
+			if (curAccount.toLowerCase() === transactionSent.args.to.toLowerCase()) { 
+				for (var key in users) {
+					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+						name = users[key].name
+					}
+				}
+				var negList = document.createElement("ul")
+				negList.id = "receiving"
+				var notif = document.createElement("li")
+				notif.innerHTML = "You received <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> from <strong>" + name + "</strong>"
+				negList.appendChild(notif)
+				history.appendChild(negList)
+			}
 		})
 	}	
 }
