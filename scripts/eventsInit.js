@@ -1,24 +1,6 @@
-var logged;
-var user;
-var pass;
 
-function Login(){
-	if (username.value in users && users[username.value].password === password.value)  {
-		user = 'user1'
-		pass = 'user1'
-		logged = true;
-		window.location="homePage.html";
-	}
-	return false
-}
 
-if (logged) {
-	document.getElementById("nom_utilisateur").value = user
-}
-
-function logOut() {
-	window.location="login.html"
-}
+var sending = false 
 
 function homePage() {
 	window.location="index.html"
@@ -613,9 +595,28 @@ var transactionSentList = []
 eventSent.watch(function(error, result) {
  			if (!error) {
  				transactionSentList.push(result);
+ 				var curAccount = web3.eth.accounts[0];
+ 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
+	 				sending=false;
+	 				var elmt = document.getElementById("loading");
+	 				elmt.innerHTML ="<br>Sent!"
+	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
+	 			}
  				console.log("");
  			}
  		})
+
+
+var select = document.getElementById("dest-select")
+
+for (var key in users){
+	if (users.hasOwnProperty(key) && key !== "admin") {
+		var opt = document.createElement('option');
+	    opt.value = users[key].adress;
+	    opt.innerHTML = users[key].name;
+	    select.appendChild(opt);
+	}
+}
 
 function createHistory() {
 	var curAccount = web3.eth.accounts[0]
@@ -643,6 +644,9 @@ function createHistory() {
 						name = users[key].name
 					}
 				}
+				if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
+					name = "Aurexia Central Bank"
+				}
 				var negList = document.createElement("ul")
 				negList.id = "receiving"
 				var notif = document.createElement("li")
@@ -652,17 +656,6 @@ function createHistory() {
 			}
 		})
 	}	
-}
-
-var select = document.getElementById("dest-select")
-
-for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
-		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
-	}
 }
 
 function makeGraph() {
@@ -720,6 +713,7 @@ function sendToken(adress,amount) {
 }
 
 function Transfer() {
+	sending=true
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
@@ -737,30 +731,20 @@ function Member() {
 	return false
 }
 
-
 function loading() {
 	var elmt = document.getElementById("loading")
-	var curTokens = getBalance(web3.eth.accounts[0])
-	var done = false
-	window.intervalId = window.setInterval( function() {
-		if (getBalance(web3.eth.accounts[0])===curTokens) {
-			elmt.innerHTML = "<br>Sending tokens <img src='images/Spinner-1s-40px.gif'/>"
-		}
-		else {
-			elmt.innerHTML = "<br>Sent ! "
-			window.setTimeout(function () {elmt.innerHTML = ""},2000)
-			done = true
-		}
-	},2000)
-	window.setInterval(function() {if (done) {window.clearInterval(intervalId)}},2000)
+	if (sending) {
+		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
+	}
 }
 
 
 
 
+
 function createPage() {
+	loading()
 	attributeBalances()
-	window.setTimeout(function() {window.oldValues = users},1000)
 	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
