@@ -1,25 +1,4 @@
-
-var logged;
-var user;
-var pass;
-
-function Login(){
-	if (username.value in users && users[username.value].password === password.value)  {
-		user = 'user1'
-		pass = 'user1'
-		logged = true;
-		window.location="homePage.html";
-	}
-	return false
-}
-
-if (logged) {
-	document.getElementById("nom_utilisateur").value = user
-}
-
-function logOut() {
-	window.location="login.html"
-}
+var sending = false
 
 function homePage() {
 	window.location="index.html"
@@ -610,6 +589,12 @@ var transactionSentList = []
 eventSent.watch(function(error, result) {
  			if (!error) {
  				transactionSentList.push(result);
+ 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
+	 				sending=false;
+	 				var elmt = document.getElementById("loading");
+	 				elmt.innerHTML ="<br>Sent!"
+	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
+	 			}
  				console.log("");
  			}
  		})
@@ -682,7 +667,15 @@ function getBalance(Account) {
 	return Balance
 }
 
+function loading() {
+	var elmt = document.getElementById("loading")
+	if (sending) {
+		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
+	}
+}
+
 function createPage() {
+	loading()
 	myBalance()
 	if (document.getElementById("astValue") !== undefined) {
 		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
@@ -711,6 +704,7 @@ function sendToken(adress,amount) {
 }
 
 function Transfer() {
+	sending = true
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
