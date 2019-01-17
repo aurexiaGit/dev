@@ -588,6 +588,7 @@ var eventSent = Token.Transfer()
 var transactionSentList = []
 eventSent.watch(function(error, result) {
  			if (!error) {
+ 				var curAccount = web3.eth.accounts[0];
  				transactionSentList.push(result);
  				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
 	 				sending=false;

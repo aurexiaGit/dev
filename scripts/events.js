@@ -594,6 +594,7 @@ var transactionSentList = []
 eventSent.watch(function(error, result) {
  			if (!error) {
  				transactionSentList.push(result);
+ 				var curAccount = web3.eth.accounts[0];
  				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
 	 				sending=false;
 	 				var elmt = document.getElementById("loading");
