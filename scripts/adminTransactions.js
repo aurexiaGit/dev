@@ -1,25 +1,5 @@
 
-var logged;
-var user;
-var pass;
-
-function Login(){
-	if (username.value in users && users[username.value].password === password.value)  {
-		user = 'user1'
-		pass = 'user1'
-		logged = true;
-		window.location="homePage.html";
-	}
-	return false
-}
-
-if (logged) {
-	document.getElementById("nom_utilisateur").value = user
-}
-
-function logOut() {
-	window.location="login.html"
-}
+var sending = false 
 
 function homePage() {
 	window.location="index.html"
@@ -31,24 +11,6 @@ function adminPage() {
 
 function eventsPage() {
 	window.location="events.html"
-}
-
-function donationPage() {
-	window.location="donation.html"
-}
-
-function followTransactions() {
-	window.location="adminTransactions.html"
-}
-
-
-
-function manageMembership() {
-	window.location="adminMember.html"
-}
-
-function createdestroyTokens() {
-	window.location="adminToken.html"
 }
 
 document.getElementById("adminPage").style.display = "none"
@@ -619,70 +581,44 @@ var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var curAccount = web3.eth.accounts[0]
 
-var Balance
+var eventSent = Token.Transfer()
+var transactionSentList = []
+eventSent.watch(function(error, result) {
+ 			if (!error) {
+ 				transactionSentList.push(result);
+ 				console.log("");
+ 			}
+ 		})
 
-function myBalance() {
+function createHistory() {
 	var curAccount = web3.eth.accounts[0]
-	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
-	})
+	if (transactionSentList !== undefined) {
+		var reciever
+		var sender
+		var history = document.getElementById("history")
+		history.innerHTML = ""
+		transactionSentList.forEach(function(transactionSent) {
+			for (var key in users) {
+				if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+					reciever = users[key].name
+				}
+				if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+					sender = users[key].name
+				}
+				if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
+					sender = "Aurexia Central Bank"
+				}
+			}
+			var posList = document.createElement("ul")
+			posList.id = "sending"
+			var notif = document.createElement("li")
+			notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
+			posList.appendChild(notif)
+			history.appendChild(posList)
+		})
+	}	
 }
 
-function getBalance(Account) {
-	var Account = Account
-	Token.balanceOf(this.Account, function(err,result) {
-		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
-	})
-	return Balance
-}
-
-
-
-
-function sendToken(adress,amount) {
-	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function Transfer() {
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
-	var frm = document.getElementById("send");
-	frm.reset();
-	return false
-}
-
-function newMember(adress) {
-	Token.assignMember(adress,true,function(err,result) {console.log("")})
-}
-
-function addMember() {
-	newMember(document.getElementById("adress1").value)
-	var frm = document.getElementById("addMember");
-	frm.reset();
-	return false
-}
-
-function delMember(adress) {
-	Token.assignMember(adress,false,function(err,result) {console.log("")})
-}
-
-function remMember() {
-	delMember(document.getElementById("adress2").value)
-	var frm = document.getElementById("remMember");
-	frm.reset();
-	return false
-}
-
-function mintTokens(adress,amount) {
-	Token.mintToken(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function initialDonations() {
-	if (window.confirm("Do you really want to send initial donations to all Blockchain members?")) {
-		for (key in users) {
-			mintTokens(users[key].adress,50)
-		}
-	}
-}
 
 function createPage() {
 	var curAccount = web3.eth.accounts[0]
@@ -695,22 +631,13 @@ function createPage() {
 			}
 		}
 	}
+	window.setTimeout(function() {createHistory()},4500)
 }
 
-function createTokens() {
-	var amount = document.getElementById("amount1").value
-	var adress = document.getElementById("adress1").value
-	mintTokens(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
 
-function burnTokens(adress,amount) {
-	Token.burnFrom(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
 
-function destroyTokens() {
-	var amount = document.getElementById("amount2").value
-	var adress = document.getElementById("adress2").value
-	burnTokens(adress,amount)
-}
 
-window.setTimeout(function() {createPage()},1000)
+window.setTimeout(function() {window.setInterval(function() {
+	createPage()
+}, 5000);
+},1000)
