@@ -589,86 +589,6 @@ var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
 var curAccount = web3.eth.accounts[0]
 
-var eventSent = Token.Transfer()
-var transactionSentList = []
-eventSent.watch(function(error, result) {
- 			if (!error) {
- 				transactionSentList.push(result);
- 				var curAccount = web3.eth.accounts[0];
- 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
-	 				sending=false;
-	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="<br>Sent!"
-	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
-	 			}
- 				console.log("");
- 			}
- 		})
-
-function createHistory() {
-	var curAccount = web3.eth.accounts[0]
-	if (transactionSentList !== undefined) {
-		var name
-		var history = document.getElementById("history")
-		history.innerHTML = ""
-		transactionSentList.forEach(function(transactionSent) {
-			if (curAccount.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-						name = users[key].name
-					}
-				}
-				var posList = document.createElement("ul")
-				posList.id = "sending"
-				var notif = document.createElement("li")
-				notif.innerHTML = "You sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
-				posList.appendChild(notif)
-				history.appendChild(posList)
-			}
-			if (curAccount.toLowerCase() === transactionSent.args.to.toLowerCase()) { 
-				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-						name = users[key].name
-					}
-				}
-				if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
-					name = "Aurexia Central Bank"
-				}
-				var negList = document.createElement("ul")
-				negList.id = "receiving"
-				var notif = document.createElement("li")
-				notif.innerHTML = "You received <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> from <strong>" + name + "</strong>"
-				negList.appendChild(notif)
-				history.appendChild(negList)
-			}
-		})
-	}	
-}
-
-function makeGraph() {
-	var elmt = document.getElementById("rankPage")
-	if (elmt!==undefined) {
-	    x = ["Dominique","Eric","David","Charles"]
-		y = [users.dominique.balance,users.eric.balance,users.david.balance,users.charles.balance]
-		data = [
-		  {
-		    y: y,
-		    x: x,
-		    type: "bar",
-		  }
-		]
-		Plotly.newPlot('rankPage', data, {displayModeBar: false})
-	}
-	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLowerCase()].pic + "'/>"
-}
-
-function getBalance(account) {
-	window.b
-	Token.balanceOf(account, function(err,result) {
-		if (!err) {b=result.c[0]*0.0001; console.log("")}
-	})
-}
 
 
 //Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
@@ -676,63 +596,7 @@ function getBalance(account) {
 //Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
 
 
-
-function attributeBalances() {
-	var i = 0
-	window.b
-	function balances() {
-		keys = Object.keys(users)
-		var user = users[keys[i]]
-		getBalance(user.adress)
-		setTimeout( function () {
-		user['balance']=b
-		i++
-		if (i < keys.length) {balances()}},200)
-	}
-	balances()
-}
-attributeBalances()
-window.setTimeout(function() {makeGraph()},1000)
-
-
-function sendToken(adress,amount) {
-	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function Transfer() {
-	sending=true
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
-	var frm = document.getElementById("send");
-	frm.reset();
-	return false
-}
-
-function newMember(adress) {
-	Token.assignMember(adress,true,function(err,result) {console.log("")})
-}
-
-function Member() {
-	newMember(document.getElementById("adress").value)
-	var frm = document.getElementById("member");
-	frm.reset();
-	return false
-}
-
-function loading() {
-	var elmt = document.getElementById("loading")
-	if (sending) {
-		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
-	}
-}
-
-
-
-
-
 function createPage() {
-	loading()
-	attributeBalances()
-	window.setTimeout(function() {makeGraph()},1000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -743,7 +607,6 @@ function createPage() {
 			}
 		}
 	}
-	window.setTimeout(function() {createHistory()},4500)
 }
 
 

@@ -30,3 +30,18 @@ button {
   cursor : pointer;
 }
 
+#initialDot:hover {
+  cursor : pointer;
+}
+
+#manageMem:hover {
+  cursor : pointer;
+}
+
+#tokens:hover {
+  cursor : pointer;
+}
+
+#transactions:hover {
+  cursor : pointer;
+}

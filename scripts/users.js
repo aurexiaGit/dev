@@ -2,8 +2,8 @@ var users = {
 			"admin":{
 				"password": "admin",
 				"adress": "0x9a1a785eF4906e1E29E96E3eb5Fa4daE8bf4c599",
-				"name": "Antoine CAVELIUS",
-				"pic":"images/acavelius.png"
+				"name": "ADMINSTRATOR",
+				"pic":"images/admin.png"
 			},
 			"dominique":{
 				"password": "user2",
