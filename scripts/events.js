@@ -597,7 +597,7 @@ eventSent.watch(function(error, result) {
  				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
 	 				sending=false;
 	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="Sent!"
+	 				elmt.innerHTML ="<br>Sent!"
 	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
 	 			}
  				console.log(""result"");
@@ -730,7 +730,7 @@ function Member() {
 function loading() {
 	var elmt = document.getElementById("loading")
 	if (sending) {
-		elmt.innerHTML = "<br>Sending tokens <img src='images/Spinner-1s-40px.gif'/>"
+		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
 	}
 }
 
