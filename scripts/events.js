@@ -600,7 +600,7 @@ eventSent.watch(function(error, result) {
 	 				elmt.innerHTML ="<br>Sent!"
 	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
 	 			}
- 				console.log(""result"");
+ 				console.log("");
  			}
  		})
 
