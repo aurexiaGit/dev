@@ -612,7 +612,7 @@ function createHistory() {
 			var posList = document.createElement("ul")
 			posList.id = "sending"
 			var notif = document.createElement("li")
-			notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
+			notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
 			posList.appendChild(notif)
 			history.appendChild(posList)
 		})

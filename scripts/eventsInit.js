@@ -599,7 +599,7 @@ eventSent.watch(function(error, result) {
  				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
 	 				sending=false;
 	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="<br>Sent!"
+	 				elmt.innerHTML ="<br><div>Sent! </div><img src='images/checked.png'/>"
 	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
 	 			}
  				console.log("");
@@ -738,10 +738,6 @@ function loading() {
 	}
 }
 
-
-
-
-
 function createPage() {
 	loading()
 	attributeBalances()
@@ -758,9 +754,6 @@ function createPage() {
 	}
 	window.setTimeout(function() {createHistory()},4500)
 }
-
-
-
 
 window.setTimeout(function() {window.setInterval(function() {
 	createPage()

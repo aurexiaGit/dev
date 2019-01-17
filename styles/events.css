@@ -119,7 +119,3 @@
   list-style-image: url('../images/receiveTokens.png');
 }
 
-#loading {
-  display: flex;
-  justify-content: center;
-}
