@@ -673,8 +673,10 @@ function mintTokens(adress,amount) {
 }
 
 function initialDonations() {
-	for (key in users) {
-		mintTokens(users[key].adress,50)
+	if (window.confirm("Do you really want to send initial donations to all Blockchain members?")) {
+		for (key in users) {
+			mintTokens(users[key].adress,50)
+		}
 	}
 }
 

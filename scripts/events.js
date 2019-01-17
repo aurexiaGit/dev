@@ -14,7 +14,7 @@ function eventsPage() {
 }
 
 function donationPage() {
-	window.location="donation.html"
+	window.location="donationError.html"
 }
 
 function aurexiaQuiz() {
