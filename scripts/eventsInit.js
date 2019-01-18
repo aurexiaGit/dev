@@ -679,6 +679,14 @@ function makeGraph() {
 
 
 var Balance
+var myBalance
+
+function myBalance() {
+	var curAccount = web3.eth.accounts[0]
+	Token.balanceOf(curAccount, function(err,result) {
+		if (!err) {myBalance = result.c[0]*0.0001 ; console.log("")}
+	})
+}
 
 
 function getBalance(account) {
@@ -742,6 +750,7 @@ function loading() {
 
 function createPage() {
 	loading()
+	myBalance()
 	attributeBalances()
 	window.setTimeout(function() {makeGraph()},2000)
 	var curAccount = web3.eth.accounts[0]

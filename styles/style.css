@@ -10,12 +10,17 @@ body
 
 h1 {
   text-align: center;
-  color: rgb(2,59,89);
-  text-shadow: 2px 2px 10px white
+  color: rgb(255,92,95);
+
 }
 
 #title {
 	font-size: 50px;
+	width:400px;
+	text-align: center;
+	position: relative;
+	margin:auto;
+    text-shadow: 0px 0px 10px white;
 }
 
 #leader {
@@ -57,7 +62,7 @@ h1 {
 
 #astValue {
 	font-size: 40px;
-	color: rgb(2,59,89);
+	color: rgb(255,92,95);
 	margin: 10px;
 }
 
