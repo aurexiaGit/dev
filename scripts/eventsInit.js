@@ -676,10 +676,15 @@ function makeGraph() {
 	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLowerCase()].pic + "'/>"
 }
 
+
+
+var Balance
+
+
 function getBalance(account) {
-	window.b
+	Balance=0
 	Token.balanceOf(account, function(err,result) {
-		if (!err) {b=result.c[0]*0.0001; console.log("")}
+		if (!err) {Balance=result.c[0]*0.0001; console.log("")}
 	})
 }
 
@@ -688,24 +693,21 @@ function getBalance(account) {
 //Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
 //Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
 
-
-
 function attributeBalances() {
-	var i = 0
-	window.b
+	var i = 1
+	Balance=0
 	function balances() {
 		keys = Object.keys(users)
 		var user = users[keys[i]]
 		getBalance(user.adress)
 		setTimeout( function () {
-		user['balance']=b
-		i++
-		if (i < keys.length) {balances()}},200)
+			user['balance']=Balance
+			i++
+			if (i < keys.length) {balances()}
+		},400)
 	}
 	balances()
 }
-attributeBalances()
-window.setTimeout(function() {makeGraph()},1000)
 
 
 function sendToken(adress,amount) {
@@ -741,7 +743,7 @@ function loading() {
 function createPage() {
 	loading()
 	attributeBalances()
-	window.setTimeout(function() {makeGraph()},1000)
+	window.setTimeout(function() {makeGraph()},2000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -752,10 +754,9 @@ function createPage() {
 			}
 		}
 	}
-	window.setTimeout(function() {createHistory()},4500)
+	createHistory()
 }
 
-window.setTimeout(function() {window.setInterval(function() {
+window.setInterval(function() {
 	createPage()
-}, 5000);
-},1000)
+}, 3000)
