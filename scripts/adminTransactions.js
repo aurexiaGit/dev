@@ -1,4 +1,8 @@
 
+window.onbeforeunload = function(){
+  return 'ATTENTION - Are you sure you want to quit? You will reset the History.';
+};
+
 var sending = false 
 
 function homePage() {
@@ -598,23 +602,25 @@ function createHistory() {
 		var history = document.getElementById("history")
 		history.innerHTML = ""
 		transactionSentList.forEach(function(transactionSent) {
-			for (var key in users) {
-				if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-					reciever = users[key].name
+			if (transactionSent.args.from.toLowerCase() !== ("0x0000000000000000000000000000000000000000").toLowerCase()) {
+				for (var key in users) {
+					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+						reciever = users[key].name
+					}
+					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+						sender = users[key].name
+					}
+					if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
+						sender = "Aurexia Central Bank"
+					}
 				}
-				if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-					sender = users[key].name
-				}
-				if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
-					sender = "Aurexia Central Bank"
-				}
+				var posList = document.createElement("ul")
+				posList.id = "sending"
+				var notif = document.createElement("li")
+				notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
+				posList.appendChild(notif)
+				history.appendChild(posList)
 			}
-			var posList = document.createElement("ul")
-			posList.id = "sending"
-			var notif = document.createElement("li")
-			notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
-			posList.appendChild(notif)
-			history.appendChild(posList)
 		})
 	}	
 }
