@@ -679,12 +679,12 @@ function makeGraph() {
 
 
 var Balance
-var myBalance
+var thisBalance
 
 function myBalance() {
 	var curAccount = web3.eth.accounts[0]
 	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {myBalance = result.c[0]*0.0001 ; console.log("")}
+		if (!err) {thisBalance = result.c[0]*0.0001 ; console.log("")}
 	})
 }
 
@@ -751,6 +751,9 @@ function loading() {
 function createPage() {
 	loading()
 	myBalance()
+		if (document.getElementById("astValue") !== undefined) {
+		document.getElementById("astValue").innerHTML = thisBalance.toString() + " AST"	
+	}
 	attributeBalances()
 	window.setTimeout(function() {makeGraph()},2000)
 	var curAccount = web3.eth.accounts[0]
