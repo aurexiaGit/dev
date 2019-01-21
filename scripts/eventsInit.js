@@ -658,6 +658,16 @@ function createHistory() {
 	}	
 }
 
+// returns list of indexes of maximum (maxima if equal)
+
+function getListMax(list) {
+	var indexMax = []
+	while (list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1) !== -1) {
+		indexMax.push(list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1))
+	}
+	return indexMax	
+}
+
 function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
@@ -673,8 +683,13 @@ function makeGraph() {
 		Plotly.newPlot('rankPage', data, {displayModeBar: false})
 	}
 	var leader = document.getElementById("leader")
-	leader.innerHTML = "Current Leader : <img src='" + users[(x[y.indexOf(Math.max.apply(null,y))]).toLowerCase()].pic + "'/>"
+	var leaders = getListMax(y)
+	leader.innerHTML = "Current Leader : "
+	leaders.forEach(function(ind) {
+		leader.innerHTML = leader.innerHTML + "<img src='" + users[(x[ind]).toLowerCase()].pic + "'/>"
+	})
 }
+
 
 
 
