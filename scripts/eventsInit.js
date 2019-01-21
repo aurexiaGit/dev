@@ -658,9 +658,8 @@ function createHistory() {
 	}	
 }
 
-// returns list of indexes of maximum (maxima if equal)
-
 function getListMax(list) {
+	// returns list of index(es) of maximum (maxima if equal)
 	var indexMax = []
 	while (list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1) !== -1) {
 		indexMax.push(list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1))
@@ -685,6 +684,7 @@ function makeGraph() {
 	var leader = document.getElementById("leader")
 	var leaders = getListMax(y)
 	leader.innerHTML = "Current Leader : "
+	if (leaders.length > 1) {leader.innerHTML = "Current Leaders : "}
 	leaders.forEach(function(ind) {
 		leader.innerHTML = leader.innerHTML + "<img src='" + users[(x[ind]).toLowerCase()].pic + "'/>"
 	})
@@ -727,7 +727,7 @@ function attributeBalances() {
 			user['balance']=Balance
 			i++
 			if (i < keys.length) {balances()}
-		},400)
+		},600)
 	}
 	balances()
 }
@@ -770,7 +770,7 @@ function createPage() {
 		document.getElementById("astValue").innerHTML = thisBalance.toString() + " AST"	
 	}
 	attributeBalances()
-	window.setTimeout(function() {makeGraph()},2000)
+	window.setTimeout(function() {makeGraph()},3000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -786,4 +786,4 @@ function createPage() {
 
 window.setInterval(function() {
 	createPage()
-}, 3000)
+}, 4000)
