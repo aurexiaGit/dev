@@ -713,4 +713,4 @@ function destroyTokens() {
 	burnTokens(adress,amount)
 }
 
-window.setTimeout(function() {createPage()},1000)
+window.setInterval(function() {createPage()},1000)

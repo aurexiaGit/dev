@@ -625,6 +625,7 @@ function createHistory() {
 				notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
 				posList.appendChild(notif)
 				history.appendChild(posList)
+				document.getElementById("sending").style.listStyleImage = "url('../images/transaction.png')"
 			}
 		})
 	}	
