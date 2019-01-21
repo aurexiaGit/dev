@@ -631,8 +631,73 @@ function createHistory() {
 	}	
 }
 
+function getListMax(list) {
+	// returns list of index(es) of maximum (maxima if equal)
+	var indexMax = []
+	while (list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1) !== -1) {
+		indexMax.push(list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1))
+	}
+	return indexMax	
+}
+
+function makeGraph() {
+	var elmt = document.getElementById("rankPage")
+	if (elmt!==undefined) {
+	    x = ["Dominique","Eric","David","Charles"]
+		y = [users.dominique.balance,users.eric.balance,users.david.balance,users.charles.balance]
+		data = [
+		  {
+		    y: y,
+		    x: x,
+		    type: "bar",
+		  }
+		]
+		Plotly.newPlot('rankPage', data, {displayModeBar: false})
+	}
+	var leader = document.getElementById("leader")
+	var leaders = getListMax(y)
+	leader.innerHTML = "Current Leader : "
+	if (leaders.length > 1) {leader.innerHTML = "Current Leaders : "}
+	leaders.forEach(function(ind) {
+		leader.innerHTML = leader.innerHTML + "<img src='" + users[(x[ind]).toLowerCase()].pic + "'/>"
+	})
+}
+
+
+var Balance
+
+function getBalance(account) {
+	Balance=0
+	Token.balanceOf(account, function(err,result) {
+		if (!err) {Balance=result.c[0]*0.0001; console.log("")}
+	})
+}
+
+
+//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
+//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
+//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
+
+function attributeBalances() {
+	var i = 1
+	Balance=0
+	function balances() {
+		keys = Object.keys(users)
+		var user = users[keys[i]]
+		getBalance(user.adress)
+		setTimeout( function () {
+			user['balance']=Balance
+			i++
+			if (i < keys.length) {balances()}
+		},600)
+	}
+	balances()
+}
+
 
 function createPage() {
+	attributeBalances()
+	window.setTimeout(function() {makeGraph()},3000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
