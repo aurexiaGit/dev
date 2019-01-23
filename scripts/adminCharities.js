@@ -581,7 +581,7 @@ function makeGraph() {
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["La Cravate Solidaire","Les Bouchons d'Amour"]
-		y = [charity.cravate.balance,charity.bouchons.balance]
+		y = [charity.cravate.balance,charity.bouchon.balance]
 		data = [
 		  {
 		    y: y,
@@ -609,7 +609,7 @@ function getBalance(account) {
 //Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
 
 function attributeBalances() {
-	var i = 1
+	var i = 0
 	Balance=0
 	function balances() {
 		keys = Object.keys(charity)

@@ -41,7 +41,7 @@ function followTransactions() {
 	window.location="adminTransactions.html"
 }
 
-function followTransactions() {
+function charities() {
 	window.location="adminCharities.html"
 }
 
