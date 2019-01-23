@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href = "styles/style.css" />
+        <link rel = "stylesheet" href = "styles/events.css" />
+        <link rel = "stylesheet" href = "styles/header.css" />
+        <link rel = "stylesheet" href = "styles/linkMetamask.css" />
+        <link rel = "stylesheet" href = "styles/graph.css" />
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <title>MyWallet - Aurexia</title> 
+    </head>
+
+    <body>
+        <div id="block_page">
+
+            <header>
+                <div id="logo">
+                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+                </div>
+                <nav>
+                <p class = button id = homePage onclick="homePage()">HOME <img src = "images/pageArrow.png"></p>
+                <p class = button id = eventsPage onclick="eventsPage()">EVENTS <img src = "images/pageArrow.png"></p>
+                <p class = button id = adminPage onclick="adminPage()">ADMIN <img src = "images/pageArrow.png"></p>
+                </nav>
+                <div id="identity">
+                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+                </div>
+            </header>
+            <h1 id = "title"> DONATIONS TO CHARITIES </h1>
+
+            <div id="middlePage">
+                    <div id="rankSection">
+                        <div id="rankPage">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>© Copyright Aurexia – All rights reserved<br />
+            </footer>
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/users.js"></script>
+        <script type="text/javascript" src="scripts/adminCharities.js"></script>
+    </body>
+</html>

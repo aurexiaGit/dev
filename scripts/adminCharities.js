@@ -1,26 +1,4 @@
 
-var logged;
-var user;
-var pass;
-
-function Login(){
-	if (username.value in users && users[username.value].password === password.value)  {
-		user = 'user1'
-		pass = 'user1'
-		logged = true;
-		window.location="homePage.html";
-	}
-	return false
-}
-
-if (logged) {
-	document.getElementById("nom_utilisateur").value = user
-}
-
-function logOut() {
-	window.location="login.html"
-}
-
 function homePage() {
 	window.location="index.html"
 }
@@ -31,26 +9,6 @@ function adminPage() {
 
 function eventsPage() {
 	window.location="events.html"
-}
-
-function donationPage() {
-	window.location="donation.html"
-}
-
-function followTransactions() {
-	window.location="adminTransactions.html"
-}
-
-function followTransactions() {
-	window.location="adminCharities.html"
-}
-
-function manageMembership() {
-	window.location="adminMember.html"
-}
-
-function createdestroyTokens() {
-	window.location="adminToken.html"
 }
 
 document.getElementById("adminPage").style.display = "none"
@@ -619,76 +577,58 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
-var curAccount = web3.eth.accounts[0]
-
-var Balance
-
-function myBalance() {
-	var curAccount = web3.eth.accounts[0]
-	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
-	})
-}
-
-function getBalance(Account) {
-	var Account = Account
-	Token.balanceOf(this.Account, function(err,result) {
-		if (!err) {Balance = result.c[0]*0.0001 ; console.log("")}
-	})
-	return Balance
-}
-
-
-
-
-function sendToken(adress,amount) {
-	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function Transfer() {
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
-	var frm = document.getElementById("send");
-	frm.reset();
-	return false
-}
-
-function newMember(adress) {
-	Token.assignMember(adress,true,function(err,result) {console.log("")})
-}
-
-function addMember() {
-	newMember(document.getElementById("adress1").value)
-	var frm = document.getElementById("addMember");
-	frm.reset();
-	return false
-}
-
-function delMember(adress) {
-	Token.assignMember(adress,false,function(err,result) {console.log("")})
-}
-
-function remMember() {
-	delMember(document.getElementById("adress2").value)
-	var frm = document.getElementById("remMember");
-	frm.reset();
-	return false
-}
-
-function mintTokens(adress,amount) {
-	Token.mintToken(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function initialDonations() {
-	if (window.confirm("Do you really want to send initial donations to all Blockchain members?")) {
-		for (key in users) {
-			if (key !== "admin") {
-				mintTokens(users[key].adress,40)
-			}
-		}
+function makeGraph() {
+	var elmt = document.getElementById("rankPage")
+	if (elmt!==undefined) {
+	    x = ["La Cravate Solidaire","Les Bouchons d'Amour"]
+		y = [charity.cravate.balance,charity.bouchons.balance]
+		data = [
+		  {
+		    y: y,
+		    x: x,
+		    type: "bar",
+		  }
+		]
+		Plotly.newPlot('rankPage', data, {displayModeBar: false})
 	}
 }
 
+
+var Balance
+
+function getBalance(account) {
+	Balance=0
+	Token.balanceOf(account, function(err,result) {
+		if (!err) {Balance=result.c[0]*0.0001; console.log("")}
+	})
+}
+
+
+//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
+//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
+//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
+
+function attributeBalances() {
+	var i = 1
+	Balance=0
+	function balances() {
+		keys = Object.keys(charity)
+		var user = charity[keys[i]]
+		getBalance(user.adress)
+		setTimeout( function () {
+			user['balance']=Balance
+			i++
+			if (i < keys.length) {balances()}
+		},1000)
+	}
+	balances()
+}
+
+var curAccount = web3.eth.accounts[0]
+
 function createPage() {
+	attributeBalances()
+	window.setTimeout(function() {makeGraph()},3000)
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -701,20 +641,6 @@ function createPage() {
 	}
 }
 
-function createTokens() {
-	var amount = document.getElementById("amount1").value
-	var adress = document.getElementById("adress1").value
-	mintTokens(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function burnTokens(adress,amount) {
-	Token.burnFrom(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
-}
-
-function destroyTokens() {
-	var amount = document.getElementById("amount2").value
-	var adress = document.getElementById("adress2").value
-	burnTokens(adress,amount)
-}
-
-window.setInterval(function() {createPage()},1000)
+window.setInterval(function() {
+	createPage()
+}, 4000)
