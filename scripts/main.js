@@ -1,27 +1,13 @@
 
+// for the "sending tokens" loading sentence
+
 var sending = false 
 
-function homePage() {
-	window.location="index.html"
-}
-
-function adminPage() {
-	window.location="admin.html"
-}
-
-function eventsPage() {
-	window.location="events.html"
-}
-
-function donationPage() {
-	window.location="donation.html"
-}
-
-function aurexiaQuiz() {
-	window.location="eventsInit.html"
-}
+// hide admin logo 
 
 document.getElementById("adminPage").style.display = "none"
+
+// check that user has Metamask installed 
 
 if (window.ethereum===undefined) {
 	if(window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
@@ -34,9 +20,11 @@ else {
 		ethereum.enable()
 }
 
-
+// connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider)
+
+// get token as a variable
 
 var TokenABI = web3.eth.contract([
 	{
@@ -587,16 +575,11 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C');
 
+// get current account on metamask
+
 var curAccount = web3.eth.accounts[0]
 
-
-
-//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
-//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
-//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
-
-
-function createPage() {
+function createIdentity() {
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
@@ -613,6 +596,6 @@ function createPage() {
 
 
 window.setTimeout(function() {window.setInterval(function() {
-	createPage()
-}, 5000);
+	createIdentity()
+}, 3000);
 },1000)
