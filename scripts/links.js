@@ -10,10 +10,6 @@ function eventsPage() {
 	window.location="events.html"
 }
 
-function donationPage() {
-	window.location="donation.html"
-}
-
 function followTransactions() {
 	window.location="adminTransactions.html"
 }
