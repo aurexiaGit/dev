@@ -6,7 +6,7 @@ var Balance
 function myBalance() {
 	var curAccount = web3.eth.accounts[0]
 	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = result*Math.pow(10,-2) ; console.log("")}
+		if (!err) {Balance = parseInt(result*Math.pow(10,-18)) ; console.log("")}
 	})
 }
 
@@ -41,7 +41,7 @@ window.setInterval(function() {
 
 function burnTokens() {
 	myBalance()
-	Token.burn(parseInt(web3.toWei(Balance.toString(),"ether")),function(err,result) {console.log("")})
+	Token.burn(parseInt(Balance),function(err,result) {console.log("")})
 }
 
 function Burn() {
