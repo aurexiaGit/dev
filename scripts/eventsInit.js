@@ -148,7 +148,7 @@ function attributeBalances() {
 
 
 function sendToken(adress,amount) {
-	Token.transfer(adress,parseInt(web3.toWei(amount.toString(),"ether")),function(err,result) {console.log("")})
+	Token.transfer(adress,amount*Math.pow(10,2),function(err,result) {console.log("")})
 }
 
 function Transfer() {
