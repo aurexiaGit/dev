@@ -76,14 +76,14 @@ var Balance
 function myBalance() {
 	var curAccount = web3.eth.accounts[0]
 	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = result*Math.pow(10,-18) ; console.log("")}
+		if (!err) {Balance = result*Math.pow(10,-2) ; console.log("")}
 	})
 }
 
 function getBalance(Account) {
 	var Account = Account
 	Token.balanceOf(this.Account, function(err,result) {
-		if (!err) {Balance = result*Math.pow(10,-18) ; console.log("")}
+		if (!err) {Balance = result*Math.pow(10,-2) ; console.log("")}
 	})
 	return Balance
 }
