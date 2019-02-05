@@ -48,7 +48,7 @@ function createHistory() {
 				var posList = document.createElement("ul")
 				posList.id = "sending"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + name + "</strong>"
+				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>"
 				posList.appendChild(notif)
 				history.appendChild(posList)
 			}
@@ -64,7 +64,7 @@ function createHistory() {
 				var negList = document.createElement("ul")
 				negList.id = "receiving"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You received <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> from <strong>" + name + "</strong>"
+				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>"
 				negList.appendChild(notif)
 				history.appendChild(negList)
 			}

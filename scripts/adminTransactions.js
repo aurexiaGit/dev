@@ -81,7 +81,7 @@ var Balance
 function getBalance(account) {
 	Balance=0
 	Token.balanceOf(account, function(err,result) {
-		if (!err) {Balance=result.c[0]*0.0001; console.log("")}
+		if (!err) {Balance=parseInt(result*Math.pow(10,-18)); console.log("")}
 	})
 }
 
