@@ -33,3 +33,7 @@ function donationPage() {
 function aurexiaQuiz() {
 	window.location="eventsInit.html"
 }
+
+function sendTokens() {
+	window.location="adminSend.html"
+}

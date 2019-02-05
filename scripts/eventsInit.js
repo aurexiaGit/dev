@@ -58,7 +58,7 @@ function createHistory() {
 						name = users[key].name
 					}
 				}
-				if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
+				if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
 					name = "Aurexia Central Bank"
 				}
 				var negList = document.createElement("ul")

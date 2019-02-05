@@ -6,6 +6,22 @@ window.onbeforeunload = function(){
 
 var sending = false 
 
+var eventSent = Token.Transfer()
+var transactionSentList = []
+eventSent.watch(function(error, result) {
+ 			if (!error) {
+ 				var curAccount = web3.eth.accounts[0];
+ 				transactionSentList.push(result);
+ 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
+	 				sending=false;
+	 				var elmt = document.getElementById("loading");
+	 				elmt.innerHTML ="<br><div>Sent! </div><img src='images/checked.png'/>"
+	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
+	 			}
+ 				console.log("");
+ 			}
+ 		})
+
 function createHistory() {
 	var curAccount = web3.eth.accounts[0]
 	if (transactionSentList !== undefined) {
@@ -22,7 +38,7 @@ function createHistory() {
 					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
 						sender = users[key].name
 					}
-					if (transactionSent.args.from.toLowerCase() === ("0x8b0B3674d989980407CD52d2E5F7E3F3F12d372C").toLowerCase()) {
+					if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
 						sender = "Aurexia Central Bank"
 					}
 				}
@@ -34,7 +50,7 @@ function createHistory() {
 				var posList = document.createElement("ul")
 				posList.id = "sending"
 				var notif = document.createElement("li")
-				notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (transactionSent.args.value.c[0]*0.0001).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
+				notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
 				posList.appendChild(notif)
 				history.appendChild(posList)
 				document.getElementById("sending").style.listStyleImage = "url('../images/transaction.png')"
