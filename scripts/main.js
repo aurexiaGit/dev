@@ -7,6 +7,12 @@ var sending = false
 
 document.getElementById("adminPage").style.display = "none"
 
+// hide notif banner
+
+var show = false
+var elmt = document.getElementById("notifBanner")
+elmt.style.display = "none"
+
 // check that user has Metamask installed 
 
 if (window.ethereum===undefined) {
@@ -424,10 +430,6 @@ window.setTimeout(function() {window.setInterval(function() {
 }, 3000);
 },1000)
 
-
-var show = false
-var elmt = document.getElementById("notifBanner")
-elmt.style.display = "none"
 
 function showNotif() {
 	if (!show) {

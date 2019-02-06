@@ -37,3 +37,7 @@ function aurexiaQuiz() {
 function sendTokens() {
 	window.location="adminSend.html"
 }
+
+function memList() {
+	window.location="adminList.html"
+}
