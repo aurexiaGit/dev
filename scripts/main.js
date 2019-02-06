@@ -420,16 +420,17 @@ function createIdentity() {
 }
 
 var show = false
-document.getElementById("notifs").style.display = "none"
+var elmt = document.getElementById("notifBanner")
+elmt.style.display = "none"
 
 function showNotif() {
 	if (!show) {
 		show=true
-		document.getElementById("notifs").style.display = ""
+		elmt.style.display = ""
 	}
 	else {
 		show=false
-		document.getElementById("notifs").style.display = "none"
+		elmt.style.display = "none"
 	}
 }
 
