@@ -29,3 +29,46 @@ for (var key in users){
     i++
 }
 
+
+
+var Balance
+
+function getBalance(account) {
+	Balance=0
+	Token.balanceOf(account, function(err,result) {
+		if (!err) {Balance=parseInt(result*Math.pow(10,-18)); console.log("")}
+	})
+}
+
+
+// Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
+// Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
+// Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
+
+function attributeBalances() {
+	var i = 1
+	Balance=0
+	function balances() {
+		keys = Object.keys(users)
+		var user = users[keys[i]]
+		getBalance(user.adress)
+		setTimeout( function () {
+			user['balance']=Balance
+			i++
+			if (i < keys.length) {balances()}
+		},600)
+	}
+	balances()
+}
+
+
+function createPage() {
+	attributeBalances()
+}
+
+
+window.setTimeout(function() {window.setInterval(function() {
+	createPage()
+}, 5000);
+},1000)
+
