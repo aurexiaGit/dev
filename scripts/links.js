@@ -27,11 +27,11 @@ function createdestroyTokens() {
 }
 
 function donationPage() {
-	window.location="donation.html"
+	window.location="eventError.html"
 }
 
 function aurexiaQuiz() {
-	window.location="eventsInit.html"
+	window.location="eventError.html"
 }
 
 function sendTokens() {
