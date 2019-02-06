@@ -1,5 +1,6 @@
 var table = document.getElementById("content")
 var i = 1
+
 for (var key in users){
 
 	var row = document.createElement('tr')
@@ -23,12 +24,11 @@ for (var key in users){
 
 	var column4 = document.createElement('td')
 	column4.className = "column4"
-	column4.innerHTML = "1000"
+	column4.innerHTML = ""
 	row.appendChild(column4)
 
     i++
 }
-
 
 
 var Balance
@@ -64,6 +64,12 @@ function attributeBalances() {
 
 function createPage() {
 	attributeBalances()
+	var i = 1
+	for (var key in users) {
+		var value = document.getElementsByClassName('column4')[i]
+		value.innerHTML = users[key].balance
+		i++
+	}
 }
 
 
