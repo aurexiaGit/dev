@@ -411,11 +411,25 @@ function createIdentity() {
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img onclick='showNotif' src='images/notification.png'> <br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div>"
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img onclick='showNotif()' src='images/notification.png'> "
 				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "block"
 			}
 		}
+	}
+}
+
+var show = false
+document.getElementById("notifs").style.display = "none"
+
+function showNotif() {
+	if (!show) {
+		show=true
+		document.getElementById("notifs").style.display = ""
+	}
+	else {
+		show=false
+		document.getElementById("notifs").style.display = "none"
 	}
 }
 
