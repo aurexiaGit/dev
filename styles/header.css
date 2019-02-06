@@ -65,7 +65,23 @@ header
 
 .button:hover {
   cursor : pointer;
+
 }
+
+.button::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #FFFF;
+    transition: width .3s;
+}
+
+.button:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
 
 nav {
   display : flex;
