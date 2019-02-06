@@ -40,7 +40,13 @@ header
   box-shadow: 0 0 40px 0 rgba(2, 59, 89, 0.4), 0 5px 5px 0 rgba(2, 59, 89, 0.4);
 }
 
+ #notifButton:hover {
+  cursor : pointer;
+ }
 
+#notifButton {
+  margin-left: 10px;
+}
 
 .pic {
   overflow:hidden;
