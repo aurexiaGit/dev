@@ -419,6 +419,12 @@ function createIdentity() {
 	}
 }
 
+window.setTimeout(function() {window.setInterval(function() {
+	createIdentity()
+}, 3000);
+},1000)
+
+
 var show = false
 var elmt = document.getElementById("notifBanner")
 elmt.style.display = "none"
@@ -433,11 +439,3 @@ function showNotif() {
 		elmt.style.display = "none"
 	}
 }
-
-
-
-
-window.setTimeout(function() {window.setInterval(function() {
-	createIdentity()
-}, 3000);
-},1000)
