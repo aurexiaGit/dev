@@ -26,11 +26,3 @@ button:hover {
   cursor : pointer;
 }
 
-#logos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 23%;
-    margin-right: 23%;
-    margin-bottom: 10%;
-}
