@@ -26,30 +26,6 @@ button:hover {
   cursor : pointer;
 }
 
-#aurexiaQuiz:hover {
-  cursor : pointer;
-}
-
-#donationPage:hover {
-  cursor : pointer;
-}
-
-#initialDot:hover {
-  cursor : pointer;
-}
-
-#manageMem:hover {
-  cursor : pointer;
-}
-
-#tokens:hover {
-  cursor : pointer;
-}
-
-#transactions:hover {
-  cursor : pointer;
-}
-
 #logos {
     display: flex;
     justify-content: space-between;
