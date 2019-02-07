@@ -15,7 +15,6 @@ elmt.style.display = "none"
 
 // Get web3 Provider
 
-import Fortmatic from 'fortmatic';
 import Web3 from 'web3';
 
 var fm = new Fortmatic('pk_test_E9290E6522F8661A');
