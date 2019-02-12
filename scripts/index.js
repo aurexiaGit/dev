@@ -60,7 +60,7 @@ function createHistory() {
 	}	
 }
 
-var select = document.getElementById("dest-select")
+var select = document.getElementById("dest-select")																																																																																																																																																																																																																																																																																																																																																																															
 
 for (var key in users){
 	if (users.hasOwnProperty(key) && key !== "admin") {
@@ -95,7 +95,7 @@ function loading() {
 	}
 }
 
-function createPage() {
+function createPage() {	
 	loading()
 	myBalance()
 	if (document.getElementById("astValue") !== undefined) {

@@ -393,10 +393,10 @@ function createIdentity() {
 	}
 }
 
-//window.setTimeout(function() {window.setInterval(function() {
+window.setTimeout(function() {window.setInterval(function() {
 	//createIdentity()
-//}, 3000);
-//},1000)
+}, 3000);
+},1000)
 
 
 function showNotif() {
