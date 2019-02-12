@@ -105,9 +105,9 @@ function createPage() {
 }
 
 
-window.setInterval(function() {
-	createPage()
-}, 1000);
+//window.setInterval(function() {
+//	createPage()
+//}, 1000);
 
 
 function sendToken(adress,amount) {
