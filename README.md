@@ -35,3 +35,55 @@ on the GitHub, before modifying anything you must:
 1. Open command window into the project's folder
 2. Enter "git pull"
 
+For more explanation go to https://guides.github.com/
+
+## Description of the project
+
+The project is composed of all basic website components:
+
+### HTML files
+
+* index.html: the home page where you can simply send tokens to other members
+* events.html: the events page where you can access several events
+  * eventError.html: the error page shown to users when the event they selected isn't available
+  * blockchainGame.html: the page of the first blockchain game that was presented to the partners the 23/01/2019
+  * donation.html: the page where users can select a charity and give all their tokens
+* admin.html: the admin page only used by the owner of the smart contract. You can access several admin pages:
+  * adminCharities.html: a page showing the donations made to "La Cravate Solidaire" and "Les Bouchons d'Amour"
+  * adminList.html: a page giving the list of users and their AST balance
+  * adminMember.html: a page allowing the administrator to add or remove users to the blockchain
+  * adminSend.html: a page allowing the administrator to send tokens on behalf of any other user
+  * adminToken.html: a page allowing the administrator to create (mint) or destroy (burn) tokens
+  * adminTransactions.html: a page showing the history of all transactions occurring on the blockchain
+
+### Other folders
+
+#### Images
+
+It contains every single image used inside the website.
+
+#### Scripts
+
+It contains every single JavaScript file called by the html files.
+* main.js: main js file used by all the html files to initiate the connection to the Blockchain and other layouts 
+* links.js: a js file used by all the html files containing the links between html files
+* users.js: a js file listing all users and their characteristics into a dictionary
+* htmlFile.js: a js file for each html file giving all the necessary interactions
+
+#### Styles
+
+It contains every single CSS file creating the html layouts
+* style.css: a general file giving shared layouts
+* header.css: a file giving the header's layout
+* form.css: a file giving the layout of the forms of the website
+* graph.css: a file giving the layout of the graphs of the website
+* htmlFile.css: a file for each html file giving all the necessary layouts
+
+#### Smart Contracts
+
+It contains the smart contract code and its corresponding ABI code. They are not used by the website, they are just stored here
+for information and in case they need to be changed.
+
+    
+  
+
