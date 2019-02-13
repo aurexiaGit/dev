@@ -45,6 +45,8 @@ on the Ropsten testnet
 * Fortmatic Version: the most recent version, not yet stable. It uses Fortmatic to interact with the Ethereum Blockchain
 on the Rinkeby testnet
 
+The index.html file allows the user the choose which version he wants to use.
+
 Inside each Folder, you will find all the basic website components:
 
 ### HTML files
