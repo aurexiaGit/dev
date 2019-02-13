@@ -89,7 +89,7 @@ It contains every single CSS file creating the html layouts
 
 #### SmartContracts
 
-It contains the smart contract code and its corresponding ABI code. They are not used by the website, they are just stored here
+It contains the smart contract solidity code and its corresponding ABI code. They are not used by the website, they are just stored here
 for information and in case they need to be changed.
 
     
