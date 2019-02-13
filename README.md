@@ -39,7 +39,13 @@ For more explanation go to https://guides.github.com/
 
 ## Description of the project
 
-The project is composed of all basic website components:
+There are two versions of the project:
+* Metamask Version: the oldest and most stable one currently. It uses Metamask to interact with the Ethereum Blockchain
+on the Ropsten testnet
+* Fortmatic Version: the most recent version, not yet stable. It uses Fortmatic to interact with the Ethereum Blockchain
+on the Rinkeby testnet
+
+Inside each Folder, you will find all the basic website components:
 
 ### HTML files
 
@@ -65,7 +71,7 @@ It contains every single image used inside the website.
 #### Scripts
 
 It contains every single JavaScript file called by the html files.
-* main.js: main js file used by all the html files to initiate the connection to the Blockchain and other layouts 
+* main.js: main js file used by all the html files to initiate the connection to the Blockchain and other layouts.
 * links.js: a js file used by all the html files containing the links between html files
 * users.js: a js file listing all users and their characteristics into a dictionary
 * htmlFile.js: a js file for each html file giving all the necessary interactions
@@ -79,7 +85,7 @@ It contains every single CSS file creating the html layouts
 * graph.css: a file giving the layout of the graphs of the website
 * htmlFile.css: a file for each html file giving all the necessary layouts
 
-#### Smart Contracts
+#### SmartContracts
 
 It contains the smart contract code and its corresponding ABI code. They are not used by the website, they are just stored here
 for information and in case they need to be changed.

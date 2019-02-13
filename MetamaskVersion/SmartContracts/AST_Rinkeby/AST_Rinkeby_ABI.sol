@@ -1,38 +1,4 @@
-
-// for the "sending tokens" loading sentence
-
-var sending = false 
-
-// hide admin logo 
-
-document.getElementById("adminPage").style.display = "none"
-
-// hide notif banner
-
-var show = false
-var elmt = document.getElementById("notifBanner")
-elmt.style.display = "none"
-
-// check that user has Metamask installed 
-
-if (window.ethereum===undefined) {
-	if(window.confirm('You need to use google Chrome and have Metamask installed ! Click "ok" to start dowloading.')) 
-		{
-		window.location.href='https://metamask.io';
-	}
-}
-else {
-		window.ethereum
-		ethereum.enable()
-}
-
-// connect to ethereum API web3
-
-var web3 = new Web3(web3.currentProvider)
-
-// get token as a variable
-
-var TokenABI = web3.eth.contract([
+[
 	{
 		"constant": false,
 		"inputs": [
@@ -265,29 +231,6 @@ var TokenABI = web3.eth.contract([
 			{
 				"name": "",
 				"type": "address"
-			},
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "allowance",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
 			}
 		],
 		"name": "aurexiaMember",
@@ -404,40 +347,4 @@ var TokenABI = web3.eth.contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-]);
-
-var Token = TokenABI.at('0xe8311b299bad9432d714c6dba0150d89cb3aff36');
-
-// get current account on metamask
-
-var curAccount = web3.eth.accounts[0]
-
-function createIdentity() {
-	var curAccount = web3.eth.accounts[0]
-	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
-			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
-				if (users.hasOwnProperty(key) && key==="admin") {
-			document.getElementById("adminPage").style.display = "block"
-			}
-		}
-	}
-}
-
-window.setTimeout(function() {window.setInterval(function() {
-	createIdentity()
-}, 3000);
-},1000)
-
-
-function showNotif() {
-	if (!show) {
-		show=true
-		elmt.style.display = ""
-	}
-	else {
-		show=false
-		elmt.style.display = "none"
-	}
-}
+]
