@@ -1,21 +1,4 @@
 
-// connecting to etherscan api
-
-var api = etherscanApi.init('NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B','rinkeby', '3000');
-
-var transactionList
-
-function getTransactionList(adress) {
-	var txlist = api.account.txlist(adress, 1, 'latest', 1, 100, 'asc');
-	txlist.then(function(result) {
-		transactionList=result.result
-	})
-} 
-
-
-// for the "sending tokens" loading sentence
-
-var sending = false 
 
 // hide admin logo 
 

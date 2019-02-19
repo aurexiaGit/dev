@@ -1,58 +1,57 @@
+// connecting to etherscan api to get transaction history
 
-var eventSent = Token.Transfer()
-var transactionSentList = []
-eventSent.watch(function(error, result) {
- 			if (!error) {
- 				var curAccount = web3.eth.accounts[0];
- 				transactionSentList.push(result);
- 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
-	 				sending=false;
-	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="<br><div>Sent! </div><img src='images/checked.png'/>"
-	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
-	 			}
- 				console.log("");
- 			}
- 		})
+var api = etherscanApi.init('NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B','rinkeby', '3000');
+
+var transactionList
+
+function getTransactionList(adress) {
+	var txlist = api.account.tokentx(adress, '0xF2D4E64d5F3996B022532460510CF7e09e69C33D', 1, 'latest', 'asc');
+	txlist.then(function(result) {
+		transactionList=result.result
+	})
+} 
+
+// create History
 
 function createHistory() {
-	var curAccount = web3.eth.accounts[0]
-	if (transactionSentList !== undefined) {
+	var curAccount = "0x9cA10A8C595FFC15Ffa99B61d71Dc561e0aE1914"
+	getTransactionList(curAccount)
+	if (transactionList !== undefined) {
 		var name
 		var history = document.getElementById("history")
 		history.innerHTML = ""
-		transactionSentList.forEach(function(transactionSent) {
-			if (curAccount.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+		transactionList.forEach(function(transactionSent) {
+			if (curAccount.toLowerCase() === transactionSent.from.toLowerCase()) {
 				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+					if (users[key].adress.toLowerCase() === transactionSent.to.toLowerCase()) {
 						name = users[key].name
 					}
 				}
 				for (var key in charity) {
-					if (charity[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
+					if (charity[key].adress.toLowerCase() === transactionSent.to.toLowerCase()) {
 						name = charity[key].name
 					}
 				}
 				var posList = document.createElement("ul")
 				posList.id = "sending"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>"
+				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>"
 				posList.appendChild(notif)
 				history.appendChild(posList)
 			}
-			if (curAccount.toLowerCase() === transactionSent.args.to.toLowerCase()) { 
+			if (curAccount.toLowerCase() === transactionSent.to.toLowerCase()) { 
 				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
+					if (users[key].adress.toLowerCase() === transactionSent.from.toLowerCase()) {
 						name = users[key].name
 					}
 				}
-				if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
+				if (transactionSent.from.toLowerCase() === ("0xF2D4E64d5F3996B022532460510CF7e09e69C33D").toLowerCase()) {
 					name = "Aurexia Central Bank"
 				}
 				var negList = document.createElement("ul")
 				negList.id = "receiving"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>"
+				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>"
 				negList.appendChild(notif)
 				history.appendChild(negList)
 			}
@@ -88,15 +87,8 @@ function getBalance(Account) {
 	return Balance
 }
 
-function loading() {
-	var elmt = document.getElementById("loading")
-	if (sending) {
-		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
-	}
-}
 
 function createPage() {	
-	loading()
 	myBalance()
 	if (document.getElementById("astValue") !== undefined) {
 		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
@@ -115,7 +107,6 @@ function sendToken(adress,amount) {
 }
 
 function Transfer() {
-	sending = true
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
