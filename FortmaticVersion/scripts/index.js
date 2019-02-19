@@ -27,11 +27,6 @@ function createHistory() {
 						name = users[key].name
 					}
 				}
-				for (var key in charity) {
-					if (charity[key].adress.toLowerCase() === transactionSent.to.toLowerCase()) {
-						name = charity[key].name
-					}
-				}
 				var posList = document.createElement("ul")
 				posList.id = "sending"
 				var notif = document.createElement("li")
