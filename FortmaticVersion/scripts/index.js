@@ -5,7 +5,7 @@ var api = etherscanApi.init('NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B','rinkeby', '300
 var transactionList
 
 function getTransactionList(adress) {
-	var txlist = api.account.tokentx(adress, '0xF2D4E64d5F3996B022532460510CF7e09e69C33D', 1, 'latest', 'asc');
+	var txlist = api.account.tokentx(adress, '0xF2D4E64d5F3996B022532460510CF7e09e69C33D', 1, 'latest', 'desc');
 	txlist.then(function(result) {
 		transactionList=result.result
 	})
