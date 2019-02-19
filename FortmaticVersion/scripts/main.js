@@ -1,4 +1,10 @@
 
+// connecting to etherscran api
+
+var api = require('etherscan-api').init('NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B','ropsten'. '3000');
+var txlist = api.account.txlist('0x9cA10A8C595FFC15Ffa99B61d71Dc561e0aE1914', 1, 'latest', 1, 100, 'asc');
+
+
 // for the "sending tokens" loading sentence
 
 var sending = false 
