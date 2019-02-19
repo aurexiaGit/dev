@@ -63,7 +63,7 @@ function createHistory() {
 var select = document.getElementById("dest-select")																																																																																																																																																																																																																																																																																																																																																																															
 
 for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
+	if (users.hasOwnProperty(key)) {
 		var opt = document.createElement('option');
 	    opt.value = users[key].adress;
 	    opt.innerHTML = users[key].name;
