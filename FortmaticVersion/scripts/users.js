@@ -1,13 +1,23 @@
 var users = {
-			"admin":{
-				"adress": "0x9cA10A8C595FFC15Ffa99B61d71Dc561e0aE1914",
-				"name": "ADMINSTRATOR",
-				"pic":"images/admin.png"
-			},
-			
-			"test":{
-				"adress": "0x1Ce55e93178D03a40c59af4527F56B3Baa24d241",
-				"name": "Test",
-				"pic":"images/blank.png"
-			}
 		}
+
+var listAddress
+
+function getUsers() {
+	var i = 0
+	var name
+	Token.getMembers(function(err,result) {listAddress = result})
+	function getUser() {
+		var address = listAddress[i]
+		Token.getName(address,function(err,result) {name = result})
+		setTimeout( function () {
+			console.log(name)
+			users[name]={}
+			users[name].address=address
+			users[name].name=name
+			i++
+			if (i < listAddress.length) {getUser()}
+		},1000)
+	}
+	window.setTimeout(function() {console.log(listAddress);getUser()},1000)
+}
