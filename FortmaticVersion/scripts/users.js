@@ -11,3 +11,32 @@ var users = {
 				"pic":"images/blank.png"
 			}
 		}
+
+
+
+pragma solidity >=0.4.16 <0.6.0;
+
+contract store {
+    
+    struct Member {
+        string name;
+    }
+    
+    mapping(address => Member) members;
+    address[] public membersAccts;
+    
+    function setMember(address _address, string memory _name) public {
+        Member storage member = members[_address];
+        member.name = _name;
+        membersAccts.push(_address) -1;
+
+    }
+    
+    function getMembers() view public returns (address[] memory) {
+        return membersAccts;
+    }
+    
+    function getMember(address ins) view public returns (string memory) {
+        return (members[ins].name);
+    }
+}

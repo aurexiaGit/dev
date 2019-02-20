@@ -25,24 +25,6 @@ var TokenABI = web3.eth.contract([
 		"constant": false,
 		"inputs": [
 			{
-				"name": "target",
-				"type": "address"
-			},
-			{
-				"name": "member",
-				"type": "bool"
-			}
-		],
-		"name": "assignMember",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
 				"name": "_value",
 				"type": "uint256"
 			}
@@ -94,6 +76,38 @@ var TokenABI = web3.eth.contract([
 			}
 		],
 		"name": "mintToken",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "remMember",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			},
+			{
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"name": "setMember",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -173,23 +187,6 @@ var TokenABI = web3.eth.contract([
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
-				"name": "target",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "member",
-				"type": "bool"
-			}
-		],
-		"name": "IsMember",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
 				"indexed": true,
 				"name": "from",
 				"type": "address"
@@ -255,25 +252,6 @@ var TokenABI = web3.eth.contract([
 				"type": "address"
 			}
 		],
-		"name": "aurexiaMember",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
 		"name": "balanceOf",
 		"outputs": [
 			{
@@ -302,11 +280,82 @@ var TokenABI = web3.eth.contract([
 	{
 		"constant": true,
 		"inputs": [],
+		"name": "getMembers",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "ins",
+				"type": "address"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
 		"name": "initialSupply",
 		"outputs": [
 			{
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "ins",
+				"type": "address"
+			}
+		],
+		"name": "isMember",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "membersAccts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -371,7 +420,7 @@ var TokenABI = web3.eth.contract([
 	}
 ]);
 
-var Token = TokenABI.at('0xF2D4E64d5F3996B022532460510CF7e09e69C33D');
+var Token = TokenABI.at('0x99c5460079E517777f1fC0CfB966B3d3F5AE598b');
 
 // get current account on metamask
 
