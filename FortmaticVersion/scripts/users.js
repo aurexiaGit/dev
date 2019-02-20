@@ -21,3 +21,5 @@ function getUsers() {
 	}
 	window.setTimeout(function() {console.log(listAddress);getUser()},1000)
 }
+
+getUsers()
