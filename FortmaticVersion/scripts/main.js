@@ -429,10 +429,10 @@ var curAccount = web3.eth.accounts[0]
 function createIdentity() {
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
+		if (users.hasOwnProperty(key) && users[key].address.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
-				if (users.hasOwnProperty(key) && key==="admin") {
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt=''> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
+				if (users.hasOwnProperty(key) && key==="Administrator") {
 			document.getElementById("adminPage").style.display = "block"
 			}
 		}
