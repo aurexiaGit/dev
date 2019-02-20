@@ -4,8 +4,8 @@ var api = etherscanApi.init('NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B','rinkeby', '300
 
 var transactionList
 
-function getTransactionList(adress) {
-	var txlist = api.account.tokentx(adress, '0xF2D4E64d5F3996B022532460510CF7e09e69C33D', 1, 'latest', 'desc');
+function getTransactionList(address) {
+	var txlist = api.account.tokentx(address, '0xF2D4E64d5F3996B022532460510CF7e09e69C33D', 1, 'latest', 'desc');
 	txlist.then(function(result) {
 		transactionList=result.result
 	})
@@ -23,7 +23,7 @@ function createHistory() {
 		transactionList.forEach(function(transactionSent) {
 			if (curAccount.toLowerCase() === transactionSent.from.toLowerCase()) {
 				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.to.toLowerCase()) {
+					if (users[key].address.toLowerCase() === transactionSent.to.toLowerCase()) {
 						name = users[key].name
 					}
 				}
@@ -36,7 +36,7 @@ function createHistory() {
 			}
 			if (curAccount.toLowerCase() === transactionSent.to.toLowerCase()) { 
 				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.from.toLowerCase()) {
+					if (users[key].address.toLowerCase() === transactionSent.from.toLowerCase()) {
 						name = users[key].name
 					}
 				}
@@ -59,7 +59,7 @@ var select = document.getElementById("dest-select")
 for (var key in users){
 	if (users.hasOwnProperty(key)) {
 		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
+	    opt.value = users[key].address;
 	    opt.innerHTML = users[key].name;
 	    select.appendChild(opt);
 	}
@@ -97,8 +97,8 @@ function createPage() {
 //}, 1000);
 
 
-function sendToken(adress,amount) {
-	Token.transfer(adress,amount*Math.pow(10,18),function(err,result) {console.log("")})
+function sendToken(address,amount) {
+	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
 }
 
 function Transfer() {
