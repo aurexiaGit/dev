@@ -136,15 +136,15 @@ contract MyAurexiaToken is owned, TokenERC20 {
         member.isMember = false;
     }
     
-    function getMembers() onlyOwner view public returns (address[] memory) {
+    function getMembers() view public returns (address[] memory) {
         return membersAccts;
     }
     
-    function getName(address ins) onlyOwner view public returns (string memory) {
+    function getName(address ins) view public returns (string memory) {
         return (aurexiaMembers[ins].name);
     }
     
-    function isMember(address ins) onlyOwner view public returns (bool) {
+    function isMember(address ins) view public returns (bool) {
         return (aurexiaMembers[ins].isMember);
     }
 

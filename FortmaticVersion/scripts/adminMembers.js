@@ -1,16 +1,16 @@
-function newMember(adress) {
-	Token.assignMember(adress,true,function(err,result) {console.log("")})
+function newMember(adress,name) {
+	Token.setMember(adress,name,function(err,result) {console.log("")})
 }
 
 function addMember() {
-	newMember(document.getElementById("adress1").value)
+	newMember(document.getElementById("adress1").value,document.getElementById("name1").value)
 	var frm = document.getElementById("addMember");
 	frm.reset();
 	return false
 }
 
 function delMember(adress) {
-	Token.assignMember(adress,false,function(err,result) {console.log("")})
+	Token.remMember(adress,function(err,result) {console.log("")})
 }
 
 function remMember() {
