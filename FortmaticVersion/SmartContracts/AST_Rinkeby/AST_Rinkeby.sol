@@ -110,21 +110,51 @@ contract TokenERC20 {
 
 contract MyAurexiaToken is owned, TokenERC20 {
 
-    mapping (address => bool) public aurexiaMember;
-
-    /* This generates a public event on the blockchain that will notify clients */
-    event IsMember(address target, bool member);
+    struct aurexiaMember {
+        string name;
+        bool isMember;
+    }
+    
+    mapping(address => aurexiaMember) aurexiaMembers;
+    
+    address[] public membersAccts;
 
     /* Initializes contract with initial supply tokens to the creator of the contract */
     constructor() TokenERC20() public {}
+    
+    /* Set members */
+    
+    function setMember(address _address, string memory _name) onlyOwner public {
+        aurexiaMember storage member = aurexiaMembers[_address];
+        member.name = _name;
+        member.isMember = true;
+        membersAccts.push(_address) -1;
+    }
+    
+    function remMember(address _address) onlyOwner public {
+        aurexiaMember storage member = aurexiaMembers[_address];
+        member.isMember = false;
+    }
+    
+    function getMembers() view public returns (address[] memory) {
+        return membersAccts;
+    }
+    
+    function getName(address ins) view public returns (string memory) {
+        return (aurexiaMembers[ins].name);
+    }
+    
+    function isMember(address ins) view public returns (bool) {
+        return (aurexiaMembers[ins].isMember);
+    }
 
     /* Internal transfer, only can be called by this contract */
     function _transfer(address _from, address _to, uint _value) internal {
         require (_to != address(0x0));                          // Prevent transfer to 0x0 address. Use burn() instead
         require (balanceOf[_from] >= _value);                   // Check if the sender has enough
         require (balanceOf[_to] + _value >= balanceOf[_to]);    // Check for overflows
-        require(aurexiaMember[_from]);                         // Check if sender is Aurexia Member
-        require(aurexiaMember[_to]);                           // Check if recipient is Aurexia Member
+        require(aurexiaMembers[_from].isMember);                         // Check if sender is Aurexia Member
+        require(aurexiaMembers[_to].isMember);                           // Check if recipient is Aurexia Member
         balanceOf[_from] -= _value;                             // Subtract from the sender
         balanceOf[_to] += _value;                               // Add the same to the recipient
         emit Transfer(_from, _to, _value);
@@ -138,11 +168,6 @@ contract MyAurexiaToken is owned, TokenERC20 {
         totalSupply += mintedAmount;
         emit Transfer(address(0), address(this), mintedAmount);
         emit Transfer(address(this), target, mintedAmount);
-    }
-
-    function assignMember(address target, bool member) onlyOwner public {
-        aurexiaMember[target] = member;
-        emit IsMember(target, member);
     }
 
 

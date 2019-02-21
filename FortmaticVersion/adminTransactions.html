@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
         <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fortmatic@0.2.1/dist/fortmatic.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/web3@0.20/dist/web3.min.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/web3@0.20/dist/web3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/etherscan-api@10.0.0/dist/bundle.js"></script> 
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -30,6 +31,13 @@
                     <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
                 </div>
             </header>
+            <section id='notifBanner'>
+                <img id="arrow" src="images/pageArrow.png">
+                <div id="notifs">
+                    <div id="history">
+                    </div>
+                </div>
+            </section>
             <section id="transactionPage">
                 <div class="form">
                     <h1> History </h1>
@@ -54,9 +62,9 @@
             </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
         <script type="text/javascript" src="scripts/links.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/users.js"></script>
         <script type="text/javascript" src="scripts/adminTransactions.js"></script>
     </body>
 </html>

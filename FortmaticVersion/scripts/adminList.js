@@ -1,34 +1,39 @@
 var table = document.getElementById("content")
 var i = 1
 
-for (var key in users){
+// creates the table
 
-	var row = document.createElement('tr')
-	row.class = "row" + i.toString() + " body"
-	table.appendChild(row)
+window.setTimeout(function() {
 
-	var column1 = document.createElement('td')
-	column1.className = "column1"
-	column1.innerHTML = "<img src = '" + users[key].pic + "'>"
-	row.appendChild(column1)
+	for (var key in users){
 
-	var column2 = document.createElement('td')
-	column2.className = "column2"
-	column2.innerHTML = users[key].name
-	row.appendChild(column2)
+		var row = document.createElement('tr')
+		row.class = "row" + i.toString() + " body"
+		table.appendChild(row)
 
-	var column3 = document.createElement('td')
-	column3.className = "column3"
-	column3.innerHTML = users[key].adress
-	row.appendChild(column3)
+		var column1 = document.createElement('td')
+		column1.className = "column1"
+		column1.innerHTML = "<img src = '" + users[key].pic + "'>"
+		row.appendChild(column1)
 
-	var column4 = document.createElement('td')
-	column4.className = "column4"
-	column4.innerHTML = ""
-	row.appendChild(column4)
+		var column2 = document.createElement('td')
+		column2.className = "column2"
+		column2.innerHTML = users[key].name
+		row.appendChild(column2)
 
-    i++
-}
+		var column3 = document.createElement('td')
+		column3.className = "column3"
+		column3.innerHTML = users[key].address
+		row.appendChild(column3)
+
+		var column4 = document.createElement('td')
+		column4.className = "column4"
+		column4.innerHTML = ""
+		row.appendChild(column4)
+
+	    i++
+	}	
+},10000)
 
 
 var Balance
@@ -40,23 +45,18 @@ function getBalance(account) {
 	})
 }
 
-
-// Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
-// Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
-// Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
-
 function attributeBalances() {
-	var i = 1
+	var i = 0
 	Balance=0
 	function balances() {
 		keys = Object.keys(users)
 		var user = users[keys[i]]
-		getBalance(user.adress)
+		getBalance(user.address)
 		setTimeout( function () {
 			user['balance']=Balance
 			i++
 			if (i < keys.length) {balances()}
-		},600)
+		},1500)
 	}
 	balances()
 }
@@ -75,6 +75,6 @@ function createPage() {
 
 window.setTimeout(function() {window.setInterval(function() {
 	createPage()
-}, 5000);
+}, 10000);
 },1000)
 

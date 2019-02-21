@@ -1,5 +1,11 @@
 
+// DOESNT WORK YET 
+
+// Charities don't have an account on this contract. If need be they should be created
+
+
 function makeGraph() {
+	// creates a graph with the balances of both charities
 	var elmt = document.getElementById("rankPage")
 	if (elmt!==undefined) {
 	    x = ["La Cravate Solidaire","Les Bouchons d'Amour"]
@@ -26,11 +32,8 @@ function getBalance(account) {
 }
 
 
-//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
-//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
-//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
-
 function attributeBalances() {
+	// gets the balances of each charity. Again here an embedded function is needed
 	var i = 0
 	Balance=0
 	function balances() {
@@ -48,11 +51,16 @@ function attributeBalances() {
 
 var curAccount = web3.eth.accounts[0]
 
-function createPage() {
+function createGraph() {
+	// Calculates the balances first and then creates the graphic 
 	attributeBalances()
 	window.setTimeout(function() {makeGraph()},3000)
 }
 
+createGraph()
+
+/*
 window.setInterval(function() {
-	createPage()
+	createGraph()
 }, 4000)
+*/

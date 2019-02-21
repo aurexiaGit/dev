@@ -1,25 +1,21 @@
 
 
 // hide admin logo 
-
 document.getElementById("adminPage").style.display = "none"
 
-// hide notif banner
-
+// hide notification banner
 var show = false
 var elmt = document.getElementById("notifBanner")
 elmt.style.display = "none"
 
-// Get web3 Provider
-
+// Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
 var fm = new Fortmatic('pk_test_E9290E6522F8661A');
 window.web3 = new Web3(fm.getProvider())
 
 // Request user login if needed, returns current user account address
 web3.currentProvider.enable();
 
-// get token as a variable
-
+// get token as a variable with its ABI code and its address
 var TokenABI = web3.eth.contract([
 	{
 		"constant": true,
@@ -422,11 +418,11 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f');
 
-// get current account on metamask
-
+// get current account 
 var curAccount = web3.eth.accounts[0]
 
 function createIdentity() {
+	// Creates the right part of the header giving the name, a picture and the notification button
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].address.toLowerCase()===curAccount.toLowerCase()) {
@@ -439,13 +435,11 @@ function createIdentity() {
 	}
 }
 
-//window.setTimeout(function() {window.setInterval(function() {
-	//createIdentity()
-//}, 3000);
-//},1000)
+createIdentity()
 
 
 function showNotif() {
+	// Function called when you click on the notification button. Displays or hides the panel.
 	if (!show) {
 		show=true
 		elmt.style.display = ""
