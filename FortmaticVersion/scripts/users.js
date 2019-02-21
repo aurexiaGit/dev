@@ -10,16 +10,21 @@ function getUsers() {
 	function getUser() {
 		var address = listAddress[i]
 		Token.getName(address,function(err,result) {name = result})
-		setTimeout( function () {
+		window.setTimeout( function () {
 			console.log(name)
 			users[name]={}
 			users[name].address=address
 			users[name].name=name
 			i++
 			if (i < listAddress.length) {getUser()}
-		},1000)
+		},1500)
 	}
-	window.setTimeout(function() {console.log(listAddress);getUser()},1000)
+	window.setTimeout(function() {console.log(listAddress);getUser()},1500)
 }
 
-getUsers()
+function createUsers() {
+	getUsers()
+	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},6000)
+}
+
+createUsers()

@@ -56,14 +56,21 @@ function createHistory() {
 
 var select = document.getElementById("dest-select")																																																																																																																																																																																																																																																																																																																																																																															
 
-for (var key in users){
-	if (users.hasOwnProperty(key)) {
-		var opt = document.createElement('option');
-	    opt.value = users[key].address;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
+function addUsers() {
+	for (var key in users){
+		if (users.hasOwnProperty(key)) {
+			var opt = document.createElement('option');
+		    opt.value = users[key].address;
+		    opt.innerHTML = users[key].name;
+		    select.appendChild(opt);
+		}
 	}
 }
+
+// Necessité d'attendre que la liste users soit compilée
+
+window.setTimeout(function() {addUsers()},6000)
+
 
 var Balance
 
