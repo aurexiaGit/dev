@@ -57,6 +57,7 @@ function createHistory() {
 var select = document.getElementById("dest-select")																																																																																																																																																																																																																																																																																																																																																																															
 
 function addUsers() {
+	select.innerHTML="<option value='init'>Select Beneficiary</option>"
 	for (var key in users){
 		if (users.hasOwnProperty(key)) {
 			var opt = document.createElement('option');
@@ -69,7 +70,7 @@ function addUsers() {
 
 // Necessité d'attendre que la liste users soit compilée
 
-window.setTimeout(function() {addUsers()},6000)
+window.setTimeout(function() {addUsers()},10000)
 
 
 var Balance
