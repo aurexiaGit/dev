@@ -1,19 +1,4 @@
-// function to get date and time from a unix timestamp
 
-function timeConverter(timestamp){
-  var a = new Date(timestamp * 1000);
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  if (min.toString().length===1) {min='0'+min};
-  if (sec.toString().length===1) {sec='0'+sec};
-  var time = date + '-' + month + '-' + year + ' at ' + hour + ':' + min + ':' + sec ;
-  return time;
-}
 
 // hide admin logo 
 document.getElementById("adminPage").style.display = "none"
@@ -463,4 +448,21 @@ function showNotif() {
 		show=false
 		elmt.style.display = "none"
 	}
+}
+
+// function to get date and time from a unix timestamp
+
+function timeConverter(timestamp){
+  var a = new Date(timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  if (min.toString().length===1) {min='0'+min};
+  if (sec.toString().length===1) {sec='0'+sec};
+  var time = date + '-' + month + '-' + year + ' at ' + hour + ':' + min + ':' + sec ;
+  return time;
 }
