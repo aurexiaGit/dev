@@ -30,9 +30,10 @@ function createHistory() {
 					}
 				}
 				var sentList = document.createElement("ul")
+				var time = timeConverter(transactionSent.timeStamp)
 				sentList.id = "sending"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>"
+				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>" + "<br>" + time
 				sentList.appendChild(notif)
 				history.appendChild(sentList)
 			}
@@ -44,13 +45,14 @@ function createHistory() {
 					}
 				}
 				// Checks if it comes from the Central Bank (when it is minted)
-				if (transactionSent.from.toLowerCase() === ("0xF2D4E64d5F3996B022532460510CF7e09e69C33D").toLowerCase()) {
+				if (transactionSent.from.toLowerCase() === ("0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f").toLowerCase()) {
 					name = "Aurexia Central Bank"
 				}
 				var recList = document.createElement("ul")
+				var time = timeConverter(transactionSent.timeStamp)
 				recList.id = "receiving"
 				var notif = document.createElement("li")
-				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>"
+				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>" + "<br>" + time
 				recList.appendChild(notif)
 				history.appendChild(recList)
 			}
@@ -107,12 +109,12 @@ Supposedly this function updates automatically the screen. Fortmatic doesn't sup
 function for the moment. They are working on this issue.
 
 window.setInterval(function() {
-	createPage()
+	updateScreen()
 }, 1000);
 */
 
 function Transfer() {
-	// Callesd when clicking on the send button
+	// Called when clicking on the send button
 	var address = document.getElementById("dest-select").value
 	var amount = document.getElementById("amount").value
 	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})

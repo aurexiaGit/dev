@@ -34,7 +34,7 @@ function createHistory() {
 					if (users[key].address.toLowerCase() === transactionSent.args.from.toLowerCase()) {
 						sender = users[key].name
 					}
-					if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
+					if (transactionSent.args.from.toLowerCase() === ("0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f").toLowerCase()) {
 						sender = "Aurexia Central Bank"
 					}
 				}
