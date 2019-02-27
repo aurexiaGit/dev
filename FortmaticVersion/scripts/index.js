@@ -33,6 +33,7 @@ function createHistory() {
 				var time = timeConverter(transactionSent.timeStamp)
 				sentList.id = "sending"
 				var notif = document.createElement("li")
+				notif.id = transactionSent.hash
 				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>" + "<br>" + time
 				sentList.appendChild(notif)
 				history.appendChild(sentList)
@@ -52,12 +53,35 @@ function createHistory() {
 				var time = timeConverter(transactionSent.timeStamp)
 				recList.id = "receiving"
 				var notif = document.createElement("li")
+				notif.id = transactionSent.hash
 				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>" + "<br>" + time
 				recList.appendChild(notif)
 				history.appendChild(recList)
 			}
 		})
 	}	
+}
+
+var label
+
+function getLabel(txn) {
+	// this function doesn't exist yet. Impossible to link a label to the hash of a transaction...
+	Token.getLabel(txn,function(err,result){console.log("");label=result})
+}
+
+function addLabels() {
+	var i = 0
+	function getLabels() {
+		var txn = transactionList[i].hash
+		getLabel(transactionList[i].hash)
+		window.setTimeout(function(){
+			var elmt = document. getElementById(txn)
+			elmt.innerHTML = elmt.innerHTML + "<br> Description:" + label
+			i++
+			if (i<transactionList.length) {getLabels()}
+		},1000)
+	}
+	getLabels()
 }
 
 // Gets the selection panel from the page's form
@@ -122,3 +146,22 @@ function Transfer() {
 	frm.reset(); // resets the form
 	return false // prevents the page from refreshing
 }
+
+
+
+const toAddress = '0x9cA10A8C595FFC15Ffa99B61d71Dc561e0aE1914';
+
+// Calculate contract compatible value for transfer with proper decimal points using BigNumber
+const tokenDecimals = web3.toBigNumber(18);
+const tokenAmountToTransfer = web3.toBigNumber(42.08);
+const calculatedTransferValue = web3.toHex(tokenAmountToTransfer.mul(web3.toBigNumber(10).pow(tokenDecimals)));
+
+// Get user account wallet address first
+web3.eth.getAccounts(function(error, accounts) {
+  if (error) throw error;
+  // Send ERC20 transaction with web3
+  Token.transfer.sendTransaction(toAddress, calculatedTransferValue, {from: accounts[0]}, function(error, txnHash) {
+    if (error) throw error;
+    console.log(txnHash);
+  });
+});
