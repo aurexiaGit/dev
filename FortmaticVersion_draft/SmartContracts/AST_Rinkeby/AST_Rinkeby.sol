@@ -1,6 +1,7 @@
 pragma solidity >=0.4.22 <0.6.0;
 
 contract owned {
+    // mettre des crochets pour avoir une liste d'adresses owner
     address public owner;
 
     constructor() public {
@@ -116,7 +117,9 @@ contract MyAurexiaToken is owned, TokenERC20 {
     }
     
     mapping(address => aurexiaMember) aurexiaMembers;
-    
+    // lier le hash de la transaction avec un libellé
+    mapping(string => string) transactionLabels;
+ 
     address[] public membersAccts;
 
     /* Initializes contract with initial supply tokens to the creator of the contract */
@@ -147,6 +150,15 @@ contract MyAurexiaToken is owned, TokenERC20 {
     function isMember(address ins) view public returns (bool) {
         return (aurexiaMembers[ins].isMember);
     }
+
+    function addTransaction(string memory _hash, string memory _label) public {
+        transactionLabels[_hash] = _label ;
+    }
+    
+    function getLabel(string memory _hash) view public returns (string memory) {
+        return (transactionLabels[_hash]);
+    }
+    
 
     /* Internal transfer, only can be called by this contract */
     function _transfer(address _from, address _to, uint _value) internal {

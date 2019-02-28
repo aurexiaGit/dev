@@ -1,4 +1,22 @@
-[
+
+
+// hide admin logo 
+document.getElementById("adminPage").style.display = "none"
+
+// hide notification banner
+var show = false
+var elmt = document.getElementById("notifBanner")
+elmt.style.display = "none"
+
+// Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
+var fm = new Fortmatic('pk_test_E9290E6522F8661A');
+window.web3 = new Web3(fm.getProvider())
+
+// Request user login if needed, returns current user account address
+web3.currentProvider.enable();
+
+// get token as a variable with its ABI code and its address
+var TokenABI = web3.eth.contract([
 	{
 		"constant": true,
 		"inputs": [],
@@ -11,6 +29,43 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_hash",
+				"type": "string"
+			}
+		],
+		"name": "getLabel",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_hash",
+				"type": "string"
+			},
+			{
+				"name": "_label",
+				"type": "string"
+			}
+		],
+		"name": "addTransaction",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -396,4 +451,56 @@
 		"name": "Burn",
 		"type": "event"
 	}
-]
+])
+var contractAddress = '0x662b0cD3Dd9BF648254062cc3D33abc99EC1077D'
+
+var Token = TokenABI.at(contractAddress);
+
+// get current account 
+var curAccount = web3.eth.accounts[0]
+
+function createIdentity() {
+	// Creates the right part of the header giving the name, a picture and the notification button
+	var curAccount = web3.eth.accounts[0]
+	for (var key in users){
+		if (users.hasOwnProperty(key) && users[key].address.toLowerCase()===curAccount.toLowerCase()) {
+			var identity = document.getElementById("identity");
+			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt=''> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
+				if (users.hasOwnProperty(key) && key==="Administrator") {
+			document.getElementById("adminPage").style.display = "block"
+			}
+		}
+	}
+}
+
+createIdentity()
+
+
+function showNotif() {
+	// Function called when you click on the notification button. Displays or hides the panel.
+	if (!show) {
+		show=true
+		elmt.style.display = ""
+	}
+	else {
+		show=false
+		elmt.style.display = "none"
+	}
+}
+
+// function to get date and time from a unix timestamp
+
+function timeConverter(timestamp){
+  var a = new Date(timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  if (min.toString().length===1) {min='0'+min};
+  if (sec.toString().length===1) {sec='0'+sec};
+  var time = date + '-' + month + '-' + year + ' at ' + hour + ':' + min + ':' + sec ;
+  return time;
+}

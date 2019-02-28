@@ -15,6 +15,43 @@
 	},
 	{
 		"constant": true,
+		"inputs": [
+			{
+				"name": "_hash",
+				"type": "string"
+			}
+		],
+		"name": "getLabel",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_hash",
+				"type": "string"
+			},
+			{
+				"name": "_label",
+				"type": "string"
+			}
+		],
+		"name": "addTransaction",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [],
 		"name": "totalSupply",
 		"outputs": [

@@ -7,7 +7,7 @@ var transactionList
 
 function getTransactionList(address) {
 	// Gets the transaction list for a given address thanks to etherscan API
-	var txlist = api.account.tokentx(address, '0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f', 1, 'latest', 'desc');
+	var txlist = api.account.tokentx(address, contractAddress, 1, 'latest', 'desc');
 	txlist.then(function(result) {
 		transactionList=result.result
 	})
@@ -33,6 +33,7 @@ function createHistory() {
 				var time = timeConverter(transactionSent.timeStamp)
 				sentList.id = "sending"
 				var notif = document.createElement("li")
+				notif.id = transactionSent.hash
 				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>" + "<br>" + time
 				sentList.appendChild(notif)
 				history.appendChild(sentList)
@@ -45,19 +46,41 @@ function createHistory() {
 					}
 				}
 				// Checks if it comes from the Central Bank (when it is minted)
-				if (transactionSent.from.toLowerCase() === ("0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f").toLowerCase()) {
+				if (transactionSent.from.toLowerCase() === (contractAddress).toLowerCase()) {
 					name = "Aurexia Central Bank"
 				}
 				var recList = document.createElement("ul")
 				var time = timeConverter(transactionSent.timeStamp)
 				recList.id = "receiving"
 				var notif = document.createElement("li")
+				notif.id = transactionSent.hash
 				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>" + "<br>" + time
 				recList.appendChild(notif)
 				history.appendChild(recList)
 			}
 		})
 	}	
+}
+
+var label
+
+function getLabel(txn) {
+	Token.getLabel(txn,function(err,result){label=result})
+}
+
+function addLabels() {
+	var i = 0
+	function getLabels() {
+		var txn = transactionList[i].hash
+		getLabel(transactionList[i].hash)
+		window.setTimeout(function(){
+			var elmt = document. getElementById(txn)
+			elmt.innerHTML = elmt.innerHTML + "<br> Description:" + label
+			i++
+			if (i<transactionList.length) {getLabels()}
+		},1000)
+	}
+	getLabels()
 }
 
 // Gets the selection panel from the page's form
@@ -90,8 +113,6 @@ function myBalance() {
 	})
 }
 
-
-
 function updateScreen() {
 	// Gets the balance and updates the value on the screen.	
 	myBalance()
@@ -117,8 +138,15 @@ function Transfer() {
 	// Called when clicking on the send button
 	var address = document.getElementById("dest-select").value
 	var amount = document.getElementById("amount").value
-	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
+	var hash
+	var label = document.getElementById("type-select").value
+	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {hash = result})
+
+	//window.setTimeout(function() {Token.addTransaction(hash,label,function(err,result) {console.log(result)})},5000)
+	
 	var frm = document.getElementById("send");
 	frm.reset(); // resets the form
 	return false // prevents the page from refreshing
 }
+
+

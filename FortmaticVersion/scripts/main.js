@@ -33,43 +33,6 @@ var TokenABI = web3.eth.contract([
 	},
 	{
 		"constant": true,
-		"inputs": [
-			{
-				"name": "_hash",
-				"type": "string"
-			}
-		],
-		"name": "getLabel",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_hash",
-				"type": "string"
-			},
-			{
-				"name": "_label",
-				"type": "string"
-			}
-		],
-		"name": "addTransaction",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
 		"inputs": [],
 		"name": "totalSupply",
 		"outputs": [
@@ -451,10 +414,9 @@ var TokenABI = web3.eth.contract([
 		"name": "Burn",
 		"type": "event"
 	}
-])
-var contractAddress = '0x662b0cD3Dd9BF648254062cc3D33abc99EC1077D'
+]);
 
-var Token = TokenABI.at(contractAddress);
+var Token = TokenABI.at('0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f');
 
 // get current account 
 var curAccount = web3.eth.accounts[0]

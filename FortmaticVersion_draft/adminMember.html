@@ -5,15 +5,11 @@
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
         <link rel = "stylesheet" href = "styles/style.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/index.css" />
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link rel = "stylesheet" href = "styles/adminMember.css" />
         <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
         <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fortmatic@0.2.1/dist/fortmatic.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/web3@0.20/dist/web3.min.js"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/etherscan-api@10.0.0/dist/bundle.js"></script>
-
-        
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -31,40 +27,46 @@
                 <div id="identity">
                     <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
                 </div>
+                </div>
             </header>
             <section id='notifBanner'>
                 <img id="arrow" src="images/pageArrow.png">
                 <div id="notifs">
-                    <div data-simplebar id="history">
+                    <div id="history">
                     </div>
                 </div>
             </section>
-            <button onclick="updateScreen();createIdentity();addUsers()">Refresh Page</button>
-            <section id="transactionPage">
+            <section id="assignMember">
+                <div id="new_member">
                   <div class="form">
-                    <img src="images/ast.png" alt="icon ast" /> <br>
-                    <h1> Aurexia Social Token </h1>
-                    <div id="astValue">0 AST</div>
-                    <form id="send">
-                      <input placeholder="Amount" id="amount" required/>
-                      <select id="dest-select" required>
-                            <option value="" disabled selected>Select Beneficiary</option>
-                      </select>
-                      <button onclick="return Transfer()">send</button>
-                      <div id="loading"></div>
+                    <img src="images/member.png" alt="icon member" />
+                    <h1>Assign a new member</h1>
+                    <form id="addMember">
+                      <input type="text" placeholder="address" id="adress1" required/>
+                      <input type="text" placeholder="name" id="name1" required/>
+                      <button onclick="return addMember()">ADD</button>
                     </form>
                   </div>
+                </div>
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/remMember.png" alt="icon member" />
+                    <h1>Remove a member</h1>
+                    <form id="remMember">
+                      <input type="text" placeholder="address" id="adress2" required/>
+                      <button onclick="return remMember()">REMOVE</button>
+                    </form>
+                  </div>
+                </div>
             </section>
 
-
             <footer>
-                <p>© Copyright Aurexia – All rights reserved<br /></p>
+                <p>© Copyright Aurexia – All rights reserved<br />
             </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/main.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
         <script type="text/javascript" src="scripts/links.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>        
+        <script type="text/javascript" src="scripts/adminMembers.js"></script>
     </body>
-</html> 
+</html>
