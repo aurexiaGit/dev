@@ -100,24 +100,28 @@ function updateScreen() {
 	}
 	//  Updates the history.
 	createHistory()
+	addUsers()
+	createIdentity()
 }
 
 updateScreen()
 
 /* 
-Supposedly this function updates automatically the screen. Fortmatic doesn't support the setInterval
-function for the moment. They are working on this issue.
-
-window.setInterval(function() {
-	updateScreen()
-}, 1000);
+This function updates automatically the screen. Fortmatic doesn't support the setInterval
+function for the moment. They are working on this issue. 
 */
 
+var update = window.setInterval(function() {
+	updateScreen()
+}, 2000);
+
 function Transfer() {
+	// stoping the set interval
+	clearInterval(update)
 	// Called when clicking on the send button
 	var address = document.getElementById("dest-select").value
 	var amount = document.getElementById("amount").value
-	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
+	Token.transfer.sendTransaction(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
 	var frm = document.getElementById("send");
 	frm.reset(); // resets the form
 	return false // prevents the page from refreshing

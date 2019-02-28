@@ -11,11 +11,6 @@ window.setTimeout(function() {
 		row.class = "row" + i.toString() + " body"
 		table.appendChild(row)
 
-		var column1 = document.createElement('td')
-		column1.className = "column1"
-		column1.innerHTML = "<img src = '" + users[key].pic + "'>"
-		row.appendChild(column1)
-
 		var column2 = document.createElement('td')
 		column2.className = "column2"
 		column2.innerHTML = users[key].name
@@ -76,5 +71,5 @@ function createPage() {
 window.setTimeout(function() {window.setInterval(function() {
 	createPage()
 }, 10000);
-},1000)
+},10000)
 

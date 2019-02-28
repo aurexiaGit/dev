@@ -29,7 +29,7 @@ function getUsers() {
 function createUsers() {
 	// Sometimes getUsers doesn't work the first time. This function repeates the call until it has succeeded.
 	getUsers()
-	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},6000)
+	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},7000)
 }
 
 createUsers()
