@@ -110,7 +110,7 @@ This function updates automatically the screen. Fortmatic doesn't support the se
 function for the moment. They are working on this issue. 
 */
 
-var update = window.setInterval(function() {
+window.update = window.setInterval(function() {
 	updateScreen()
 }, 2000);
 
