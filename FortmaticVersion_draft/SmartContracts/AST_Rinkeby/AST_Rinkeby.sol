@@ -1,20 +1,27 @@
 pragma solidity >=0.4.22 <0.6.0;
 
 contract owned {
-    // mettre des crochets pour avoir une liste d'adresses owner
-    address public owner;
+    mapping (address => bool) public owners;
 
     constructor() public {
-        owner = msg.sender;
+        owners[msg.sender]=true;
     }
 
     modifier onlyOwner {
-        require(msg.sender == owner);
+        require(owners[msg.sender]);
         _;
     }
 
-    function transferOwnership(address newOwner) onlyOwner public {
-        owner = newOwner;
+    function addOwner(address newOwner) onlyOwner public {
+        owners[newOwner] = true;
+    }
+    
+    function remOwner(address Owner) onlyOwner public {
+        owners[Owner] = false;
+    }
+    
+    function isOwner(address _address) onlyOwner public view returns (bool) {
+        return owners[_address];
     }
 }
 
@@ -125,6 +132,11 @@ contract MyAurexiaToken is owned, TokenERC20 {
     /* Initializes contract with initial supply tokens to the creator of the contract */
     constructor() TokenERC20() public {}
     
+    modifier onlyMember {
+        require(aurexiaMembers[msg.sender].isMember);
+        _;
+    }
+    
     /* Set members */
     
     function setMember(address _address, string memory _name) onlyOwner public {
@@ -139,23 +151,23 @@ contract MyAurexiaToken is owned, TokenERC20 {
         member.isMember = false;
     }
     
-    function getMembers() view public returns (address[] memory) {
+    function getMembers() onlyMember view public returns (address[] memory) {
         return membersAccts;
     }
     
-    function getName(address ins) view public returns (string memory) {
+    function getName(address ins) onlyMember view public returns (string memory) {
         return (aurexiaMembers[ins].name);
     }
     
-    function isMember(address ins) view public returns (bool) {
+    function isMember(address ins) onlyMember view public returns (bool) {
         return (aurexiaMembers[ins].isMember);
     }
 
-    function addTransaction(string memory _hash, string memory _label) public {
+    function addTransaction(string memory _hash, string memory _label) onlyMember public {
         transactionLabels[_hash] = _label ;
     }
     
-    function getLabel(string memory _hash) view public returns (string memory) {
+    function getLabel(string memory _hash) onlyMember view public returns (string memory) {
         return (transactionLabels[_hash]);
     }
     

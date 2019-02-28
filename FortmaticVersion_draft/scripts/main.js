@@ -18,36 +18,17 @@ web3.currentProvider.enable();
 // get token as a variable with its ABI code and its address
 var TokenABI = web3.eth.contract([
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
+		"constant": false,
 		"inputs": [
 			{
-				"name": "_hash",
-				"type": "string"
+				"name": "newOwner",
+				"type": "address"
 			}
 		],
-		"name": "getLabel",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
+		"name": "addOwner",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -69,89 +50,6 @@ var TokenABI = web3.eth.contract([
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "remMember",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [
-			{
-				"name": "success",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "decimals",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "initialSupply",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -166,81 +64,6 @@ var TokenABI = web3.eth.contract([
 				"type": "bool"
 			}
 		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "ins",
-				"type": "address"
-			}
-		],
-		"name": "getName",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "membersAccts",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "target",
-				"type": "address"
-			},
-			{
-				"name": "mintedAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "mintToken",
-		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -269,64 +92,67 @@ var TokenABI = web3.eth.contract([
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
+				"name": "target",
 				"type": "address"
+			},
+			{
+				"name": "mintedAmount",
+				"type": "uint256"
 			}
 		],
+		"name": "mintToken",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "remMember",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Owner",
+				"type": "address"
+			}
+		],
+		"name": "remOwner",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			},
+			{
+				"name": "_name",
 				"type": "string"
 			}
 		],
+		"name": "setMember",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getMembers",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "ins",
-				"type": "address"
-			}
-		],
-		"name": "isMember",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -356,30 +182,25 @@ var TokenABI = web3.eth.contract([
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_address",
+				"name": "_from",
 				"type": "address"
 			},
 			{
-				"name": "_name",
-				"type": "string"
-			}
-		],
-		"name": "setMember",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "newOwner",
+				"name": "_to",
 				"type": "address"
+			},
+			{
+				"name": "_value",
+				"type": "uint256"
 			}
 		],
-		"name": "transferOwnership",
-		"outputs": [],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -450,9 +271,226 @@ var TokenABI = web3.eth.contract([
 		],
 		"name": "Burn",
 		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_hash",
+				"type": "string"
+			}
+		],
+		"name": "getLabel",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMembers",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "ins",
+				"type": "address"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "initialSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "ins",
+				"type": "address"
+			}
+		],
+		"name": "isMember",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "isOwner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "membersAccts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "owners",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
 ])
-var contractAddress = '0x662b0cD3Dd9BF648254062cc3D33abc99EC1077D'
+var contractAddress = '0x116FcBf029cCc71D7c520D25664b0B9a1218967d'
 
 var Token = TokenABI.at(contractAddress);
 
