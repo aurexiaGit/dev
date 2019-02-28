@@ -116,9 +116,8 @@ var update = window.setInterval(function() {
 }, 2000);
 
 function Transfer() {
-	// stoping the set interval
-	clearInterval(update)
 	// Called when clicking on the send button
+	clearInterval(update) // stoping the set interval
 	var address = document.getElementById("dest-select").value
 	var amount = document.getElementById("amount").value
 	Token.transfer.sendTransaction(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
