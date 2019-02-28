@@ -46,9 +46,15 @@
                     <h1> Aurexia Social Token </h1>
                     <div id="astValue">0 AST</div>
                     <form id="send">
+
                       <input placeholder="Amount" id="amount" required/>
                       <select id="dest-select" required>
                             <option value="" disabled selected>Select Beneficiary</option>
+                      </select>
+                      <select id="type-select" required>
+                            <option value="" disabled selected>Select Transaction Type</option>
+                            <option value="Consultant Reward" >Consultant Reward</option>
+                            <option value="Other" >Other</option>
                       </select>
                       <button onclick="return Transfer()">send</button>
                       <div id="loading"></div>

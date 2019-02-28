@@ -7,7 +7,7 @@ var transactionList
 
 function getTransactionList(address) {
 	// Gets the transaction list for a given address thanks to etherscan API
-	var txlist = api.account.tokentx(address, '0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f', 1, 'latest', 'desc');
+	var txlist = api.account.tokentx(address, contractAddress, 1, 'latest', 'desc');
 	txlist.then(function(result) {
 		transactionList=result.result
 	})
@@ -46,7 +46,7 @@ function createHistory() {
 					}
 				}
 				// Checks if it comes from the Central Bank (when it is minted)
-				if (transactionSent.from.toLowerCase() === ("0xFF2f1d3683935cf110A9a4fc58A0BC9f9D09511f").toLowerCase()) {
+				if (transactionSent.from.toLowerCase() === (contractAddress).toLowerCase()) {
 					name = "Aurexia Central Bank"
 				}
 				var recList = document.createElement("ul")
@@ -65,8 +65,7 @@ function createHistory() {
 var label
 
 function getLabel(txn) {
-	// this function doesn't exist yet. Impossible to link a label to the hash of a transaction...
-	Token.getLabel(txn,function(err,result){console.log("");label=result})
+	Token.getLabel(txn,function(err,result){label=result})
 }
 
 function addLabels() {
@@ -114,8 +113,6 @@ function myBalance() {
 	})
 }
 
-
-
 function updateScreen() {
 	// Gets the balance and updates the value on the screen.	
 	myBalance()
@@ -141,27 +138,13 @@ function Transfer() {
 	// Called when clicking on the send button
 	var address = document.getElementById("dest-select").value
 	var amount = document.getElementById("amount").value
-	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
+	var hash
+	var label = document.getElementById("type-select").value
+	Token.transfer(address,amount*Math.pow(10,18),function(err,result) {hash = result})
+	window.setTimeout(function() {Token.addTransaction(hash,label,function(err,result) {console.log(result)})},5000)
 	var frm = document.getElementById("send");
 	frm.reset(); // resets the form
 	return false // prevents the page from refreshing
 }
 
 
-
-const toAddress = '0x9cA10A8C595FFC15Ffa99B61d71Dc561e0aE1914';
-
-// Calculate contract compatible value for transfer with proper decimal points using BigNumber
-const tokenDecimals = web3.toBigNumber(18);
-const tokenAmountToTransfer = web3.toBigNumber(42.08);
-const calculatedTransferValue = web3.toHex(tokenAmountToTransfer.mul(web3.toBigNumber(10).pow(tokenDecimals)));
-
-// Get user account wallet address first
-web3.eth.getAccounts(function(error, accounts) {
-  if (error) throw error;
-  // Send ERC20 transaction with web3
-  Token.transfer.sendTransaction(toAddress, calculatedTransferValue, {from: accounts[0]}, function(error, txnHash) {
-    if (error) throw error;
-    console.log(txnHash);
-  });
-});
