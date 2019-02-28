@@ -100,7 +100,6 @@ function updateScreen() {
 	}
 	//  Updates the history.
 	createHistory()
-	addUsers()
 	createIdentity()
 }
 
