@@ -93,8 +93,6 @@ It contains the smart contract solidity code and its corresponding ABI code. The
 for information and in case they need to be changed.
 
 
-test pour le premier commit
-
     
   
 
