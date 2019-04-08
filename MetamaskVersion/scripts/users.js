@@ -30,7 +30,7 @@ var users = {
 			//},
 			
 			"test":{
-				"adress": "0x7e01Ee889bbcE4940Bf73053542DAA2E64e3e47e",
+				"adress": "0xFAb573993Bb7772E9ee25cca1A2DB24a79A4beA8",
 				"name": "Test",
 				"pic":"images/blank.png"
 			}
