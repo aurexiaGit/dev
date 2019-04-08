@@ -427,7 +427,7 @@ var TokenABI = web3.eth.contract([
     }
   ]);
 
-var Token = TokenABI.at('0xE8311b299bad9432d714C6DBa0150D89CB3afF36');
+var Token = TokenABI.at('0x4fe77d427e7aE587d76f2F7A5fc82E3943386F70');
 
 // get current account on metamask
 
