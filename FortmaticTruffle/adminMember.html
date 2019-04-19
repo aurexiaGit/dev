@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
+        <link rel = "stylesheet" href = "styles/style.css" />
+        <link rel = "stylesheet" href = "styles/header.css" />
+        <link rel = "stylesheet" href = "styles/adminMember.css" />
+        <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+        <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fortmatic@0.2.1/dist/fortmatic.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/web3@0.20/dist/web3.min.js"></script> 
+        <title>MyWallet - Aurexia</title> 
+    </head>
+
+    <body>
+        <div id="block_page">
+            <header>
+                <div id="logo">
+                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+                </div>
+                <nav>
+                <p class = "button" id = "homePage" onclick="homePage()">HOME </p>
+                <p class = "button" id = "eventsPage" onclick="eventsPage()">EVENTS </p>
+                <p class = "button" id = "adminPage" onclick="adminPage()">ADMIN </p>
+                </nav>
+                <div id="identity">
+                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+                </div>
+                </div>
+            </header>
+            <section id='notifBanner'>
+                <img id="arrow" src="images/pageArrow.png">
+                <div id="notifs">
+                    <div id="history">
+                    </div>
+                </div>
+            </section>
+            <section id="assignMember">
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/member.png" alt="icon member" />
+                    <h1>Assign a new member</h1>
+                    <form id="addMember">
+                      <input type="text" placeholder="address" id="adress1" required/>
+                      <input type="text" placeholder="name" id="name1" required/>
+                      <button onclick="return addMember()">ADD</button>
+                    </form>
+                  </div>
+                </div>
+                <div id="new_member">
+                  <div class="form">
+                    <img src="images/remMember.png" alt="icon member" />
+                    <h1>Remove a member</h1>
+                    <form id="remMember">
+                      <input type="text" placeholder="address" id="adress2" required/>
+                      <button onclick="return remMember()">REMOVE</button>
+                    </form>
+                  </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>© Copyright Aurexia – All rights reserved<br />
+            </footer>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/links.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>        
+        <script type="text/javascript" src="scripts/adminMembers.js"></script>
+    </body>
+</html>
