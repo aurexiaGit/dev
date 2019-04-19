@@ -9,7 +9,7 @@ var elmt = document.getElementById("notifBanner")
 elmt.style.display = "none"
 
 // Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
-var fm = new Fortmatic('pk_test_E9290E6522F8661A');
+var fm = new Fortmatic('pk_test_3994809832992B29');
 window.web3 = new Web3(fm.getProvider())
 
 // Request user login if needed, returns current user account address
