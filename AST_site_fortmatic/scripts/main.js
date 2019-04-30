@@ -517,26 +517,6 @@ var TokenABI = web3.eth.contract([
     "constant": true,
     "inputs": [
       {
-        "name": "index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAddress",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xb93f9b0a"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
         "name": "_address",
         "type": "address"
       }
