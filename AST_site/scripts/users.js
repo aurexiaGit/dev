@@ -2,12 +2,33 @@ var users = {}
 
 var charity = {
 			"cravate": {
-				"adress": "0x48BC8f1c04940da24349a7c9cdeC2040A860C3fe",			// adresse de l'ancien contrat
+				"adress": "0x48BC8f1c04940da24349a7c9cdeC2040A860C3fe",			
 				"name": "La Cravate Solidaire"
 			}
 }
 
 
+//test de code seb
+
+async function getAllUsers () {
+	var listAddress = [];
+	listAddress = await Token.getMembers(function(err,result) {return result})
+	for (var i=0; i<listAddress.length; i++){
+		var address = listAddress[i];
+		var name = await Token.getName(address, function(err, result){return result});
+		var balance = await Token.balanceOf(address, function(err, result){return result})
+		users[name].adress = address;
+		users[name].name = name;
+		users[name].balance = balance;
+	}
+}
+
+getAllUsers();
+
+
+//fonction de base d'antoine
+
+/*
 function getUsers() {
 	// The function gets the array of addresses from the Blockchain and then fills the dictionnary users
 	var i = 0
@@ -35,4 +56,4 @@ function createUsers() {
 	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},6000)
 }
 
-createUsers()
+createUsers()*/
