@@ -3,6 +3,12 @@ var users = {
 				adress: "0xc4d446c6B924c431f89214319D5A3e6bb67e7627",
 				name: "Administrator",
 				pic:"images/admin.png"
+			},
+
+			Amine: {
+				adress : "0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd",
+				name : "Amine Badry",
+				pic: ""
 			}
 		}
 
