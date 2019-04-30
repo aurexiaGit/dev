@@ -1,16 +1,4 @@
-var users = {
-			admin:{
-				adress: "0xc4d446c6B924c431f89214319D5A3e6bb67e7627",
-				name: "Administrator",
-				pic:"images/admin.png"
-			},
-
-			Amine: {
-				adress : "0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd",
-				name : "Amine Badry",
-				pic: ""
-			}
-		}
+var users = {}
 
 var charity = {
 			"cravate": {
@@ -18,3 +6,33 @@ var charity = {
 				"name": "La Cravate Solidaire"
 			}
 }
+
+
+function getUsers() {
+	// The function gets the array of addresses from the Blockchain and then fills the dictionnary users
+	var i = 0
+	var name
+	Token.getMembers(function(err,result) {listAddress = result})
+	// To get the information the js file must comunicate with the Blockchain. This takes time.
+	// Thus, we need to create this embedded function to wait between each calls.
+	function getUser() {
+		var address = listAddress[i]
+		Token.getName(address,function(err,result) {name = result})
+		window.setTimeout(function () {
+			users[name]={}
+			users[name].address=address
+			users[name].name=name
+			i++
+			if (i < listAddress.length) {getUser()}
+		},1500)
+	}
+	window.setTimeout(function() {getUser()},1500)
+}
+
+function createUsers() {
+	// Sometimes getUsers doesn't work the first time. This function repeates the call until it has succeeded.
+	getUsers()
+	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},6000)
+}
+
+createUsers()
