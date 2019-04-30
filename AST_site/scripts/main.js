@@ -161,6 +161,21 @@ var TokenABI = web3.eth.contract([
     "signature": "0xd4ee1d90"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "sizeListAccount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xd6eb5782"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -492,6 +507,21 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "getMembers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x9eab5253"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "name": "_address",
@@ -734,7 +764,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0xA2d0103c89EC5A0BF5253b140ebB445Ce6a37399');
+var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 // get current account on metamask
 
