@@ -771,18 +771,7 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 var curAccount = web3.eth.accounts[0];
 console.log (web3.eth.accounts[0]);
 
-var addressOwner;
-
-function getOwner(){
-  Token.owner(function (err, res){
-    if (!err){
-      addressOwner = res;
-    }
-    else {
-      getOwner();
-    }
-  })
-};
+var addressOwner = Token.owner(function (err, res){addressOwner = res})
 console.log (addressOwner);
 
 if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
