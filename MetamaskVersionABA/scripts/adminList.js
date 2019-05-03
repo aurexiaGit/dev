@@ -46,7 +46,7 @@ function getBalance(account) {
 // Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
 
 function attributeBalances() {
-	var i = 1
+	var i = 0
 	Balance=0
 	function balances() {
 		keys = Object.keys(users)
