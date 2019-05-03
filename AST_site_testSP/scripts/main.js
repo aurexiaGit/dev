@@ -768,25 +768,16 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 // get current account on metamask
 
-var curAccount = web3.eth.accounts[0]
+var curAccount = web3.eth.accounts[0];
 
-function createIdentity() {
-	var curAccount = web3.eth.accounts[0]
-	for (var key in users){
-		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
-			var identity = document.getElementById("identity");
-			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
-				if (users.hasOwnProperty(key) && key==="admin") {
-			document.getElementById("adminPage").style.display = "block"
-			}
-		}
-	}
+var owner = await Token.owner(async function (err, res){owner = res});
+
+if (owner == curAccount){
+  var identity = document.getElementById("identity");
+  identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
+  document.getElementById("adminPage").style.display = "block"
 }
 
-window.setTimeout(function() {window.setInterval(function() {
-	createIdentity()
-}, 3000);
-},1000)
 
 
 function showNotif() {
