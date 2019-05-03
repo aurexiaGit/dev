@@ -22,16 +22,11 @@ else {
 		window.ethereum
 		ethereum.enable()
 }
+
 // connect to ethereum API web3
 
-//var web3 = new Web3(web3.currentProvider)
-try{
-  var web3 = new Web3(web3.currentProvider)
-}
-catch(err){
-  alert(err.message)
-}
-alert("apres connexion, avant init tokenABI")
+var web3 = new Web3(web3.currentProvider)
+
 // get token as a variable
 
 var TokenABI = web3.eth.contract([
@@ -164,21 +159,6 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0xd4ee1d90"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "sizeListAccount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xd6eb5782"
   },
   {
     "constant": false,
@@ -512,21 +492,6 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "getMembers",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address[]"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x9eab5253"
-  },
-  {
-    "constant": true,
     "inputs": [
       {
         "name": "_address",
@@ -769,12 +734,14 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
-alert("Hello!")
+var Token = TokenABI.at('0xA2d0103c89EC5A0BF5253b140ebB445Ce6a37399');
 
 // get current account on metamask
 
 var curAccount = web3.eth.accounts[0]
+
+var name = Token.name
+console.log(name)
 
 function createIdentity() {
 	var curAccount = web3.eth.accounts[0]
@@ -782,7 +749,7 @@ function createIdentity() {
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
 			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
-				if (users.hasOwnProperty(key) && key==="Administrator") {
+				if (users.hasOwnProperty(key) && key==="admin") {
 			document.getElementById("adminPage").style.display = "block"
 			}
 		}
