@@ -740,6 +740,9 @@ var Token = TokenABI.at('0xA2d0103c89EC5A0BF5253b140ebB445Ce6a37399');
 
 var curAccount = web3.eth.accounts[0]
 
+var name = Token.name
+console.log(name)
+
 function createIdentity() {
 	var curAccount = web3.eth.accounts[0]
 	for (var key in users){
