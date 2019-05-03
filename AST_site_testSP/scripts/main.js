@@ -774,7 +774,7 @@ var owner = await Token.owner(async function (err, res){owner = res});
 
 if (owner == curAccount){
   var identity = document.getElementById("identity");
-  identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
+  identity.innerHTML= "<br> <img class = 'pic' src='" + users[Administrator].pic + "' alt='profile pic'> <div id = 'name'> " + users[Administrator].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
   document.getElementById("adminPage").style.display = "block"
 }
 
