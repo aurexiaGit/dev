@@ -1,17 +1,17 @@
 
 // for the "sending tokens" loading sentence
 
-var sending = false 
+var sending = false; 
 
 // hide admin logo 
 
-document.getElementById("adminPage").style.display = "none"
+document.getElementById("adminPage").style.display = "none";
 
 // hide notif banner
 
-var show = false
-var elmt = document.getElementById("notifBanner")
-elmt.style.display = "none"
+var show = false;
+var elmt = document.getElementById("notifBanner");
+elmt.style.display = "none";
 
 // check that user has Metamask installed 
 
@@ -19,13 +19,13 @@ if (window.ethereum===undefined) {
 	window.confirm('Pas installe'); 
 }
 else {
-		window.ethereum
-		ethereum.enable()
+		window.ethereum;
+		ethereum.enable();
 }
 
 // connect to ethereum API web3
 
-var web3 = new Web3(web3.currentProvider)
+var web3 = new Web3(web3.currentProvider);
 
 // get token as a variable
 
@@ -785,11 +785,11 @@ if (curAccount == addressOwner){
 
 function showNotif() {
 	if (!show) {
-		show=true
-		elmt.style.display = ""
+		show=true;
+		elmt.style.display = "";
 	}
 	else {
-		show=false
-		elmt.style.display = "none"
+		show=false;
+		elmt.style.display = "none";
 	}
 }
