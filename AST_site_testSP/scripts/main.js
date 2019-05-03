@@ -773,9 +773,10 @@ var curAccount = web3.eth.accounts[0];
 var addressOwner = Token.owner(async function (err, res){addressOwner = await res});
 
 if (curAccount == addressOwner){
-  console.log(true)
-  identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
-  document.getElementById("adminPage").style.display = "block"
+  console.log(true);
+  var identity = document.getElementById("identity");
+  identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+  document.getElementById("adminPage").style.display = "block";
 }
 
 
