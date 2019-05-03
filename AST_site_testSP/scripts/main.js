@@ -772,6 +772,9 @@ var curAccount = web3.eth.accounts[0];
 
 var addressOwner = Token.owner(async function (err, res){addressOwner = await res});
 
+if (curAccount == addressOwner){
+  console.log(true)
+}
 
 
 function showNotif() {
