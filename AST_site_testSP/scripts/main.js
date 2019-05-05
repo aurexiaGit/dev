@@ -778,9 +778,12 @@ const getLog = async () =>{
     curAddress = accounts[0];
     console.log(curAddress);
   })
-  console.log("test owner")
-  ownerAddress = await Token.methods.owner().call();
-  console.log(ownerAddress)
+  Token.owner((err, account) => {
+    if (err) throw err;
+    console.log("test owner")
+    ownerAddress = account;
+    console.log(ownerAddress)
+  });
 }
 
 getLog();
