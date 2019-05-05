@@ -770,15 +770,13 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 var addressOwner;
 var curAccount;
-var a = 1;
-console.log(a);
 
 async function getLog(){
 
-  curAccount = await web3.eth.accounts[0];
+  curAccount = web3.eth.accounts[0];
   console.log (web3.eth.accounts[0]);
 
-  addressOwner = await Token.owner(function (err, res){addressOwner = res})
+  addressOwner = Token.owner(function (err, res){addressOwner = res})
   console.log (addressOwner);
 
   if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
