@@ -785,13 +785,16 @@ const getLog = async () =>{
     ownerAddress = account;
     console.log(ownerAddress)
   });
-
+  console.log("OA");
+  console.log(ownerAddress);
+  console.log("CA");
+  console.log(curAddress);
   if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress !== undefined){
     console.log(true);
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
     document.getElementById("adminPage").style.display = "block";
-    
+
   }
 }
 
