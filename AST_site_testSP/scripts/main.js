@@ -768,12 +768,15 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 // get current account on metamask
 
+var addressOwner;
+var curAccount;
+
 async function getLog(){
 
-  var curAccount = await web3.eth.accounts[0];
+  curAccount = await web3.eth.accounts[0];
   console.log (web3.eth.accounts[0]);
 
-  var addressOwner = await Token.owner(function (err, res){addressOwner = res})
+  addressOwner = await Token.owner(function (err, res){addressOwner = res})
   console.log (addressOwner);
 
   if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
