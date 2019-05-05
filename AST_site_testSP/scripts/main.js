@@ -767,16 +767,22 @@ else {
 }
 // get current account on metamask
 
-let curAddress 
+let curAddress ;
+let ownerAddress;
 
 const getLog = async () =>{
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
-    console.log ("entre get account")
+    console.log ("entre get account");
     curAddress = accounts[0];
     console.log(curAddress);
-})}
+  })
+  console.log("test owner")
+  ownerAddress = await Token.methods.owner().call();
+  console.log(ownerAddress)
+}
+
 getLog();
 /*
   if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
