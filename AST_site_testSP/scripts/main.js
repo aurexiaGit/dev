@@ -770,6 +770,8 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 var addressOwner;
 var curAccount;
+var a = 1;
+console.log(a);
 
 async function getLog(){
 
