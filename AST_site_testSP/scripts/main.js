@@ -785,7 +785,7 @@ car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout p
 let curAddress ;
 let ownerAddress;
 
-const getLog = () =>{
+const getLog = async () =>{
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
