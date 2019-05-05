@@ -789,6 +789,8 @@ const getLog = async () =>{
   console.log(ownerAddress);
   console.log("CA");
   console.log(curAddress);
+  await (ownerAddress != undefined);
+  await (curAddress != undefined);
   if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress !== undefined){
     console.log(true);
     var identity = document.getElementById("identity");
