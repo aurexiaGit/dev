@@ -761,20 +761,17 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 if (window.ethereum===undefined) {
 	window.confirm('Pas installe'); 
 }
-else {
-		window.ethereum;
-		ethereum.enable();
-}
-
 // get current account on metamask
 
+let curAddress 
 
 const getLog = async () =>{
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
-    let address = accounts[0];
-    console.log(address);
+    console.log ("entre get account")
+    curAddress = accounts[0];
+    console.log(curAddress);
 })}
 /*
   if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
