@@ -765,11 +765,19 @@ else {
   window.ethereum
   ethereum.enable()
 }
+
 /* Salut Amine,
 Je te mets dans ces commentaires les avancées que j'ai pu faire après t'avoir envoyé le mail
 La solution de mettre nos méthodes dans des fonctions à l'air de bien fonctionner. A noter 
 qu'il faut créer des fonctions asynchrones (async) car cela permet a chaque callback de s'effectuer
 à sa vitesse. 
+Le problème que je rencontre ici (pour l'identification de l'admin) c'est que comme la fonction est asynchrone
+le "if " s'execute avant les deux fonctions "getAccount" et "Token.owner" (car ces deux fonctions ont des callbacks et donc
+prennent leur temps pour s'executer). 
+Du coup les variables curAddress et ownerAddress n'étant pas encore instancié dans le if, la condition n'est pas remplie
+
+Aussi pour le moment lorsque tu te connecte sur la page et que tu te log sur metamask, il faut refresh la page
+pour que le site récupère ton addresse (c'est a fixer mais ca va de pair avec le problème actuel)
 Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non sur celle ci 
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
@@ -777,7 +785,7 @@ car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout p
 let curAddress ;
 let ownerAddress;
 
-const getLog = async () =>{
+const getLog = () =>{
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
@@ -786,7 +794,7 @@ const getLog = async () =>{
     console.log(curAddress);
   });
 
-  await Token.owner((err, account) => {
+  Token.owner((err, account) => {
     if (err) throw err;
     console.log("test owner");
     ownerAddress = account;
@@ -795,7 +803,7 @@ const getLog = async () =>{
   console.log("print owner");
   console.log(ownerAddress);
   
-  if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress) {
+  if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
