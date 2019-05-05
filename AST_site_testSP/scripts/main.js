@@ -796,9 +796,8 @@ const getLog = async () =>{
   console.log(ownerAddress);
   console.log("CA");
   console.log(curAddress);
-  await (ownerAddress != undefined);
-  await (curAddress != undefined);
-  if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress !== undefined){
+  
+  if (curAddress == await (ownerAddress != undefined) && curAddress !== undefined){
     console.log(true);
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
