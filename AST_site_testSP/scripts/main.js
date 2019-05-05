@@ -768,19 +768,24 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 // get current account on metamask
 
-var curAccount = web3.eth.accounts[0];
-console.log (web3.eth.accounts[0]);
+async function getLog(){
 
-var addressOwner = Token.owner(function (err, res){addressOwner = res})
-console.log (addressOwner);
+  var curAccount = await web3.eth.accounts[0];
+  console.log (web3.eth.accounts[0]);
 
-if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
-  console.log(true);
-  var identity = document.getElementById("identity");
-  identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-  document.getElementById("adminPage").style.display = "block";
+  var addressOwner = await Token.owner(function (err, res){addressOwner = res})
+  console.log (addressOwner);
+
+  if (curAccount == addressOwner && curAccount !== undefined && addressOwner !== undefined){
+    console.log(true);
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    document.getElementById("adminPage").style.display = "block";
+  }
+
 }
 
+getLog();
 
 function showNotif() {
 	if (!show) {
