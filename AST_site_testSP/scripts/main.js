@@ -765,7 +765,14 @@ else {
   window.ethereum
   ethereum.enable()
 }
-// get current account on metamask
+/* Salut Amine,
+Je te mets dans ces commentaires les avancées que j'ai pu faire après t'avoir envoyé le mail
+La solution de mettre nos méthodes dans des fonctions à l'air de bien fonctionner. A noter 
+qu'il faut créer des fonctions asynchrones (async) car cela permet a chaque callback de s'effectuer
+à sa vitesse. 
+Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non sur celle ci 
+car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
+*/
 
 let curAddress ;
 let ownerAddress;
