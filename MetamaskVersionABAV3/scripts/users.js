@@ -65,20 +65,21 @@ async function getUsers(){
 
 }
 */
+const getLogUsers = async () =>{
 
-Token.getMembers((err, arrayAddress) => {
-    if (err) throw err;
-    console.log("test members");
-    listAddress = arrayAddress;
-	console.log(listAddress);
-	while (i<listAddress.length){	
-		var address = listAddress[i]
-		name = await Token.getName(address)
-		users[name]={}
-		users[name].address=address
-		users[name].name=name
-		i++
-	}
-  });
-
+	Token.getMembers((err, arrayAddress) => {
+		if (err) throw err;
+		console.log("test members");
+		listAddress = arrayAddress;
+		console.log(listAddress);
+		while (i<listAddress.length){	
+			var address = listAddress[i]
+			name = await Token.getName(address)
+			users[name]={}
+			users[name].address=address
+			users[name].name=name
+			i++
+		}
+	});
+}
 //web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
