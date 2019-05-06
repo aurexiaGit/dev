@@ -802,18 +802,19 @@ const getLog = async () =>{
   });
   console.log("print owner");
   console.log(ownerAddress);
-  
+}
+
+const getAdminBanner = async () => {
   if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
     document.getElementById("adminPage").style.display = "block";
-
-  }
 }
 
-getLog();
 
+getLog();
+getAdminBanner();
   
 
 
