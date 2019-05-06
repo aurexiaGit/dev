@@ -781,25 +781,23 @@ pour que le site récupère ton addresse (c'est a fixer mais ca va de pair avec 
 Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non sur celle ci 
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
+const getBanner = async (_curAddress, _ownerAddress) => {
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    console.log(true);
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    document.getElementById("adminPage").style.display = "block";
+    }
+  else {
+    console.log("owner address else")
+    console.log(ownerAddress)
+  }
+};
 
 const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
-  let ownerAddress2;
-
-  const getBanner = async (_curAddress, _ownerAddress) => {
-    if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-      console.log(true);
-      var identity = document.getElementById("identity");
-      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-      document.getElementById("adminPage").style.display = "block";
-      }
-    else {
-      console.log("owner address else")
-      console.log(ownerAddress)
-    }
-  };
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
@@ -815,10 +813,7 @@ const getLog = async () =>{
     console.log(ownerAddress);
   });
 
-  ownerAddress2 = await Token.owner.call(function(err, result){});
-  console.log (ownerAddress2)
-
-  getBanner(curAddress, ownerAddress);
+  return getBanner(curAddress, ownerAddress);
 }
 
 
