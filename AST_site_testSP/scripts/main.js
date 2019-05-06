@@ -787,24 +787,24 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
-  await web3.eth.getAccounts((err, accounts) => {
+  curAddress = await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
-    curAddress = accounts[0];
+    return accounts[0];
     console.log(curAddress);
   });
 
-  await Token.owner((err, account) => {
+  ownerAddress = await Token.owner((err, account) => {
     if (err) throw err;
     console.log("test owner");
-    ownerAddress = account;
+    return account;
     console.log(ownerAddress);
   });
 
   return getBanner(curAddress, ownerAddress);
 }
 
-const getBanner = async (_curAddress, _ownerAddress) => {
+const getBanner = (_curAddress, _ownerAddress) => {
   console.log("curAddress")
   console.log(_curAddress)
   console.log("ownerAddress")
