@@ -823,7 +823,7 @@ const getBanner = (_curAddress, _ownerAddress) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> Administrator </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
     document.getElementById("adminPage").style.display = "block";
     }
   else {
