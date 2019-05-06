@@ -806,7 +806,9 @@ const getLog = async () =>{
   })}
 
   curAddress = await getCurAddress();
+  console.log(curAddress);
   ownerAddress = await getOwner();
+  console.log(ownerAddress);
 /*
   curAddress = await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
