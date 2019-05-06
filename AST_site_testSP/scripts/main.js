@@ -810,7 +810,7 @@ const getAdminBanner = async () => {
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
     document.getElementById("adminPage").style.display = "block";
-}
+}}
 
 
 getLog();
