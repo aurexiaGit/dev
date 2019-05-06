@@ -787,6 +787,19 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
+  const getBanner = async (_curAddress, _ownerAddress) => {
+    if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+      console.log(true);
+      var identity = document.getElementById("identity");
+      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+      document.getElementById("adminPage").style.display = "block";
+      }
+    else {
+      console.log("owner address else")
+      console.log(ownerAddress)
+    }
+  };
+
   await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
@@ -803,18 +816,7 @@ const getLog = async () =>{
 
   await (ownerAddress != undefined);
 
-  await getBanner (() => {
-    if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress!== undefined) {
-      console.log(true);
-      var identity = document.getElementById("identity");
-      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-      document.getElementById("adminPage").style.display = "block";
-      }
-    else {
-      console.log("owner address else")
-      console.log(ownerAddress)
-    }
-  })
+  await getBanner(curAddress, ownerAddress);
 }
 
 
