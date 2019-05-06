@@ -916,3 +916,7 @@ async function getBanner(_curAddress, _ownerAddress) {
     }
   })
 }
+
+getConnection()
+getOwner()
+getBanner()
