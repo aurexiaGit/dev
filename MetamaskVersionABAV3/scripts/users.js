@@ -2,11 +2,12 @@ var users = {}
 
 var charity = {
 			"cravate": {
-				"adress": "0x48BC8f1c04940da24349a7c9cdeC2040A860C3fe",			
+				"address": "0x48BC8f1c04940da24349a7c9cdeC2040A860C3fe",			
 				"name": "La Cravate Solidaire"
 			}
 }
 
+/*
 function getUsers() {
 	// The function gets the array of addresses from the Blockchain and then fills the dictionnary users
 	var i = 0
@@ -35,3 +36,17 @@ function createUsers() {
 }
 
 createUsers()
+*/
+async function getUsers(){
+	var i = 0
+	var name
+	listAddress = await Token.getMembers()
+	while (i<listAddress.length){	
+		var address = listAddress[i]
+		name = await Token.getName(address)
+		users[name]={}
+		users[name].address=address
+		users[name].name=name
+		i++
+	}
+}
