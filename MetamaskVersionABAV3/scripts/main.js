@@ -809,11 +809,12 @@ function showNotif() {
 }
 */
 
+/*
 const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
-
+*/
   /*
   const getBanner = async (_curAddress, _ownerAddress) => {
     if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
@@ -828,17 +829,7 @@ const getLog = async () =>{
     }
   };
   */
-
- const getBanner = async (_curAddress, _ownerAddress) => {
-  //while (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-    while (_curAddress !== _ownerAddress || _curAddress == undefined || _ownerAddress== undefined) {
-    }
-    console.log(true);
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-    document.getElementById("adminPage").style.display = "block";
-};  
-
+/* 
 
   web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
@@ -854,6 +845,7 @@ const getLog = async () =>{
     console.log(ownerAddress);
   });
   
+
   //let TO = await Token.owner()
   //console.log("test await TO")
   //console.log(TO)
@@ -865,3 +857,66 @@ const getLog = async () =>{
 
 
 getLog();
+*/
+
+//getAccount
+// simple proxy to promisify the web3 api. It doesn't deal with edge cases like web3.eth.filter and contracts.
+async function getConnection() {
+  const proxiedWeb3Handler = {
+    // override getter                               
+    get: (target, name) => {              
+      const inner = target[name];                            
+      if (inner instanceof Function) {                       
+        // Return a function with the callback already set.  
+        return (...args) => promisify(cb => inner(...args, cb));                                                         
+      } else if (typeof inner === 'object') {                
+        // wrap inner web3 stuff                             
+        return new Proxy(inner, proxiedWeb3Handler);         
+      } else {                                               
+        return inner;                                        
+      }                                                      
+    },                                                       
+  };                                                         
+  const proxiedWeb3 = new Proxy(web3, proxiedWeb3Handler);
+  const accounts = await proxiedWeb3.eth.getAccounts();
+  curAddress = accounts[0]
+}
+
+//getOwner
+async function getOwner() {
+  return new Promise (function (resolve, reject) {
+    Token.owner(function (error, account) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(account);
+      }
+    })
+  })
+}
+
+
+//getBanner
+async function getBanner(_curAddress, _ownerAddress) {
+  return new Promise (function (resolve, reject) {
+    if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+      console.log(true);
+      var identity = document.getElementById("identity");
+      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+      document.getElementById("adminPage").style.display = "block";
+    }
+    else {
+      console.log("owner address else")
+      console.log(ownerAddress)
+    }
+    if (error) {
+      reject(error);
+    } else {
+      resolve();
+    }
+  })
+}
+
+getConnection()
+getOwner()
+getBanner()
