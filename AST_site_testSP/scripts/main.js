@@ -815,7 +815,7 @@ const getLog = async () =>{
     console.log(ownerAddress);
   });
 
-  ownerAddress2 = await Token.owner(function(err, result){});
+  ownerAddress2 = await Token.owner.call(function(err, result){});
   console.log (ownerAddress2)
 
   getBanner(curAddress, ownerAddress);
