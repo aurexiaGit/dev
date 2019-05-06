@@ -37,10 +37,14 @@ function createUsers() {
 
 createUsers()
 */
-async function getUsers(){
+
+/*
+async function getUsersbis(){
 	var i = 0
 	var name
-	listAddress = await Token.getMembers()
+	const listAddress = await Token.getMembers
+	var lengthListAddress = listAddress.length
+}
 	while (i<listAddress.length){	
 		var address = listAddress[i]
 		name = await Token.getName(address)
@@ -50,3 +54,31 @@ async function getUsers(){
 		i++
 	}
 }
+*/
+
+/*
+async function getUsers(){
+	const listAddress = await Token.getMembers
+	//Token.getMembers((err) => { lengthListAddress = Token.getMembers.length })
+	//console.log(lengthListAddress)
+	var i = 0
+
+}
+*/
+
+Token.getMembers((err, arrayAddress) => {
+    if (err) throw err;
+    console.log("test members");
+    listAddress = arrayAddress;
+	console.log(listAddress);
+	while (i<listAddress.length){	
+		var address = listAddress[i]
+		name = await Token.getName(address)
+		users[name]={}
+		users[name].address=address
+		users[name].name=name
+		i++
+	}
+  });
+
+//web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
