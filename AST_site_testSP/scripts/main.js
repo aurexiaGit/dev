@@ -803,14 +803,14 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
-  web3.eth.getAccounts((err, accounts) => {
+  await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
     curAddress = accounts[0];
     console.log(curAddress);
   });
 
-  Token.owner((err, account) => {
+  await Token.owner((err, account) => {
     if (err) throw err;
     console.log("test owner");
     ownerAddress = account;
