@@ -813,6 +813,10 @@ const getLog = async () =>{
     ownerAddress = account;
     console.log(ownerAddress);
   });
+  
+  let TO = await Token.owner()
+  console.log("test await TO")
+  console.log(TO)
 
   getBanner(curAddress, ownerAddress);
 }
