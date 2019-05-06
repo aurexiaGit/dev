@@ -65,7 +65,7 @@ async function getUsers(){
 
 }
 */
-const getLogUsers = async () =>{
+async function getLogUsers() {
 
 	Token.getMembers((err, arrayAddress) => {
 		if (err) throw err;
