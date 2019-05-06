@@ -82,4 +82,6 @@ async function getLogUsers() {
 		}
 	});
 }
+
+getLogUsers();
 //web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
