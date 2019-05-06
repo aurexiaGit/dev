@@ -782,7 +782,7 @@ Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non s
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
 
-const getLog = async () =>{
+const getLog = () =>{
 
   let curAddress;
   let ownerAddress;
@@ -800,23 +800,21 @@ const getLog = async () =>{
     }
   };
 
-  await web3.eth.getAccounts((err, accounts) => {
+  web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
     curAddress = accounts[0];
     console.log(curAddress);
   });
 
-  await Token.owner((err, account) => {
+  Token.owner((err, account) => {
     if (err) throw err;
     console.log("test owner");
     ownerAddress = account;
     console.log(ownerAddress);
   });
 
-  await (ownerAddress != undefined).then(function (){console.log('test await/then');});
-
-  await getBanner(curAddress, ownerAddress);
+  getBanner(curAddress, ownerAddress);
 }
 
 
