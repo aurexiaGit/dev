@@ -20,7 +20,7 @@ const accountManagement = async () => {
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
 				console.log("balance of");
-				resolve(result.Math.pow(10,-18));
+				resolve(result*Math.pow(10,-18));
 			})
 		})
 	  }
