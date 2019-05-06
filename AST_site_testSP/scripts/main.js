@@ -781,22 +781,6 @@ pour que le site récupère ton addresse (c'est a fixer mais ca va de pair avec 
 Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non sur celle ci 
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
-const getBanner = async (_curAddress, _ownerAddress) => {
-  console.log("curAddress")
-  console.log(_curAddress)
-  console.log("ownerAddress")
-  console.log(_ownerAddress)
-  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-    console.log(true);
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-    document.getElementById("adminPage").style.display = "block";
-    }
-  else {
-    console.log("owner address else")
-    console.log(_ownerAddress)
-  }
-};
 
 const getLog = async () =>{
 
@@ -820,7 +804,22 @@ const getLog = async () =>{
   return getBanner(curAddress, ownerAddress);
 }
 
-
+const getBanner = async (_curAddress, _ownerAddress) => {
+  console.log("curAddress")
+  console.log(_curAddress)
+  console.log("ownerAddress")
+  console.log(_ownerAddress)
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    console.log(true);
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    document.getElementById("adminPage").style.display = "block";
+    }
+  else {
+    console.log("owner address else")
+    console.log(_ownerAddress)
+  }
+};
 
 
 getLog();
