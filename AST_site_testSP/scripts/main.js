@@ -786,6 +786,7 @@ const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
+  let ownerAddress2;
 
   const getBanner = async (_curAddress, _ownerAddress) => {
     if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
@@ -813,10 +814,9 @@ const getLog = async () =>{
     ownerAddress = account;
     console.log(ownerAddress);
   });
-  
-  let TO = await Token.owner()
-  console.log("test await TO")
-  console.log(TO)
+
+  ownerAddress2 = await Token.owner(function(err, result){});
+  console.log (ownerAddress2)
 
   getBanner(curAddress, ownerAddress);
 }
