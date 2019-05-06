@@ -841,9 +841,9 @@ const getLog = async () =>{
     console.log(ownerAddress);
   });
   
-  let TO = await Token.owner()
-  console.log("test await TO")
-  console.log(TO)
+  //let TO = await Token.owner()
+  //console.log("test await TO")
+  //console.log(TO)
 
   getBanner(curAddress, ownerAddress);
 }

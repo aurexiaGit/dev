@@ -85,6 +85,7 @@ async function getLogUsers() {
 					console.log(name);
 				})
 			}
+			getLogName();
 			users[name]={}
 			users[name].address=address
 			console.log(users[name].address)
