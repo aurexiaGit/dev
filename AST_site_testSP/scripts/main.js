@@ -782,39 +782,46 @@ Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non s
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
 
-let curAddress ;
-let ownerAddress;
-
 const getLog = async () =>{
 
-  web3.eth.getAccounts((err, accounts) => {
+  let curAddress;
+  let ownerAddress;
+
+  await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
     curAddress = accounts[0];
     console.log(curAddress);
   });
 
-  Token.owner((err, account) => {
+  await Token.owner((err, account) => {
     if (err) throw err;
     console.log("test owner");
     ownerAddress = account;
     console.log(ownerAddress);
   });
+
+  await (ownerAddress != undefined);
+
+  await getBanner (() => {
+    if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress!== undefined) {
+      console.log(true);
+      var identity = document.getElementById("identity");
+      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+      document.getElementById("adminPage").style.display = "block";
+      }
+    else {
+      console.log("owner address else")
+      console.log(ownerAddress)
+    }
+  })
 }
 
-const getAdminBanner = async () => {
-  if (curAddress == ownerAddress && curAddress !== undefined && ownerAddress!== undefined) {
-    console.log(true);
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-    document.getElementById("adminPage").style.display = "block";
-}}
+
 
 
 getLog();
-console.log("print owner");
-console.log(ownerAddress);
-getAdminBanner();
+
   
 
 
