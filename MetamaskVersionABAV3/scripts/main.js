@@ -771,10 +771,12 @@ var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
 // get current account on metamask
 
-var curAccount = web3.eth.accounts[0]
+//var curAccount = web3.eth.accounts[0]
+web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
 
 function createIdentity() {
-	var curAccount = web3.eth.accounts[0]
+  //var curAccount = web3.eth.accounts[0]
+  web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
 	for (var key in users){
 		if (users.hasOwnProperty(key) && users[key].adress.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
