@@ -800,8 +800,6 @@ const getLog = async () =>{
     ownerAddress = account;
     console.log(ownerAddress);
   });
-  console.log("print owner");
-  console.log(ownerAddress);
 }
 
 const getAdminBanner = async () => {
@@ -814,6 +812,8 @@ const getAdminBanner = async () => {
 
 
 getLog();
+console.log("print owner");
+console.log(ownerAddress);
 getAdminBanner();
   
 
