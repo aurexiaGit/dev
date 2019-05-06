@@ -782,7 +782,7 @@ Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non s
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
 
-const getLog = () =>{
+const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
