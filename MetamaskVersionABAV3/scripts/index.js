@@ -1,9 +1,11 @@
 
-var eventSent = Token.Transfer()
+//var eventSent = Token.Transfer()
+Token.Transfer((err, evSent) => { eventSent = evSent })
 var transactionSentList = []
 eventSent.watch(function(error, result) {
  			if (!error) {
- 				var curAccount = web3.eth.accounts[0];
+				 //var curAccount = web3.eth.accounts[0];
+				 web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
  				transactionSentList.push(result);
  				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
 	 				sending=false;
@@ -16,7 +18,8 @@ eventSent.watch(function(error, result) {
  		})
 
 function createHistory() {
-	var curAccount = web3.eth.accounts[0]
+	//var curAccount = web3.eth.accounts[0]
+	web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
 	if (transactionSentList !== undefined) {
 		var name
 		var history = document.getElementById("history")
@@ -74,7 +77,8 @@ for (var key in users){
 var Balance
 
 function myBalance() {
-	var curAccount = web3.eth.accounts[0]
+	//var curAccount = web3.eth.accounts[0]
+	web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
 	Token.balanceOf(curAccount, function(err,result) {
 		if (!err) {Balance = parseInt(result*Math.pow(10,-18)) ; console.log("")}
 	})
@@ -104,11 +108,11 @@ function createPage() {
 	window.setTimeout(function() {createHistory()},4500)
 }
 
-
+/*
 window.setInterval(function() {
 	createPage()
 }, 1000);
-
+*/
 
 function sendToken(adress,amount) {
 	Token.transfer(adress,amount*Math.pow(10,18),function(err,result) {console.log("")})

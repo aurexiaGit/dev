@@ -769,6 +769,8 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
 
+
+/*
 // get current account on metamask
 
 //var curAccount = web3.eth.accounts[0]
@@ -778,7 +780,7 @@ function createIdentity() {
   //var curAccount = web3.eth.accounts[0]
   web3.eth.getAccounts((err, accounts) => { curAccount = accounts[0] })
 	for (var key in users){
-    console.log(key)
+    //console.log(key)
 		if (users.hasOwnProperty(key) && users[key].address.toLowerCase()===curAccount.toLowerCase()) {
 			var identity = document.getElementById("identity");
 			identity.innerHTML= "<br> <img class = 'pic' src='" + users[key].pic + "' alt='profile pic'> <div id = 'name'> " + users[key].name + " </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> "
@@ -805,3 +807,61 @@ function showNotif() {
 		elmt.style.display = "none"
 	}
 }
+*/
+
+const getLog = async () =>{
+
+  let curAddress;
+  let ownerAddress;
+
+  /*
+  const getBanner = async (_curAddress, _ownerAddress) => {
+    if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+      console.log(true);
+      var identity = document.getElementById("identity");
+      identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+      document.getElementById("adminPage").style.display = "block";
+      }
+    else {
+      console.log("owner address else")
+      console.log(ownerAddress)
+    }
+  };
+  */
+
+ const getBanner = async (_curAddress, _ownerAddress) => {
+  //while (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    while (_curAddress !== _ownerAddress || _curAddress == undefined || _ownerAddress== undefined) {
+    }
+    console.log(true);
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> 'Administrator' </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    document.getElementById("adminPage").style.display = "block";
+};  
+
+
+  web3.eth.getAccounts((err, accounts) => {
+    if (err) throw err;
+    console.log ("entre get account");
+    curAddress = accounts[0];
+    console.log(curAddress);
+  });
+
+  Token.owner((err, account) => {
+    if (err) throw err;
+    console.log("test owner");
+    ownerAddress = account;
+    console.log(ownerAddress);
+  });
+  
+  //let TO = await Token.owner()
+  //console.log("test await TO")
+  //console.log(TO)
+
+  getBanner(curAddress, ownerAddress);
+}
+
+
+
+
+getLog();
