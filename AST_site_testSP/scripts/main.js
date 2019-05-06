@@ -787,6 +787,27 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
+  const getCurAddress = () =>{
+    return new Promise(function(resolve, reject){
+      web3.eth.getAccounts((err, accounts) => {
+        if (err) return reject(err);
+        console.log ("entre get account");
+        resolve(accounts[0]);
+    })
+  })}
+
+  const getOwner = () =>{
+    return new Promise(function(resolve, reject){
+      Token.owner((err, accounts) => {
+        if (err) return reject(err);
+        console.log ("entre get account");
+        resolve(accounts);
+    })
+  })}
+
+  curAddress = await getCurAddress();
+  ownerAddress = await getOwner();
+/*
   curAddress = await web3.eth.getAccounts((err, accounts) => {
     if (err) throw err;
     console.log ("entre get account");
@@ -800,7 +821,7 @@ const getLog = async () =>{
     return account;
     console.log(ownerAddress);
   });
-
+*/
   return getBanner(curAddress, ownerAddress);
 }
 
