@@ -814,7 +814,7 @@ const getLog = async () =>{
     console.log(ownerAddress);
   });
 
-  await (ownerAddress != undefined).then(console.log("test await"))
+  await (ownerAddress != undefined).then(function (){console.log('test await/then');});
 
   await getBanner(curAddress, ownerAddress);
 }
