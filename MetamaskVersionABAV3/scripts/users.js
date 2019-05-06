@@ -1,48 +1,37 @@
-var users = {
-			"admin":{
-				"adress": "0xc4d446c6B924c431f89214319D5A3e6bb67e7627",
-				"name": "ADMINSTRATOR",
-				"pic":"images/admin.png"
-			},
-
-			// adresses de l'ancien contrat
-
-
-			//"dominique":{
-			//	"adress": "0xC88c287C1bB453B930f35d78F67929cdc437c485",			
-			//	"name": "Dominique HERROU",
-			//	"pic":"images/dherrou.jpg"
-			//},
-			//"eric":{
-			//	"adress": "0xcf37772538838Cd2A78D83E1Daef8Acb6cA034bB",			
-			//	"name": "Eric VERNHES",
-			//	"pic":"images/evernhes.png"
-			//},
-			//"david":{
-			//	"adress": "0x9C71D4EBE39CAf12c1461466697B0816Ab86b95b",			
-			//	"name": "David VILLARD",
-			//	"pic":"images/dvillard.jpg"
-			//},
-			//"charles":{
-			//	"adress": "0xcD75711050c94FaFB974498c1C164f650Adca0F1",			
-			//	"name": "Charles BAIN DE LA COCQUERIE",
-			//	"pic":"images/cbain.jpg"
-			//},
-			
-			"test":{
-				"adress": "0xFAb573993Bb7772E9ee25cca1A2DB24a79A4beA8",
-				"name": "Test",
-				"pic":"images/blank.png"
-			}
-		}
+var users = {}
 
 var charity = {
 			"cravate": {
-				"adress": "0x9Fa264121346183090d4077bd2EA8B01f395E13e",			// adresse de l'ancien contrat
+				"adress": "0x48BC8f1c04940da24349a7c9cdeC2040A860C3fe",			
 				"name": "La Cravate Solidaire"
-			},
-			"bouchon": {
-				"adress": "0x83FeCf8CC96e2eac6Ce4F6f8bdB4F69466BE483E",			// adresse de l'ancien contrat
-				"name": "Les Bouchons d'Amour"
 			}
 }
+
+function getUsers() {
+	// The function gets the array of addresses from the Blockchain and then fills the dictionnary users
+	var i = 0
+	var name
+	Token.getMembers(function(err,result) {listAddress = result})
+	// To get the information the js file must comunicate with the Blockchain. This takes time.
+	// Thus, we need to create this embedded function to wait between each calls.
+	function getUser() {
+		var address = listAddress[i]
+		Token.getName(address,function(err,result) {name = result})
+		window.setTimeout(function () {
+			users[name]={}
+			users[name].address=address
+			users[name].name=name
+			i++
+			if (i < listAddress.length) {getUser()}
+		},1500)
+	}
+	window.setTimeout(function() {getUser()},1500)
+}
+
+function createUsers() {
+	// Sometimes getUsers doesn't work the first time. This function repeates the call until it has succeeded.
+	getUsers()
+	window.setTimeout(function() {if (users["Administrator"]===undefined) {createUsers()}},6000)
+}
+
+createUsers()
