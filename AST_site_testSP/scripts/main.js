@@ -766,32 +766,23 @@ else {
   ethereum.enable()
 }
 
-/* Salut Amine,
-Je te mets dans ces commentaires les avancées que j'ai pu faire après t'avoir envoyé le mail
-La solution de mettre nos méthodes dans des fonctions à l'air de bien fonctionner. A noter 
-qu'il faut créer des fonctions asynchrones (async) car cela permet a chaque callback de s'effectuer
-à sa vitesse. 
-Le problème que je rencontre ici (pour l'identification de l'admin) c'est que comme la fonction est asynchrone
-le "if " s'execute avant les deux fonctions "getAccount" et "Token.owner" (car ces deux fonctions ont des callbacks et donc
-prennent leur temps pour s'executer). 
-Du coup les variables curAddress et ownerAddress n'étant pas encore instancié dans le if, la condition n'est pas remplie
+/*Salut Amine 
 
-Aussi pour le moment lorsque tu te connecte sur la page et que tu te log sur metamask, il faut refresh la page
-pour que le site récupère ton addresse (c'est a fixer mais ca va de pair avec le problème actuel)
-Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non sur celle ci 
-car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
-*/
+J'ai enfin réussi a faire fonctionner les await !!!! :) ;) ;) ;)
+Maintenant on a la bonne typo pour activer les fonctions du smartcontract via javascript. Il faut cependant faire attention à l'imbrication
+des async et await mais si tu respectes ce que j'ai fait ca devrait marcher.
+Le seul probleme reste le curAddress qui n'est pas mis a jour quand on se connecte a metamask, la solution de créer une page log devrait resoudre
+le problème.*/
 
 const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = () =>{
+  const getCurAddress = () =>{                         //ne fonctionne pas, on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
-        console.log ("entre get account");
         resolve(accounts[0]);
     })
   })}
@@ -800,14 +791,15 @@ const getLog = async () =>{
     return new Promise(function(resolve, reject){
       Token.owner((err, accounts) => {
         if (err) return reject(err);
-        console.log ("entre get account");
         resolve(accounts);
     })
   })}
 
   curAddress = await getCurAddress();
+  console.log("get account main")
   console.log(curAddress);
   ownerAddress = await getOwner();
+  console.log("getowner main")
   console.log(ownerAddress);
 /*
   curAddress = await web3.eth.getAccounts((err, accounts) => {
@@ -825,13 +817,9 @@ const getLog = async () =>{
   });
 */
   return getBanner(curAddress, ownerAddress);
-}
+};
 
 const getBanner = (_curAddress, _ownerAddress) => {
-  console.log("curAddress")
-  console.log(_curAddress)
-  console.log("ownerAddress")
-  console.log(_ownerAddress)
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
@@ -839,7 +827,7 @@ const getBanner = (_curAddress, _ownerAddress) => {
     document.getElementById("adminPage").style.display = "block";
     }
   else {
-    console.log("owner address else")
+    console.log("owner address else (main)")
     console.log(_ownerAddress)
   }
 };
