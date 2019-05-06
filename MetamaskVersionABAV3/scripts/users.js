@@ -77,12 +77,14 @@ async function getLogUsers() {
 		while (i<listAddress.length){	
 			var address = listAddress[i]
 			//Token.getName(address)
-			await Token.getName((err, nameUser) => {
-				if (err) throw err;
-				console.log("test name");
-				name = nameUser;
-				console.log(name);
-			}),
+			async function getLogName() {
+				await Token.getName((err, nameUser) => {
+					if (err) throw err;
+					console.log("test name");
+					name = nameUser;
+					console.log(name);
+				})
+			}
 			users[name]={}
 			users[name].address=address
 			users[name].name=name
