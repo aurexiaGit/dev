@@ -72,6 +72,8 @@ async function getLogUsers() {
 		console.log("test members");
 		listAddress = arrayAddress;
 		console.log(listAddress);
+		var i = 0
+		var name
 		while (i<listAddress.length){	
 			var address = listAddress[i]
 			name = Token.getName(address)
