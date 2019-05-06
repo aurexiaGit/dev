@@ -862,6 +862,16 @@ getLog();
 //getAccount
 // simple proxy to promisify the web3 api. It doesn't deal with edge cases like web3.eth.filter and contracts.
 async function getConnection() {
+  const promisify = (inner) =>
+    new Promise((resolve, reject) =>
+        inner((err, res) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        })
+    );
   const proxiedWeb3Handler = {
     // override getter                               
     get: (target, name) => {              
@@ -889,7 +899,8 @@ async function getOwner() {
       if (error) {
         reject(error);
       } else {
-        resolve(account);
+        ownerAddress = account
+        resolve(ownerAddress);
       }
     })
   })
