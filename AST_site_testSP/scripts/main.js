@@ -782,6 +782,10 @@ Par contre si tu veux tester des trucs peux tu coder sur ta version ABA et non s
 car sinon je vais être perdu lundi et j'ai vraiment le sentiment d'être tout proche
 */
 const getBanner = async (_curAddress, _ownerAddress) => {
+  console.log("curAddress")
+  console.log(_curAddress)
+  console.log("ownerAddress")
+  console.log(_ownerAddress)
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
@@ -790,7 +794,7 @@ const getBanner = async (_curAddress, _ownerAddress) => {
     }
   else {
     console.log("owner address else")
-    console.log(ownerAddress)
+    console.log(_ownerAddress)
   }
 };
 
