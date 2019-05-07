@@ -67,6 +67,7 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 
 const getRankingList = async () =>{
 
+	console.log("ranking")
 	let users = {};
 	let listAddress;
 	let name;
@@ -98,7 +99,10 @@ const getRankingList = async () =>{
 			})
 		})
 	};
-
+	console.log('cur address')
+	console.log(curAddress)
+	console.log("list address")
+	console.log(listAddress)
 	listAddress = await getMembers();
 	while (i < listAddress.length) {
 		var address = listAddress[i];

@@ -766,9 +766,12 @@ else {
   ethereum.enable()
 }
 
+//variable globale de l'addresse de l'utilisateur
+let curAddress;
+
+
 const getLog = async () =>{
 
-  let curAddress;
   let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
@@ -797,11 +800,7 @@ const getLog = async () =>{
 	}
 
   curAddress = await getCurAddress();
-  console.log("get account main")
-  console.log(curAddress);
   ownerAddress = await getOwner();
-  console.log("getowner main")
-  console.log(ownerAddress);
   curName = await getName(curAddress);
 
   return getBanner(curAddress, ownerAddress, curName);
@@ -809,7 +808,6 @@ const getLog = async () =>{
 
 const getBanner = (_curAddress, _ownerAddress, _name) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-    console.log(true);
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
@@ -841,7 +839,7 @@ function showNotif() {
 const dropdownList = (_users) => {
 
   var select = document.getElementById("dest-select");
-
+  console.log ("main")
   console.log("Post select")
   for (var key in _users){
 	  if (_users.hasOwnProperty(key) && key !== "admin") {
