@@ -72,7 +72,16 @@ const getRankingList = async () =>{
 	let listAddress;
 	let name;
 	let i = 0;
-  
+	
+	const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
+    	})
+	  })
+	}
+
 	const getMembers = () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembers((err, members) => {
@@ -99,11 +108,14 @@ const getRankingList = async () =>{
 			})
 		})
 	};
+	
+	listAddress = await getMembers();
+	curAddress = await getCurAddress
 	console.log('cur address')
 	console.log(curAddress)
 	console.log("list address")
 	console.log(listAddress)
-	listAddress = await getMembers();
+
 	while (i < listAddress.length) {
 		var address = listAddress[i];
 		name = await getName(address);

@@ -766,12 +766,11 @@ else {
   ethereum.enable()
 }
 
-//variable globale de l'addresse de l'utilisateur
-let curAddress;
 
 
 const getLog = async () =>{
 
+  let curAddress;
   let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
