@@ -876,7 +876,7 @@ try {
 catch(err) {
   console.log(err.message);
 }
-
+console.log("Post select")
 for (var key in users){
 	if (users.hasOwnProperty(key) && key !== "admin") {
 		var opt = document.createElement('option');
