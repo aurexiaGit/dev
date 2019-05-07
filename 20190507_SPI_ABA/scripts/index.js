@@ -68,7 +68,9 @@ const sendToken = async(address,amount) => {
 const Transfer = async() => {
 	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
-	let address = users[fullName].address
+	
+	//test pour voir si la fonction marche. A faire: recuperer l'adresse a partir du nom
+	let address = 0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd 
 	let amount = document.getElementById("amount").value
 
 	sending = true
