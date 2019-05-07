@@ -816,7 +816,7 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
     }
   else {
     var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
+    identity.innerHTML= "<br> <img class = 'pic' src= '' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
   }
 };
 
