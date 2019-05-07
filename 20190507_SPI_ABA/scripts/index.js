@@ -39,6 +39,7 @@ accountManagement ();
 
 function Transfer() {
 	sending = true
+	console.log("sending")
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
 	var frm = document.getElementById("send");
 	frm.reset();
@@ -53,6 +54,7 @@ const sendToken = async(address,amount) => {
 				if (err) return reject (err);
 				console.log("transfer execution");
 				resolve(result);
+				console.log(result)
 			})
 		})
 	};

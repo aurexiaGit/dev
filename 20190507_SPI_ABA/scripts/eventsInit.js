@@ -146,7 +146,7 @@ function attributeBalances() {
 	balances()
 }
 
-
+/*
 function sendToken(adress,amount) {
 	Token.transfer(adress,amount*Math.pow(10,18),function(err,result) {console.log("")})
 }
@@ -158,7 +158,7 @@ function Transfer() {
 	frm.reset();
 	return false
 }
-
+*/
 
 function loading() {
 	var elmt = document.getElementById("loading")
