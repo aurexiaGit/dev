@@ -55,3 +55,5 @@ const getUsers = async () =>{
 	}
 	
   };
+
+  getUsers();
