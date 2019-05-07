@@ -23,7 +23,7 @@ const accountManagement = async () => {
 				resolve(result*Math.pow(10,-18));
 			})
 		})
-	  }
+	};
 
 	let curAddress = await getCurAddress();
 	console.log ("current address index");
