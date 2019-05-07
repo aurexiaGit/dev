@@ -815,8 +815,8 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
     document.getElementById("adminPage").style.display = "block";
     }
   else {
-    console.log("owner address else (main)")
-    console.log(_ownerAddress)
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
   }
 };
 
