@@ -158,10 +158,10 @@ const getRankingList = async () =>{
 			break;
 		}
 		else{
-			usersPerso[0].name = err;
-			usersPerso[0].address = err;
-			usersPerso[0].balance = err;
-			usersPerso[0].classement = err;
+			usersPerso[0].name = "err";
+			usersPerso[0].address = "err";
+			usersPerso[0].balance = "err";
+			usersPerso[0].classement = "err";
 		}
 	}
 
