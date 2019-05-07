@@ -85,10 +85,10 @@ const Transfer = async() => {
 			})
 		})
 	};
-	transferTransaction = await transferEvent(address,amount)
+	
 	var frm = document.getElementById("send");
 	frm.reset();
-	
+	transferTransaction = await transferEvent(address,amount)
 	return transferTransaction
 
 }
