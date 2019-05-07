@@ -130,10 +130,10 @@ const getRankingList = async () =>{
 	let usersTop = {};
 	let usersPerso = {
 		Perso:{
-			name = "err",
-			address = "err",
-			balance = "err",
-			classement = "err"
+			name: "err",
+			address: "err",
+			balance: "err",
+			classement: "err"
 		}
 	};
 
