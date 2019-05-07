@@ -140,7 +140,7 @@ const getRankingList = async () =>{
 
 	for (let i = listAddress.length-1; i > 0 ; i--){
 		for (let j = 0; j < i; j++){
-			if (users[j].balance > users[j+1].balance){
+			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
 				users[j] = users[j+1];
 				users[j+1] = users["tempo"];
@@ -155,7 +155,7 @@ const getRankingList = async () =>{
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
 			usersTop[i].balance = users[i].balance;
-			usersTop[i].classement = i+1;
+			usersTop[i].classement = i + 1;
 		}
 	}
 	else{
