@@ -41,6 +41,7 @@ function Transfer() {
 	sending = true
 	console.log("sending")
 	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
+	console.log("post sending")
 	var frm = document.getElementById("send");
 	frm.reset();
 	return false
