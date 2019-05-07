@@ -1,18 +1,3 @@
-
-// for the "sending tokens" loading sentence
-
-var sending = false; 
-
-// hide admin logo 
-
-document.getElementById("adminPage").style.display = "none";
-
-// hide notif banner
-
-var show = false;
-var elmt = document.getElementById("notifBanner");
-elmt.style.display = "none";
-
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
@@ -769,7 +754,6 @@ else {
 const getLog = async () =>{
 
   let curAddress;
-  let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
@@ -779,35 +763,9 @@ const getLog = async () =>{
     })
   })}
 
-  const getOwner = () =>{
-    return new Promise(function(resolve, reject){
-      Token.owner((err, accounts) => {
-        if (err) return reject(err);
-        resolve(accounts);
-    })
-  })}
-
   curAddress = await getCurAddress();
   console.log("get account main")
   console.log(curAddress);
-  ownerAddress = await getOwner();
-  console.log("getowner main")
-  console.log(ownerAddress);
-
-  return getBanner(curAddress, ownerAddress);
-};
-
-const getBanner = (_curAddress, _ownerAddress) => {
-  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-    console.log(true);
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> Administrator </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
-    document.getElementById("adminPage").style.display = "block";
-    }
-  else {
-    console.log("owner address else (main)")
-    console.log(_ownerAddress)
-  }
 };
 
 getLog();
@@ -822,47 +780,3 @@ function showNotif() {
 		elmt.style.display = "none";
 	}
 }
-
-var users = {}
-
-const getUsers = async () =>{
-
-	let listAddress;
-	let name;
-	var i = 0;
-  
-	const getMembers = () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
-
-	const getName = (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
-				if (err) return reject(err);
-				resolve(name);
-		})
-	})}	
-
-	listAddress = await getMembers();
-	console.log("get list of addresses")
-	console.log(listAddress);
-	while (i < listAddress.length) {
-		var address = listAddress[i];
-		console.log(address)
-		name = await getName(address);
-		users[name]={}
-		users[name].address=address
-		users[name].name=name
-		i++
-		console.log(users[name].address)
-		console.log(users[name].name)
-	}
-
-	return users;
-};
-
-getUsers();
