@@ -64,8 +64,16 @@ const sendToken = async(address,amount) => {
 
 };
 */
+const loading = (_sending) => {
+	var elmt = document.getElementById("loading")
+	if (_sending == true) {
+		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
+	}
+}
+
 
 const Transfer = async() => {
+
 	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
 	
@@ -88,7 +96,8 @@ const Transfer = async() => {
 	
 	var frm = document.getElementById("send");
 	frm.reset();
-	transferTransaction = await transferEvent(address,amount)
+	transferTransaction = await transferEvent(address,amount);
+	console.log ("transferTransaction")
+	console.log (transferTransaction)
 	return transferTransaction
-
 }
