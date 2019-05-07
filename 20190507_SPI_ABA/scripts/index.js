@@ -49,6 +49,7 @@ function Transfer() {
 
 const sendToken = async(address,amount) => {
 	//Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
+	console.log("function sendToken reached")
 	const transfer = (_address, _amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(_address, _amount, (err, result) => {
