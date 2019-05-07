@@ -50,6 +50,8 @@ const getUsers = async () =>{
 		users[name].address=address
 		users[name].name=name
 		i++
+		console.log(users[name].address)
+		console.log(users[name].name)
 	}
 	
   };
