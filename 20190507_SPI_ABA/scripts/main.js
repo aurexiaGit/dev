@@ -823,10 +823,29 @@ function showNotif() {
 	}
 }
 
-var users = {}
+
+
+//update drop-down list
+//var select = document.getElementById("dest-select");
+
+const dropdownList = (_users) => {
+
+  var select = document.getElementById("dest-select");
+
+  console.log("Post select")
+  for (var key in _users){
+	  if (_users.hasOwnProperty(key) && key !== "admin") {
+      var opt = document.createElement('option');
+      opt.value = _users[key].address;
+      opt.innerHTML = _users[key].name;
+      select.appendChild(opt);
+    }
+  }
+}
 
 const getUsers = async () =>{
 
+  let users = {};
 	let listAddress;
 	let name;
 	var i = 0;
@@ -862,29 +881,7 @@ const getUsers = async () =>{
 		console.log(users[name].name)
 	}
 
-	return users;
+	return dropdownList(users);
 };
 
 getUsers();
-
-//update drop-down list
-//var select = document.getElementById("dest-select");
-
-
-/*
-try {
-  var select = document.getElementById("dest-select");
-}
-catch(err) {
-  console.log(err.message);
-}
-console.log("Post select")
-for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
-		var opt = document.createElement('option');
-    opt.value = users[key].address;
-    opt.innerHTML = users[key].name;
-    select.appendChild(opt);
-	}
-}
-*/
