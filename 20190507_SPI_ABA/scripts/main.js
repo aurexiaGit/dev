@@ -870,6 +870,8 @@ getUsers();
 //update drop-down list
 //var select = document.getElementById("dest-select");
 
+
+/*
 try {
   var select = document.getElementById("dest-select");
 }
@@ -880,8 +882,9 @@ console.log("Post select")
 for (var key in users){
 	if (users.hasOwnProperty(key) && key !== "admin") {
 		var opt = document.createElement('option');
-    opt.value = users[key].adress;
+    opt.value = users[key].address;
     opt.innerHTML = users[key].name;
     select.appendChild(opt);
 	}
 }
+*/
