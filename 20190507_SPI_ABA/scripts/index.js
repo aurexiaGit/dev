@@ -37,6 +37,7 @@ const accountManagement = async () => {
 
 accountManagement ();
 
+/*
 function Transfer() {
 	sending = true
 	console.log("sending")
@@ -62,3 +63,27 @@ const sendToken = async(address,amount) => {
 	};
 
 };
+*/
+
+function Transfer() {
+	let fullName = document.getElementById("dest-select").value
+	let address = users[fullName].address
+	let amount = document.getElementById("amount").value
+
+	sending = true
+	const transfer = (address, amount) =>{
+		return new Promise(function(resolve, reject){
+			Token.transfer(address, amount, (err, result) => {
+				if (err) return reject (err);
+				console.log("transfer execution");
+				resolve(result);
+				console.log(result)
+			})
+		})
+	};
+
+	var frm = document.getElementById("send");
+	frm.reset();
+	return transfer(address,amount)
+
+}
