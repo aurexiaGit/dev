@@ -1,3 +1,58 @@
+//////////////////////////////////////////////////
+//      Verification du status Admin ou non     //
+//////////////////////////////////////////////////
+
+const getLog = async () =>{
+
+	let curAddress;
+	let ownerAddress;
+  
+	const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+	  return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+		  if (err) return reject(err);
+		  resolve(accounts[0]);
+	  })
+	})}
+  
+	const getOwner = () =>{
+	  return new Promise(function(resolve, reject){
+		Token.owner((err, accounts) => {
+		  if (err) return reject(err);
+		  resolve(accounts);
+	  })
+	})}
+  
+	curAddress = await getCurAddress();
+	console.log("get account main")
+	console.log(curAddress);
+	ownerAddress = await getOwner();
+	console.log("getowner main")
+	console.log(ownerAddress);
+  
+	return getBanner(curAddress, ownerAddress);
+  };
+  
+  const getBanner = (_curAddress, _ownerAddress) => {
+	if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+	  console.log(true);
+	  var identity = document.getElementById("identity");
+	  identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> Administrator </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+	  document.getElementById("adminPage").style.display = "block";
+	  }
+	else {
+	  console.log("owner address else (main)")
+	  console.log(_ownerAddress)
+	}
+  };
+  
+  getLog();
+
+
+
+////////////////////////////////////////////////////////
+//     Creation de la table listant les users         //
+////////////////////////////////////////////////////////
 
 const getUserTable = (_users) => {
 	var table = document.getElementById("content")
