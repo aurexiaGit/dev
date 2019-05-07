@@ -871,6 +871,8 @@ getUsers();
 var select = document.getElementById("dest-select")	
 
 for (var key in users){
+  console.log(users.hasOwnProperty(key))
+  console.log(key)
 	if (users.hasOwnProperty(key) && key !== "admin") {
     console.log("True")
 		var opt = document.createElement('option');
