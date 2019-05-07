@@ -120,6 +120,7 @@ const getRankingList = async () =>{
 		var address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
+		users[i]={};
 		users[i].address=address;
 		users[i].name=name;
 		users[i].balance=balance;
@@ -150,6 +151,7 @@ const getRankingList = async () =>{
 	if (listAddress.length <= 3){
 		console.log("dans if1")
 		for (let i=0; i<listAddress.length; i++){
+			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
 			usersTop[i].balance = users[i].balance;
