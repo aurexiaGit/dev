@@ -120,7 +120,6 @@ const getRankingList = async () =>{
 		var address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
-		users[i]={};
 		users[i].address=address;
 		users[i].name=name;
 		users[i].balance=balance;
