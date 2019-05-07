@@ -139,7 +139,7 @@ const getRankingList = async () =>{
 		}
 	}
 
-	if (listAddress <= 3){
+	if (listAddress.length <= 3){
 		usersTop = users;
 		for (let i=0; i<listAddress.length; i++){
 			usersTop[i].classement = i+1;
