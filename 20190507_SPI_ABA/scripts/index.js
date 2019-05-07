@@ -65,13 +65,14 @@ const sendToken = async(address,amount) => {
 };
 */
 
-function Transfer() {
+const transfer = async() => {
+	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
 	let address = users[fullName].address
 	let amount = document.getElementById("amount").value
 
 	sending = true
-	const transfer = (address, amount) =>{
+	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(address, amount, (err, result) => {
 				if (err) return reject (err);
@@ -84,6 +85,6 @@ function Transfer() {
 
 	var frm = document.getElementById("send");
 	frm.reset();
-	return transfer(address,amount)
+	return transferEvent(address,amount)
 
 }
