@@ -787,21 +787,31 @@ const getLog = async () =>{
     })
   })}
 
+  const getName = (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, name) => {
+				if (err) return reject(err);
+				resolve(name);
+			})
+		})
+	}
+
   curAddress = await getCurAddress();
   console.log("get account main")
   console.log(curAddress);
   ownerAddress = await getOwner();
   console.log("getowner main")
   console.log(ownerAddress);
+  curName = await getName(curAddress);
 
-  return getBanner(curAddress, ownerAddress);
+  return getBanner(curAddress, ownerAddress, curName);
 };
 
-const getBanner = (_curAddress, _ownerAddress) => {
+const getBanner = (_curAddress, _ownerAddress, _name) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     console.log(true);
     var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> Administrator </div> <br> <img id='notifButton' onclick='showNotif()' src='images/notification.png'> ";
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
     }
   else {
