@@ -74,7 +74,7 @@ const Transfer = async() => {
 	let amount = document.getElementById("amount").value
 	
 	sending = true
-	transferTransaction = await transferEvent(address,amount)
+	
 	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
@@ -85,7 +85,7 @@ const Transfer = async() => {
 			})
 		})
 	};
-
+	transferTransaction = await transferEvent(address,amount)
 	var frm = document.getElementById("send");
 	frm.reset();
 	
