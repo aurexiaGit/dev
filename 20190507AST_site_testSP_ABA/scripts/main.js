@@ -766,14 +766,6 @@ else {
   ethereum.enable()
 }
 
-/*Salut Amine 
-
-J'ai enfin réussi a faire fonctionner les await !!!! :) ;) ;) ;)
-Maintenant on a la bonne typo pour activer les fonctions du smartcontract via javascript. Il faut cependant faire attention à l'imbrication
-des async et await mais si tu respectes ce que j'ai fait ca devrait marcher.
-Le seul probleme reste le curAddress qui n'est pas mis a jour quand on se connecte a metamask, la solution de créer une page log devrait resoudre
-le problème.*/
-
 const getLog = async () =>{
 
   let curAddress;
@@ -801,21 +793,7 @@ const getLog = async () =>{
   ownerAddress = await getOwner();
   console.log("getowner main")
   console.log(ownerAddress);
-/*
-  curAddress = await web3.eth.getAccounts((err, accounts) => {
-    if (err) throw err;
-    console.log ("entre get account");
-    return accounts[0];
-    console.log(curAddress);
-  });
 
-  ownerAddress = await Token.owner((err, account) => {
-    if (err) throw err;
-    console.log("test owner");
-    return account;
-    console.log(ownerAddress);
-  });
-*/
   return getBanner(curAddress, ownerAddress);
 };
 
@@ -832,14 +810,7 @@ const getBanner = (_curAddress, _ownerAddress) => {
   }
 };
 
-
 getLog();
-
-  
-
-
-
-
 
 function showNotif() {
 	if (!show) {
