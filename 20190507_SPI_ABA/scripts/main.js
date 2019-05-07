@@ -868,7 +868,14 @@ const getUsers = async () =>{
 getUsers();
 
 //update drop-down list
-var select = document.getElementById("dest-select");
+//var select = document.getElementById("dest-select");
+
+try {
+  var select = document.getElementById("dest-select");
+}
+catch(err) {
+  console.log(err.message);
+}
 
 for (var key in users){
 	if (users.hasOwnProperty(key) && key !== "admin") {
