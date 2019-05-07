@@ -127,15 +127,15 @@ const getRankingList = async () =>{
 		i++
 	}
 
-	let usersTop = {};
-	let usersPerso = {
-		Perso:{
-			name: "err",
-			address: "err",
-			balance: "err",
-			classement: "err"
-		}
-	};
+	var usersTop = {};
+	var usersPerso = {
+					Perso:{
+						name: "err",
+						address: "err",
+						balance: "err",
+						classement: "err"
+					}
+				};
 
 
 	for (let i = listAddress.length-1; i > 0 ; i--){
