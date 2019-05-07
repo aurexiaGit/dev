@@ -72,11 +72,12 @@ const Transfer = async() => {
 	//test pour voir si la fonction marche. A faire: recuperer l'adresse a partir du nom
 	let address = 0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd 
 	let amount = document.getElementById("amount").value
-
+	
 	sending = true
+	transferTransaction = await transferEvent(address,amount)
 	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount, (err, result) => {
+			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
 				if (err) return reject (err);
 				console.log("transfer execution");
 				resolve(result);
@@ -87,7 +88,7 @@ const Transfer = async() => {
 
 	var frm = document.getElementById("send");
 	frm.reset();
-	transferTransaction = await transferEvent(address,amount)
+	
 	return transferTransaction
 
 }
