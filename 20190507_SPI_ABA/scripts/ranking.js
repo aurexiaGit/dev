@@ -161,7 +161,10 @@ const getRankingList = async () =>{
 	else{
 		console.log("dans if2")
 		for (let i=0; i<3; i++){
-			usersTop[i]=users[i];
+			usersTop[i] = {};
+			usersTop[i].name = users[i].name;
+			usersTop[i].address = users[i].address;
+			usersTop[i].balance = users[i].balance;
 			usersTop[i].classement = i+1;
 		}
 	}
@@ -171,7 +174,7 @@ const getRankingList = async () =>{
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
 			usersPerso["Perso"].balance = users[i].balance;
-			usersPerso["Perso"].classement = users[i].classement;
+			usersPerso["Perso"].classement = i + 1;
 			break;
 		}
 	}
