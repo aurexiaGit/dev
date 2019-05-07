@@ -13,7 +13,7 @@ const accountManagement = async () => {
 			console.log ("entre get account");
 			resolve(accounts[0]);
 		})
-  })};
+  	})};
 
   	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
@@ -36,3 +36,25 @@ const accountManagement = async () => {
 }
 
 accountManagement ();
+
+function Transfer() {
+	sending = true
+	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
+	var frm = document.getElementById("send");
+	frm.reset();
+	return false
+}
+
+const sendToken = async(address,amount) => {
+	//Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
+	const transfer = (_address, _amount) =>{
+		return new Promise(function(resolve, reject){
+			Token.transfer(_address, _amount, (err, result) => {
+				if (err) return reject (err);
+				console.log("transfer execution");
+				resolve(result);
+			})
+		})
+	};
+
+};
