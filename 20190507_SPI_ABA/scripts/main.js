@@ -872,9 +872,11 @@ var select = document.getElementById("dest-select")
 
 for (var key in users){
 	if (users.hasOwnProperty(key) && key !== "admin") {
+    console.log("True")
 		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
+    opt.value = users[key].adress;
+    opt.innerHTML = users[key].name;
+    select.appendChild(opt);
+    console.log(opt)
 	}
 }
