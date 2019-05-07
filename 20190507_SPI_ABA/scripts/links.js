@@ -46,6 +46,6 @@ function rankingPage() {
 	window.location="ranking.html"
 }
 
-function historicalPage() {
-	window.location="historical.html"
+function historyPage() {
+	window.location="history.html"
 }
