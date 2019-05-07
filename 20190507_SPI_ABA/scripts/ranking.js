@@ -163,10 +163,10 @@ const getRankingList = async () =>{
 
 	for (let i=0; i<listAddress.length; i++){
 		if (users[i].address == curAddress){
-			usersPerso[Perso].name = users[i].name;
-			usersPerso[Perso].address = curAddress;
-			usersPerso[Perso].balance = users[i].balance;
-			usersPerso[Perso].classement = users[i].classement;
+			usersPerso["Perso"].name = users[i].name;
+			usersPerso["Perso"].address = curAddress;
+			usersPerso["Perso"].balance = users[i].balance;
+			usersPerso["Perso"].classement = users[i].classement;
 			break;
 		}
 	}
