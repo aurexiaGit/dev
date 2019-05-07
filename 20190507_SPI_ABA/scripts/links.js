@@ -1,5 +1,5 @@
 function homePage() {
-	window.location="index.html"
+	window.location="welcome.html.html"
 }
 
 function adminPage() {
