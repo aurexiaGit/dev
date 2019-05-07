@@ -150,8 +150,10 @@ const getRankingList = async () =>{
 
 	if (listAddress.length <= 3){
 		console.log("dans if1")
-		usersTop = users;
 		for (let i=0; i<listAddress.length; i++){
+			usersTop[i].name = users[i].name;
+			usersTop[i].address = users[i].address;
+			usersTop[i].balance = users[i].balance;
 			usersTop[i].classement = i+1;
 		}
 	}
