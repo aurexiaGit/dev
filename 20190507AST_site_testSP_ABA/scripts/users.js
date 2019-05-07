@@ -17,11 +17,10 @@ var charity = {
 			}
 }
 
-const getUsers = async () =>{
+const getUsersInfo = async () =>{
 
 	let listAddress;
 	let name;
-	var i = 0;
   
 	const getMembers = () =>{                        
 	  return new Promise(function(resolve, reject){
@@ -42,10 +41,17 @@ const getUsers = async () =>{
 	listAddress = await getMembers();
 	console.log("get list of addresses")
 	console.log(listAddress);
+	name = await getName();
+	console.log("get names")
+	console.log(name);
 
+	return getUsers(listAddress, name);
+};
+
+const getUsers = (_listAddress, _name) => {
+	var i = 0
 	while (i < listAddress.length) {
 		var address = listAddress[i];
-		name = await getName();
 		users[name]={}
 		users[name].address=address
 		users[name].name=name
@@ -53,7 +59,6 @@ const getUsers = async () =>{
 		console.log(users[name].address)
 		console.log(users[name].name)
 	}
-	
-  };
+};
 
-  getUsers();
+getUsersInfo();
