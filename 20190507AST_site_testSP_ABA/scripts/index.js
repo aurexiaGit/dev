@@ -6,7 +6,7 @@ function createPage(Balance) {
 
 const accountManagement = async () => {
 
-	const getCurAddress = () =>{                         //ne fonctionne pas, on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
