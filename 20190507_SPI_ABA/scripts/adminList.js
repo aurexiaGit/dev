@@ -58,7 +58,7 @@ const getUserTable = (_users) => {
 	var table = document.getElementById("content")
 	var i = 1
 
-	for (var key in users){
+	for (var key in _users){
 
 		var row = document.createElement('tr')
 		row.class = "row" + i.toString() + " body"
@@ -66,22 +66,22 @@ const getUserTable = (_users) => {
 
 		var column1 = document.createElement('td')
 		column1.className = "column1"
-		column1.innerHTML = "<img src = '" + users[key].pic + "'>"
+		column1.innerHTML = "<img src = '" + _users[key].pic + "'>"
 		row.appendChild(column1)
 
 		var column2 = document.createElement('td')
 		column2.className = "column2"
-		column2.innerHTML = users[key].name
+		column2.innerHTML = _users[key].name
 		row.appendChild(column2)
 
 		var column3 = document.createElement('td')
 		column3.className = "column3"
-		column3.innerHTML = users[key].address
+		column3.innerHTML = _users[key].address
 		row.appendChild(column3)
 
 		var column4 = document.createElement('td')
 		column4.className = "column4"
-		column4.innerHTML = users[key].balance
+		column4.innerHTML = _users[key].balance
 		row.appendChild(column4)
 
 		i++
