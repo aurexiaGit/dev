@@ -65,7 +65,7 @@ const sendToken = async(address,amount) => {
 };
 */
 
-const transfer = async() => {
+const Transfer = async() => {
 	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
 	let address = users[fullName].address
