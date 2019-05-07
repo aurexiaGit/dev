@@ -111,6 +111,9 @@ const getRankingList = async () =>{
 	
 	listAddress = await getMembers();
 	curAddress = await getCurAddress();
+
+	//listAddress.splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
+
 	console.log('cur address')
 	console.log(curAddress)
 	console.log("list address")
