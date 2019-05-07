@@ -70,7 +70,7 @@ const Transfer = async() => {
 	let fullName = document.getElementById("dest-select").value
 	
 	//test pour voir si la fonction marche. A faire: recuperer l'adresse a partir du nom
-	let address = 0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd 
+	let address = "0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd"
 	let amount = document.getElementById("amount").value
 	
 	sending = true
@@ -86,8 +86,8 @@ const Transfer = async() => {
 		})
 	};
 	transferTransaction = await transferEvent(address,amount)
-	//var frm = document.getElementById("send");
-	//frm.reset();
+	var frm = document.getElementById("send");
+	frm.reset();
 	
 	return transferTransaction
 
