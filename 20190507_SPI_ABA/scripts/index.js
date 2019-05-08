@@ -37,33 +37,6 @@ const accountManagement = async () => {
 
 accountManagement ();
 
-/*
-function Transfer() {
-	sending = true
-	console.log("sending")
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
-	console.log("post sending")
-	var frm = document.getElementById("send");
-	frm.reset();
-	return false
-}
-
-const sendToken = async(address,amount) => {
-	//Token.transfer(address,amount*Math.pow(10,18),function(err,result) {console.log("")})
-	console.log("function sendToken reached")
-	const transfer = (_address, _amount) =>{
-		return new Promise(function(resolve, reject){
-			Token.transfer(_address, _amount, (err, result) => {
-				if (err) return reject (err);
-				console.log("transfer execution");
-				resolve(result);
-				console.log(result)
-			})
-		})
-	};
-
-};
-*/
 const loading = (_sending) => {
 	var elmt = document.getElementById("loading")
 	if (_sending == true) {
@@ -76,13 +49,14 @@ const Transfer = async() => {
 
 	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
-	
-	//test pour voir si la fonction marche. A faire: recuperer l'adresse a partir du nom
-	let address = "0x4968cccE83Ad9300f27c7Ece3a15e469b51a5dFd"
+	users = await getUsersForTransfer();
+	let address = users[fullName].address
 	let amount = document.getElementById("amount").value
+
 	
 	sending = true
-	
+	console.log(amount)
+	console.log(amount*Math.pow(10,18))
 	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
@@ -101,3 +75,41 @@ const Transfer = async() => {
 	console.log (transferTransaction)
 	return transferTransaction
 }
+
+
+const getUsersForTransfer = async () =>{
+
+	let users = {};
+	let listAddress;
+	let name;
+	var i = 0;
+
+	const getMembers = () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getMembers((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+		})
+	})}
+
+	const getName = (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, name) => {
+				if (err) return reject(err);
+				resolve(name);
+		})
+	})}	
+
+	listAddress = await getMembers();
+	while (i < listAddress.length) {
+		var address = listAddress[i];
+		name = await getName(address);
+		users[name]={}
+		users[name].address=address
+		users[name].name=name
+		i++
+	}
+
+	return users;
+};
+  
