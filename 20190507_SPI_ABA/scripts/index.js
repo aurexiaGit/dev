@@ -48,6 +48,7 @@ const Transfer = async() => {
 
 	console.log("in Transfer function")
 	let fullName = document.getElementById("dest-select").value
+	console.log(fullName)
 	
 	let users = {};
 	let listAddress;
@@ -81,8 +82,8 @@ const Transfer = async() => {
 	}
 
 	let addressReceiver = users[fullName].address
+	console.log(addressReceiver)
 	let amount = document.getElementById("amount").value
-
 	
 	sending = true
 	console.log(amount)
