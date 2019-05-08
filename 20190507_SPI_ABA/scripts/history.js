@@ -110,3 +110,4 @@ const getHistory = async () =>{
 
 };
 
+getHistory();
