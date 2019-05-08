@@ -53,6 +53,7 @@ const Transfer = async() => {
 	sending = true
 	console.log(amount)
 	console.log(amount*Math.pow(10,18))
+
 	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
@@ -63,11 +64,10 @@ const Transfer = async() => {
 			})
 		})
 	};
-	
-	transferTransaction = await transferEvent(address,amount);
+
 	var frm = document.getElementById("send");
 	frm.reset();
-	
+	transferTransaction = await transferEvent(address,amount);
 	console.log ("transferTransaction")
 	console.log (transferTransaction)
 	return transferTransaction
