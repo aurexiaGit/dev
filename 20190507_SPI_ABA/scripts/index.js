@@ -44,8 +44,11 @@ const loading = (_sending) => {
 	}
 }
 
-const getUsersForTransfer = async () =>{
+const Transfer = async() => {
 
+	console.log("in Transfer function")
+	let fullName = document.getElementById("dest-select").value
+	
 	let users = {};
 	let listAddress;
 	let name;
@@ -77,24 +80,16 @@ const getUsersForTransfer = async () =>{
 		i++
 	}
 
-	return users;
-};
-
-const Transfer = async() => {
-
-	console.log("in Transfer function")
-	let fullName = document.getElementById("dest-select").value
-	users = await getUsersForTransfer();
-	let address = users[fullName].address
+	let addressReceiver = users[fullName].address
 	let amount = document.getElementById("amount").value
 
 	
 	sending = true
 	console.log(amount)
 	console.log(amount*Math.pow(10,18))
-	const transferEvent = (address, amount) =>{
+	const transferEvent = (addressReceiver, amount) =>{
 		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+			Token.transfer(addressReceiver, amount*Math.pow(10,18), (err, result) => {
 				if (err) return reject (err);
 				console.log("transfer execution");
 				resolve(result);
@@ -105,7 +100,7 @@ const Transfer = async() => {
 	
 	var frm = document.getElementById("send");
 	frm.reset();
-	transferTransaction = await transferEvent(address,amount);
+	transferTransaction = await transferEvent(addressReceiver,amount);
 	console.log ("transferTransaction")
 	console.log (transferTransaction)
 	return transferTransaction
