@@ -838,16 +838,12 @@ function showNotif() {
 const dropdownList = (_users) => {
 
   var select = document.getElementById("dest-select");
-  console.log ("main")
-  console.log("Post select")
-  console.log(_users)
   for (var key in _users){
-    console.log("in for loop")
 	  if (_users.hasOwnProperty(key) && key !== "admin") {
-      console.log('in if loop")')
       var opt = document.createElement('option');
       opt.value = _users[key].address;
       opt.innerHTML = _users[key].name;
+      select.appendChild(opt);
     }
   }
 }
