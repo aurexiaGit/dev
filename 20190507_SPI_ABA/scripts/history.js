@@ -82,15 +82,18 @@ const getHistory = async () =>{
 
 			var column3 = document.createElement('td')
 			column3.className = "column3"
-			column3.innerHTML = users[resultArray[key].from].name
+			var addressFrom = resultArray[key].from
+			console.log(addressFrom)
+			column3.innerHTML = users[addressFrom].name
 			row.appendChild(column3)
-			console.log(users[resultArray[key].from].name)
+			console.log(users[addressFrom].name)
 
 			var column4 = document.createElement('td')
 			column4.className = "column4"
-			column4.innerHTML = users[resultArray[key].to].name
+			var addressTo = resultArray[key].to
+			column4.innerHTML = users[addressTo].name
 			row.appendChild(column4)
-			console.log(users[resultArray[key].to].name)
+			console.log(users[addressTo].name)
 			
 			var column5 = document.createElement('td')
 			column5.className = "column5"
