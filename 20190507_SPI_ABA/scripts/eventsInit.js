@@ -15,7 +15,7 @@ eventSent.watch(function(error, result) {
  			}
  		})
 
-
+/*
 var select = document.getElementById("dest-select")
 
 for (var key in users){
@@ -26,7 +26,8 @@ for (var key in users){
 	    select.appendChild(opt);
 	}
 }
-
+*/
+/*
 function createHistory() {
 	var curAccount = web3.eth.accounts[0]
 	if (transactionSentList !== undefined) {
@@ -71,6 +72,7 @@ function createHistory() {
 		})
 	}	
 }
+*/
 
 function getListMax(list) {
 	// returns list of index(es) of maximum (maxima if equal)

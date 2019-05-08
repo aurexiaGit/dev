@@ -35,48 +35,35 @@ const getHistory = async () =>{
 	})}	
 
 	listAddress = await getMembers();
-	console.log("get list of addresses")
-	console.log(listAddress);
 	while (i < listAddress.length) {
 		var address = listAddress[i];
-		console.log(address)
 		name = await getName(address);
 		users[name]={}
 		users[name].address=address
 		users[name].name=name
 		i++
-		console.log(users[name].address)
-		console.log(users[name].name)
 	}
 
-	/*
-	function convert(timestamp) {
-		var date = new Date(                          // Convert to date
-		  parseInt(timestamp)                         // Convert to integer
-		);
-		return [
-		  ("0" + date.getDate()).slice(-2),           // Get day and pad it with zeroes
-		  ("0" + (date.getMonth()+1)).slice(-2),      // Get month and pad it with zeroes
-		  date.getFullYear()                          // Get full year
-		].join('/');                                  // Glue the pieces together
-	}
-	*/
-
+	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
 		var resultArray = data.result
 
+		// fill the history with data from json file. Required/relevant columns from json are:
+		//1) timeStamp (nb of seconds since 01/01/1970)
+		//2) from: originator of the transaction
+		//3) to: receiver of the transaction
+		//4) value: transaction value (to divide by 10^18)
 		const fillHistory = async (resultArray, curAddress) =>{
-			
 			var table = document.getElementById("content-history")
 			var i = 1
 			for (var key in resultArray){
-
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
 				table.appendChild(row)
 
 				var column1 = document.createElement('td')
 				column1.className = "column1"
+				//convert timestamp to date (*1000 below is to get it in ms)
 				var d = new Date(parseInt(resultArray[key].timeStamp)*1000);
 				var date = d.getDate();
 				var month = d.getMonth(); 
@@ -109,20 +96,17 @@ const getHistory = async () =>{
 				var column5 = document.createElement('td')
 				column5.className = "column5"
 				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = "+" + resultArray[key].value*Math.pow(10,-18)
+					column5.innerHTML = resultArray[key].value*Math.pow(10,-18)
 				}
 				else {
-					column5.innerHTML = "-" + resultArray[key].value*Math.pow(10,-18)
+					column5.innerHTML = resultArray[key].value*Math.pow(10,-18)
 				}
 				row.appendChild(column5)
-
+				
 				i++
-
 			}
 		}
 		fillHistory(resultArray, curAddress);
 	});
-
 };
-
 getHistory();
