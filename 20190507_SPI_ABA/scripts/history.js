@@ -49,6 +49,7 @@ const getHistory = async () =>{
 		console.log(users[name].name)
 	}
 
+	/*
 	function convert(timestamp) {
 		var date = new Date(                          // Convert to date
 		  parseInt(timestamp)                         // Convert to integer
@@ -58,11 +59,10 @@ const getHistory = async () =>{
 		  ("0" + (date.getMonth()+1)).slice(-2),      // Get month and pad it with zeroes
 		  date.getFullYear()                          // Get full year
 		].join('/');                                  // Glue the pieces together
-	  }
+	}
+	*/
 
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
-		console.log(data)
-		console.log(users)
 		var resultArray = data.result
 
 		const fillHistory = async (resultArray, curAddress) =>{
@@ -77,9 +77,8 @@ const getHistory = async () =>{
 
 				var column1 = document.createElement('td')
 				column1.className = "column1"
-				column1.innerHTML = convert(resultArray[key].timeStamp)
+				column1.innerHTML = Date(resultArray[key].timeStamp)
 				row.appendChild(column1)
-				console.log(convert(resultArray[key].timeStamp))
 
 				var column2 = document.createElement('td')
 				column2.className = "column2"
@@ -90,30 +89,26 @@ const getHistory = async () =>{
 					column2.innerHTML = "Reception"
 				}
 				row.appendChild(column2)
-				console.log(column2.innerHTML)
 
 				var column3 = document.createElement('td')
 				column3.className = "column3"
 				column3.innerHTML = await getName(resultArray[key].from)
-				console.log(column3.innerHTML)
 				row.appendChild(column3)
 
 				var column4 = document.createElement('td')
 				column4.className = "column4"
 				column4.innerHTML = await getName(resultArray[key].to)
 				row.appendChild(column4)
-				console.log(column4.innerHTML)
 				
 				var column5 = document.createElement('td')
 				column5.className = "column5"
 				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = "+" + resultArray[key].value
+					column5.innerHTML = "+" + resultArray[key].value*Math.pow(10,18)
 				}
 				else {
-					column5.innerHTML = "-" + resultArray[key].value
+					column5.innerHTML = "-" + resultArray[key].value*Math.pow(10,18)
 				}
 				row.appendChild(column5)
-				console.log(column5.innerHTML)
 
 				i++
 
