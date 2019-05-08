@@ -77,7 +77,7 @@ const getHistory = async () =>{
 
 				var column1 = document.createElement('td')
 				column1.className = "column1"
-				column1.innerHTML = Date(parseInt(resultArray[key].timeStamp)).toLocaleDateString();
+				column1.innerHTML = Date(parseInt(resultArray[key].timeStamp))
 				console.log(resultArray[key].timeStamp)
 				console.log(Date(1554716291))
 				row.appendChild(column1)
