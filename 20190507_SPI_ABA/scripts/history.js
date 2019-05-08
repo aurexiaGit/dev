@@ -49,12 +49,23 @@ const getHistory = async () =>{
 		console.log(users[name].name)
 	}
 
+	function convert(timestamp) {
+		var date = new Date(                          // Convert to date
+		  parseInt(timestamp)                         // Convert to integer
+		);
+		return [
+		  ("0" + date.getDate()).slice(-2),           // Get day and pad it with zeroes
+		  ("0" + (date.getMonth()+1)).slice(-2),      // Get month and pad it with zeroes
+		  date.getFullYear()                          // Get full year
+		].join('/');                                  // Glue the pieces together
+	  }
+
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
 		console.log(data)
 		console.log(users)
 		var resultArray = data.result
 
-		const fillHistory = async (resultArray) =>{
+		const fillHistory = async (resultArray, curAddress) =>{
 			
 			var table = document.getElementById("content-history")
 			var i = 1
@@ -66,17 +77,17 @@ const getHistory = async () =>{
 
 				var column1 = document.createElement('td')
 				column1.className = "column1"
-				column1.innerHTML = resultArray[key].timeStamp
+				column1.innerHTML = convert(resultArray[key].timeStamp)
 				row.appendChild(column1)
-				console.log(resultArray[key].timeStamp)
+				console.log(convert(resultArray[key].timeStamp))
 
 				var column2 = document.createElement('td')
 				column2.className = "column2"
-				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column2.innerHTML = "Reception"
+				if (resultArray[key].from == curAddress) {
+					column2.innerHTML = "Transfer"
 				}
 				else {
-					column2.innerHTML = "Transfer"
+					column2.innerHTML = "Reception"
 				}
 				row.appendChild(column2)
 				console.log(column2.innerHTML)
@@ -96,10 +107,10 @@ const getHistory = async () =>{
 				var column5 = document.createElement('td')
 				column5.className = "column5"
 				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = "+" + resultArray[key].amount
+					column5.innerHTML = "+" + resultArray[key].value
 				}
 				else {
-					column5.innerHTML = "+" + resultArray[key].amount
+					column5.innerHTML = "-" + resultArray[key].value
 				}
 				row.appendChild(column5)
 				console.log(column5.innerHTML)
@@ -108,7 +119,7 @@ const getHistory = async () =>{
 
 			}
 		}
-		fillHistory(resultArray);
+		fillHistory(resultArray, curAddress);
 	});
 
 };
