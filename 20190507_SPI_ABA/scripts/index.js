@@ -44,39 +44,6 @@ const loading = (_sending) => {
 	}
 }
 
-
-const Transfer = async() => {
-
-	console.log("in Transfer function")
-	let fullName = document.getElementById("dest-select").value
-	users = await getUsersForTransfer();
-	let address = users[fullName].address
-	let amount = document.getElementById("amount").value
-
-	
-	sending = true
-	console.log(amount)
-	console.log(amount*Math.pow(10,18))
-	const transferEvent = (address, amount) =>{
-		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
-				if (err) return reject (err);
-				console.log("transfer execution");
-				resolve(result);
-				console.log(result)
-			})
-		})
-	};
-	
-	var frm = document.getElementById("send");
-	frm.reset();
-	transferTransaction = await transferEvent(address,amount);
-	console.log ("transferTransaction")
-	console.log (transferTransaction)
-	return transferTransaction
-}
-
-
 const getUsersForTransfer = async () =>{
 
 	let users = {};
@@ -112,4 +79,35 @@ const getUsersForTransfer = async () =>{
 
 	return users;
 };
+
+const Transfer = async() => {
+
+	console.log("in Transfer function")
+	let fullName = document.getElementById("dest-select").value
+	users = await getUsersForTransfer();
+	let address = users[fullName].address
+	let amount = document.getElementById("amount").value
+
+	
+	sending = true
+	console.log(amount)
+	console.log(amount*Math.pow(10,18))
+	const transferEvent = (address, amount) =>{
+		return new Promise(function(resolve, reject){
+			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+				if (err) return reject (err);
+				console.log("transfer execution");
+				resolve(result);
+				console.log(result)
+			})
+		})
+	};
+	
+	var frm = document.getElementById("send");
+	frm.reset();
+	transferTransaction = await transferEvent(address,amount);
+	console.log ("transferTransaction")
+	console.log (transferTransaction)
+	return transferTransaction
+}
   
