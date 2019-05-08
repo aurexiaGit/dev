@@ -77,9 +77,7 @@ const getHistory = async () =>{
 
 				var column1 = document.createElement('td')
 				column1.className = "column1"
-				console.log(parseInt(resultArray[key].timeStamp))
-				console.log(typeof parseInt(resultArray[key].timeStamp))
-				var d = new Date(parseInt(resultArray[key].timeStamp));
+				var d = new Date(parseInt(resultArray[key].timeStamp)*1000);
 				var date = d.getDate();
 				var month = d.getMonth(); 
 				var year = d.getFullYear();
