@@ -7,7 +7,7 @@ const refreshBalance= async () => {
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
-			let result = accounts[0].toUpperCase();
+			let result = accounts[0].toLowerCase();
 			resolve(result);
 		})
   	})};
@@ -147,7 +147,7 @@ const accountManagement = async () => {
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
-			let result = accounts[0].toUpperCase();
+			let result = accounts[0].toLowerCase();
 			resolve(result);
 		})
   	})};

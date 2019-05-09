@@ -825,7 +825,7 @@ const getLog = async () =>{
 };
 
 const getBanner = (_curAddress, _ownerAddress, _name) => {
-  if (_curAddress.toUpperCase() == _ownerAddress.toUpperCase() && _curAddress !== undefined && _ownerAddress!== undefined) {
+  if (_curAddress.toLowerCase() == _ownerAddress.toLowerCase() && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
@@ -851,7 +851,7 @@ const dropdownList = (_users) => {
   for (var key in _users){
 	  if (_users.hasOwnProperty(key) && key !== "admin") {
       var opt = document.createElement('option');
-      opt.value = _users[key].address.toUpperCase();
+      opt.value = _users[key].address.toLowerCase();
       opt.innerHTML = _users[key].name;
       select.appendChild(opt);
     }
@@ -889,7 +889,7 @@ const getUsers = async () =>{
 		console.log(address)
 		name = await getName(address);
 		users[name]={}
-		users[name].address=address.toUpperCase();
+		users[name].address=address.toLowerCase();
 		users[name].name=name
 		i++
 		console.log(users[name].address)
