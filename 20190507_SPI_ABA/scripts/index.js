@@ -1,13 +1,22 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 
+const refreshBalance = () => {
+	console.log("change detected!")
+	alert("change detected!")
+	accountManagement ();
+};
 
+ethereum.on('accountsChanged', refreshBalance);
+
+/*
 window.ethereum.on('accountsChanged', function () {
 	// Time to reload your interface with accounts[0]!
 	console.log("change detected!")
 	alert("change detected!")
 	accountManagement ();
 })
+*/
 
 /*
 window.ethereum.on('accountsChanged', function (err, result) {

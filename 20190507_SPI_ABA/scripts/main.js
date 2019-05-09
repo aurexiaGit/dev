@@ -890,9 +890,3 @@ const getUsers = async () =>{
 };
 
 getUsers();
-
-window.ethereum.on('accountsChanged', function () {
-	// Time to reload your interface with accounts[0]!
-	console.log("change detected!")
-	alert("change detected!")
-})
