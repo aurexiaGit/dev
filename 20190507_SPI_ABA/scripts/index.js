@@ -10,6 +10,15 @@ window.ethereum.on('accountsChanged', function () {
 })
 */
 
+window.ethereum.on('accountsChanged', function (err, result) {
+	if (!error) {
+		console.log("change detected!")
+		alert("change detected!")
+		result = accountManagement ();
+		return result;
+	}
+})
+
 /*
 var myobj = {a : 1};
 
