@@ -1,6 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-
+/*
 const refreshBalance= async () => {
 
 	const getCurAddress = () =>{                         
@@ -62,7 +62,7 @@ const refreshBalance= async () => {
 	});
 }
 
-refreshBalance();
+refreshBalance();*/
 /*
 const getAccountAddress= async () => {
 
@@ -203,7 +203,7 @@ const Transfer = async() => {
 	transferTransaction = await transferEvent(address,amount);
 	var frm = document.getElementById("send");
 	frm.reset();
-	return transferTransaction
+	return AccountManagement()
 }
 	
 /*
