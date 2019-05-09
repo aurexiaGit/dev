@@ -203,8 +203,8 @@ const Transfer = async() => {
 	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
 	console.log (transferTransaction);
-
-	return document.location.reload(true);
+	document.location.reload(true)
+	return transferTransaction;
 }
 	
 /*
