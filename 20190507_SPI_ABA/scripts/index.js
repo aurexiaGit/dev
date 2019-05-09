@@ -27,10 +27,11 @@ const refreshBalance= async () => {
 	let balance = await getBalance(curAddress);
 	console.log(balance)
 
+	//var today to delete
+	var today = new Date();
+	var time;
+
 	const filter = web3.eth.filter('latest');
-
-	let bal;
-
 	filter.watch((err, res) => {
 	if (err) {
 		console.log(`Watch error: ${err}`);
@@ -39,17 +40,17 @@ const refreshBalance= async () => {
 		const refresh= async (curAddress,balance) => {
 			let bal;
 			bal = await getBalance(curAddress);
+			time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			console.log("Real account balance at " + time + ": " + bal*Math.pow(10,-18))
 			if (balance < bal) {
 				alert("Your transaction has been executed!")
-				balance = bal*Math.pow(10,-18);
-				console.log(balance);
-				console.log("watched")
+				balance = bal;
+				console.log("Transaction has been executed, balance is " + balance*Math.pow(10,-18));
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 			} else if (balance > bal) {
 				alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
-				balance = bal*Math.pow(10,-18);
-				console.log(balance);
-				console.log("watched")
+				balance = bal;
+				console.log("Reception of tokens, balance is " + balance*Math.pow(10,-18));
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 			}
 		}
