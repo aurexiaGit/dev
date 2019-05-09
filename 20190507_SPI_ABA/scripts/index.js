@@ -33,6 +33,9 @@ const getAccountInfo= async () => {
 }
 */
 const getAccountAddress= async () => {
+
+	let curAddress;
+
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
@@ -41,12 +44,15 @@ const getAccountAddress= async () => {
 			resolve(accounts[0]);
 		})
   	})};
-	let curAddress = await getCurAddress();
+	curAddress = await getCurAddress();
 	console.log(curAddress)
 	return curAddress;
 }
 
 const getAccountBalance= async (_curAddress) => {
+
+	let balance;
+
   	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
@@ -56,7 +62,7 @@ const getAccountBalance= async (_curAddress) => {
 			})
 		})
 	};
-	let balance = await getBalance(_curAddress);
+	balance = await getBalance(_curAddress);
 	console.log(balance)
 	return balance;
 }
