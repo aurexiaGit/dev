@@ -61,7 +61,7 @@ const refreshBalance= async () => {
 	}
 	});
 }
-
+refreshBalance();
 /*
 const getAccountAddress= async () => {
 
@@ -202,8 +202,6 @@ const Transfer = async() => {
 	var frm = document.getElementById("send");
 	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
-	console.log (transferTransaction);
-	document.location.reload(true)
 	return transferTransaction;
 }
 	
