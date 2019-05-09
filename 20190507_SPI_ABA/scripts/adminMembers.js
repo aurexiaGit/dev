@@ -3,7 +3,7 @@ const resetAdd = () => {
 	frm.reset();
 }
 
-const addMember = async () => {
+const addMember = () => {
 	// Called when clicking on Add button
 	var _address = document.getElementById("adress1").value
 	var _name = document.getElementById("name1").value
