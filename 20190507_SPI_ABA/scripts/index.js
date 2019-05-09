@@ -45,7 +45,7 @@ var myResults = myEvent.get(function(error, logs){ ... });
 // would stop and uninstall the filter
 myEvent.stopWatching();
 */
-const getAccountInfo = async () => {
+const getAccountInfo= async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
@@ -53,23 +53,24 @@ const getAccountInfo = async () => {
 			if (err) return reject(err);
 			resolve(accounts[0]);
 		})
-	})};
+  	})};
 
-	const getBalance = (_curAddress) =>{
+  	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
 				resolve(result*Math.pow(10,-18));
 			})
 		})
-  	};
+	};
 
 	let curAddress = await getCurAddress();
 	let balance = await getBalance(curAddress);
-	let accountInfo=[curAddress,balance]
-  
-  	return accountInfo;
+	let accountInfo = [curAddress, balance];
+
+	return accountInfo;
 }
+
 
 var accountInfo = getAccountInfo();
 var curAddress = accountInfo[0]
