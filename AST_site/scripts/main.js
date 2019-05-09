@@ -797,6 +797,7 @@ const getLog = async () =>{
     return new Promise(function(resolve, reject){
       Token.owner((err, accounts) => {
         if (err) return reject(err);
+        console.log(accounts);
         resolve(accounts);
     })
   })}
