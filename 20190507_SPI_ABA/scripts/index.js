@@ -62,8 +62,9 @@ const getAccountBalance= async (_curAddress) => {
 }
 
 var curAddress = getAccountAddress();
-var balance = getAccountBalance(curAddress);
 console.log(curAddress)
+//var balance = getAccountBalance(curAddress);
+balance = 17449999999999996995997
 console.log(balance)
 
 const filter = web3.eth.filter('latest');
