@@ -1,6 +1,9 @@
-// connect to ethereum API web3
+// Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
+var fm = new Fortmatic('pk_test_3994809832992B29');
+window.web3 = new Web3(fm.getProvider())
 
-var web3 = new Web3(web3.currentProvider);
+// Request user login if needed, returns current user account address
+web3.currentProvider.enable();
 
 // get token as a variable
 
@@ -499,6 +502,26 @@ var TokenABI = web3.eth.contract([
     "constant": true,
     "inputs": [
       {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb93f9b0a"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
         "name": "_address",
         "type": "address"
       }
@@ -739,21 +762,13 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
+var Token = TokenABI.at('0x43A17a2445cF39387d1E62311b77D7DD9A705C76');
 
-// check that user has Metamask installed 
-
-if (window.ethereum===undefined) {
-	window.confirm('Pas installe'); 
-}
-else {
-  window.ethereum
-  ethereum.enable()
-}
 
 const getLog = async () =>{
 
   let curAddress;
+  let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
@@ -763,20 +778,40 @@ const getLog = async () =>{
     })
   })}
 
+  const getOwner = () =>{
+    return new Promise(function(resolve, reject){
+      Token.owner((err, accounts) => {
+        if (err) return reject(err);
+        resolve(accounts);
+    })
+  })}
+
+  const getName = (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, name) => {
+				if (err) return reject(err);
+				resolve(name);
+			})
+		})
+	}
+
   curAddress = await getCurAddress();
-  console.log("get account main")
-  console.log(curAddress);
+  ownerAddress = await getOwner();
+  curName = await getName(curAddress);
+
+  return getBanner(curAddress, ownerAddress, curName);
+};
+
+const getBanner = (_curAddress, _ownerAddress, _name) => {
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
+    document.getElementById("adminPage").style.display = "block";
+    }
+  else {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
+  }
 };
 
 getLog();
-
-function showNotif() {
-	if (!show) {
-		show=true;
-		elmt.style.display = "";
-	}
-	else {
-		show=false;
-		elmt.style.display = "none";
-	}
-}
