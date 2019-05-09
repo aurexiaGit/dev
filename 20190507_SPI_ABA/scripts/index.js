@@ -1,6 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-const getAccountInfo= async () => {
+const getAccountAddress= async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
@@ -9,7 +9,8 @@ const getAccountInfo= async () => {
 			resolve(accounts[0]);
 		})
   	})};
-
+	
+	/*
   	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
@@ -18,19 +19,33 @@ const getAccountInfo= async () => {
 			})
 		})
 	};
-
+	*/
 	let curAddress = await getCurAddress();
-	let balance = await getBalance(curAddress);
+	//let balance = await getBalance(curAddress);
 	//let accountInfo = [curAddress, balance];
-
+	return curAddress;
 	//return accountInfo;
+	//return balance;
+}
+
+const getAccountBalance= async (_curAddress) => {
+	
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+	};
+	let balance = await getBalance(_curAddress);
 	return balance;
 }
 
 //var accountInfo = getAccountInfo();
-var curAddress = "0xc4d446c6B924c431f89214319D5A3e6bb67e7627"
+var curAddress = getAccountAddress();
 //var curAddress = accountInfo[0]
-var balance = getAccountInfo();
+var balance = getAccountBalance(curAddress);
 //var balance = accountInfo[1]
 console.log(curAddress)
 console.log(balance)
@@ -45,10 +60,19 @@ filter.watch((err, res) => {
       if (err) {
         console.log(`getBalance error: ${err}`);
       } else {
-        balance = bal*Math.pow(10,-18);
-        console.log(balance);
-		console.log("watched")
-		document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		if (balance < bal) {
+			alert("Your transaction has been executed!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		} else if (balance > bal) {
+			alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		}
       }
     });
   }
