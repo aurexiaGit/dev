@@ -15,7 +15,7 @@ eventSent.watch(function(error, result) {
  			}
  		})
 
-
+/*
 var select = document.getElementById("dest-select")
 
 for (var key in users){
@@ -26,7 +26,8 @@ for (var key in users){
 	    select.appendChild(opt);
 	}
 }
-
+*/
+/*
 function createHistory() {
 	var curAccount = web3.eth.accounts[0]
 	if (transactionSentList !== undefined) {
@@ -71,6 +72,7 @@ function createHistory() {
 		})
 	}	
 }
+*/
 
 function getListMax(list) {
 	// returns list of index(es) of maximum (maxima if equal)
@@ -146,7 +148,7 @@ function attributeBalances() {
 	balances()
 }
 
-
+/*
 function sendToken(adress,amount) {
 	Token.transfer(adress,amount*Math.pow(10,18),function(err,result) {console.log("")})
 }
@@ -158,7 +160,7 @@ function Transfer() {
 	frm.reset();
 	return false
 }
-
+*/
 
 function loading() {
 	var elmt = document.getElementById("loading")

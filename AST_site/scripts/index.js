@@ -1,123 +1,145 @@
+// ******************************************* 
+//Test update amount value after sending tokens
+const getAccountAddress= async () => {
 
-var eventSent = Token.Transfer()
-var transactionSentList = []
-eventSent.watch(function(error, result) {
- 			if (!error) {
- 				var curAccount = web3.eth.accounts[0];
- 				transactionSentList.push(result);
- 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
-	 				sending=false;
-	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="<br><div>Sent! </div><img src='images/checked.png'/>"
-	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
-	 			}
- 				console.log("");
- 			}
- 		})
-
-function createHistory() {
-	var curAccount = web3.eth.accounts[0]
-	if (transactionSentList !== undefined) {
-		var name
-		var history = document.getElementById("history")
-		history.innerHTML = ""
-		transactionSentList.forEach(function(transactionSent) {
-			if (curAccount.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-						name = users[key].name
-					}
-				}
-				for (var key in charity) {
-					if (charity[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-						name = charity[key].name
-					}
-				}
-				var posList = document.createElement("ul")
-				posList.id = "sending"
-				var notif = document.createElement("li")
-				notif.innerHTML = "You sent <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + name + "</strong>"
-				posList.appendChild(notif)
-				history.appendChild(posList)
-			}
-			if (curAccount.toLowerCase() === transactionSent.args.to.toLowerCase()) { 
-				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-						name = users[key].name
-					}
-				}
-				if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
-					name = "Aurexia Central Bank"
-				}
-				var negList = document.createElement("ul")
-				negList.id = "receiving"
-				var notif = document.createElement("li")
-				notif.innerHTML = "You received <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> from <strong>" + name + "</strong>"
-				negList.appendChild(notif)
-				history.appendChild(negList)
-			}
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
 		})
-	}	
+  	})};
+	
+	/*
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+	};
+	*/
+	let curAddress = await getCurAddress();
+	//let balance = await getBalance(curAddress);
+	//let accountInfo = [curAddress, balance];
+	return curAddress;
+	//return accountInfo;
+	//return balance;
 }
 
-var select = document.getElementById("dest-select")																																																																																																																																																																																																																																																																																																																																																																															
+const getAccountBalance= async (_curAddress) => {
+	
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+	};
+	let balance = await getBalance(_curAddress);
+	return balance;
+}
 
-for (var key in users){
-	if (users.hasOwnProperty(key) && key !== "admin") {
-		var opt = document.createElement('option');
-	    opt.value = users[key].adress;
-	    opt.innerHTML = users[key].name;
-	    select.appendChild(opt);
+//var accountInfo = getAccountInfo();
+var curAddress = getAccountAddress();
+//var curAddress = accountInfo[0]
+var balance = getAccountBalance(curAddress);
+//var balance = accountInfo[1]
+console.log(curAddress)
+console.log(balance)
+
+const filter = web3.eth.filter('latest');
+filter.watch((err, res) => {
+  if (err) {
+    console.log(`Watch error: ${err}`);
+  } else {
+    // Update balance
+    Token.balanceOf(curAddress, (err, bal) => {
+      if (err) {
+        console.log(`getBalance error: ${err}`);
+      } else {
+		if (balance < bal) {
+			alert("Your transaction has been executed!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		} else if (balance > bal) {
+			alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		}
+      }
+    });
+  }
+});
+
+// *******************************************
+
+function createPage(Balance) {	
+	if (document.getElementById("astValue") !== undefined) {
+		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
 	}
 }
 
-var Balance
+const accountManagement = async () => {
 
-function myBalance() {
-	var curAccount = web3.eth.accounts[0]
-	Token.balanceOf(curAccount, function(err,result) {
-		if (!err) {Balance = parseInt(result*Math.pow(10,-18)) ; console.log("")}
-	})
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
+		})
+  	})};
+
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+	};
+
+	let curAddress = await getCurAddress();
+	let balance = await getBalance(curAddress);
+
+	return createPage(balance)
 }
 
-function getBalance(Account) {
-	var Account = Account
-	Token.balanceOf(this.Account, function(err,result) {
-		if (!err) {Balance = result*Math.pow(10,-18) ; console.log("")}
-	})
-	return Balance
-}
+accountManagement ();
 
-function loading() {
+const loading = (_sending) => {
 	var elmt = document.getElementById("loading")
-	if (sending) {
+	if (_sending == true) {
 		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
 	}
 }
 
-function createPage() {	
-	loading()
-	myBalance()
-	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
-	}
-	window.setTimeout(function() {createHistory()},4500)
-}
+//Transfer tokens when clicking on "send" in home page
+const Transfer = async() => {
 
-
-window.setInterval(function() {
-	createPage()
-}, 1000);
-
-
-function sendToken(adress,amount) {
-	Token.transfer(adress,amount*Math.pow(10,18),function(err,result) {console.log("")})
-}
-
-function Transfer() {
+	let address = document.getElementById("dest-select").value
+	let amount = document.getElementById("amount").value
+	
 	sending = true
-	sendToken(document.getElementById("dest-select").value,document.getElementById("amount").value)
+
+	const transferEvent = (address, amount) =>{
+		return new Promise(function(resolve, reject){
+			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+				if (err) return reject (err);
+				resolve(result);
+			})
+		})
+	};
+
 	var frm = document.getElementById("send");
 	frm.reset();
-	return false
+	transferTransaction = await transferEvent(address,amount);
+	return transferTransaction
 }
+  

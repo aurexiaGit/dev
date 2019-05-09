@@ -1,18 +1,3 @@
-
-// for the "sending tokens" loading sentence
-
-var sending = false; 
-
-// hide admin logo 
-
-document.getElementById("adminPage").style.display = "none";
-
-// hide notif banner
-
-var show = false;
-var elmt = document.getElementById("notifBanner");
-elmt.style.display = "none";
-
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
@@ -766,12 +751,9 @@ else {
   ethereum.enable()
 }
 
-
-
 const getLog = async () =>{
 
   let curAddress;
-  let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
@@ -781,40 +763,9 @@ const getLog = async () =>{
     })
   })}
 
-  const getOwner = () =>{
-    return new Promise(function(resolve, reject){
-      Token.owner((err, accounts) => {
-        if (err) return reject(err);
-        resolve(accounts);
-    })
-  })}
-
-  const getName = (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
-				if (err) return reject(err);
-				resolve(name);
-			})
-		})
-	}
-
   curAddress = await getCurAddress();
-  ownerAddress = await getOwner();
-  curName = await getName(curAddress);
-
-  return getBanner(curAddress, ownerAddress, curName);
-};
-
-const getBanner = (_curAddress, _ownerAddress, _name) => {
-  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
-    document.getElementById("adminPage").style.display = "block";
-    }
-  else {
-    var identity = document.getElementById("identity");
-    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
-  }
+  console.log("get account main")
+  console.log(curAddress);
 };
 
 getLog();
@@ -829,64 +780,3 @@ function showNotif() {
 		elmt.style.display = "none";
 	}
 }
-
-
-
-//update drop-down list
-//var select = document.getElementById("dest-select");
-
-const dropdownList = (_users) => {
-
-  var select = document.getElementById("dest-select");
-  for (var key in _users){
-	  if (_users.hasOwnProperty(key) && key !== "admin") {
-      var opt = document.createElement('option');
-      opt.value = _users[key].address;
-      opt.innerHTML = _users[key].name;
-      select.appendChild(opt);
-    }
-  }
-}
-
-const getUsers = async () =>{
-
-  let users = {};
-	let listAddress;
-	let name;
-	var i = 0;
-  
-	const getMembers = () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
-
-	const getName = (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
-				if (err) return reject(err);
-				resolve(name);
-		})
-	})}	
-
-	listAddress = await getMembers();
-	console.log("get list of addresses")
-	console.log(listAddress);
-	while (i < listAddress.length) {
-		var address = listAddress[i];
-		console.log(address)
-		name = await getName(address);
-		users[name]={}
-		users[name].address=address
-		users[name].name=name
-		i++
-		console.log(users[name].address)
-		console.log(users[name].name)
-	}
-
-	return dropdownList(users);
-};
-
-getUsers();

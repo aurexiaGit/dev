@@ -1,5 +1,5 @@
 function homePage() {
-	window.location="index.html"
+	window.location="main.html.html"
 }
 
 function adminPage() {
@@ -40,4 +40,12 @@ function sendTokens() {
 
 function memList() {
 	window.location="adminList.html"
+}
+
+function rankingPage() {
+	window.location="ranking.html"
+}
+
+function historyPage() {
+	window.location="history.html"
 }
