@@ -91,7 +91,7 @@ filter.watch((err, res) => {
       if (err) {
         console.log(`getBalance error: ${err}`);
       } else {
-        balance = bal*Math.pow(10,18);
+        balance = bal*Math.pow(10,-18);
         console.log(balance);
 		console.log("watched")
 		document.getElementById("astValue").innerHTML = balance.toString() + " AST"
