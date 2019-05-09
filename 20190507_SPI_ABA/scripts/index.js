@@ -1,6 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-
+/*
 const refreshBalance = () => {
 	console.log("change detected!")
 	alert("change detected!")
@@ -8,6 +8,9 @@ const refreshBalance = () => {
 };
 
 ethereum.on('accountsChanged', refreshBalance);
+*/
+
+
 
 /*
 window.ethereum.on('accountsChanged', function () {

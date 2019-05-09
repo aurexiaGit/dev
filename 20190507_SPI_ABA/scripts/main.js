@@ -890,3 +890,9 @@ const getUsers = async () =>{
 };
 
 getUsers();
+
+var myEvent = Token.balanceOf({},{fromBlock: 0, toBlock: 'latest'});
+myEvent.watch(function(error, result){
+    console.log("on watch"); 
+  
+});
