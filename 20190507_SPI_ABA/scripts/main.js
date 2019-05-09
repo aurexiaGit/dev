@@ -908,8 +908,13 @@ myEvent.watch(function(error, result){
 
 var contract;
 window.addEventListener('load', function() {
-  var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627");
+  var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, result) => {
+    if (err) return reject (err);
+    console.log("in getBalance call")
+    return result*Math.pow(10,-18);
+  })
+  console.log(myEvent)
   myEvent.watch(function(error, result){
-      console.log("on watch");
+    console.log("on watch");
   });
 })
