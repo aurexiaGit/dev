@@ -189,11 +189,14 @@ const Transfer = async() => {
 			console.log ("dans la fonction transfert")
 			console.log (address)
 			amount = amount*Math.pow(10,18);
-			Token.transfer.call(address, amount, (err, result) => {
-				if (err) return reject (console.log(err));
-				console.log("reussi " + result)
-				resolve(result);
-			})
+			web3.eth.getAccounts(function(error, accounts) {
+				if (error) throw error;
+				// Send ERC20 transaction with web3
+				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
+					if (error) throw error;
+					console.log(txnHash);
+				});
+			});
 		})
 	};
 
@@ -202,4 +205,8 @@ const Transfer = async() => {
 	transferTransaction = await transferEvent(address,amount);
 	return transferTransaction
 }
-  
+	
+/*
+
+
+*/
