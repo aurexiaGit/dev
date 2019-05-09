@@ -11,7 +11,7 @@ window.ethereum.on('accountsChanged', function () {
 */
 
 window.ethereum.on('accountsChanged', function (err, result) {
-	if (!error) {
+	if (!err) {
 		console.log("change detected!")
 		alert("change detected!")
 		result = accountManagement ();
