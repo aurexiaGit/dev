@@ -45,9 +45,56 @@ var myResults = myEvent.get(function(error, logs){ ... });
 // would stop and uninstall the filter
 myEvent.stopWatching();
 */
+const getAccountInfo = async () => {
+
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
+		})
+	})};
+
+	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+  	};
+
+	let curAddress = await getCurAddress();
+	let balance = await getBalance(curAddress);
+	let accountInfo=[curAddress,balance]
+  
+  	return accountInfo;
+}
+
+var accountInfo = getAccountInfo();
+var curAddress = accountInfo[0]
+var balance = accountInfo[1]
+
+const filter = web3.eth.filter('latest');
+filter.watch((err, res) => {
+  if (err) {
+    console.log(`Watch error: ${err}`);
+  } else {
+    // Update balance
+    Token.balanceOf(curAddress, (err, bal) => {
+      if (err) {
+        console.log(`getBalance error: ${err}`);
+      } else {
+        balance = bal;
+        console.log(balance);
+		console.log("watched")
+		document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+      }
+    });
+  }
+});
 
 // *******************************************
-
 
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
