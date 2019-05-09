@@ -184,7 +184,8 @@ const Transfer = async() => {
 
 	const transferEvent = (address, amount) =>{
 		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+			amount = amount*Math.pow(10,18);
+			Token.transfer(address, amount, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
