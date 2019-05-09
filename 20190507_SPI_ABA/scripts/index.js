@@ -1,6 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-
+/*
 const getAccountInfo= async () => {
 
 	const getCurAddress = () =>{                         
@@ -31,10 +31,38 @@ const getAccountInfo= async () => {
 	return accountInfo;
 
 }
+*/
+const getAccountAddress= async () => {
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			console.log(accounts[0])
+			resolve(accounts[0]);
+		})
+  	})};
+	let curAddress = await getCurAddress();
+	console.log(curAddress)
+	return curAddress;
+}
 
-var accountInfo = getAccountInfo();
-var curAddress = accountInfo[0]
-var balance = accountInfo[1]
+const getAccountBalance= async (_curAddress) => {
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				console.log(result*Math.pow(10,-18))
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+	};
+	let balance = await getBalance(_curAddress);
+	console.log(balance)
+	return balance;
+}
+
+var curAddress = getAccountAddress();
+var balance = getAccountBalance(curAddress);
 console.log(curAddress)
 console.log(balance)
 
