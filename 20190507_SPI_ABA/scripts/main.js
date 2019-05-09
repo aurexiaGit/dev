@@ -892,11 +892,12 @@ const getUsers = async () =>{
 getUsers();
 
 
-var myEvent = Token.balanceOf(_curAddress, (err, result) => {
+var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, result) => {
   if (err) return reject (err);
   return result*Math.pow(10,-18);
 })
 
 myEvent.watch(function(error, result){
     console.log("on watch"); 
+    alert("watch")
 });
