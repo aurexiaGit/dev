@@ -1,3 +1,57 @@
+// ******************************************* 
+//Test update amount value after sending tokens
+console.log(ethereum.isMetamask)
+ethereum.on('accountsChanged', function (accounts) {
+	// Time to reload your interface with accounts[0]!
+	console.log("detests change")
+	alert("change detected!")
+  })
+
+/*
+var myobj = {a : 1};
+
+function watch(obj, prop, handler) { // make this a framework/global function
+    var currval = obj[prop];
+    function callback() {
+        if (obj[prop] != currval) {
+            var temp = currval;
+            currval = obj[prop];
+            handler(temp, currval);
+        }
+    }
+    return callback;
+}
+
+var myhandler = function (oldval, newval) {
+	console.log("seems to work")
+	document.getElementById("astValue").innerHTML = newval.toString() + " AST"
+	console.log(oldval)
+	console.log(newval)
+	
+};
+
+var intervalH = setInterval(watch(myobj, "a", myhandler), 100);
+
+myobj.set_a(2);
+*/
+/*
+var MyContract = web3.eth.contract(abi);
+var myContractInstance = MyContract.at('0x78e97bcc5b5dd9ed228fed7a4887c0d7287344a9');
+// watch for an event with {some: 'args'}
+var myEvent = myContractInstance.myEvent({some: 'args'}, {fromBlock: 0, toBlock: 'latest'});
+myEvent.watch(function(error, result){
+  ...
+});
+// would get all past logs again.
+var myResults = myEvent.get(function(error, logs){ ... });
+...
+// would stop and uninstall the filter
+myEvent.stopWatching();
+*/
+
+// *******************************************
+
+
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
 		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
