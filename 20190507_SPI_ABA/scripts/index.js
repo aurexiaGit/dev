@@ -1,50 +1,5 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-/*
-const refreshBalance = () => {
-	console.log("change detected!")
-	alert("change detected!")
-	accountManagement ();
-};
-
-ethereum.on('accountsChanged', refreshBalance);
-*/
-
-
-
-/*
-window.ethereum.on('accountsChanged', function () {
-	// Time to reload your interface with accounts[0]!
-	console.log("change detected!")
-	alert("change detected!")
-	accountManagement ();
-})
-*/
-
-/*
-window.ethereum.on('accountsChanged', function (err, result) {
-	if (!err) {
-		console.log("change detected!")
-		alert("change detected!")
-		result = accountManagement ();
-		return result;
-	}
-})
-*/
-/*
-var MyContract = web3.eth.contract(abi);
-var myContractInstance = MyContract.at('0x78e97bcc5b5dd9ed228fed7a4887c0d7287344a9');
-// watch for an event with {some: 'args'}
-var myEvent = myContractInstance.myEvent({some: 'args'}, {fromBlock: 0, toBlock: 'latest'});
-myEvent.watch(function(error, result){
-  ...
-});
-// would get all past logs again.
-var myResults = myEvent.get(function(error, logs){ ... });
-...
-// would stop and uninstall the filter
-myEvent.stopWatching();
-*/
 const getAccountInfo= async () => {
 
 	const getCurAddress = () =>{                         
@@ -71,7 +26,6 @@ const getAccountInfo= async () => {
 	//return accountInfo;
 	return balance;
 }
-
 
 //var accountInfo = getAccountInfo();
 var curAddress = "0xc4d446c6B924c431f89214319D5A3e6bb67e7627"
