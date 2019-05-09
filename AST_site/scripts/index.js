@@ -200,10 +200,10 @@ const Transfer = async() => {
 		})
 	};
 
-	let transferTransaction = await transferEvent(address,amount);
-	console.log (transferTransaction)
 	var frm = document.getElementById("send");
 	frm.reset();
+	let transferTransaction = await transferEvent(address,amount);
+	console.log (transferTransaction)
 	return AccountManagement()
 }
 	
