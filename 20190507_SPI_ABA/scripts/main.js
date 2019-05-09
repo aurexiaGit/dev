@@ -893,7 +893,7 @@ getUsers();
 
 // ************************
 // Update balance
-const getAccountAddress= async () => {
+const getAccountInfo= async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
