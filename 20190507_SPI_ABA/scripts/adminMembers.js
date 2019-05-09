@@ -1,17 +1,26 @@
-function addMember() {
+const resetAdd = () => {
+	var frm = document.getElementById("addMember");
+	frm.reset();
+}
+
+
+const addMember = async () => {
 	// Called when clicking on Add button
 	var _address = document.getElementById("adress1").value
 	var _name = document.getElementById("name1").value
 	var _grade = document.getElementById ("grade1").value
-	newMembre = {};
-	newMembre.name = _name;
-	newMembre.address = _address;
-	newMembre.grade = _grade;
-	Token.addToAurexiaMembers(_address,_name,_grade,function(err,result) {console.log("")})
-	users[_name] = newMembre;
-	var frm = document.getElementById("addMember");
-	frm.reset();
-	return false
+
+	const addM = (address,name,grade) =>{                         
+		return new Promise(function(resolve, reject){
+			Token.addToAurexiaMembers(address,name,grade,(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+	let assigment = await addM(_address,_name,_grade)
+	console.log(assigment)
+	return resetAdd()
 }
 
 function remMember() {
