@@ -48,14 +48,18 @@ const refreshBalance= async () => {
 				console.log("Transaction has been executed, balance is " + balance);
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 				balance = await getBalance(curAddress)
+				console.log("balance is " + balance)
 				bal = await getBalance(curAddress)
+				console.log("bal is " + bal)
 			} else if (balance < bal) {
 				alert("You have received " + (balance - bal).toString() + " AST!")
 				balance = bal;
 				console.log("Reception of tokens, balance is " + balance);
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 				balance = await getBalance(curAddress)
+				console.log("balance is " + balance)
 				bal = await getBalance(curAddress)
+				console.log("bal is " + bal)
 			}
 		}
 		refresh(curAddress,balance)
