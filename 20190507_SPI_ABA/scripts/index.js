@@ -41,16 +41,16 @@ const refreshBalance= async () => {
 			let bal;
 			bal = await getBalance(curAddress);
 			time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-			console.log("Real account balance at " + time + ": " + bal*Math.pow(10,-18))
+			console.log("Real account balance at " + time + ": " + bal)
 			if (balance < bal) {
 				alert("Your transaction has been executed!")
 				balance = bal;
-				console.log("Transaction has been executed, balance is " + balance*Math.pow(10,-18));
+				console.log("Transaction has been executed, balance is " + balance);
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 			} else if (balance > bal) {
-				alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
+				alert("You have received " + (balance - bal).toString() + " AST!")
 				balance = bal;
-				console.log("Reception of tokens, balance is " + balance*Math.pow(10,-18));
+				console.log("Reception of tokens, balance is " + balance);
 				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 			}
 		}
