@@ -825,7 +825,7 @@ const getLog = async () =>{
 };
 
 const getBanner = (_curAddress, _ownerAddress, _name) => {
-  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+  if (_curAddress.toLowerCase() == _ownerAddress.toLowerCase() && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
@@ -862,7 +862,6 @@ const dropdownList = (_users) => {
       var opt = document.createElement('option');
       opt.value = _users[key].address;
       opt.innerHTML = _users[key].name;
-      select.appendChild(opt);
     }
   }
 }
