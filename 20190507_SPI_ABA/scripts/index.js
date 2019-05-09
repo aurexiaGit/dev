@@ -1,5 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
+/*
 const getAccountAddress= async () => {
 
 	const getCurAddress = () =>{                         
@@ -9,7 +10,7 @@ const getAccountAddress= async () => {
 			resolve(accounts[0]);
 		})
   	})};
-	
+*/	
 	/*
   	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
@@ -20,14 +21,14 @@ const getAccountAddress= async () => {
 		})
 	};
 	*/
-	let curAddress = await getCurAddress();
+	//let curAddress = await getCurAddress();
 	//let balance = await getBalance(curAddress);
 	//let accountInfo = [curAddress, balance];
-	return curAddress;
+	//return curAddress;
 	//return accountInfo;
 	//return balance;
-}
-
+//}
+/*
 const getAccountBalance= async (_curAddress) => {
 	
   	const getBalance = (_curAddress) =>{
@@ -77,7 +78,7 @@ filter.watch((err, res) => {
     });
   }
 });
-
+*/
 // *******************************************
 
 function createPage(Balance) {	
