@@ -1,12 +1,23 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-console.log(ethereum.isMetaMask)
-ethereum.on('accountsChanged', function () {
+
+Web3.currentProvider.publicConfigStore.on('update',refresh);
+
+function refresh(error, result) {
+	if (!error) {
+		console.log("change detected!")
+		alert("change detected!")
+		result = accountManagement ();
+	}
+}
+/*
+window.ethereum.on('accountsChanged', function () {
 	// Time to reload your interface with accounts[0]!
-	console.log("detects change")
+	console.log("change detected!")
 	alert("change detected!")
 	accountManagement ();
-  })
+})
+*/
 
 /*
 var myobj = {a : 1};
