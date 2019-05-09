@@ -189,16 +189,16 @@ const Transfer = async() => {
 			console.log ("dans la fonction transfert")
 			console.log (address)
 			amount = amount*Math.pow(10,18);
-			Token.transfer(address, amount, (err, result) => {
+			Token.transfer.call(address, amount, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	transferTransaction = await transferEvent(address,amount);
 	var frm = document.getElementById("send");
 	frm.reset();
+	transferTransaction = await transferEvent(address,amount);
 	return transferTransaction
 }
   
