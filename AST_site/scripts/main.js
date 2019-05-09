@@ -14,7 +14,7 @@ var elmt = document.getElementById("notifBanner");
 elmt.style.display = "none";
 
 // Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
-var fm = new Fortmatic('pk_test_3994809832992B29');
+let fm = new Fortmatic('pk_test_3994809832992B29');
 window.web3 = new Web3(fm.getProvider())
 
 // Request user login if needed, returns current user account address
@@ -22,7 +22,7 @@ web3.currentProvider.enable();
 
 // get token as a variable
 
-var TokenABI = web3.eth.contract([
+let TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
@@ -777,7 +777,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x43A17a2445cF39387d1E62311b77D7DD9A705C76');
+let Token = TokenABI.at('0x43A17a2445cF39387d1E62311b77D7DD9A705C76');
 
 
 const getLog = async () =>{
