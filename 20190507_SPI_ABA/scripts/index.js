@@ -7,7 +7,6 @@ const refreshBalance= async () => {
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
-			console.log(accounts[0])
 			resolve(accounts[0]);
 		})
   	})};
@@ -16,16 +15,13 @@ const refreshBalance= async () => {
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
-				console.log(result*Math.pow(10,-18))
 				resolve(result*Math.pow(10,-18));
 			})
 		})
 	};
 	
 	let curAddress = await getCurAddress();
-	console.log(curAddress)
 	let balance = await getBalance(curAddress);
-	console.log(balance)
 
 	//var today to delete
 	var today = new Date();
@@ -59,7 +55,8 @@ const refreshBalance= async () => {
 			}
 			return balance;
 		}
-		balance = refresh(curAddress,balance);
+		refresh(curAddress,balance);
+		balance = await refresh(curAddress, balance);
 	}
 	});
 }
