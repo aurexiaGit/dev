@@ -1,7 +1,7 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-/*
-const getAccountInfo= async () => {
+
+const refreshBalance= async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
@@ -26,12 +26,36 @@ const getAccountInfo= async () => {
 	console.log(curAddress)
 	let balance = await getBalance(curAddress);
 	console.log(balance)
-	let accountInfo = [curAddress, balance];
-	console.log(accountInfo)
-	return accountInfo;
 
+	const filter = web3.eth.filter('latest');
+
+	let bal;
+
+	filter.watch((err, res) => {
+	if (err) {
+		console.log(`Watch error: ${err}`);
+	} else {
+	// Update balance
+		bal = await getBalance(curAddress);
+		if (balance < bal) {
+			alert("Your transaction has been executed!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		} else if (balance > bal) {
+			alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
+			balance = bal*Math.pow(10,-18);
+			console.log(balance);
+			console.log("watched")
+			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		}
+	}
+	});
 }
-*/
+
+refreshBalance();
+/*
 const getAccountAddress= async () => {
 
 	let curAddress;
@@ -100,7 +124,7 @@ filter.watch((err, res) => {
 	});
 }
 });
-
+*/
 // *******************************************
 
 function createPage(Balance) {	
