@@ -862,6 +862,7 @@ const dropdownList = (_users) => {
       var opt = document.createElement('option');
       opt.value = _users[key].address;
       opt.innerHTML = _users[key].name;
+      select.appendChild(opt);
     }
   }
 }
