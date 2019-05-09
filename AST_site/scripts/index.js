@@ -201,9 +201,9 @@ const Transfer = async() => {
 	};
 
 	var frm = document.getElementById("send");
-	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
 	console.log (transferTransaction)
+	frm.reset();
 	return AccountManagement()
 }
 	
