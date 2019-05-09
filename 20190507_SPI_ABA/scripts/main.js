@@ -905,7 +905,7 @@ myEvent.watch(function(error, result){
 });
 */
 
-
+/*
 var contract;
 window.addEventListener('load', function() {
   var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, result) => {
@@ -918,3 +918,49 @@ window.addEventListener('load', function() {
     console.log("on watch");
   });
 })
+*/
+
+const accManagement = async () => {
+
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
+		})
+  	})};
+
+  	const getBalance = (_curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.balanceOf(_curAddress, (err, result) => {
+				if (err) return reject (err);
+				resolve(result*Math.pow(10,-18));
+			})
+		})
+  };
+
+  let curAddress = await getCurAddress();
+  let balance = await getBalance(curAddress);
+  
+  return balance;
+}
+
+let balance = accManagement();
+
+const filter = web3.eth.filter('latest');
+filter.watch((err, res) => {
+  if (err) {
+    console.log(`Watch error: ${err}`);
+  } else {
+    // Update balance
+    Token.getBalance("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, bal) => {
+      if (err) {
+        console.log(`getBalance error: ${err}`);
+      } else {
+        balance = bal;
+        console.log(balance);
+        console.log("watched")
+      }
+    });
+  }
+});
