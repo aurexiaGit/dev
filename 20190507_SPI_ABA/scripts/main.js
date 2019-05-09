@@ -891,7 +891,7 @@ const getUsers = async () =>{
 
 getUsers();
 
-web3.publicConfigStore.on('update',refresh);
+web3.currentProvider.publicConfigStore.on('update',refresh);
 
 function refresh(error, result) {
 	if (!error) {
