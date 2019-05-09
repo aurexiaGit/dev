@@ -890,3 +890,13 @@ const getUsers = async () =>{
 };
 
 getUsers();
+
+web3.publicConfigStore.on('update',refresh);
+
+function refresh(error, result) {
+	if (!error) {
+		console.log("change detected!")
+		alert("change detected!")
+		result = accountManagement ();
+	}
+}

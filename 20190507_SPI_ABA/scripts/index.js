@@ -1,15 +1,6 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 
-Web3.currentProvider.publicConfigStore.on('update',refresh);
-
-function refresh(error, result) {
-	if (!error) {
-		console.log("change detected!")
-		alert("change detected!")
-		result = accountManagement ();
-	}
-}
 /*
 window.ethereum.on('accountsChanged', function () {
 	// Time to reload your interface with accounts[0]!
