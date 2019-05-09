@@ -9,7 +9,7 @@ window.ethereum.on('accountsChanged', function () {
 	accountManagement ();
 })
 */
-
+/*
 window.ethereum.on('accountsChanged', function (err, result) {
 	if (!err) {
 		console.log("change detected!")
@@ -18,33 +18,6 @@ window.ethereum.on('accountsChanged', function (err, result) {
 		return result;
 	}
 })
-
-/*
-var myobj = {a : 1};
-
-function watch(obj, prop, handler) { // make this a framework/global function
-    var currval = obj[prop];
-    function callback() {
-        if (obj[prop] != currval) {
-            var temp = currval;
-            currval = obj[prop];
-            handler(temp, currval);
-        }
-    }
-    return callback;
-}
-
-var myhandler = function (oldval, newval) {
-	console.log("seems to work")
-	document.getElementById("astValue").innerHTML = newval.toString() + " AST"
-	console.log(oldval)
-	console.log(newval)
-	
-};
-
-var intervalH = setInterval(watch(myobj, "a", myhandler), 100);
-
-myobj.set_a(2);
 */
 /*
 var MyContract = web3.eth.contract(abi);
