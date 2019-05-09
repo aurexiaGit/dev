@@ -953,7 +953,7 @@ filter.watch((err, res) => {
     console.log(`Watch error: ${err}`);
   } else {
     // Update balance
-    Token.getBalance("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, bal) => {
+    Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, bal) => {
       if (err) {
         console.log(`getBalance error: ${err}`);
       } else {
