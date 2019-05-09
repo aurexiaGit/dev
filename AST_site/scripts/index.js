@@ -7,7 +7,7 @@ const refreshBalance= async () => {
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
-			let result = accounts[0].toUppercase();
+			let result = accounts[0].toUpperCase();
 			resolve(result);
 		})
   	})};
