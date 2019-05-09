@@ -1,53 +1,40 @@
 // ******************************************* 
 //Test update amount value after sending tokens
-/*
-const getAccountAddress= async () => {
+
+const getAccountInfo= async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
+			console.log(accounts[0])
 			resolve(accounts[0]);
 		})
   	})};
-*/	
-	/*
-  	const getBalance = (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
-		})
-	};
-	*/
-	//let curAddress = await getCurAddress();
-	//let balance = await getBalance(curAddress);
-	//let accountInfo = [curAddress, balance];
-	//return curAddress;
-	//return accountInfo;
-	//return balance;
-//}
-/*
-const getAccountBalance= async (_curAddress) => {
 	
   	const getBalance = (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
+				console.log(result*Math.pow(10,-18))
 				resolve(result*Math.pow(10,-18));
 			})
 		})
 	};
-	let balance = await getBalance(_curAddress);
-	return balance;
+	
+	let curAddress = await getCurAddress();
+	console.log(curAddress)
+	let balance = await getBalance(curAddress);
+	console.log(balance)
+	let accountInfo = [curAddress, balance];
+	console.log(accountInfo)
+	return accountInfo;
+
 }
 
-//var accountInfo = getAccountInfo();
-var curAddress = getAccountAddress();
-//var curAddress = accountInfo[0]
-var balance = getAccountBalance(curAddress);
-//var balance = accountInfo[1]
+var accountInfo = getAccountInfo();
+var curAddress = accountInfo[0]
+var balance = accountInfo[1]
 console.log(curAddress)
 console.log(balance)
 
@@ -78,7 +65,7 @@ filter.watch((err, res) => {
     });
   }
 });
-*/
+
 // *******************************************
 
 function createPage(Balance) {	
