@@ -39,11 +39,11 @@ console.log(curAddress)
 console.log(balance)
 
 const filter = web3.eth.filter('latest');
-filter.watch((err, res) => {
-  if (err) {
-    console.log(`Watch error: ${err}`);
-  } else {
-    // Update balance
+filter.watch(curAddress, (err, res) => {
+	if (err) {
+		console.log(`Watch error: ${err}`);
+	} else {
+	// Update balance
     Token.balanceOf(curAddress, (err, bal) => {
       if (err) {
         console.log(`getBalance error: ${err}`);
@@ -62,8 +62,8 @@ filter.watch((err, res) => {
 			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
 		}
       }
-    });
-  }
+	});
+}
 });
 
 // *******************************************
