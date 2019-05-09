@@ -173,7 +173,7 @@ const getRankingList = async () =>{
 	}
 
 	for (let i=0; i<listAddress.length; i++){
-		if (users[i].address == curAddress){
+		if (users[i].address.toLowerCase() == curAddress.toLowerCase()){
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
 			usersPerso["Perso"].balance = users[i].balance;
