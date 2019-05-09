@@ -66,15 +66,18 @@ const getAccountInfo= async () => {
 
 	let curAddress = await getCurAddress();
 	let balance = await getBalance(curAddress);
-	let accountInfo = [curAddress, balance];
+	//let accountInfo = [curAddress, balance];
 
-	return accountInfo;
+	//return accountInfo;
+	return balance;
 }
 
 
-var accountInfo = getAccountInfo();
-var curAddress = accountInfo[0]
-var balance = accountInfo[1]
+//var accountInfo = getAccountInfo();
+var curAddress = "0xc4d446c6B924c431f89214319D5A3e6bb67e7627"
+//var curAddress = accountInfo[0]
+var balance = getAccountInfo();
+//var balance = accountInfo[1]
 console.log(curAddress)
 console.log(balance)
 
