@@ -36,20 +36,24 @@ const refreshBalance= async () => {
 		console.log(`Watch error: ${err}`);
 	} else {
 	// Update balance
-		bal = await getBalance(curAddress);
-		if (balance < bal) {
-			alert("Your transaction has been executed!")
-			balance = bal*Math.pow(10,-18);
-			console.log(balance);
-			console.log("watched")
-			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
-		} else if (balance > bal) {
-			alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
-			balance = bal*Math.pow(10,-18);
-			console.log(balance);
-			console.log("watched")
-			document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+		const refresh= async (curAddress,balance) => {
+			let bal;
+			bal = await getBalance(curAddress);
+			if (balance < bal) {
+				alert("Your transaction has been executed!")
+				balance = bal*Math.pow(10,-18);
+				console.log(balance);
+				console.log("watched")
+				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+			} else if (balance > bal) {
+				alert("You have received " + (balance - bal)*Math.pow(10,-18).toString() + " AST!")
+				balance = bal*Math.pow(10,-18);
+				console.log(balance);
+				console.log("watched")
+				document.getElementById("astValue").innerHTML = balance.toString() + " AST"
+			}
 		}
+		refresh(curAddress,balance)
 	}
 	});
 }
