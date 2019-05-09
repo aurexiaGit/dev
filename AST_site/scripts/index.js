@@ -190,7 +190,8 @@ const Transfer = async() => {
 			console.log (address)
 			amount = amount*Math.pow(10,18);
 			Token.transfer.call(address, amount, (err, result) => {
-				if (err) return reject (err);
+				if (err) return reject (console.log(err));
+				console.log("reussi " + result)
 				resolve(result);
 			})
 		})

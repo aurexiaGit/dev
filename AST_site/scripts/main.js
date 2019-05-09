@@ -838,16 +838,7 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
-function showNotif() {
-	if (!show) {
-		show=true;
-		elmt.style.display = "";
-	}
-	else {
-		show=false;
-		elmt.style.display = "none";
-	}
-}
+
 
 
 
