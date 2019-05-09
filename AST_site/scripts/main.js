@@ -813,6 +813,12 @@ const getLog = async () =>{
   curAddress = await getCurAddress();
   ownerAddress = await getOwner();
   curName = await getName(curAddress);
+  console.log("current address");
+  console.log(curAddress);
+  console.log("owner");
+  console.log(ownerAddress);
+  console.log("curName");
+  console.log(curName);
 
   return getBanner(curAddress, ownerAddress, curName);
 };
