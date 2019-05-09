@@ -927,3 +927,5 @@ const refreshBalance = async () =>{
   // would stop and uninstall the filter
   //myEvent.stopWatching();
 }
+
+refreshBalance();
