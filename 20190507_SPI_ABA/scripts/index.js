@@ -39,12 +39,12 @@ console.log(curAddress)
 console.log(balance)
 
 const filter = web3.eth.filter('latest');
-filter.watch(curAddress, (err, res) => {
+filter.watch((err, res) => {
 	if (err) {
 		console.log(`Watch error: ${err}`);
 	} else {
 	// Update balance
-    Token.balanceOf(curAddress, (err, bal) => {
+    Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, bal) => {
       if (err) {
         console.log(`getBalance error: ${err}`);
       } else {
