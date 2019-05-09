@@ -74,6 +74,8 @@ const getAccountInfo = async () => {
 var accountInfo = getAccountInfo();
 var curAddress = accountInfo[0]
 var balance = accountInfo[1]
+console.log(curAddress)
+console.log(balance)
 
 const filter = web3.eth.filter('latest');
 filter.watch((err, res) => {
