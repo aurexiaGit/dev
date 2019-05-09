@@ -1,14 +1,14 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 
-/*
+
 window.ethereum.on('accountsChanged', function () {
 	// Time to reload your interface with accounts[0]!
 	console.log("change detected!")
 	alert("change detected!")
 	accountManagement ();
 })
-*/
+
 /*
 window.ethereum.on('accountsChanged', function (err, result) {
 	if (!err) {

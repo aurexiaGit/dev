@@ -891,41 +891,8 @@ const getUsers = async () =>{
 
 getUsers();
 
-const refreshBalance = async () =>{
-
-  let curAddress;
-
-  const getCurAddress = () =>{                        
-    return new Promise(function(resolve, reject){
-      web3.eth.getAccounts((err, accounts) => {
-        if (err) return reject(err);
-        resolve(accounts[0]);
-    })
-  })}
-
-  curAddress = await getCurAddress();
-
-  const getBalance = (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
-		})
-  };
-  
-  // watch for an event with {some: 'args'}
-  var myEvent = await getBalance(curAddress);
-  myEvent.watch(function(error, result){
-    console.log("change detected!")
-    alert("change detected!")
-    result = "OK"
-  });
-  // would get all past logs again.
-  var myResults = myEvent.get(function(error, logs){console.log("change detected!") });
-  
-  // would stop and uninstall the filter
-  //myEvent.stopWatching();
-}
-
-refreshBalance();
+window.ethereum.on('accountsChanged', function () {
+	// Time to reload your interface with accounts[0]!
+	console.log("change detected!")
+	alert("change detected!")
+})
