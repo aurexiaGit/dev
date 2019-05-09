@@ -53,10 +53,10 @@ const refreshBalance= async () => {
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			}
-			return balance;
+			//return balance;
 		}
 		refresh(curAddress,balance);
-		balance = refresh(curAddress, balance);
+		//balance = refresh(curAddress, balance);
 	}
 	});
 }
