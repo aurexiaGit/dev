@@ -891,7 +891,7 @@ const getUsers = async () =>{
 
 getUsers();
 
-var myEvent = Token.balanceOf({},{fromBlock: 0, toBlock: 'latest'});
+var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627");
 myEvent.watch(function(error, result){
     console.log("on watch"); 
   
