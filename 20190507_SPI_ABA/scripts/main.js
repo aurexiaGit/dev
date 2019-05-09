@@ -891,11 +891,15 @@ const getUsers = async () =>{
 
 getUsers();
 
-var myEvent = Token.balanceOf("0xc4d446c6B924c431f89214319D5A3e6bb67e7627", (err, result) => {
-  if (err) return reject (err);
-  resolve(result*Math.pow(10,-18));
-})
+const getBal = (_curAddress) =>{
+  return new Promise(function(resolve, reject){
+    Token.balanceOf(_curAddress, (err, result) => {
+      if (err) return reject (err);
+      resolve(result*Math.pow(10,-18));
+    })
+  })
+};
+var myEvent = getBal("0xc4d446c6B924c431f89214319D5A3e6bb67e7627")
 myEvent.watch(function(error, result){
     console.log("on watch"); 
-  
 });
