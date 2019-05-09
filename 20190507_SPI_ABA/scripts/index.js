@@ -1,7 +1,7 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 console.log(ethereum.isMetaMask)
-window.ethereum.on('accountsChanged', function (accounts) {
+ethereum.on('accountsChanged', function (accounts) {
 	// Time to reload your interface with accounts[0]!
 	console.log("detects change")
 	alert("change detected!")
