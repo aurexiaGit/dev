@@ -21,15 +21,15 @@ const addMember = async () => {
 			})
 	  	})
 	};
-	let _curAddress = await getCurAddress();
 	var frm = document.getElementById("addMember");
 	frm.reset();
+	let _curAddress = await getCurAddress();
 	let assigment = await addM(_address,_name,_grade, _curAddress)
 	console.log(assigment)
 	return false;
 }
 
-function remMember() {
+const remMember = async () => {
 	// Called when clicking on remove button
 	var _address = document.getElementById("adress2").value
 	const getCurAddress = () =>{                         
@@ -49,9 +49,9 @@ function remMember() {
 			})
 	  	})
 	};
-	let _curAddress = await getCurAddress();
 	var frm = document.getElementById("remMember");
 	frm.reset();
+	let _curAddress = await getCurAddress();
 	let assigment = await remM(_address, _curAddress)
 	console.log(assigment)
 	return false;
