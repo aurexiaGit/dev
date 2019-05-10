@@ -2,7 +2,8 @@
 /*                     Creation de token                           */
 /***************************************************************** */
 
-const reloadPage = async () =>{
+const reloadPage = async (_transfert) =>{
+	console.log(_transfert);
 	var frm = document.getElementById("addMember");
 	frm.reset();
 }
@@ -33,7 +34,7 @@ const createTokens = async () => {
 	let curAddress = await getCurAddress();
 	let transfert = await create(curAddress, address, amount);
 	console.log(transfert);
-	return reloadPage();
+	return reloadPage(transfert);
 }
 
 
