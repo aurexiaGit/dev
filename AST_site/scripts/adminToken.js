@@ -2,14 +2,16 @@
 /*                     Creation de token                           */
 /***************************************************************** */
 
-const reloadPage = () =>{
-	var frm = document.getElementById("addMember");
-	frm.reset();
-	return false;
+const create = async (_curAddress, _address, _amount) =>{
+	Token.mint(_address,_amount, {from: _curAddress}, (err,result) => {
+		if (err) throw (err);
+		console.log(result);
+	})
+	return result;
 }
 
 const createTokens = async () => {
-
+	// Creates tokens on an account
 	var amount = document.getElementById("amount1").value
 	amount = amount * Math.pow(10,18);
 	var address = document.getElementById("adress1").value
@@ -23,18 +25,10 @@ const createTokens = async () => {
 		})
 	  })};
 
-	const create = async (_curAddress, _address, _amount) =>{
-
-		Token.mint(_address,_amount, {from: _curAddress}, (err,result) => {
-			if (err) throw (err);
-			console.log(result);
-		})
-		return result;
-	}
+	var frm = document.getElementById("addMember");
+	frm.reset();
 	let curAddress = await getCurAddress();
-	let transfert = await create(curAddress, address, amount).then(reloadpage());
-	console.log(transfert);
-	return true;
+	return create(curAddress, address, amount);
 }
 
 
@@ -43,7 +37,6 @@ const createTokens = async () => {
 /***************************************************************** */
 
 const destroy = async (_curAddress, _address, _amount) =>{
-
 	Token.burn(_address,_amount, {from: _curAddress}, (err,result) => {
 		if (err) throw (err);
 		console.log(result);
@@ -52,7 +45,6 @@ const destroy = async (_curAddress, _address, _amount) =>{
 }
 
 const destroyTokens = async () => {
-
 	var amount = document.getElementById("amount2").value
 	amount = amount * Math.pow(10,18);
 	var address = document.getElementById("adress2").value
