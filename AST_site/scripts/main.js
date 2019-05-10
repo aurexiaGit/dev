@@ -785,7 +785,7 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  const getCurAddress = () =>{                         
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
@@ -838,29 +838,7 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
-
-
-
-
 //update drop-down list
-//var select = document.getElementById("dest-select");
-/*
-const dropdownList = (_users) => {
-
-  var select = document.getElementById("dest-select");
-  for (var key in _users){
-	  if (_users.hasOwnProperty(key) && key !== "admin") {
-      console.log(_users[key].address)
-      console.log(_users[key].name)
-      var opt = document.createElement('option');
-      opt.value = _users[key].address.toLowerCase();
-      opt.innerHTML = _users[key].name;
-      select.appendChild(opt);
-    }
-  }
-}
-*/
-
 const dropdownList = (_curAddress, _users) => {
 
   var select = document.getElementById("dest-select");
@@ -917,7 +895,7 @@ const getUsers = async () =>{
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
 
-  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  const getCurAddress = () =>{                         
   return new Promise(function(resolve, reject){
     web3.eth.getAccounts((err, accounts) => {
       if (err) return reject(err);
@@ -926,9 +904,7 @@ const getUsers = async () =>{
   })}
 
   curAddress = await getCurAddress();
-
   return dropdownList(curAddress, users);
-	//return dropdownList(users);
 };
 
 getUsers();
