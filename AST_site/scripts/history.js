@@ -94,12 +94,7 @@ const getHistory = async () =>{
 				
 				var column5 = document.createElement('td')
 				column5.className = "column5"
-				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
-				}
-				else {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
-				}
+				column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
 				row.appendChild(column5)
 				
 				i++
