@@ -204,6 +204,18 @@ contract AurexiaSocialToken is Owned, SafeMath {
         return true;
     }
 
+
+    //transfer tokens to all aurexia members from administrator
+
+    function transferAll(uint256 _value) public onlyOwner() returns (bool success) {
+        require(balances[owner] >= safeMul(_value,sizeListAccount));
+        for (uint i=0; i<sizeListAccount; i++){
+          address account = aurexiaAccounts[i];
+          _transfer(owner, account, _value);
+        }
+        return true;
+    }
+
   // Functions to add/remove new members in AurexiaMembers (whitelist)
 
     function addToAurexiaMembers (address _address, string memory _name, uint8 _grade) public returns (bool) {
@@ -212,8 +224,13 @@ contract AurexiaSocialToken is Owned, SafeMath {
         aurexiaMembers[_address].name = _name;
         aurexiaMembers[_address].grade = _grade;
         aurexiaMembers[_address].isMember = true;
+        for (uint i=0; i<sizeListAccount; i++){
+          if (_address == aurexiaAccounts[i]){
+            return true;
+          }
+        }
         aurexiaAccounts.push(_address);
-        sizeListAccount += 1;
+        sizeListAccount = safeAdd(sizeListAccount, 1);
         return true;
     }
 
@@ -223,9 +240,9 @@ contract AurexiaSocialToken is Owned, SafeMath {
         aurexiaMembers[_address].isMember = false;
         for (uint i=0; i<sizeListAccount; i++ ){
           if (_address == aurexiaAccounts[i]){
-            aurexiaAccounts[i] = aurexiaAccounts [sizeListAccount];
-            delete aurexiaAccounts[sizeListAccount];
-            sizeListAccount -= 1;
+            aurexiaAccounts[i] = aurexiaAccounts[sizeListAccount - 1];
+            delete aurexiaAccounts[sizeListAccount - 1];
+            sizeListAccount = safeSub(sizeListAccount, 1);
             break;
           }
         }
