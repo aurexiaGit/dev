@@ -2,13 +2,9 @@
 /*                     Creation de token                           */
 /***************************************************************** */
 
-const create = async (_curAddress, _address, _amount) =>{
-
-	Token.mint(_address,_amount, {from: _curAddress}, (err,result) => {
-		if (err) throw (err);
-		console.log(result);
-	})
-	return result;
+const reloadPage = async () =>{
+	var frm = document.getElementById("addMember");
+	frm.reset();
 }
 
 const createTokens = async () => {
@@ -26,10 +22,18 @@ const createTokens = async () => {
 		})
 	  })};
 
-	var frm = document.getElementById("addMember");
-	frm.reset();
+	const create = async (_curAddress, _address, _amount) =>{
+
+		Token.mint(_address,_amount, {from: _curAddress}, (err,result) => {
+			if (err) throw (err);
+			console.log(result);
+		})
+		return result;
+	}
 	let curAddress = await getCurAddress();
-	return create(curAddress, address, amount);
+	let transfert = await create(curAddress, address, amount);
+	console.log(transfert);
+	return reloadPage();
 }
 
 
@@ -38,7 +42,7 @@ const createTokens = async () => {
 /***************************************************************** */
 
 const destroy = async (_curAddress, _address, _amount) =>{
-	
+
 	Token.burn(_address,_amount, {from: _curAddress}, (err,result) => {
 		if (err) throw (err);
 		console.log(result);
