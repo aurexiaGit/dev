@@ -916,6 +916,15 @@ const getUsers = async () =>{
   
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
+
+  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  return new Promise(function(resolve, reject){
+    web3.eth.getAccounts((err, accounts) => {
+      if (err) return reject(err);
+      resolve(accounts[0]);
+  })
+  })}
+
   curAddress = await getCurAddress();
 
   return dropdownList(curAddress, users);
