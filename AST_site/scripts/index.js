@@ -109,7 +109,7 @@ const loading = (_sending) => {
 }
 
 
-/*
+
 //Transfer tokens when clicking on "send" in home page
 const Transfer = async() => {
 
@@ -140,34 +140,4 @@ const Transfer = async() => {
 	let transferTransaction = await transferEvent(address,amount);
 	return transferTransaction;
 }
-*/
 
-
-//Transfer tokens when clicking on "send" in home page
-const Transfer = async() => {
-
-	let address = document.getElementById("dest-select").value
-	let amount = document.getElementById("amount").value
-	
-	sending = true
-
-	const transferEvent = (address, amount) =>{
-		return new Promise(function(resolve, reject){
-			amount = amount*Math.pow(10,18);
-			web3.eth.getAccounts(function(error, accounts) {
-				if (error) throw error;
-				// Send ERC20 transaction with web3
-				Token.transfer(address, amount, {from: accounts[0], to: address, value: amount}, (error, txnHash) => {
-					console.log(address)
-					if (error) throw error;
-					console.log(txnHash);
-				});
-			});
-		})
-	};
-
-	var frm = document.getElementById("send");
-	frm.reset();
-	let transferTransaction = await transferEvent(address,amount);
-	return transferTransaction;
-}

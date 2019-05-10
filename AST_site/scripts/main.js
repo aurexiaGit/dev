@@ -844,12 +844,28 @@ getLog();
 
 //update drop-down list
 //var select = document.getElementById("dest-select");
-
+/*
 const dropdownList = (_users) => {
 
   var select = document.getElementById("dest-select");
   for (var key in _users){
 	  if (_users.hasOwnProperty(key) && key !== "admin") {
+      console.log(_users[key].address)
+      console.log(_users[key].name)
+      var opt = document.createElement('option');
+      opt.value = _users[key].address.toLowerCase();
+      opt.innerHTML = _users[key].name;
+      select.appendChild(opt);
+    }
+  }
+}
+*/
+
+const dropdownList = (_curAddress, _users) => {
+
+  var select = document.getElementById("dest-select");
+  for (var key in _users){
+	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== curAddress.toLowerCase()) {
       console.log(_users[key].address)
       console.log(_users[key].name)
       var opt = document.createElement('option');
@@ -896,9 +912,14 @@ const getUsers = async () =>{
 		i++
 		console.log(users[name].address)
 		console.log(users[name].name)
-	}
+  }
+  
+  //get current address before dropdownlist call, to remove own name from dropdown list
+  let curAddress;
+  curAddress = await getCurAddress();
 
-	return dropdownList(users);
+  return dropdownList(curAddress, users);
+	//return dropdownList(users);
 };
 
 getUsers();
