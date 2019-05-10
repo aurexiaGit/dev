@@ -25,10 +25,6 @@ const refreshBalance= async () => {
 	let curAddress = await getCurAddress();
 	let balance = await getBalance(curAddress);
 
-	//var today to delete
-	var today = new Date();
-	var time;
-
 	const filter = web3.eth.filter('latest');
 	filter.watch((err, res) => {
 	if (err) {
@@ -38,8 +34,7 @@ const refreshBalance= async () => {
 		const refresh= async (curAddress,balance) => {
 			let bal;
 			bal = await getBalance(curAddress);
-			time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-			console.log("Real account balance at " + time + ": " + bal)
+			console.log("Real account balance (bal): " + bal)
 			if (balance > bal) {
 				alert("Your transaction has been executed!")
 				balance = bal;
@@ -55,10 +50,8 @@ const refreshBalance= async () => {
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			}
-			//return balance;
 		}
 		refresh(curAddress,balance);
-		//balance = refresh(curAddress, balance);
 	}
 	});
 }
