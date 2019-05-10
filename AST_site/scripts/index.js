@@ -130,9 +130,8 @@ const Transfer = async() => {
 
 	
 	var frm = document.getElementById("send");
-	let transferTransaction = await transferEvent(address,amount);
 	frm.reset();
-	//let transferTransaction = await transferEvent(address,amount);
+	let transferTransaction = await transferEvent(address,amount);
 	return transferTransaction;
 }
 
