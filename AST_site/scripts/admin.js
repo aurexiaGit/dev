@@ -22,23 +22,12 @@ const initialDonations = async () =>{
 
 	let curAddress = await getCurAddress();
 
-	const getMembers = () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
-
-	let members = await getMembers();
 	let amount = 50*Math.pow(10,-18);
 
-	for (let i=1; i<members.length; i++){
-		Token.transferFrom.sendTransaction(curAddress, members[i], amount, {from: curAddress}, (error, result) => {
-			if (error) throw error;
-			console.log(result)
-		})
-	}
+	Token.transferAll.sendTransaction(amount, {from: curAddress}, (error, result) => {
+		if (error) throw error;
+		console.log(result)
+	})
 
 	return true;
 } 
