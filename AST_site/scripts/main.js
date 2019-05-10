@@ -454,6 +454,26 @@ let TokenABI = web3.eth.contract([
     "constant": false,
     "inputs": [
       {
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferAll",
+    "outputs": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x52435bb8"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
         "name": "_address",
         "type": "address"
       },
@@ -777,7 +797,7 @@ let TokenABI = web3.eth.contract([
   }
 ]);
 
-let Token = TokenABI.at('0x97E7073A4e0c643d62cf93e047e16352Bb4f2533');
+let Token = TokenABI.at('0xaC6A5F684aB19aD8DEF57Bd9750DE2274c6C87Ef');
 
 
 const getLog = async () =>{
