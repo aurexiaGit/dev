@@ -6,6 +6,7 @@ const reloadPage = async (_transfert) =>{
 	console.log(_transfert);
 	var frm = document.getElementById("addMember");
 	frm.reset();
+	return false;
 }
 
 const createTokens = async () => {
