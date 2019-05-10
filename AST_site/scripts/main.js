@@ -853,9 +853,7 @@ const dropdownList = (_users) => {
       console.log(_users[key].address)
       console.log(_users[key].name)
       var opt = document.createElement('option');
-      //remove "toLowerCase?"
-      //opt.value = _users[key].address.toLowerCase();
-      opt.value = _users[key].address;
+      opt.value = _users[key].address.toLowerCase();
       opt.innerHTML = _users[key].name;
       select.appendChild(opt);
     }

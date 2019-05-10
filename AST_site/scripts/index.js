@@ -106,10 +106,46 @@ const loading = (_sending) => {
 	}
 }
 
+
+/*
 //Transfer tokens when clicking on "send" in home page
 const Transfer = async() => {
 
 	let address = document.getElementById("dest-select").value
+	console.log("adress in Transfer function is:" + address)
+	let amount = document.getElementById("amount").value
+	
+	sending = true
+
+	const transferEvent = (address, amount) =>{
+		return new Promise(function(resolve, reject){
+			console.log ("dans la fonction transfert")
+			console.log (address)
+			amount = amount*Math.pow(10,18);
+			web3.eth.getAccounts(function(error, accounts) {
+				if (error) throw error;
+				// Send ERC20 transaction with web3
+				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
+					if (error) throw error;
+					console.log(txnHash);
+				});
+			});
+		})
+	};
+
+	var frm = document.getElementById("send");
+	frm.reset();
+	let transferTransaction = await transferEvent(address,amount);
+	return transferTransaction;
+}
+*/
+
+
+//Transfer tokens when clicking on "send" in home page
+const Transfer = async() => {
+
+	let address = document.getElementById("dest-select").value
+	console.log("adress in Transfer function is:" + address)
 	let amount = document.getElementById("amount").value
 	
 	sending = true
