@@ -2,7 +2,7 @@
 /*                     Creation de token                           */
 /***************************************************************** */
 
-const reloadPage = async (_transfert) =>{
+const reloadPage = (_transfert) =>{
 	console.log(_transfert);
 	var frm = document.getElementById("addMember");
 	frm.reset();
