@@ -128,9 +128,11 @@ const Transfer = async() => {
 		})
 	};
 
+	
 	var frm = document.getElementById("send");
-	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
+	frm.reset();
+	//let transferTransaction = await transferEvent(address,amount);
 	return transferTransaction;
 }
 
