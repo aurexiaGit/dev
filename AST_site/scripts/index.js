@@ -1,10 +1,7 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 
-ethereum.on('accountsChanged', function (accounts) {
-	console.log("on ethereum.on")
-})
-/*
+
 const refreshBalance= async () => {
 
 	const getCurAddress = () =>{                         
@@ -66,7 +63,7 @@ const refreshBalance= async () => {
 	});
 }
 refreshBalance();
-*/
+
 
 // *******************************************
 
@@ -160,7 +157,7 @@ const Transfer = async() => {
 			web3.eth.getAccounts(function(error, accounts) {
 				if (error) throw error;
 				// Send ERC20 transaction with web3
-				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
+				Token.transfer(address, amount, {from: accounts[0], to: address, value: amount}, (error, txnHash) => {
 					console.log(address)
 					if (error) throw error;
 					console.log(txnHash);
