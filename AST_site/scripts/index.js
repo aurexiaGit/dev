@@ -3,7 +3,7 @@
 
 ethereum.on('accountsChanged', function (accounts) {
 	console.log("on ethereum.on")
-}
+})
 /*
 const refreshBalance= async () => {
 
