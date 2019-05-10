@@ -145,7 +145,6 @@ const Transfer = async() => {
 const Transfer = async() => {
 
 	let address = document.getElementById("dest-select").value
-	console.log("adress in Transfer function is:" + address)
 	let amount = document.getElementById("amount").value
 	
 	sending = true
@@ -158,7 +157,9 @@ const Transfer = async() => {
 			web3.eth.getAccounts(function(error, accounts) {
 				if (error) throw error;
 				// Send ERC20 transaction with web3
+				console.log(address)
 				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
+					console.log(address)
 					if (error) throw error;
 					console.log(txnHash);
 				});
