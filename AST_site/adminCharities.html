@@ -38,27 +38,35 @@
                     </div>
                 </div>
             </section>
-            <h1 id = "title"> DONATIONS TO CHARITIES <br> </h1>
-
-            <div id="middlePage">
-                    <div id="balanceCharities">
-                        <div id="rankPage">
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div id="logos">
-               <img src="images/cravate.png"/>
-                <img src="images/bouchons.jpg"/>
-            </div>
+            <section id="assignCharity">
+                <div id="new_charity">
+                  <div class="form">
+                    <img src="images/donationDay.png" alt="icon charity" />
+                    <h1>Assign a new Charity</h1>
+                    <form id="addCharity">
+                      <input type="text" placeholder="Address" id="adress1" required/>
+                      <input type="text" placeholder="Name" id="name1" required/>
+                      <button onclick="return addCharity()">ADD</button>
+                    </form>
+                  </div>
+                </div>
+                <div id="new_charity">
+                  <div class="form">
+                    <img src="images/delete.png" alt="icon charityRem" />
+                    <h1>Remove a Charity</h1>
+                    <form id="remCharity">
+                      <input type="text" placeholder="adress" id="adress2" required/>
+                      <button onclick="return remCharity()">REMOVE</button>
+                    </form>
+                  </div>
+                </div>
+            </section>
             <footer>
                 <p>© Copyright Aurexia – All rights reserved<br />
             </footer>
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
-        <script type="text/javascript" src="scripts/links.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/adminCharities.js"></script>
     </body>
