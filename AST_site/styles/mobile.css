@@ -1,5 +1,5 @@
-@media mobile {
-  .Header { 
+@media mobile and (max-width: 480 px) {
+  header { 
     width: 252px; 
     height: 45px; 
     width: 375px; 

@@ -1,6 +1,6 @@
 header
 {
-  /*
+  
 	background-color : rgb(29,74,105);
   background-size: 100%;
   display :flex;
@@ -10,15 +10,15 @@ header
   position:fixed;
   width : 100%;
   top:0;
-  z-index: 100;*/
-  /*ABA - Enhance display on mobile*/
+  z-index: 100;
+  /*ABA - Enhance display on mobile
   width: 252px; 
   height: 45px; 
   width: 375px; 
   height: 100px; 
   background: #1D4A69; 
   border: 1px solid #1D4A69; 
-  border-radius: 0px;
+  border-radius: 0px;*/
   /*min-width: 320px*/
 }
 
