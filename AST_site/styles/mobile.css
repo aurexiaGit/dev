@@ -4,8 +4,10 @@
     height: 45px; 
     width: 375px; 
     height: 100px; 
-    background: #1D4A69; 
-    border: 1px solid #1D4A69; 
+    /*background: #1D4A69; */
+    background: #ED7D31;
+    /*border: 1px solid #1D4A69;  */
+    border: 1px solid #ED7D31;
     border-radius: 0px; 
     }
 }
