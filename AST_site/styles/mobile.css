@@ -1,13 +1,20 @@
-/*@media screen and (max-width : 400px) { */
-header { 
+@media screen and (max-width : 400px) {
+  /*header { */
+  /*
   color: fuchsia;
-  /*width: 252px;*/
+  /*width: 252px;
   width: 852px; 
   height: 45px; 
   background: #ED7D31;
   background-color: #ED7D31;
-  /*border: 1px solid #1D4A69; */
+  /*border: 1px solid #1D4A69;
   border: 1px solid #ED7D31;
   border-radius: 0px;
+  */
+  #astValue {
+    font-size: 100px;
+    color: #ED7D31;
+    margin: 10px;
+  }
 }
 /*}*/
