@@ -107,4 +107,12 @@ nav {
     border-radius: 0px;
     /*min-width: 320px*/
   }
+
+  #identity {
+    color : black;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+  }
 }
