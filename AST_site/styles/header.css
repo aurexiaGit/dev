@@ -114,4 +114,11 @@ nav {
   #logo img{
     width: 120px;
   }
+
+  .button {
+    color : white;
+    font-size: 15px;
+    margin-left : 30px;
+  }
+  
 }
