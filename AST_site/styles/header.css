@@ -120,5 +120,10 @@ nav {
     font-size: 15px;
     margin-left : 30px;
   }
+
+  .button:hover::after {
+    width: 20%;
+    transition: width .3s;
+}
   
 }
