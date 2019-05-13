@@ -1,4 +1,4 @@
-@media mobile and (max-width: 10 px) {
+@media mobile and (max-width: 400 px) {
   header { 
     width: 252px; 
     height: 45px; 
