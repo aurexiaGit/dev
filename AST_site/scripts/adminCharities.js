@@ -1,58 +1,57 @@
+const addCharity = async () => {
+	// Called when clicking on Add button
+	var _address = document.getElementById("adress1").value
+	var _name = document.getElementById("name1").value
 
-function makeGraph() {
-	var elmt = document.getElementById("rankPage")
-	if (elmt!==undefined) {
-	    x = ["La Cravate Solidaire","Les Bouchons d'Amour"]
-		y = [charity.cravate.balance,charity.bouchon.balance]
-		data = [
-		  {
-		    y: y,
-		    x: x,
-		    type: "bar",
-		  }
-		]
-		Plotly.newPlot('rankPage', data, {displayModeBar: false})
-	}
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			let result = accounts[0].toLowerCase();
+			resolve(result);
+		})
+  	})};
+
+	const addC = (address, name, curAddress) =>{                         
+		return new Promise(function(resolve, reject){
+			Token.addAssociation.sendTransaction(address,name,{from:curAddress},(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+	var frm = document.getElementById("addCharity");
+	frm.reset();
+	let _curAddress = await getCurAddress();
+	let assigment = await addC(_address,_name, _curAddress)
+	console.log(assigment)
+	return false;
 }
 
+const remCharity = async () => {
+	// Called when clicking on remove button
+	var _address = document.getElementById("adress2").value
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			let result = accounts[0].toLowerCase();
+			resolve(result);
+		})
+  	})};
 
-var Balance
-
-function getBalance(account) {
-	Balance=0
-	Token.balanceOf(account, function(err,result) {
-		if (!err) {Balance=parseInt(result*Math.pow(10,-18)); console.log("")}
-	})
+	const remC = (address, curAddress) =>{                         
+		return new Promise(function(resolve, reject){
+			Token.remAssociation.sendTransaction(address,{from:curAddress},(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+	var frm = document.getElementById("remCharity");
+	frm.reset();
+	let _curAddress = await getCurAddress();
+	let assigment = await remC(_address, _curAddress)
+	console.log(assigment)
+	return false;
 }
-
-
-//Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
-//Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
-//Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
-
-function attributeBalances() {
-	var i = 0
-	Balance=0
-	function balances() {
-		keys = Object.keys(charity)
-		var user = charity[keys[i]]
-		getBalance(user.adress)
-		setTimeout( function () {
-			user['balance']=Balance
-			i++
-			if (i < keys.length) {balances()}
-		},1000)
-	}
-	balances()
-}
-
-var curAccount = web3.eth.accounts[0]
-
-function createPage() {
-	attributeBalances()
-	window.setTimeout(function() {makeGraph()},3000)
-}
-
-window.setInterval(function() {
-	createPage()
-}, 4000)
