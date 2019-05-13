@@ -1,6 +1,7 @@
-@media screen and (max-width: 1000000 px){
+@media screen{
   header { 
-    width: 252px; 
+    /* width: 252px; */
+    width: 852px; 
     height: 45px; 
     width: 375px; 
     height: 100px; 
