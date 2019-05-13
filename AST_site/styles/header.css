@@ -11,15 +11,7 @@ header
   width : 100%;
   top:0;
   z-index: 100;
-  /*ABA - Enhance display on mobile
-  width: 252px; 
-  height: 45px; 
-  width: 375px; 
-  height: 100px; 
-  background: #1D4A69; 
-  border: 1px solid #1D4A69; 
-  border-radius: 0px;*/
-  /*min-width: 320px*/
+
 }
 
 
@@ -104,4 +96,23 @@ nav {
   z-index: 10000;
   top:90px;
   right:24px;
+}
+
+@media (max-width: 1000px) {
+  header {
+    width: 652px; 
+    height: 45px; 
+    background: #ED7D31; 
+    border: 1px solid #ED7D31; 
+    border-radius: 0px;
+    /*min-width: 320px*/
+  }
+
+  #identity {
+    color : black;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+  }
 }
