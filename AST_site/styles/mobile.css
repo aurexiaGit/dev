@@ -1,4 +1,12 @@
-@media screen and (max-width : 400px) {
+@media (max-width : 400px) {
+  #astValue {
+    font-size: 100px;
+    color: #ED7D31;
+    margin: 10px;
+  }
+}
+/*}*/
+
   /*header { */
   /*
   color: fuchsia;
@@ -11,10 +19,3 @@
   border: 1px solid #ED7D31;
   border-radius: 0px;
   */
-  #astValue {
-    font-size: 100px;
-    color: #ED7D31;
-    margin: 10px;
-  }
-}
-/*}*/
