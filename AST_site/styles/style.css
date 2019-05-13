@@ -77,6 +77,15 @@ h1 {
     margin: 10px 0;
 }
 
+#new_charity
+{
+  margin: 40px;
+}
+
+#new_charity > * {
+    margin: 10px 0;
+}
+
 
 #profile_picture
 {
