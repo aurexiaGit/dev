@@ -97,7 +97,7 @@ nav {
   right:24px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1000px) and (orientation: portrait) {
   header {
     background-color : rgb(29,74,105);
     background-size: 100%;
@@ -109,5 +109,9 @@ nav {
     width : 100%;
     top:0;
     z-index: 100;
+  }
+
+  #logo Logo Aurexia{
+    width: 40px;
   }
 }
