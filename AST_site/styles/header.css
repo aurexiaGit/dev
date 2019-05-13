@@ -99,8 +99,8 @@ nav {
 
 @media (max-width: 1000px) and (orientation: portrait) {
   header {
-    background-color : rgb(29,74,105);
-    /*background-color : #ED7D31;*/
+    /*background-color : rgb(29,74,105);*/
+    background-color : #ED7D31;
     background-size: 100%;
     display :flex;
     justify-content: space-between;
