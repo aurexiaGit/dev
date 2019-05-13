@@ -1,12 +1,12 @@
-@media screen {
+@media screen and (max-width: 480 px){
   header { 
     width: 252px; 
     height: 45px; 
     width: 375px; 
     height: 100px; 
     /*background: #1D4A69; */
-    background: #ED7D31;
-    /*border: 1px solid #1D4A69;  and (max-width: 100000 px)*/
+    background-color: #ED7D31;
+    /*border: 1px solid #1D4A69; */
     border: 1px solid #ED7D31;
     border-radius: 0px; 
   }
