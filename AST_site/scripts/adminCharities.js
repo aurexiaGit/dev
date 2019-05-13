@@ -56,6 +56,67 @@ const remCharity = async () => {
 	return false;
 }
 
+////////////////////////////////////////////////////////
+//               ouverture des donations              //
+////////////////////////////////////////////////////////
+
+
+const openDonation = () => {
+
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			let result = accounts[0].toLowerCase();
+			resolve(result);
+		})
+		})};
+		
+	let curAddress = await getCurAddress();
+
+	const open = (curAddress) =>{                         
+		return new Promise(function(resolve, reject){
+			Token.launchDonation.sendTransaction({from:curAddress},(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+
+	let result = await open (curAddress);
+	console.log(result)
+	return result;
+}
+
+
+const closeDonation = () => {
+
+	const getCurAddress = () =>{                         
+		return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			let result = accounts[0].toLowerCase();
+			resolve(result);
+		})
+		})};
+		
+	let curAddress = await getCurAddress();
+
+	const close = (curAddress) =>{                         
+		return new Promise(function(resolve, reject){
+			Token.closeDonation.sendTransaction({from:curAddress},(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+
+	let result = await close (curAddress);
+	console.log(result)
+	return result;
+}
+
+
 // Cette partie nécessite une modification du smartcontract sur les fonction Charities. En effet il faut faire comme pour les member, une liste stockant toutes les adresses des charities
 // afin de pouvoir les récupérer et faire le tableau. 
 
