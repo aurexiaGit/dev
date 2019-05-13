@@ -111,7 +111,8 @@ nav {
     z-index: 100;
   }
 
-  .logo {
+  #logo {
     width: 40px;
+    background-color : #ED7D31;
   }
 }
