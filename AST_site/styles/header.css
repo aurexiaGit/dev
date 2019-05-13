@@ -1,6 +1,5 @@
 header
 {
-  
 	background-color : rgb(29,74,105);
   background-size: 100%;
   display :flex;
@@ -100,11 +99,15 @@ nav {
 
 @media (max-width: 1000px) {
   header {
-    width: 652px; 
-    height: 45px; 
-    background: #ED7D31; 
-    border: 1px solid #ED7D31; 
-    border-radius: 0px;
-    /*min-width: 320px*/
+    background-color : rgb(29,74,105);
+    background-size: 100%;
+    display :flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 0px 10px grey;
+    position:fixed;
+    width : 100%;
+    top:0;
+    z-index: 100;
   }
 }
