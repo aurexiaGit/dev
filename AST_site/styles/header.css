@@ -116,6 +116,10 @@ nav {
     width: 120px;
   }
 
+  #block_page{
+    font-size:0;
+  }
+
   .button {
     color : white;
     font-size: 15px;
