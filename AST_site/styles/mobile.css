@@ -1,14 +1,25 @@
 @media (max-width : 1000px) {
   header { 
-    /* width: 252px; */
+
+    background-color : #ED7D31;
+    background-size: 100%;
+    display :flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 0px 10px grey;
+    position:fixed;
+    width : 500%;
+    top:0;
+    z-index: 10;
+    /* width: 252px;
     width: 852px; 
     height: 45px; 
     width: 375px; 
     height: 100px; 
     background: #ED7D31;
     background-color: #ED7D31;
-    /*border: 1px solid #1D4A69; */
+    /*border: 1px solid #1D4A69; 
     border: 1px solid #ED7D31;
-    border-radius: 0px; 
+    border-radius: 0px; */ 
   }
 }
