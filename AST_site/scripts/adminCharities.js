@@ -88,7 +88,7 @@ const openDonation = async () => {
 }
 
 
-const closeDonation = () => {
+const closeDonation = async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
