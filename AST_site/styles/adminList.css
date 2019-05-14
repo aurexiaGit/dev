@@ -37,31 +37,18 @@ th, td {
 
 .column1 {
   width: 10%;
-  /*padding-left: 40px;*/
-  font-size: 30px;
-  font-family:'Calibri Light';
-  font-style:bold;
 }
 
 .column2 {
   width: 25%;
-  font-size: 30px;
-  font-family:'Calibri Light';
-  font-style:bold;
 }
 
 .column3 {
   width: 30%;
-  font-size: 30px;
-  font-family:'Calibri Light';
-  font-style:bold;
 }
 
 .column4 {
   width: 10%;
-  font-size: 30px;
-  font-family:'Calibri Light';
-  font-style:bold;
 }
 
 .table-head th {
@@ -75,7 +62,6 @@ th, td {
   text-align: center;
   font-size: 30px;
   font-family:'Calibri Light';
-  font-style:bold;
 }
 
 /*==================================================================
@@ -103,14 +89,15 @@ th, td {
 
 
 .table th {
-  font-size: 18px;
+  font-size: 20px;
   color: #fff;
   line-height: 1.4;
   background-color: #023B59;
+  font-weight:bold;
 }
 
 .table td {
-  font-size: 15px;
+  font-size: 20px;
   color: #808080;
   line-height: 1.4;
 }
