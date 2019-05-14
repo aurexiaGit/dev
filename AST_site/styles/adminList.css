@@ -127,11 +127,12 @@ th, td {
 }
 
 
-.ownRanking{
+div.ownRanking{
   align-items: center;
   position:fixed;
   font-weight: bold;
   text-align: center;
+  font-size: 50px;
 }
 /*
 @media (max-width: 1000px) and (orientation: portrait) {
