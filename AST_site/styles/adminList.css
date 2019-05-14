@@ -37,19 +37,31 @@ th, td {
 
 .column1 {
   width: 10%;
-  padding-left: 40px;
+  /*padding-left: 40px;*/
+  font-size: 30px;
+  font-family:'Calibri Light';
+  font-style:bold;
 }
 
 .column2 {
   width: 25%;
+  font-size: 30px;
+  font-family:'Calibri Light';
+  font-style:bold;
 }
 
 .column3 {
   width: 30%;
+  font-size: 30px;
+  font-family:'Calibri Light';
+  font-style:bold;
 }
 
 .column4 {
   width: 10%;
+  font-size: 30px;
+  font-family:'Calibri Light';
+  font-style:bold;
 }
 
 .table-head th {
