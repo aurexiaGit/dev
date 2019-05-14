@@ -127,7 +127,15 @@ th, td {
 }
 
 
+.ownRanking{
+  align-items: center;
+  position:fixed;
+  font-weight: bold;
+  text-align: center;
+}
+/*
 @media (max-width: 1000px) and (orientation: portrait) {
 
   
 }
+*/

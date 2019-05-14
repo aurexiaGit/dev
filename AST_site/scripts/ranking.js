@@ -33,6 +33,7 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		i++
 	}
 
+	/*
 	var table_perso = document.getElementById("content_perso")
 	var j = 1
 
@@ -51,11 +52,13 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column2.className = "column2"
 		column2.innerHTML = _usersPerso[key].name
 		row.appendChild(column2)
-
+		
+		
 		var column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersPerso[key].address
 		row.appendChild(column3)
+		
 
 		var column4 = document.createElement('td')
 		column4.className = "column4"
@@ -64,6 +67,7 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 
 		i++
 	}
+	*/
 }
 
 
