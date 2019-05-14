@@ -127,7 +127,7 @@ th, td {
 }
 
 
-div.ownRanking{
+.ownRanking{
   align-items: center;
   position:absolute;
   font-weight: bold;
