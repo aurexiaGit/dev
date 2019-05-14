@@ -188,6 +188,10 @@ const getRankingList = async () =>{
 		}
 	}
 
+	// Display current user's ranking
+	var ownRank = document.getElementById("ownRankingTxt");
+	ownRank.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
+	ownRank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + usersPerso[name].classement  + "</p>"
 
 	return getRankingTable(usersTop, usersPerso);
 };
