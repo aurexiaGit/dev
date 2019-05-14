@@ -41,6 +41,21 @@ let TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
+    "name": "sizeListCharity",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x1c6c72b0"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "openDonation",
     "outputs": [
       {
@@ -726,6 +741,36 @@ let TokenABI = web3.eth.contract([
     "signature": "0xd980151c"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "getCharityAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x1ad06393"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getCharitySize",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xae1de61c"
+  },
+  {
     "constant": false,
     "inputs": [],
     "name": "launchDonation",
@@ -797,7 +842,7 @@ let TokenABI = web3.eth.contract([
   }
 ]);
 
-let Token = TokenABI.at('0xaC6A5F684aB19aD8DEF57Bd9750DE2274c6C87Ef');
+let Token = TokenABI.at('0x5a3a2761E5773C57B8ae9e35A3968f32a54dec46');
 
 
 const getLog = async () =>{
