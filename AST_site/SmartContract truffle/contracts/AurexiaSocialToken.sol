@@ -207,7 +207,7 @@ contract AurexiaSocialToken is Owned, SafeMath {
 
     //transfer tokens to all aurexia members from administrator
 
-    function transferAll(uint256 _value) public onlyOwner() returns (bool success) {   // modif lors du passage en front
+    function transferAll(uint256 _value) public onlyOwner() returns (bool success) {
         require(balances[owner] >= safeMul(_value,sizeListAccount));
         for (uint i=0; i<sizeListAccount; i++){
           address account = aurexiaAccounts[i];

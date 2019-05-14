@@ -37,6 +37,7 @@ th, td {
 
 .column1 {
   width: 10%;
+  padding-left: 40px;
 }
 
 .column2 {
@@ -59,9 +60,6 @@ th, td {
 .table-body td {
   padding-top: 16px;
   padding-bottom: 16px;
-  text-align: center;
-  font-size: 30px;
-  font-family:'Calibri Light';
 }
 
 /*==================================================================
@@ -76,7 +74,6 @@ th, td {
   width: 100%;
   top: 0;
   left: 0;
-  text-align: center;
 }
 
 /*==================================================================
@@ -89,15 +86,14 @@ th, td {
 
 
 .table th {
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   line-height: 1.4;
   background-color: #023B59;
-  font-weight:bold;
 }
 
 .table td {
-  font-size: 20px;
+  font-size: 15px;
   color: #808080;
   line-height: 1.4;
 }
@@ -131,41 +127,3 @@ th, td {
 }
 
 
-.ownRankingTxt{
-  font-size: 30px;
-  line-height: 0;
-  font-weight: 900;
-  text-align: center;
-}
-
-
-@media (max-width: 1000px) and (orientation: portrait) {
-
-  .wrap-table {
-    width: 340px;
-  }
-  
-  .table-body td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    font-size: 10px;
-    font-family:'Calibri Light';
-  }
-
-  
-.table th {
-  font-size: 10px;
-  color: #fff;
-  line-height: 1.4;
-  background-color: #023B59;
-  font-weight:bold;
-}
-
-.table td {
-  font-size: 10px;
-  color: #808080;
-  line-height: 1.4;
-}
-  
-}
