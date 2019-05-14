@@ -126,16 +126,23 @@ th, td {
   background-color: #cccccc;
 }
 
-/*
+
 .ownRankingTxt{
+  font-size: 30px;
+  line-height: 0;
+  font-weight: 900;
+  text-align: center;
+
+  /*
   font-size: 300px;
   font-family:'Calibri Light';
   font-style:bold;
   margin: 0 auto;
   text-align: center;
   margin-top: 0px;
+  */
 }
-*/
+
 /*
 @media (max-width: 1000px) and (orientation: portrait) {
 
