@@ -119,8 +119,9 @@ const Transfer = async() => {
 			amount = amount*Math.pow(10,18);
 			web3.eth.getAccounts(function(error, accounts) {
 				if (error) throw error;
+				let account = accounts[0].toLowerCase();
 				// Send ERC20 transaction with web3
-				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
+				Token.transfer.sendTransaction(address, amount, {from: account}, (error, txnHash) => {
 					if (error) return reject (error);
 					console.log("ca marche !!")
 					console.log(txnHash);
