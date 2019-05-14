@@ -15,7 +15,7 @@ elmt.style.display = "none";
 
 // Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
 let fm = new Fortmatic('pk_test_347D0E0FC05C5584');
-window.web3 = new Web3(fm.getProvider())
+web3 = new Web3(fm.getProvider());
 
 // Request user login if needed, returns current user account address
 web3.currentProvider.enable();
