@@ -17,23 +17,20 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column2.className = "column2"
 		column2.innerHTML = _usersTop[key].name
 		row.appendChild(column2)
-		
-		/*
+
 		var column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersTop[key].address
 		row.appendChild(column3)
-		*/
 
-		var column3 = document.createElement('td')
-		column3.className = "column3"
-		column3.innerHTML = Math.round(_usersTop[key].balance)
-		row.appendChild(column3)
+		var column4 = document.createElement('td')
+		column4.className = "column4"
+		column4.innerHTML = Math.round(_usersTop[key].balance)
+		row.appendChild(column4)
 
 		i++
 	}
 
-	/*
 	var table_perso = document.getElementById("content_perso")
 	var j = 1
 
@@ -52,13 +49,11 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column2.className = "column2"
 		column2.innerHTML = _usersPerso[key].name
 		row.appendChild(column2)
-		
-		
+
 		var column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersPerso[key].address
 		row.appendChild(column3)
-		
 
 		var column4 = document.createElement('td')
 		column4.className = "column4"
@@ -67,7 +62,6 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 
 		i++
 	}
-	*/
 }
 
 
@@ -188,28 +182,6 @@ const getRankingList = async () =>{
 		}
 	}
 
-	// Display current user's ranking
-	
-	var ownRank = usersPerso["Perso"].classement
-	switch(ownRank) {
-		case 1:
-			var ownRankEnd = "st"
-			break;
-		case 2:
-			var ownRankEnd = "nd"
-			break;
-		case 3:
-			var ownRankEnd = "rd"
-			break;
-		case (ownRank >3) :
-			var ownRankEnd = "th"
-			break;
-		default:
-			var ownRankEnd = "th"
-	}
-
-	var rank = document.getElementById("ownRanking");
-	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
 	return getRankingTable(usersTop, usersPerso);
 };

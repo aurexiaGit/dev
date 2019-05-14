@@ -14,8 +14,8 @@ var elmt = document.getElementById("notifBanner");
 elmt.style.display = "none";
 
 // Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
-let fm = new Fortmatic('pk_test_347D0E0FC05C5584');
-web3 = new Web3(fm.getProvider());
+let fm = new Fortmatic('pk_test_C2730990669F6111');
+window.web3 = new Web3(fm.getProvider())
 
 // Request user login if needed, returns current user account address
 web3.currentProvider.enable();
@@ -37,21 +37,6 @@ let TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x06fdde03"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "sizeListCharity",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x1c6c72b0"
   },
   {
     "constant": true,
@@ -469,26 +454,6 @@ let TokenABI = web3.eth.contract([
     "constant": false,
     "inputs": [
       {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "transferAll",
-    "outputs": [
-      {
-        "name": "success",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x52435bb8"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "name": "_address",
         "type": "address"
       },
@@ -741,36 +706,6 @@ let TokenABI = web3.eth.contract([
     "signature": "0xd980151c"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "getCharityAddress",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address[]"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x1ad06393"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getCharitySize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xae1de61c"
-  },
-  {
     "constant": false,
     "inputs": [],
     "name": "launchDonation",
@@ -842,7 +777,7 @@ let TokenABI = web3.eth.contract([
   }
 ]);
 
-let Token = TokenABI.at('0x5a3a2761E5773C57B8ae9e35A3968f32a54dec46');
+let Token = TokenABI.at('0x97E7073A4e0c643d62cf93e047e16352Bb4f2533');
 
 
 const getLog = async () =>{

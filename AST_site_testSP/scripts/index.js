@@ -121,15 +121,13 @@ const Transfer = async() => {
 				if (error) throw error;
 				// Send ERC20 transaction with web3
 				Token.transfer.sendTransaction(address, amount, {from: accounts[0]}, (error, txnHash) => {
-					if (error) return reject (error);
+					if (error) throw error;
 					console.log(txnHash);
-					resolve (txnHash);
 				});
 			});
 		})
 	};
 
-	
 	var frm = document.getElementById("send");
 	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
