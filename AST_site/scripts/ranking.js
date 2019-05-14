@@ -193,23 +193,26 @@ const getRankingList = async () =>{
 	var ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
-			var ownRankEnd = 'st'
+			var ownRankEnd = "st"
 			break;
 		case 2:
-			var ownRankEnd = 'nd'
+			var ownRankEnd = "nd"
 			break;
 		case 3:
-			var ownRankEnd = 'rd'
+			var ownRankEnd = "rd"
 			break;
 		case (ownRank >3) :
-			var ownRankEnd = 'th'
+			var ownRankEnd = "th"
 			break;
 		default:
-			var ownRankEnd = 'th'
+			var ownRankEnd = "th"
 	}
 
 	var rank = document.getElementById("ownRankingTxt");
-	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank + ownRankEnd  + "</p>"
+	console.log(ownRank)
+	console.log(ownRankEnd)
+	console.log("<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>")
+	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>"
 
 	return getRankingTable(usersTop, usersPerso);
 };
