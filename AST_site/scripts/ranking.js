@@ -214,7 +214,7 @@ const getRankingList = async () =>{
 	console.log("<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>")
 	var rank = document.getElementById("ownRanking");
 	console.log(rank)
-	rank.innerHTML="<p>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
+	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
 	return getRankingTable(usersTop, usersPerso);
 };
