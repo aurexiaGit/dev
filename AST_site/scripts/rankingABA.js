@@ -17,18 +17,16 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column2.className = "column2"
 		column2.innerHTML = _usersTop[key].name
 		row.appendChild(column2)
-		
-		/*
+
 		var column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersTop[key].address
 		row.appendChild(column3)
-		*/
 
-		var column3 = document.createElement('td')
-		column3.className = "column3"
-		column3.innerHTML = Math.round(_usersTop[key].balance)
-		row.appendChild(column3)
+		var column4 = document.createElement('td')
+		column4.className = "column4"
+		column4.innerHTML = Math.round(_usersTop[key].balance)
+		row.appendChild(column4)
 
 		i++
 	}
