@@ -70,7 +70,7 @@ const openDonation = async () => {
 			let result = accounts[0].toLowerCase();
 			resolve(result);
 		})
-		})};
+	})};
 
 	const open = (curAddress) =>{                         
 		return new Promise(function(resolve, reject){
