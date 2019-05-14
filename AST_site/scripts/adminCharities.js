@@ -61,7 +61,7 @@ const remCharity = async () => {
 ////////////////////////////////////////////////////////
 
 
-const openDonation = () => {
+const openDonation = async () => {
 
 	const getCurAddress = () =>{                         
 		return new Promise(function(resolve, reject){
@@ -71,8 +71,6 @@ const openDonation = () => {
 			resolve(result);
 		})
 		})};
-		
-	let curAddress = await getCurAddress();
 
 	const open = (curAddress) =>{                         
 		return new Promise(function(resolve, reject){
@@ -83,6 +81,7 @@ const openDonation = () => {
 	  	})
 	};
 
+	let curAddress = await getCurAddress();
 	let result = await open (curAddress);
 	console.log(result)
 	return result;
@@ -99,8 +98,6 @@ const closeDonation = () => {
 			resolve(result);
 		})
 		})};
-		
-	let curAddress = await getCurAddress();
 
 	const close = (curAddress) =>{                         
 		return new Promise(function(resolve, reject){
@@ -111,6 +108,7 @@ const closeDonation = () => {
 	  	})
 	};
 
+	let curAddress = await getCurAddress();
 	let result = await close (curAddress);
 	console.log(result)
 	return result;
