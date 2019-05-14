@@ -114,7 +114,7 @@ nav {
   }
 
   #logo img{
-    width: 100px;
+    width: 120px;
   }
 
   #block_page{
@@ -125,6 +125,10 @@ nav {
     color : white;
     font-size: 15px;
     margin-left : 18px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
   }
   
 }
