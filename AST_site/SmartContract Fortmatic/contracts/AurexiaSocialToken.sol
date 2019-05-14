@@ -72,6 +72,10 @@ contract AurexiaSocialToken is Owned, SafeMath {
     address[] private aurexiaAccounts;
     uint256 public sizeListAccount;
 
+    //storage of all adresses of all charities
+    address[] private charityAccounts;
+    uint256 public sizeListCharity;
+
     struct membre{
       address publicKey;
       string name;    // first name + family Name
@@ -296,12 +300,22 @@ contract AurexiaSocialToken is Owned, SafeMath {
         associationList[_address].name = _name;
         associationList[_address].publicKey = _address;
         associationList[_address].isPartner = true;
+        charityAccounts.push(_address);
+        sizeListCharity = safeAdd(sizeListCharity, 1);
         return true;
     }
 
     function remAssociation (address _address) public returns (bool){
         require (msg.sender == owner || aurexiaMembers[msg.sender].grade == 3);
         associationList[_address].isPartner = false;
+        for (uint i=0; i<sizeListCharity; i++ ){
+          if (_address == charityAccounts[i]){
+            charityAccounts[i] = charityAccounts[sizeListCharity - 1];
+            delete charityAccounts[sizeListCharity - 1];
+            sizeListCharity = safeSub(sizeListCharity, 1);
+            break;
+          }
+        }
         return true; 
     }
 
@@ -312,6 +326,14 @@ contract AurexiaSocialToken is Owned, SafeMath {
         uint256 value = balanceOf(msg.sender);
         _transfer (msg.sender, _address, value);
         return true; 
+    }
+
+    function getCharityAddress () public view returns (address[] memory){
+        return charityAccounts;
+    }
+
+    function getCharitySize () public view returns (uint256){
+        return sizeListCharity;
     }
 
     function launchDonation () public returns (bool){

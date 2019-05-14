@@ -17,6 +17,21 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "sizeListCharity",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x1c6c72b0"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "openDonation",
       "outputs": [
         {
@@ -700,6 +715,36 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0xd980151c"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getCharityAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x1ad06393"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getCharitySize",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xae1de61c"
     },
     {
       "constant": false,
