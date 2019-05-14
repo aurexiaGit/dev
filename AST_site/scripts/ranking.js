@@ -190,8 +190,7 @@ const getRankingList = async () =>{
 
 	// Display current user's ranking
 	
-	//var ownRank = usersPerso["Perso"].classement
-	var ownRank = 275
+	var ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
 			var ownRankEnd = "st"
@@ -209,7 +208,6 @@ const getRankingList = async () =>{
 			var ownRankEnd = "th"
 	}
 
-	console.log("<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>")
 	var rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 

@@ -60,6 +60,7 @@ th, td {
 .table-body td {
   padding-top: 16px;
   padding-bottom: 16px;
+  text-align: center;
 }
 
 /*==================================================================
@@ -74,6 +75,7 @@ th, td {
   width: 100%;
   top: 0;
   left: 0;
+  text-align: center;
 }
 
 /*==================================================================
