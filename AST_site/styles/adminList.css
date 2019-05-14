@@ -129,7 +129,7 @@ th, td {
 
 div.ownRanking{
   align-items: center;
-  position:fixed;
+  position:absolute;
   font-weight: bold;
   text-align: center;
   font-size: 50px;
