@@ -191,9 +191,7 @@ const getRankingList = async () =>{
 	// Display current user's ranking
 	var ownRank = document.getElementById("ownRankingTxt");
 	console.log(usersPerso)
-	for (var key in usersPerso){
-		console.log(key)
-	}
+	console.log(usersPerso["Perso"].classement)
 	//ownRank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + usersPerso[name].classement  + "</p>"
 	//console.log(usersPerso[name].classement)
 
