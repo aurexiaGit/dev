@@ -26,7 +26,7 @@ function Transfer() {
 function createPage() {
 	myBalance()
 	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = Balance.toString() + " AST"	
+		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
 	}
 }
 
