@@ -1,7 +1,7 @@
 // ******************************************* 
 //Test update amount value after sending tokens
 
-
+/*
 const refreshBalance= async () => {
 
 	const getCurAddress = () =>{                         
@@ -55,7 +55,7 @@ const refreshBalance= async () => {
 	}
 	});
 }
-refreshBalance();
+refreshBalance(); */
 
 
 // *******************************************
