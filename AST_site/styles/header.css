@@ -99,11 +99,11 @@ nav {
 
 @media (max-width: 1000px) and (orientation: portrait) {
   header {
-    /*background-color : rgb(29,74,105);*/
-    background-color : #ED7D31;
+    background-color : rgb(29,74,105);
+    /*background-color : #ED7D31;*/
     background-size: 100%;
     display :flex;
-    justify-content: space-between;
+    justify-content: normal;
     align-items: center;
     box-shadow: 10px 0px 10px grey;
     position:fixed;
@@ -115,10 +115,6 @@ nav {
 
   #logo img{
     width: 120px;
-    display: block;
-    border:0;
-    font-size:0;
-    margin: 0;
   }
 
   #block_page{
