@@ -78,29 +78,21 @@ const dropdownListCharity = (_curAddress, _charity) => {
   getCharity();
 
 
-  const transferCharity = async() => {
+	const transferCharity = async() => {
 
-	let address = document.getElementById("dest-select").value
-	console.log("adress in Transfer function is:" + address)
-
-	const transferEvent = async (_address) =>{
-		return new Promise(function(resolve, reject){
-			console.log ("dans la fonction transfert")
-			console.log (_address)
-			web3.eth.getAccounts(function(error, accounts) {
-				if (error) throw error;
-				// Send ERC20 transaction with web3
-				Token.transferToAssociation.sendTransaction(_address, {from: accounts[0]}, (error, txnHash) => {
-					if (error) return reject (error);
-					resolve(txnHash)
-					console.log(txnHash);
-				});
-			});
-		})
-	};
-
-	let transferTransaction = await transferEvent(address);
-	var frm = document.getElementById("donate");
-	frm.reset();
-	return transferTransaction;
-}
+		let address = document.getElementById("dest-select").value
+	
+		const transferEvent = async (_address) =>{
+			return new Promise(function(resolve, reject){
+				Token.transferToAssociation(_address, (err, result) => {
+					if (err) return reject (err);
+					resolve(result);
+				})
+			})
+		};
+	
+		transferTransaction = await transferEvent(address,amount);
+		var frm = document.getElementById("donate");
+		frm.reset();
+		return transferTransaction
+	}
