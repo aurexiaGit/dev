@@ -75,7 +75,7 @@ const dropdownListCharity = (_curAddress, _charity) => {
 	return dropdownListCharity(curAddress, charity);
   };
   
-  getcharity();
+  getCharity();
 
 
   const transferCharity = async() => {
