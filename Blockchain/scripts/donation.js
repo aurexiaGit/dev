@@ -82,8 +82,6 @@ const dropdownListCharity = (_curAddress, _charity) => {
 
 	let address = document.getElementById("dest-select").value
 	console.log("adress in Transfer function is:" + address)
-	
-	sending = true
 
 	const transferEvent = async (address, amount) =>{
 		return new Promise(function(resolve, reject){
@@ -102,9 +100,8 @@ const dropdownListCharity = (_curAddress, _charity) => {
 		})
 	};
 
-	
+	let transferTransaction = await transferEvent(address,amount);
 	var frm = document.getElementById("donate");
 	frm.reset();
-	let transferTransaction = await transferEvent(address,amount);
 	return transferTransaction;
 }
