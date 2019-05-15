@@ -912,12 +912,21 @@ const getUsers = async () =>{
 				if (err) return reject(err);
 				resolve(name);
 		})
-	})}	
+  })}	
+  
+  const getTaille = () =>{
+    return new Promise(function(resolve, reject){
+      Token.sizeListAccount((err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+    })
+  })}
 
 	listAddress = await getMembers();
 	console.log("get list of addresses")
-	console.log(listAddress);
-	while (i < listAddress.length) {
+  console.log(listAddress);
+  let taille = await getTaille();
+	while (i < taille) {
 		var address = listAddress[i];
 		console.log(address)
 		name = await getName(address);
