@@ -196,6 +196,7 @@ const getCharityList = async () =>{
 		return new Promise(function(resolve, reject){
 		  Token.getCharitySize((err, result) => {
 			if (err) return reject(err);
+			console.log(result);
 			resolve(result);
 		})
 	  })}
