@@ -13,16 +13,13 @@ var show = false;
 var elmt = document.getElementById("notifBanner");
 elmt.style.display = "none";
 
-// Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
-let fm = new Fortmatic('pk_test_C2730990669F6111');
-window.web3 = new Web3(fm.getProvider())
+// connect to ethereum API web3
 
-// Request user login if needed, returns current user account address
-web3.currentProvider.enable();
+var web3 = new Web3(web3.currentProvider);
 
 // get token as a variable
 
-let TokenABI = web3.eth.contract([
+var TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
@@ -454,26 +451,6 @@ let TokenABI = web3.eth.contract([
     "constant": false,
     "inputs": [
       {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "transferAll",
-    "outputs": [
-      {
-        "name": "success",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x52435bb8"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "name": "_address",
         "type": "address"
       },
@@ -532,26 +509,6 @@ let TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x9eab5253"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAddress",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xb93f9b0a"
   },
   {
     "constant": true,
@@ -797,7 +754,18 @@ let TokenABI = web3.eth.contract([
   }
 ]);
 
-let Token = TokenABI.at('0xaC6A5F684aB19aD8DEF57Bd9750DE2274c6C87Ef');
+var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
+
+// check that user has Metamask installed 
+
+if (window.ethereum===undefined) {
+	window.confirm('Pas installe'); 
+}
+else {
+  window.ethereum
+  ethereum.enable()
+}
+
 
 
 const getLog = async () =>{
@@ -805,7 +773,7 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = () =>{                         
+  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
@@ -817,7 +785,6 @@ const getLog = async () =>{
     return new Promise(function(resolve, reject){
       Token.owner((err, accounts) => {
         if (err) return reject(err);
-        console.log(accounts);
         resolve(accounts);
     })
   })}
@@ -834,18 +801,12 @@ const getLog = async () =>{
   curAddress = await getCurAddress();
   ownerAddress = await getOwner();
   curName = await getName(curAddress);
-  console.log("current address");
-  console.log(curAddress);
-  console.log("owner");
-  console.log(ownerAddress);
-  console.log("curName");
-  console.log(curName);
 
   return getBanner(curAddress, ownerAddress, curName);
 };
 
 const getBanner = (_curAddress, _ownerAddress, _name) => {
-  if (_curAddress.toLowerCase() == _ownerAddress.toLowerCase() && _curAddress !== undefined && _ownerAddress!== undefined) {
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
     identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
@@ -858,16 +819,29 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
+function showNotif() {
+	if (!show) {
+		show=true;
+		elmt.style.display = "";
+	}
+	else {
+		show=false;
+		elmt.style.display = "none";
+	}
+}
+
+
+
 //update drop-down list
-const dropdownList = (_curAddress, _users) => {
+//var select = document.getElementById("dest-select");
+
+const dropdownList = (_users) => {
 
   var select = document.getElementById("dest-select");
   for (var key in _users){
-	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase()) {
-      console.log(_users[key].address)
-      console.log(_users[key].name)
+	  if (_users.hasOwnProperty(key) && key !== "admin") {
       var opt = document.createElement('option');
-      opt.value = _users[key].address.toLowerCase();
+      opt.value = _users[key].address;
       opt.innerHTML = _users[key].name;
       select.appendChild(opt);
     }
@@ -905,26 +879,14 @@ const getUsers = async () =>{
 		console.log(address)
 		name = await getName(address);
 		users[name]={}
-		users[name].address=address.toLowerCase();
+		users[name].address=address
 		users[name].name=name
 		i++
 		console.log(users[name].address)
 		console.log(users[name].name)
-  }
-  
-  //get current address before dropdownlist call, to remove own name from dropdown list
-  let curAddress;
+	}
 
-  const getCurAddress = () =>{                         
-  return new Promise(function(resolve, reject){
-    web3.eth.getAccounts((err, accounts) => {
-      if (err) return reject(err);
-      resolve(accounts[0]);
-  })
-  })}
-
-  curAddress = await getCurAddress();
-  return dropdownList(curAddress, users);
+	return dropdownList(users);
 };
 
 getUsers();
