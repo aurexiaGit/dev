@@ -80,7 +80,7 @@ const dropdownListCharity = (_curAddress, _charity) => {
 
 	const transferCharity = async() => {
 
-		let address = document.getElementById("dest-select").value
+		let address = document.getElementById("dest-select1").value
 	
 		const transferEvent = async (_address) =>{
 			return new Promise(function(resolve, reject){
