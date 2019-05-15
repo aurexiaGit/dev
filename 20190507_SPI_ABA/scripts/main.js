@@ -876,13 +876,15 @@ function showNotif() {
 //update drop-down list
 //var select = document.getElementById("dest-select");
 
-const dropdownList = (_users) => {
+const dropdownList = (_curAddress, _users) => {
 
   var select = document.getElementById("dest-select");
   for (var key in _users){
-	  if (_users.hasOwnProperty(key) && key !== "admin") {
+	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase()) {
+      console.log(_users[key].address)
+      console.log(_users[key].name)
       var opt = document.createElement('option');
-      opt.value = _users[key].address;
+      opt.value = _users[key].address.toLowerCase();
       opt.innerHTML = _users[key].name;
       select.appendChild(opt);
     }
@@ -927,7 +929,9 @@ const getUsers = async () =>{
 		console.log(users[name].name)
 	}
 
-	return dropdownList(users);
+
+  curAddress = await getCurAddress();
+  return dropdownList(curAddress, users);
 };
 
 getUsers();
