@@ -204,11 +204,11 @@ const getCharityList = async () =>{
 	console.log("lsite charities list");
 	console.log(listAddress);
 	let taille = await getTaille();
-	console.log("get list of addresses")
+	console.log("get list of addresses");
 	console.log(listAddress);
 	while (i < taille) {
 		var address = listAddress[i];
-		console.log(address)
+		console.log(address);
 		name = await getName(address);
 		balance = await getBalance(address);
 		charity[name]={};
