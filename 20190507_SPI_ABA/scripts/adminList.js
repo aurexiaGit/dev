@@ -71,10 +71,19 @@ const getUsersList = async () =>{
 		})
 	};
 
+	const getTaille = () =>{
+		return new Promise(function(resolve, reject){
+		  Token.sizeListAccount((err, result) => {
+			if (err) return reject(err);
+			resolve(result);
+		})
+	  })}
+
 	listAddress = await getMembers();
+	let taille = await getTaille();
 	console.log("get list of addresses")
 	console.log(listAddress);
-	while (i < listAddress.length) {
+	while (i < taille) {
 		var address = listAddress[i];
 		console.log(address)
 		name = await getName(address);
