@@ -3,7 +3,7 @@ const getHistory = async () =>{
 	let curAddress;
 	let ownerAddress;
   
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 	  return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 		  if (err) return reject(err);
@@ -18,7 +18,7 @@ const getHistory = async () =>{
 	let name;
 	var i = 0;
 
-	const getMembers = () =>{                        
+	const getMembers = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembers((err, members) => {
 				if (err) return reject(err);
@@ -26,7 +26,7 @@ const getHistory = async () =>{
 		})
 	})}
 
-	const getName = (address) =>{                        
+	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
