@@ -204,8 +204,8 @@ const getCharityList = async () =>{
 	console.log("lsite charities list");
 	console.log(listAddress);
 	let taille = await getTaille();
-	console.log("get list of addresses");
-	console.log(listAddress);
+	console.log("get taille");
+	console.log(taille);
 	while (i < taille) {
 		var address = listAddress[i];
 		console.log(address);

@@ -6,6 +6,7 @@
         <link rel = "stylesheet" href = "styles/style.css" />
         <link rel = "stylesheet" href = "styles/header.css" />
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -45,10 +46,8 @@
                     <form id="donate">
                       <select id="dest-select" required>
                             <option value="init">Select Charity</option>
-                            <option value="0x9Fa264121346183090d4077bd2EA8B01f395E13e">La Cravate Solidaire</option>
-                            <option value="0x83FeCf8CC96e2eac6Ce4F6f8bdB4F69466BE483E">Les Bouchons d'Amour</option>
                         </select>
-                      <button onclick="return Transfer()">Donate</button>
+                      <button onclick="return transferCharity()">Donate</button>
                     </form>
                   </div>
                 </div>
@@ -61,9 +60,6 @@
                 <p>© Copyright Aurexia – All rights reserved<br /></p>
             </footer>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
-        <script type="text/javascript" src="scripts/links.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/donation.js"></script>
     </body>
