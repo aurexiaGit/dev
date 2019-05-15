@@ -307,9 +307,18 @@ const getRankingList = async () =>{
 			})
 		})
 	};
+
+	const getTaille = () =>{
+		return new Promise(function(resolve, reject){
+		  Token.sizeListAccount((err, result) => {
+			if (err) return reject(err);
+			resolve(result);
+		})
+	  })}
 	
 	listAddress = await getMembers();
 	curAddress = await getCurAddress();
+	let taille = await getTaille();
 
 	//listAddress.splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
 
@@ -318,7 +327,7 @@ const getRankingList = async () =>{
 	console.log("list address")
 	console.log(listAddress)
 
-	while (i < listAddress.length) {
+	while (i < taille) {
 		var address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
@@ -340,7 +349,7 @@ const getRankingList = async () =>{
 				};
 
 
-	for (let i = listAddress.length-1; i > 0 ; i--){
+	for (let i = taille-1; i > 0 ; i--){
 		for (let j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
@@ -350,9 +359,9 @@ const getRankingList = async () =>{
 		}
 	}
 
-	if (listAddress.length <= 3){
+	if (taille <= 3){
 		console.log("dans if1")
-		for (let i=0; i<listAddress.length; i++){
+		for (let i=0; i<taille; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -371,7 +380,7 @@ const getRankingList = async () =>{
 		}
 	}
 
-	for (let i=0; i<listAddress.length; i++){
+	for (let i=0; i<taille; i++){
 		if (users[i].address.toLowerCase() == curAddress.toLowerCase()){
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
