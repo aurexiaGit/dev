@@ -1,8 +1,8 @@
 const dropdownListCharity = (_curAddress, _charity) => {
 
-	var select = document.getElementById("dest-select");
+	var select = document.getElementById("dest-select1");
 	for (var key in _charity){
-		if (_charity.hasOwnProperty(key) && key !== "admin" && _charity[key].address.toLowerCase() !== _curAddress.toLowerCase()) {
+		if (_charity.hasOwnProperty(key) && _charity[key].address.toLowerCase() !== _curAddress.toLowerCase()) {
 		console.log(_charity[key].address)
 		console.log(_charity[key].name)
 		var opt = document.createElement('option');
@@ -103,7 +103,7 @@ const dropdownListCharity = (_curAddress, _charity) => {
 	};
 
 	
-	var frm = document.getElementById("send");
+	var frm = document.getElementById("donate");
 	frm.reset();
 	let transferTransaction = await transferEvent(address,amount);
 	return transferTransaction;
