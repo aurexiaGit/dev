@@ -849,7 +849,7 @@ const getLog = async () =>{
 const getBanner = (_curAddress, _ownerAddress, _name) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
-    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
+    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
     document.getElementById("adminPage").style.display = "block";
     }
   else {
