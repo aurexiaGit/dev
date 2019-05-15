@@ -63,7 +63,7 @@ const remCharity = async () => {
 
 const openDonation = async () => {
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -72,7 +72,7 @@ const openDonation = async () => {
 		})
 	})};
 
-	const open = (curAddress) =>{                         
+	const open = async (curAddress) =>{                         
 		return new Promise(function(resolve, reject){
 			Token.launchDonation.sendTransaction({from:curAddress},(err,result) => {
 				if (err) return reject(err);
