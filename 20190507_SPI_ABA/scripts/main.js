@@ -927,7 +927,18 @@ const getUsers = async () =>{
 		i++
 		console.log(users[name].address)
 		console.log(users[name].name)
-	}
+  }
+  
+  //get current address before dropdownlist call, to remove own name from dropdown list
+  let curAddress;
+
+  const getCurAddress = () =>{                         
+  return new Promise(function(resolve, reject){
+    web3.eth.getAccounts((err, accounts) => {
+      if (err) return reject(err);
+      resolve(accounts[0]);
+  })
+  })}
 
 
   curAddress = await getCurAddress();
