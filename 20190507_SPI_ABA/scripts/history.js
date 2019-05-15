@@ -62,7 +62,7 @@ const getHistory = async () =>{
 				table.appendChild(row)
 
 				var column1 = document.createElement('td')
-				column1.className = "column1"
+				column1.className = "column1History"
 				//convert timestamp to date (*1000 below is to get it in ms)
 				var d = new Date(parseInt(resultArray[key].timeStamp)*1000);
 				var date = d.getDate();
@@ -74,7 +74,7 @@ const getHistory = async () =>{
 				row.appendChild(column1)
 
 				var column2 = document.createElement('td')
-				column2.className = "column2"
+				column2.className = "column2History"
 				if (resultArray[key].from == curAddress) {
 					column2.innerHTML = "Transfer"
 				}
@@ -84,17 +84,17 @@ const getHistory = async () =>{
 				row.appendChild(column2)
 
 				var column3 = document.createElement('td')
-				column3.className = "column3"
+				column3.className = "column3History"
 				column3.innerHTML = await getName(resultArray[key].from)
 				row.appendChild(column3)
 
 				var column4 = document.createElement('td')
-				column4.className = "column4"
+				column4.className = "column4History"
 				column4.innerHTML = await getName(resultArray[key].to)
 				row.appendChild(column4)
 				
 				var column5 = document.createElement('td')
-				column5.className = "column5"
+				column5.className = "column5History"
 				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
 					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
 				}

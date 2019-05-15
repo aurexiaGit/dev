@@ -51,6 +51,26 @@ th, td {
   width: 10%;
 }
 
+.column1History {
+  width: 15%;
+}
+
+.column2History {
+  width: 15%;
+}
+
+.column3History {
+  width: 25%;
+}
+
+.column4History {
+  width: 25%;
+}
+
+.column5History {
+  width: 15%;
+}
+
 .table-head th {
   padding-top: 18px;
   padding-bottom: 18px;
