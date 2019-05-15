@@ -91,7 +91,7 @@ const dropdownListCharity = (_curAddress, _charity) => {
 			})
 		};
 	
-		transferTransaction = await transferEvent(address,amount);
+		transferTransaction = await transferEvent(address);
 		var frm = document.getElementById("donate");
 		frm.reset();
 		return transferTransaction
