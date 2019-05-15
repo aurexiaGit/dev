@@ -20,10 +20,10 @@ const addCharity = async () => {
 			})
 	  	})
 	};
+	let _curAddress = await getCurAddress();
+	let assigment = await addC(_address,_name, _curAddress);
 	var frm = document.getElementById("addCharity");
 	frm.reset();
-	let _curAddress = await getCurAddress();
-	let assigment = await addC(_address,_name, _curAddress)
 	console.log(assigment)
 	return false;
 }
@@ -48,10 +48,10 @@ const remCharity = async () => {
 			})
 	  	})
 	};
+	let _curAddress = await getCurAddress();
+	let assigment = await remC(_address, _curAddress);
 	var frm = document.getElementById("remCharity");
 	frm.reset();
-	let _curAddress = await getCurAddress();
-	let assigment = await remC(_address, _curAddress)
 	console.log(assigment)
 	return false;
 }
@@ -201,6 +201,8 @@ const getCharityList = async () =>{
 	  })}
 
 	listAddress = await getCharity();
+	console.log("lsite charities list");
+	console.log(listAddress);
 	let taille = await getTaille();
 	console.log("get list of addresses")
 	console.log(listAddress);
