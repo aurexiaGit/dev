@@ -1,4 +1,4 @@
-const dropdownList = (_curAddress, _charity) => {
+const dropdownListCharity = (_curAddress, _charity) => {
 
 	var select = document.getElementById("dest-select");
 	for (var key in _charity){
@@ -72,7 +72,7 @@ const dropdownList = (_curAddress, _charity) => {
 	})}
   
 	curAddress = await getCurAddress();
-	return dropdownList(curAddress, charity);
+	return dropdownListCharity(curAddress, charity);
   };
   
   getcharity();
