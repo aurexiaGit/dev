@@ -176,7 +176,7 @@ const getCharityList = async () =>{
 
 	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
+			Token.getAssoName(address, (err, name) => {
 				if (err) return reject(err);
 				resolve(name);
 			})
