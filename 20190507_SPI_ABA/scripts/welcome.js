@@ -1,10 +1,13 @@
-// connect to ethereum API web3
+// Get web3 Provider with Fortmatic (fortmatic and web3 are loaded in the html file)
+let fm = new Fortmatic('pk_test_C2730990669F6111');
+window.web3 = new Web3(fm.getProvider())
 
-var web3 = new Web3(web3.currentProvider);
+// Request user login if needed, returns current user account address
+web3.currentProvider.enable();
 
 // get token as a variable
 
-var TokenABI = web3.eth.contract([
+let TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
@@ -436,6 +439,26 @@ var TokenABI = web3.eth.contract([
     "constant": false,
     "inputs": [
       {
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferAll",
+    "outputs": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x52435bb8"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
         "name": "_address",
         "type": "address"
       },
@@ -494,6 +517,26 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x9eab5253"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb93f9b0a"
   },
   {
     "constant": true,
@@ -739,21 +782,13 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x9D370c0bEfd7Dab940EEF7783D942cff020B15B9');
+let Token = TokenABI.at('0xaC6A5F684aB19aD8DEF57Bd9750DE2274c6C87Ef');
 
-// check that user has Metamask installed 
-
-if (window.ethereum===undefined) {
-	window.confirm('Pas installe'); 
-}
-else {
-  window.ethereum
-  ethereum.enable()
-}
 
 const getLog = async () =>{
 
   let curAddress;
+  let ownerAddress;
 
   const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
@@ -763,9 +798,40 @@ const getLog = async () =>{
     })
   })}
 
+  const getOwner = () =>{
+    return new Promise(function(resolve, reject){
+      Token.owner((err, accounts) => {
+        if (err) return reject(err);
+        resolve(accounts);
+    })
+  })}
+
+  const getName = (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, name) => {
+				if (err) return reject(err);
+				resolve(name);
+			})
+		})
+	}
+
   curAddress = await getCurAddress();
-  console.log("get account main")
-  console.log(curAddress);
+  ownerAddress = await getOwner();
+  curName = await getName(curAddress);
+
+  return getBanner(curAddress, ownerAddress, curName);
+};
+
+const getBanner = (_curAddress, _ownerAddress, _name) => {
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br> <img class = 'pic' src= 'images/admin.png' alt='profile pic'> <div id = 'name'> " + _name + "</div> </br> ";
+    document.getElementById("adminPage").style.display = "block";
+    }
+  else {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
+  }
 };
 
 getLog();

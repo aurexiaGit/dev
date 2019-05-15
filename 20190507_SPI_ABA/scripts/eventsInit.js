@@ -173,7 +173,7 @@ function createPage() {
 	loading()
 	myBalance()
 		if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = thisBalance.toString() + " AST"	
+		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
 	}
 	attributeBalances()
 	window.setTimeout(function() {makeGraph()},3000)

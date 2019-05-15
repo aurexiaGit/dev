@@ -1,7 +1,6 @@
 const getHistory = async () =>{
 
 	let curAddress;
-	let ownerAddress;
   
 	const getCurAddress = () =>{                         
 	  return new Promise(function(resolve, reject){
@@ -45,7 +44,7 @@ const getHistory = async () =>{
 	}
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
-	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
+	$.getJSON('https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
 		var resultArray = data.result
 
 		// fill the history with data from json file. Required/relevant columns from json are:
@@ -95,12 +94,7 @@ const getHistory = async () =>{
 				
 				var column5 = document.createElement('td')
 				column5.className = "column5"
-				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = resultArray[key].value*Math.pow(10,-18)
-				}
-				else {
-					column5.innerHTML = resultArray[key].value*Math.pow(10,-18)
-				}
+				column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
 				row.appendChild(column5)
 				
 				i++
