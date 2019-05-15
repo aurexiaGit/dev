@@ -3,7 +3,7 @@ const addCharity = async () => {
 	var _address = document.getElementById("adress1").value
 	var _name = document.getElementById("name1").value
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -12,7 +12,7 @@ const addCharity = async () => {
 		})
   	})};
 
-	const addC = (address, name, curAddress) =>{                         
+	const addC = async (address, name, curAddress) =>{                         
 		return new Promise(function(resolve, reject){
 			Token.addAssociation.sendTransaction(address,name,{from:curAddress},(err,result) => {
 				if (err) return reject(err);
@@ -31,7 +31,7 @@ const addCharity = async () => {
 const remCharity = async () => {
 	// Called when clicking on remove button
 	var _address = document.getElementById("adress2").value
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -40,7 +40,7 @@ const remCharity = async () => {
 		})
   	})};
 
-	const remC = (address, curAddress) =>{                         
+	const remC = async (address, curAddress) =>{                         
 		return new Promise(function(resolve, reject){
 			Token.remAssociation.sendTransaction(address,{from:curAddress},(err,result) => {
 				if (err) return reject(err);
@@ -165,7 +165,7 @@ const getCharityList = async () =>{
 	let name;
 	let i = 0;
   
-	const getCharity = () =>{                        
+	const getCharity = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getCharityAddress((err, members) => {
 				if (err) return reject(err);
@@ -174,7 +174,7 @@ const getCharityList = async () =>{
 		})
 	};
 
-	const getName = (address) =>{                        
+	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
@@ -183,7 +183,7 @@ const getCharityList = async () =>{
 		})
 	};
 	
-	const getBalance = (_curAddress) =>{
+	const getBalance = async (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
@@ -192,9 +192,9 @@ const getCharityList = async () =>{
 		})
 	}
 
-	const getTaille = () =>{
+	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
-		  Token.sizeListAccount((err, result) => {
+		  Token.sizeListCharity((err, result) => {
 			if (err) return reject(err);
 			resolve(result);
 		})
