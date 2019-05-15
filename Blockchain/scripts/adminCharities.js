@@ -194,7 +194,7 @@ const getCharityList = async () =>{
 
 	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
-		  Token.sizeListCharity((err, result) => {
+		  Token.getCharitySize((err, result) => {
 			if (err) return reject(err);
 			resolve(result);
 		})
