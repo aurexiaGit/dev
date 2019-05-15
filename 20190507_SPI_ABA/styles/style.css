@@ -77,15 +77,6 @@ h1 {
     margin: 10px 0;
 }
 
-#new_charity
-{
-  margin: 40px;
-}
-
-#new_charity > * {
-    margin: 10px 0;
-}
-
 
 #profile_picture
 {
@@ -168,18 +159,3 @@ footer
 	bottom :0;
     font-weight: bold;
 }
-
-/*
-@media (max-width: 1000px) {
-  .form {
-    position: relative;
-    z-index: 1;
-    background: #ED7D31;
-    width: 500px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 40px 0 rgba(2, 59, 89, 0.4), 0 5px 5px 0 rgba(2, 59, 89, 0.4);
-  }
-}
-*/
