@@ -3,7 +3,7 @@
 
 const refreshBalance= async () => {
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -11,7 +11,7 @@ const refreshBalance= async () => {
 		})
   	})};
 	
-  	const getBalance = (_curAddress) =>{
+  	const getBalance = async (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
@@ -72,7 +72,7 @@ function createPage(Balance) {
 
 const accountManagement = async () => {
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -80,7 +80,7 @@ const accountManagement = async () => {
 		})
   	})};
 
-  	const getBalance = (_curAddress) =>{
+  	const getBalance = async (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);

@@ -44,7 +44,7 @@ const getUsersList = async () =>{
 	let name;
 	let i = 0;
   
-	const getMembers = () =>{                        
+	const getMembers = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembers((err, members) => {
 				if (err) return reject(err);
@@ -53,7 +53,7 @@ const getUsersList = async () =>{
 		})
 	};
 
-	const getName = (address) =>{                        
+	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
@@ -62,7 +62,7 @@ const getUsersList = async () =>{
 		})
 	};
 	
-	const getBalance = (_curAddress) =>{
+	const getBalance = async (_curAddress) =>{
 		return new Promise(function(resolve, reject){
 			Token.balanceOf(_curAddress, (err, result) => {
 				if (err) return reject (err);
@@ -71,7 +71,7 @@ const getUsersList = async () =>{
 		})
 	};
 
-	const getTaille = () =>{
+	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
 		  Token.sizeListAccount((err, result) => {
 			if (err) return reject(err);

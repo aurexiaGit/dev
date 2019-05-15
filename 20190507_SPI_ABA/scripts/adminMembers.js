@@ -4,7 +4,7 @@ const addMember = async () => {
 	var _name = document.getElementById("name1").value
 	var _grade = document.getElementById ("grade1").value
 
-	const addM = (address,name,grade) =>{                         
+	const addM = async (address,name,grade) =>{                         
 		return new Promise(function(resolve, reject){
 			Token.addToAurexiaMembers(address,name,grade,(err,result) => {
 				if (err) return reject(err);
@@ -12,9 +12,9 @@ const addMember = async () => {
 			})
 	  	})
 	};
+	let assigment = await addM(_address,_name,_grade)
 	var frm = document.getElementById("addMember");
 	frm.reset();
-	let assigment = await addM(_address,_name,_grade)
 	console.log(assigment)
 	return false;
 }

@@ -792,32 +792,3 @@ else {
   ethereum.enable()
 }
 
-const getLog = async () =>{
-
-  let curAddress;
-
-  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
-    return new Promise(function(resolve, reject){
-      web3.eth.getAccounts((err, accounts) => {
-        if (err) return reject(err);
-        resolve(accounts[0]);
-    })
-  })}
-
-  curAddress = await getCurAddress();
-  console.log("get account main")
-  console.log(curAddress);
-};
-
-getLog();
-
-function showNotif() {
-	if (!show) {
-		show=true;
-		elmt.style.display = "";
-	}
-	else {
-		show=false;
-		elmt.style.display = "none";
-	}
-}

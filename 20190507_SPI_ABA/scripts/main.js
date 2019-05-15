@@ -814,7 +814,7 @@ const getLog = async () =>{
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  const getCurAddress = async () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
@@ -822,7 +822,7 @@ const getLog = async () =>{
     })
   })}
 
-  const getOwner = () =>{
+  const getOwner = async () =>{
     return new Promise(function(resolve, reject){
       Token.owner((err, accounts) => {
         if (err) return reject(err);
@@ -830,7 +830,7 @@ const getLog = async () =>{
     })
   })}
 
-  const getName = (address) =>{                        
+  const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
@@ -860,18 +860,6 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
-function showNotif() {
-	if (!show) {
-		show=true;
-		elmt.style.display = "";
-	}
-	else {
-		show=false;
-		elmt.style.display = "none";
-	}
-}
-
-
 
 //update drop-down list
 //var select = document.getElementById("dest-select");
@@ -898,7 +886,7 @@ const getUsers = async () =>{
 	let name;
 	var i = 0;
   
-	const getMembers = () =>{                        
+	const getMembers = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembers((err, members) => {
 				if (err) return reject(err);
@@ -906,7 +894,7 @@ const getUsers = async () =>{
 	  	})
 	})}
 
-	const getName = (address) =>{                        
+	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
@@ -914,7 +902,7 @@ const getUsers = async () =>{
 		})
   })}	
   
-  const getTaille = () =>{
+  const getTaille = async () =>{
     return new Promise(function(resolve, reject){
       Token.sizeListAccount((err, result) => {
         if (err) return reject(err);
@@ -941,7 +929,7 @@ const getUsers = async () =>{
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
 
-  const getCurAddress = () =>{                         
+  const getCurAddress = async () =>{                         
   return new Promise(function(resolve, reject){
     web3.eth.getAccounts((err, accounts) => {
       if (err) return reject(err);

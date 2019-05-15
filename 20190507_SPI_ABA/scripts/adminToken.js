@@ -16,7 +16,7 @@ const createTokens = async () => {
 	amount = amount * Math.pow(10,18);
 	var address = document.getElementById("adress1").value
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -25,9 +25,9 @@ const createTokens = async () => {
 		})
 	  })};
 
+	let curAddress = await getCurAddress();
 	var frm = document.getElementById("addMember");
 	frm.reset();
-	let curAddress = await getCurAddress();
 	return create(curAddress, address, amount);
 }
 
@@ -49,7 +49,7 @@ const destroyTokens = async () => {
 	amount = amount * Math.pow(10,18);
 	var address = document.getElementById("adress2").value
 
-	const getCurAddress = () =>{                         
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
 			if (err) return reject(err);
@@ -58,8 +58,8 @@ const destroyTokens = async () => {
 		})
 	  })};
 
+	let curAddress = await getCurAddress();
 	var frm = document.getElementById("supMember");
 	frm.reset();
-	let curAddress = await getCurAddress();
 	return destroy(curAddress, address, amount);
 }
