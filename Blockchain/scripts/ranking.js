@@ -191,7 +191,7 @@ getRankingList();
 
 */
 
-const getRankingTable = (_usersTop, _usersPerso) => {
+const getRankingTable = (_usersTop) => {
 	let table = document.getElementById("content");
 	let i = 1;
 	console.log("userTop");
