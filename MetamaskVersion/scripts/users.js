@@ -33,6 +33,18 @@ var users = {
 				"adress": "0xFAb573993Bb7772E9ee25cca1A2DB24a79A4beA8",
 				"name": "Test",
 				"pic":"images/blank.png"
+			}, 
+
+			"test2":{
+				"adress": "0xFAb573993Bb7772E9ee25cca1A2DB24a79A4beA8",
+				"name": "Test",
+				"pic":"images/blank.png"
+			},
+
+			"test3":{
+				"adress": "0xFAb573993Bb7772E9ee25cca1A2DB24a79A4beA8",
+				"name": "Test",
+				"pic":"images/blank.png"
 			}
 		}
 
