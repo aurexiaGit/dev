@@ -192,24 +192,26 @@ getRankingList();
 */
 
 const getRankingTable = (_usersTop, _usersPerso) => {
-	var table = document.getElementById("content")
-	var i = 1
+	var table = document.getElementById("content");
+	var i = 1;
+	console.log('ranking table');
 
 	for (var key in _usersTop){
 
-		var row = document.createElement('tr')
-		row.class = "row" + i.toString() + " body"
-		table.appendChild(row)
+		var row = document.createElement('tr');
+		row.class = "row" + i.toString() + " body";
+		table.appendChild(row);
 
-		var column1 = document.createElement('td')
-		column1.className = "column1"
-		column1.innerHTML = _usersTop[key].classement
-		row.appendChild(column1)
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = _usersTop[key].classement;
+		row.appendChild(column1);
 
-		var column2 = document.createElement('td')
-		column2.className = "column2"
-		column2.innerHTML = _usersTop[key].name
-		row.appendChild(column2)
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _usersTop[key].name;
+		console.log (_usersTop[key].name);
+		row.appendChild(column2);
 		
 		/*
 		var column3 = document.createElement('td')
@@ -218,12 +220,12 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		row.appendChild(column3)
 		*/
 
-		var column3 = document.createElement('td')
-		column3.className = "column3"
-		column3.innerHTML = Math.round(_usersTop[key].balance)
-		row.appendChild(column3)
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = Math.round(_usersTop[key].balance);
+		row.appendChild(column3);
 
-		i++
+		i++;
 	}
 
 	/*
