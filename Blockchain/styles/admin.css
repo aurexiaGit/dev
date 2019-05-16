@@ -17,15 +17,14 @@ button {
 button#Enter { 
   border: none;
   color: white;
-  padding: 120px 32px;
+  padding: 100px 32px;
   margin : 0px;
-  font-weight: bold;
   text-align: center;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   display: flex;
-  font-size: 40px;
+  font-size: 38px;
   width: 500px;
   background-color: rgb(29,74,105);
 }
