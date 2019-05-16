@@ -193,7 +193,7 @@ getRankingList();
 
 const getRankingTable = (_usersTop) => {
 	let table = document.getElementById("content");
-	let i = 1;
+	let i = 2;
 	console.log("userTop");
 	console.log(_usersTop);
 	console.log('ranking table');
