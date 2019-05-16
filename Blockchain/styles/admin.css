@@ -21,6 +21,7 @@ button#Enter {
   margin : 0px;
   text-align: center;
   justify-content: center;
+  font-weight: normal;
   align-items: center;
   text-decoration: none;
   display: flex;
