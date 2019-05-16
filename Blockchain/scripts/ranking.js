@@ -396,23 +396,23 @@ const getRankingList = async () =>{
 	}
 
 	// Display current user's ranking
-	
+	let ownRankEnd;
 	let ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
-			let ownRankEnd = "st"
+			ownRankEnd = "st"
 			break;
 		case 2:
-			let ownRankEnd = "nd"
+			ownRankEnd = "nd"
 			break;
 		case 3:
-			let ownRankEnd = "rd"
+			ownRankEnd = "rd"
 			break;
 		case (ownRank >3) :
-			let ownRankEnd = "th"
+			ownRnkEnd = "th"
 			break;
 		default:
-			let ownRankEnd = "th"
+			ownRanEnd = "th"
 	}
 
 	let rank = document.getElementById("ownRanking");
