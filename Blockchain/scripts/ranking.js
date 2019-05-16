@@ -227,8 +227,9 @@ const getRankingTable = (_usersTop) => {
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
 
-
+		console.log(i);
 		i++;
+		
 	}
 
 	/*
