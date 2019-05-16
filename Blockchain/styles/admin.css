@@ -18,7 +18,7 @@ button#Enter {
   border: none;
   color: white;
   padding: 100px 32px;
-  margin : 0px;
+  margin : -80px;
   text-align: center;
   justify-content: center;
   font-weight: normal;
@@ -40,5 +40,13 @@ button#Enter {
 
 button:hover {
   cursor : pointer;
+}
+
+@media (max-width: 1000px) and (orientation: portrait) {
+  button#Enter { 
+    font-size: 30px;
+    width: 350px;
+  }
+  
 }
 
