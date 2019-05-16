@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 33px 30px;
+  padding: 10px 30px;
 }
 
 .wrap-table {
@@ -92,6 +92,9 @@ th, td {
 }
 
 .table-head {
+  /*Test ABA
+  display: table-header-group
+  */
   position: absolute;
   width: 100%;
   top: 0;
@@ -174,18 +177,29 @@ th, td {
   }
 
   
-.table th {
-  font-size: 10px;
-  color: #fff;
-  line-height: 1.4;
-  background-color: #023B59;
-  font-weight:bold;
-}
+  .table th {
+    font-size: 10px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #023B59;
+    font-weight:bold;
+  }
 
-.table td {
-  font-size: 10px;
-  color: #808080;
-  line-height: 1.4;
-}
+  .table td {
+    font-size: 10px;
+    color: #808080;
+    line-height: 1.4;
+  }
+
+  .ownRankingTxt{
+    font-size: 25px;
+    line-height: 0;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .container-table {
+    padding: 3px 30px;
+  }
   
 }
