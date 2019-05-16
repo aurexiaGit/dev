@@ -1,30 +1,30 @@
 /*
 const getRankingTable = (_usersTop, _usersPerso) => {
-	var table = document.getElementById("content")
-	var i = 1
+	let table = document.getElementById("content")
+	let i = 1
 
-	for (var key in _usersTop){
+	for (let key in _usersTop){
 
-		var row = document.createElement('tr')
+		let row = document.createElement('tr')
 		row.class = "row" + i.toString() + " body"
 		table.appendChild(row)
 
-		var column1 = document.createElement('td')
+		let column1 = document.createElement('td')
 		column1.className = "column1"
 		column1.innerHTML = _usersTop[key].classement
 		row.appendChild(column1)
 
-		var column2 = document.createElement('td')
+		let column2 = document.createElement('td')
 		column2.className = "column2"
 		column2.innerHTML = _usersTop[key].name
 		row.appendChild(column2)
 
-		var column3 = document.createElement('td')
+		let column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersTop[key].address
 		row.appendChild(column3)
 
-		var column4 = document.createElement('td')
+		let column4 = document.createElement('td')
 		column4.className = "column4"
 		column4.innerHTML = _usersTop[key].balance
 		row.appendChild(column4)
@@ -32,31 +32,31 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		i++
 	}
 
-	var table_perso = document.getElementById("content_perso")
-	var j = 1
+	let table_perso = document.getElementById("content_perso")
+	let j = 1
 
-	for (var key in _usersPerso){
+	for (let key in _usersPerso){
 
-		var row = document.createElement('tr')
+		let row = document.createElement('tr')
 		row.class = "row" + j.toString() + " body"
 		table_perso.appendChild(row)
 
-		var column1 = document.createElement('td')
+		let column1 = document.createElement('td')
 		column1.className = "column1"
 		column1.innerHTML = _usersPerso[key].classement
 		row.appendChild(column1)
 
-		var column2 = document.createElement('td')
+		let column2 = document.createElement('td')
 		column2.className = "column2"
 		column2.innerHTML = _usersPerso[key].name
 		row.appendChild(column2)
 
-		var column3 = document.createElement('td')
+		let column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersPerso[key].address
 		row.appendChild(column3)
 
-		var column4 = document.createElement('td')
+		let column4 = document.createElement('td')
 		column4.className = "column4"
 		column4.innerHTML = _usersPerso[key].balance
 		row.appendChild(column4)
@@ -121,7 +121,7 @@ const getRankingList = async () =>{
 	console.log(listAddress)
 
 	while (i < listAddress.length) {
-		var address = listAddress[i];
+		let address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
 		users[i]={};
@@ -131,8 +131,8 @@ const getRankingList = async () =>{
 		i++
 	}
 
-	var usersTop = {};
-	var usersPerso = {
+	let usersTop = {};
+	let usersPerso = {
 					Perso:{
 						name: "err",
 						address: "err",
@@ -192,15 +192,15 @@ getRankingList();
 */
 
 const getRankingTable = (_usersTop, _usersPerso) => {
-	var table = document.getElementById("content");
-	var i = 1;
+	let table = document.getElementById("content");
+	let i = 1;
 	console.log("userTop");
 	console.log(_usersTop);
 	console.log('ranking table');
 
-	for (var key in _usersTop){
+	for (let key in _usersTop){
 
-		var row = document.createElement('tr');
+		let row = document.createElement('tr');
 		row.class = "row" + i.toString() + " body";
 		try {
 			table.appendChild(row);
@@ -209,25 +209,25 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 			console.error(error);
 		}
 
-		var column1 = document.createElement('td');
+		let column1 = document.createElement('td');
 		column1.className = "column1";
 		column1.innerHTML = _usersTop[key].classement;
 		row.appendChild(column1);
 
-		var column2 = document.createElement('td');
+		let column2 = document.createElement('td');
 		column2.className = "column2";
 		column2.innerHTML = _usersTop[key].name;
 		console.log (_usersTop[key].name);
 		row.appendChild(column2);
 		
 		/*
-		var column3 = document.createElement('td')
+		let column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersTop[key].address
 		row.appendChild(column3)
 		*/
 
-		var column3 = document.createElement('td');
+		let column3 = document.createElement('td');
 		column3.className = "column3";
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
@@ -237,33 +237,33 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 	}
 
 	/*
-	var table_perso = document.getElementById("content_perso")
-	var j = 1
+	let table_perso = document.getElementById("content_perso")
+	let j = 1
 
-	for (var key in _usersPerso){
+	for (let key in _usersPerso){
 
-		var row = document.createElement('tr')
+		let row = document.createElement('tr')
 		row.class = "row" + j.toString() + " body"
 		table_perso.appendChild(row)
 
-		var column1 = document.createElement('td')
+		let column1 = document.createElement('td')
 		column1.className = "column1"
 		column1.innerHTML = _usersPerso[key].classement
 		row.appendChild(column1)
 
-		var column2 = document.createElement('td')
+		let column2 = document.createElement('td')
 		column2.className = "column2"
 		column2.innerHTML = _usersPerso[key].name
 		row.appendChild(column2)
 		
 		
-		var column3 = document.createElement('td')
+		let column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersPerso[key].address
 		row.appendChild(column3)
 		
 
-		var column4 = document.createElement('td')
+		let column4 = document.createElement('td')
 		column4.className = "column4"
 		column4.innerHTML = Math.round(_usersPerso[key].balance)
 		row.appendChild(column4)
@@ -338,7 +338,7 @@ const getRankingList = async () =>{
 	console.log(listAddress)
 
 	while (i < taille) {
-		var address = listAddress[i];
+		let address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
 		users[i]={};
@@ -348,8 +348,8 @@ const getRankingList = async () =>{
 		i++
 	}
 
-	var usersTop = {};
-	var usersPerso = {
+	let usersTop = {};
+	let usersPerso = {
 					Perso:{
 						name: "err",
 						address: "err",
@@ -402,25 +402,25 @@ const getRankingList = async () =>{
 
 	// Display current user's ranking
 	
-	var ownRank = usersPerso["Perso"].classement
+	let ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
-			var ownRankEnd = "st"
+			let ownRankEnd = "st"
 			break;
 		case 2:
-			var ownRankEnd = "nd"
+			let ownRankEnd = "nd"
 			break;
 		case 3:
-			var ownRankEnd = "rd"
+			let ownRankEnd = "rd"
 			break;
 		case (ownRank >3) :
-			var ownRankEnd = "th"
+			let ownRankEnd = "th"
 			break;
 		default:
-			var ownRankEnd = "th"
+			let ownRankEnd = "th"
 	}
 
-	var rank = document.getElementById("ownRanking");
+	let rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
 	return getRankingTable(usersTop, usersPerso);
