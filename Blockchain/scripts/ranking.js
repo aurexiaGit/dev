@@ -193,12 +193,12 @@ getRankingList();
 
 const getRankingTable = (_usersTop) => {
 	let table = document.getElementById("content");
-	let i = 2;
+	let i = 0;
 	console.log("userTop");
 	console.log(_usersTop);
 	console.log('ranking table');
 
-	for (i; i<1; i++){
+	for (key in _usersTop){
 
 		let number = i + 2;
 		let row = document.createElement('tr');
@@ -207,13 +207,13 @@ const getRankingTable = (_usersTop) => {
 
 		let column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[i].classement;
+		column1.innerHTML = _usersTop[key].classement;
 		row.appendChild(column1);
 
 		let column2 = document.createElement('td');
 		column2.className = "column2";
-		column2.innerHTML = _usersTop[i].name;
-		console.log (_usersTop[i].name);
+		column2.innerHTML = _usersTop[key].name;
+		console.log (_usersTop[key].name);
 		row.appendChild(column2);
 		
 		/*
@@ -225,7 +225,7 @@ const getRankingTable = (_usersTop) => {
 
 		let column3 = document.createElement('td');
 		column3.className = "column3";
-		column3.innerHTML = Math.round(_usersTop[i].balance);
+		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
 
 		console.log(i);
