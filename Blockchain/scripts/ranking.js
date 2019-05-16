@@ -193,7 +193,7 @@ getRankingList();
 
 const getRankingTable = (_usersTop, _usersPerso) => {
 	var table = document.getElementById("content");
-	var i = 0;
+	var i = 1;
 	console.log("userTop");
 	console.log(_usersTop);
 	console.log('ranking table');
@@ -232,6 +232,7 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
 
+		console.log(i);
 		i++;
 	}
 
