@@ -202,7 +202,12 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 
 		var row = document.createElement('tr');
 		row.class = "row" + i.toString() + " body";
-		
+		try {
+			table.appendChild(row);
+		}
+		catch(error){
+			console.error(error);
+		}
 
 		var column1 = document.createElement('td');
 		column1.className = "column1";
@@ -227,8 +232,6 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
 
-
-		table.appendChild(row);
 		i++;
 	}
 
