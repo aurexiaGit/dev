@@ -69,10 +69,10 @@ const getRankingTable = (_usersTop, _usersPerso) => {
 const getRankingList = async () =>{
 
 	console.log("ranking")
-	let users = {};
-	let listAddress;
-	let name;
-	let i = 0;
+	var users = {};
+	var listAddress;
+	var name;
+	var i = 0;
 	
 	const getCurAddress = () =>{                     
 		return new Promise(function(resolve, reject){
@@ -142,8 +142,8 @@ const getRankingList = async () =>{
 				};
 
 
-	for (let i = listAddress.length-1; i > 0 ; i--){
-		for (let j = 0; j < i; j++){
+	for (var i = listAddress.length-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
 				users[j] = users[j+1];
@@ -154,7 +154,7 @@ const getRankingList = async () =>{
 
 	if (listAddress.length <= 3){
 		console.log("dans if1")
-		for (let i=0; i<listAddress.length; i++){
+		for (var i=0; i<listAddress.length; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -164,7 +164,7 @@ const getRankingList = async () =>{
 	}
 	else{
 		console.log("dans if2")
-		for (let i=0; i<3; i++){
+		for (var i=0; i<3; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -173,7 +173,7 @@ const getRankingList = async () =>{
 		}
 	}
 
-	for (let i=0; i<listAddress.length; i++){
+	for (var i=0; i<listAddress.length; i++){
 		if (users[i].address == curAddress){
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
@@ -192,38 +192,38 @@ getRankingList();
 */
 
 const getRankingTable = (_usersTop) => {
-	let table = document.getElementById("content");
-	let i = 0;
+	var table = document.getElementById("content");
+	var i = 0;
 	console.log("userTop");
 	console.log(_usersTop);
 	console.log('ranking table');
 
 	for (key in _usersTop){
 
-		let number = i + 2;
-		let row = document.createElement('tr');
+		var number = i + 2;
+		var row = document.insertRow(-1)
 		row.className = "row" + number.toString() + " body";
 		table.appendChild(row);
 
-		let column1 = document.createElement('td');
+		var column1 = document.createElement('td');
 		column1.className = "column1";
 		column1.innerHTML = _usersTop[key].classement;
 		row.appendChild(column1);
 
-		let column2 = document.createElement('td');
+		var column2 = document.createElement('td');
 		column2.className = "column2";
 		column2.innerHTML = _usersTop[key].name;
 		console.log (_usersTop[key].name);
 		row.appendChild(column2);
 		
 		/*
-		let column3 = document.createElement('td')
+		var column3 = document.createElement('td')
 		column3.className = "column3"
 		column3.innerHTML = _usersTop[key].address
 		row.appendChild(column3)
 		*/
 
-		let column3 = document.createElement('td');
+		var column3 = document.createElement('td');
 		column3.className = "column3";
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
@@ -274,10 +274,10 @@ const getRankingTable = (_usersTop) => {
 const getRankingList = async () =>{
 
 	console.log("ranking")
-	let users = {};
-	let listAddress;
-	let name;
-	let i = 0;
+	var users = {};
+	var listAddress;
+	var name;
+	var i = 0;
 	
 	const getCurAddress = async () =>{                     
 		return new Promise(function(resolve, reject){
@@ -325,7 +325,7 @@ const getRankingList = async () =>{
 	
 	listAddress = await getMembers();
 	curAddress = await getCurAddress();
-	let taille = await getTaille();
+	var taille = await getTaille();
 
 	//listAddress.splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
 
@@ -335,7 +335,7 @@ const getRankingList = async () =>{
 	console.log(listAddress)
 
 	while (i < taille) {
-		let address = listAddress[i];
+		var address = listAddress[i];
 		name = await getName(address);
 		balance = await getBalance(address);
 		users[i]={};
@@ -345,8 +345,8 @@ const getRankingList = async () =>{
 		i++
 	}
 
-	let usersTop = {};
-	let usersPerso = {
+	var usersTop = {};
+	var usersPerso = {
 					Perso:{
 						name: "err",
 						address: "err",
@@ -356,8 +356,8 @@ const getRankingList = async () =>{
 				};
 
 
-	for (let i = taille-1; i > 0 ; i--){
-		for (let j = 0; j < i; j++){
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
 				users[j] = users[j+1];
@@ -368,7 +368,7 @@ const getRankingList = async () =>{
 
 	if (taille <= 3){
 		console.log("dans if1")
-		for (let i=0; i<taille; i++){
+		for (var i=0; i<taille; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -378,7 +378,7 @@ const getRankingList = async () =>{
 	}
 	else{
 		console.log("dans if2")
-		for (let i=0; i<3; i++){
+		for (var i=0; i<3; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -387,7 +387,7 @@ const getRankingList = async () =>{
 		}
 	}
 
-	for (let i=0; i<taille; i++){
+	for (var i=0; i<taille; i++){
 		if (users[i].address.toLowerCase() == curAddress.toLowerCase()){
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
@@ -398,8 +398,8 @@ const getRankingList = async () =>{
 	}
 
 	// Display current user's ranking
-	let ownRankEnd;
-	let ownRank = usersPerso["Perso"].classement
+	var ownRankEnd;
+	var ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
 			ownRankEnd = "st"
@@ -417,7 +417,7 @@ const getRankingList = async () =>{
 			ownRanEnd = "th"
 	}
 
-	let rank = document.getElementById("ownRanking");
+	var rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
 	return getRankingTable(usersTop, usersPerso);
