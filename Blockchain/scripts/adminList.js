@@ -3,11 +3,11 @@
 //     Creation de la table listant les users         //
 ////////////////////////////////////////////////////////
 
-const getUserTable = (_users) => {
+const getUserTable = (_users, taille) => {
 	var table = document.getElementById("content");
 	var i = 1;
 
-	for (var key in _users){
+	for (var k=0; k<taille; k++){
 
 		var row = table.insertRow(-1);
 		row.className = "row" + i.toString() + " body";
@@ -19,17 +19,17 @@ const getUserTable = (_users) => {
 
 		var column2 = document.createElement('td');
 		column2.className = "column2";
-		column2.innerHTML = _users[key].name;
+		column2.innerHTML = _users[k].name;
 		row.appendChild(column2);
 
 		var column3 = document.createElement('td');
 		column3.className = "column3";
-		column3.innerHTML = _users[key].address;
+		column3.innerHTML = _users[k].address;
 		row.appendChild(column3);
 
 		var column4 = document.createElement('td');
 		column4.className = "column4";
-		column4.innerHTML = Math.round(_users[key].balance);
+		column4.innerHTML = Math.round(_users[k].balance);
 		row.appendChild(column4);
 
 		i++;
