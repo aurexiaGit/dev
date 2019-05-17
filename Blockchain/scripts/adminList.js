@@ -4,34 +4,33 @@
 ////////////////////////////////////////////////////////
 
 const getUserTable = (_users) => {
-	var table = document.getElementById("content")
+	var table = document.getElementById("content");
 	var i = 1
 
 	for (var key in _users){
 
-		var row = document.createElement('tr')
-		row.class = "row" + i.toString() + " body"
-		table.appendChild(row)
+		var row = table.insertRow(-1);
+		row.className = "row" + i.toString() + " body";
 
-		var column1 = document.createElement('td')
-		column1.className = "column1"
-		column1.innerHTML = "<img src = '" + _users[key].pic + "'>"
-		row.appendChild(column1)
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = i;
+		row.appendChild(column1);
 
-		var column2 = document.createElement('td')
-		column2.className = "column2"
-		column2.innerHTML = _users[key].name
-		row.appendChild(column2)
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _users[key].name;
+		row.appendChild(column2);
 
-		var column3 = document.createElement('td')
-		column3.className = "column3"
-		column3.innerHTML = _users[key].address
-		row.appendChild(column3)
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = _users[key].address;
+		row.appendChild(column3);
 
-		var column4 = document.createElement('td')
-		column4.className = "column4"
-		column4.innerHTML = _users[key].balance
-		row.appendChild(column4)
+		var column4 = document.createElement('td');
+		column4.className = "column4";
+		column4.innerHTML = Math.round(_users[key].balance);
+		row.appendChild(column4);
 
 		i++
 	}
@@ -85,18 +84,27 @@ const getUsersList = async () =>{
 	console.log(listAddress);
 	while (i < taille) {
 		var address = listAddress[i];
-		console.log(address)
 		name = await getName(address);
 		balance = await getBalance(address);
-		users[name]={};
-		users[name].address=address;
-		users[name].name=name;
-		users[name].balance=balance;
+		users[i]={};
+		users[i].address=address;
+		users[i].name=name;
+		users[i].balance=balance;
 		i++
-		console.log(users[name].address);
-		console.log(users[name].name);
-		console.log(users[name].balance);
 	}
+
+	console.log(users);
+
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (users[j].balance < users[j+1].balance){
+				users["tempo"] = users[j];
+				users[j] = users[j+1];
+				users[j+1] = users["tempo"];
+			}
+		}
+	}
+	console.log(users);
 
 	return getUserTable(users)
 };
