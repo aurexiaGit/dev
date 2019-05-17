@@ -3,11 +3,11 @@
 //     Creation de la table listant les users         //
 ////////////////////////////////////////////////////////
 
-const getUserTable = (_users, taille) => {
+const getUserTable = (_users, _taille) => {
 	var table = document.getElementById("content");
 	var i = 1;
 
-	for (var k=0; k<taille; k++){
+	for (var k=0; k<_taille; k++){
 
 		var row = table.insertRow(-1);
 		row.className = "row" + i.toString() + " body";
@@ -106,7 +106,7 @@ const getUsersList = async () =>{
 	}
 	console.log(users);
 
-	return getUserTable(users)
+	return getUserTable(users, taille)
 };
 
 getUsersList();
