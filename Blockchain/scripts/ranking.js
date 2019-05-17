@@ -201,9 +201,8 @@ const getRankingTable = (_usersTop) => {
 	for (key in _usersTop){
 
 		var number = i + 2;
-		var row = document.insertRow(-1);
+		var row = table.insertRow(-1);
 		row.className = "row" + number.toString() + " body";
-		table.appendChild(row);
 
 		var column1 = document.createElement('td');
 		column1.className = "column1";
