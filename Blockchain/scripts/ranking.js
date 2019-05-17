@@ -364,7 +364,8 @@ const getRankingList = async () =>{
 			}
 		}
 	}
-
+	console.log(users);
+	
 	if (taille <= 3){
 		console.log("dans if1")
 		for (var i=0; i<taille; i++){
