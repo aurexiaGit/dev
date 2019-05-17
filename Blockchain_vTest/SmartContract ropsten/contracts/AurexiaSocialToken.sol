@@ -220,7 +220,7 @@ contract AurexiaSocialToken is Owned, SafeMath {
         aurexiaMembers[_address].name = _name;
         aurexiaMembers[_address].grade = _grade;
         aurexiaMembers[_address].isMember = true;
-        for (uint i=0; i<sizeListAccount; i++ ){
+        for (uint i=0; i<sizeListAccount; i++ ){               //avoid to have twice the same address (espacially when we use twice this method to add somebody)
           if (_address == aurexiaAccounts[i]){
             return true;
           }
