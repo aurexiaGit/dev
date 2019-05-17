@@ -96,7 +96,7 @@ const getUsersList = async () =>{
 	console.log(users);
 
 	for (var k = taille-1; k > 0 ; k--){
-		for (var j = 0; j < i; j++){
+		for (var j = 0; j < k; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
 				users[j] = users[j+1];
