@@ -5,7 +5,7 @@
 
 const getUserTable = (_users) => {
 	var table = document.getElementById("content");
-	var i = 1
+	var i = 1;
 
 	for (var key in _users){
 
@@ -32,7 +32,7 @@ const getUserTable = (_users) => {
 		column4.innerHTML = Math.round(_users[key].balance);
 		row.appendChild(column4);
 
-		i++
+		i++;
 	}
 }
 
@@ -90,12 +90,12 @@ const getUsersList = async () =>{
 		users[i].address=address;
 		users[i].name=name;
 		users[i].balance=balance;
-		i++
+		i++;
 	}
 
 	console.log(users);
 
-	for (var i = taille-1; i > 0 ; i--){
+	for (var k = taille-1; k > 0 ; k--){
 		for (var j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
