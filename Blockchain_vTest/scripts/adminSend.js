@@ -89,16 +89,27 @@ const transferFromTo = async() => {
 	console.log(amount)
 	amount = amount*Math.pow(10,18);
 
-	const transferEvent = async (_address1, _address2, amount) =>{
+
+	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
-			Token.transferFrom(_address1, _address2, amount, (err, result) => {
+		web3.eth.getAccounts((err, accounts) => {
+			if (err) return reject(err);
+			resolve(accounts[0]);
+		})
+	  })};
+	  
+	let curAddress = await getCurAddress();
+
+	const transferEvent = async (_address1, _address2, amount, _curAddress) =>{
+		return new Promise(function(resolve, reject){
+			Token.transferFrom.sendTransaction(_address1, _address2, amount, {from: _curAddress}, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	let transferTransaction = await transferEvent(addressFrom, addressTo, amount);
+	let transferTransaction = await transferEvent(addressFrom, addressTo, amount, curAddress);
 	var frm = document.getElementById("send");
 	frm.reset();
 	return transferTransaction
