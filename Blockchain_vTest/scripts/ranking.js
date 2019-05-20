@@ -325,9 +325,14 @@ const getRankingList = async () =>{
 	listAddress = await getMembers();
 	curAddress = await getCurAddress();
 	var taille = await getTaille();
+	console.log("taille1");
+	console.log(taille);
 
 	listAddress.splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
-
+	taille = taille - 1;
+	console.log("taille 1");
+	console.log(taille);
+	
 	console.log('cur address')
 	console.log(curAddress)
 	console.log("list address")
