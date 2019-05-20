@@ -81,7 +81,7 @@ getUsersFrom();
 
 const transferFromTo = async() => {
 
-	let addressFrom = document.getElementById("from-select");
+	let addressFrom = document.getElementById("from-select").value;
 	console.log(addressFrom)
 	let addressTo = document.getElementById("dest-select").value;
 	console.log(addressTo)
