@@ -76,14 +76,17 @@ const dropdownListFrom = (_curAddress, _users) => {
 	return dropdownListFrom(curAddress, users);
   };
   
-  getUsersFrom();
+getUsersFrom();
 
 
 const transferFromTo = async() => {
 
 	let addressFrom = document.getElementById("from-select");
+	console.log(addressFrom)
 	let addressTo = document.getElementById("dest-select").value;
+	console.log(addressTo)
 	let amount = document.getElementById("amount").value;
+	console.log(amount)
 	amount = amount*Math.pow(10,18);
 
 	const transferEvent = async (_address1, _address2, amount) =>{
