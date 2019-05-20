@@ -41,13 +41,11 @@
                       <input placeholder="Amount" id="amount" required/>
                       <select id="from-select" required>
                             <option value="init">Select Originator</option>
-                            <option value="0x1Ce55e93178D03a40c59af4527F56B3Baa24d241">Antoine CAVELIUS</option>
                       </select>
                       <select id="dest-select" required>
                             <option value="init">Select Beneficiary</option>
-                            <option value="0x1Ce55e93178D03a40c59af4527F56B3Baa24d241">Antoine CAVELIUS</option>
                       </select>
-                      <button onclick="return Transfer()">send</button>
+                      <button onclick="return transferFromTo()">send</button>
                       <div id="loading"></div>
                     </form>
                   </div>
@@ -59,7 +57,6 @@
             </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/users.js"></script>
         <script type="text/javascript" src="scripts/links.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/adminSend.js"></script>
