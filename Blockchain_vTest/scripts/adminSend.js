@@ -98,7 +98,7 @@ const transferFromTo = async() => {
 		})
 	};
 
-	transferTransaction = await transferEvent(addressFrom, addressTo, amount);
+	let transferTransaction = await transferEvent(addressFrom, addressTo, amount);
 	var frm = document.getElementById("send");
 	frm.reset();
 	return transferTransaction
