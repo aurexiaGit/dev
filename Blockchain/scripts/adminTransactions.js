@@ -1,136 +1,112 @@
-// Prevent admin from quitting page and loose global history
+const getHistory = async () =>{
 
-window.onbeforeunload = function(){
-  return 'ATTENTION - Are you sure you want to quit? You will reset the History.';
-};
+	let curAddress;
+	let ownerAddress;
+  
+	const getCurAddress = async () =>{                         
+	  return new Promise(function(resolve, reject){
+		web3.eth.getAccounts((err, accounts) => {
+		  if (err) return reject(err);
+		  resolve(accounts[0]);
+	  })
+	})}
+  
+	curAddress = await getCurAddress();
+	
+	let users = {};
+	let listAddress;
+	let name;
+	var i = 0;
 
-var sending = false 
-
-var eventSent = Token.Transfer()
-var transactionSentList = []
-eventSent.watch(function(error, result) {
- 			if (!error) {
- 				var curAccount = web3.eth.accounts[0];
- 				transactionSentList.push(result);
- 				if (curAccount.toLowerCase() === transactionSentList[transactionSentList.length-1].args.from.toLowerCase()) {
-	 				sending=false;
-	 				var elmt = document.getElementById("loading");
-	 				elmt.innerHTML ="<br><div>Sent! </div><img src='images/checked.png'/>"
-	 				window.setTimeout(function() {elmt.innerHTML =""},2000)
-	 			}
- 				console.log("");
- 			}
- 		})
-
-function createHistory() {
-	var curAccount = web3.eth.accounts[0]
-	if (transactionSentList !== undefined) {
-		var reciever
-		var sender
-		var history = document.getElementById("history")
-		history.innerHTML = ""
-		transactionSentList.forEach(function(transactionSent) {
-			if (transactionSent.args.from.toLowerCase() !== ("0x0000000000000000000000000000000000000000").toLowerCase()) {
-				for (var key in users) {
-					if (users[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-						reciever = users[key].name
-					}
-					if (users[key].adress.toLowerCase() === transactionSent.args.from.toLowerCase()) {
-						sender = users[key].name
-					}
-					if (transactionSent.args.from.toLowerCase() === ("0xe8311b299bad9432d714c6dba0150d89cb3aff36").toLowerCase()) {
-						sender = "Aurexia Central Bank"
-					}
-				}
-				for (var key in charity) {
-					if (charity[key].adress.toLowerCase() === transactionSent.args.to.toLowerCase()) {
-						reciever = charity[key].name
-					}
-				}
-				var posList = document.createElement("ul")
-				posList.id = "sending"
-				var notif = document.createElement("li")
-				notif.innerHTML = "<strong>" + sender + "</strong> sent <strong>" + (parseInt(transactionSent.args.value*Math.pow(10,-18))).toString() + " AST </strong> to <strong>" + reciever + "</strong>"
-				posList.appendChild(notif)
-				history.appendChild(posList)
-				document.getElementById("sending").style.listStyleImage = "url('../images/transaction.png')"
-			}
+	const getMembers = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getMembers((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
 		})
-	}	
-}
+	})}
 
-function getListMax(list) {
-	// returns list of index(es) of maximum (maxima if equal)
-	var indexMax = []
-	while (list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1) !== -1) {
-		indexMax.push(list.indexOf(Math.max.apply(null,list),indexMax[indexMax.length-1]+1))
+	const getName = async (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, name) => {
+				if (err) return reject(err);
+				resolve(name);
+		})
+	})}	
+
+	listAddress = await getMembers();
+	while (i < listAddress.length) {
+		var address = listAddress[i];
+		name = await getName(address);
+		users[name]={}
+		users[name].address=address
+		users[name].name=name
+		i++
 	}
-	return indexMax	
-}
 
-function makeGraph() {
-	var elmt = document.getElementById("rankPage")
-	if (elmt!==undefined) {
-	    x = ["Dominique","Eric","David","Charles"]
-		y = [users.dominique.balance,users.eric.balance,users.david.balance,users.charles.balance]
-		data = [
-		  {
-		    y: y,
-		    x: x,
-		    type: "bar",
-		  }
-		]
-		Plotly.newPlot('rankPage', data, {displayModeBar: false})
-	}
-	var leader = document.getElementById("leader")
-	var leaders = getListMax(y)
-	leader.innerHTML = "Current Leader : "
-	if (leaders.length > 1) {leader.innerHTML = "Current Leaders : "}
-	leaders.forEach(function(ind) {
-		leader.innerHTML = leader.innerHTML + "<img src='" + users[(x[ind]).toLowerCase()].pic + "'/>"
-	})
-}
+	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
+	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0x0D11BCD1cffaeAe611dED024b0264Be8325D53C4&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
+		var resultArray = data.result
 
+		// fill the history with data from json file. Required/relevant columns from json are:
+		//1) timeStamp (nb of seconds since 01/01/1970)
+		//2) from: originator of the transaction
+		//3) to: receiver of the transaction
+		//4) value: transaction value (to divide by 10^18)
+		const fillHistory = async (resultArray, curAddress) =>{
+			var table = document.getElementById("content-history")
+			var i = 1
+			for (var key in resultArray){
+				var row = document.createElement('tr')
+				row.class = "row" + i.toString() + " body"
+				table.appendChild(row)
 
-var Balance
+				var column1 = document.createElement('td')
+				column1.className = "column1History"
+				//convert timestamp to date (*1000 below is to get it in ms)
+				var d = new Date(parseInt(resultArray[key].timeStamp)*1000);
+				var date = d.getDate();
+				var month = d.getMonth(); 
+				var year = d.getFullYear();
+				var dateString = date + "-" + (month + 1) + "-" + year;
 
-function getBalance(account) {
-	Balance=0
-	Token.balanceOf(account, function(err,result) {
-		if (!err) {Balance=parseInt(result*Math.pow(10,-18)); console.log("")}
-	})
-}
+				column1.innerHTML = dateString
+				row.appendChild(column1)
 
+				var column2 = document.createElement('td')
+				column2.className = "column2History"
+				if (resultArray[key].to == curAddress) {
+					column2.innerHTML = "Reception"
+				}
+				else {
+					column2.innerHTML = "Transfer"
+				}
+				row.appendChild(column2)
 
-// Illustration ici du problème de javascript : ne support qu'un seul thread en meme temps. 
-// Pour "attendre" dans une boucle, il faut imbriquer les fonctions. 
-// Il faut souvent attendre car la console va plus vite que l'exécution d'une fonction sur ethereum
+				var column3 = document.createElement('td')
+				column3.className = "column3History"
+				column3.innerHTML = await getName(resultArray[key].from)
+				row.appendChild(column3)
 
-function attributeBalances() {
-	var i = 1
-	Balance=0
-	function balances() {
-		keys = Object.keys(users)
-		var user = users[keys[i]]
-		getBalance(user.adress)
-		setTimeout( function () {
-			user['balance']=Balance
-			i++
-			if (i < keys.length) {balances()}
-		},600)
-	}
-	balances()
-}
-
-
-function createPage() {
-	attributeBalances()
-	window.setTimeout(function() {makeGraph()},3000)
-	window.setTimeout(function() {createHistory()},4500)
-}
-
-
-window.setTimeout(function() {window.setInterval(function() {
-	createPage()
-}, 5000);
-},1000)
+				var column4 = document.createElement('td')
+				column4.className = "column4History"
+				column4.innerHTML = await getName(resultArray[key].to)
+				row.appendChild(column4)
+				
+				var column5 = document.createElement('td')
+				column5.className = "column5History"
+				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
+					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
+				}
+				else {
+					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
+				}
+				row.appendChild(column5)
+				
+				i++
+			}
+		}
+		fillHistory(resultArray, curAddress);
+	});
+};
+getHistory();
