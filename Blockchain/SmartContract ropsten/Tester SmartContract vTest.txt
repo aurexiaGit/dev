@@ -16,6 +16,6 @@ Si tu veux changer de compte reload juste la page mycrypto
 Aussi le site est un peu instable, il se peut que la page se reloade toute seule quelques fois
 
 
-Pour intéragir avec le contrat selection ropsten en haut a droite et entre juste : 
+Pour intéragir avec le contrat selection ropsten vTest en haut a droite et entre juste : 
 
-- adresse du contrat : 0x0D11BCD1cffaeAe611dED024b0264Be8325D53C4
+- adresse du contrat : 0x543481399F73dEfcF9929bBBBb6e8203af3e2d32
