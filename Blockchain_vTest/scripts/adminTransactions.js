@@ -75,11 +75,11 @@ const getHistory = async () =>{
 
 				var column2 = document.createElement('td')
 				column2.className = "column2History"
-				if (resultArray[key].from == curAddress) {
-					column2.innerHTML = "Transfer"
+				if (resultArray[key].to == curAddress) {
+					column2.innerHTML = "Reception"
 				}
 				else {
-					column2.innerHTML = "Reception"
+					column2.innerHTML = "Transfer"
 				}
 				row.appendChild(column2)
 
