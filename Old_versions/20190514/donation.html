@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
+        <link rel = "stylesheet" href = "styles/style.css" />
+        <link rel = "stylesheet" href = "styles/header.css" />
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fortmatic@latest/dist/fortmatic.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/web3@0.20/dist/web3.min.js"></script> 
+        <title>MyWallet - Aurexia</title> 
+    </head>
+
+    <body>
+        <div id="block_page">
+            <header>
+                <div id="logo">
+                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+                </div>
+                <nav>
+                <p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
+                <p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
+                <p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
+                <p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
+                </nav>
+                <div id="identity">
+                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+                </div>
+            </header>
+            <section id='notifBanner'>
+                <img id="arrow" src="images/pageArrow.png">
+                <div id="notifs">
+                    <div id="history">
+                    </div>
+                </div>
+            </section>
+            <section id="donationPage">
+                <div id="ast_balance">
+                  <div class="form">
+                    <h1> <em>Donation Day</em> </h1>
+                    <img src="images/donationDay.png"/>
+                    <br><br>
+                    One year has past, it is now time for your great work to be rewarded! You have
+                    <div id="astValue">0 AST</div>
+                    to donate. Choose a charity, and all your tokens will be given to this association.
+                    <br><br>
+                    <form id="donate">
+                      <select id="dest-select" required>
+                            <option value="init">Select Charity</option>
+                            <option value="0x9Fa264121346183090d4077bd2EA8B01f395E13e">La Cravate Solidaire</option>
+                            <option value="0x83FeCf8CC96e2eac6Ce4F6f8bdB4F69466BE483E">Les Bouchons d'Amour</option>
+                        </select>
+                      <button onclick="return Transfer()">Donate</button>
+                    </form>
+                  </div>
+                </div>
+                <br>
+                <div id="rankPage">
+                </div>
+            </section>
+
+            <footer>
+                <p>© Copyright Aurexia – All rights reserved<br /></p>
+            </footer>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/users.js"></script>
+        <script type="text/javascript" src="scripts/links.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/donation.js"></script>
+    </body>
+</html>
