@@ -403,7 +403,7 @@ const getRankingList = async () =>{
 	}
 
 	// Display current user's ranking
-	var ownRankEnd;
+	var ownRankEnd = "th";
 	var ownRank = usersPerso["Perso"].classement
 	switch(ownRank) {
 		case 1:
@@ -415,11 +415,6 @@ const getRankingList = async () =>{
 		case 3:
 			ownRankEnd = "rd"
 			break;
-		case (ownRank >3) :
-			ownRnkEnd = "th"
-			break;
-		default:
-			ownRanEnd = "th"
 	}
 
 	var rank = document.getElementById("ownRanking");
