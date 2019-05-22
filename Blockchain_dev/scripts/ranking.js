@@ -300,7 +300,7 @@ const getRankingList = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, name) => {
 				if (err) return reject(err);
-				let name = web3.utils.toUtf8(res);
+				let name = web3.utils.hexToUtf8(res);
 				resolve(name);
 			})
 		})
