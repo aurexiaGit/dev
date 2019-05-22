@@ -1,8 +1,9 @@
 const addMember = async () => {
 	// Called when clicking on Add button
-	var _address = document.getElementById("adress1").value
-	var _name = document.getElementById("name1").value
-	var _grade = document.getElementById ("grade1").value
+	var _address = document.getElementById("adress1").value;
+	var _name = document.getElementById("name1").value;
+	_name = web3.utils.fromAscii(_name);
+	var _grade = document.getElementById ("grade1").value;
 
 	const addM = async (address,name,grade) =>{                         
 		return new Promise(function(resolve, reject){
