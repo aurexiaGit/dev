@@ -30,9 +30,10 @@ const dropdownListCharity = (_curAddress, _charity) => {
   
 	  const getName = async (address) =>{                        
 		  return new Promise(function(resolve, reject){
-			  Token.getAssoName(address, (err, name) => {
+			  Token.getAssoName(address, (err, res) => {
 				  if (err) return reject(err);
-				  resolve(name);
+				  let name = web3.utils.toUtf8(res);
+					resolve(name);
 		  })
 	  })}	
 
