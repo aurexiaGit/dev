@@ -66,8 +66,8 @@ const getUsersList = async () =>{
 	console.log(listAddressNameBalance);
 	while (i < taille) {
 		var address = listAddressNameBalance[0][i];
-		name = web3.toAscii(listAddressNameBalance[0][i]);
-		balance = (listAddressNameBalance[0][i])*Math.pow(10,-18);
+		name = web3.toAscii(listAddressNameBalance[1][i]);
+		balance = (listAddressNameBalance[2][i])*Math.pow(10,-18);
 		users[i]={};
 		users[i].address=address;
 		users[i].name=name;
