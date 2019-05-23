@@ -878,7 +878,7 @@ const getLog = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.toUtf8(res);
+				let name = web3.toAscii(res);
 				resolve(name);
 			})
 		})
@@ -945,7 +945,7 @@ const getUsers = async () =>{
         if (err) return reject(err);
         console.log("get name dropdown");
         console.log(res);
-				let name = web3.toUtf8(res);
+				let name = web3.toAscii(res);
 				resolve(name);
 		})
   })}	

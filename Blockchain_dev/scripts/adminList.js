@@ -56,7 +56,7 @@ const getUsersList = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.toUtf8(res);
+				let name = web3.toAscii(res);
 				resolve(name);
 			})
 		})
