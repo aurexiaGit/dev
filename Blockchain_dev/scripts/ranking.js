@@ -94,8 +94,10 @@ const getRankingList = async () =>{
 	console.log("taille1");
 	console.log(taille);
 
-	//listAddress.splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
-	//taille = taille - 1;
+	listAddressNameBalance[0].splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
+	listAddressNameBalance[1].splice(0,1);
+	listAddressNameBalance[2].splice(0,1);
+	taille = taille - 1;
 	console.log("taille 1");
 	console.log(taille);
 	
