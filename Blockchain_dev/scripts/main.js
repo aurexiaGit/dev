@@ -547,6 +547,25 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "getMembersAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xd9543bb6"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "name": "index",
@@ -839,7 +858,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0xEcA379dF2A235738C892B4391a32Ef6745615e76');
+var Token = TokenABI.at('0xafd7202170dCeb2F0977C104A9820c883167ED71');
 
 // check that user has Metamask installed 
 
