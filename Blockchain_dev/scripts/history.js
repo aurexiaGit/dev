@@ -1,7 +1,6 @@
 const getHistory = async () =>{
 
 	let curAddress;
-	let ownerAddress;
   
 	const getCurAddress = async () =>{                         
 	  return new Promise(function(resolve, reject){
@@ -12,19 +11,6 @@ const getHistory = async () =>{
 	})}
   
 	curAddress = await getCurAddress();
-	
-	let users = {};
-	let listAddress;
-	let name;
-	var i = 0;
-
-	const getMembers = async () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-		})
-	})}
 
 	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
@@ -34,16 +20,6 @@ const getHistory = async () =>{
 				resolve(name);
 		})
 	})}	
-
-	listAddress = await getMembers();
-	while (i < listAddress.length) {
-		var address = listAddress[i];
-		name = await getName(address);
-		users[name]={}
-		users[name].address=address
-		users[name].name=name
-		i++
-	}
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
