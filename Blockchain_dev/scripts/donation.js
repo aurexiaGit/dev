@@ -32,7 +32,7 @@ const dropdownListCharity = (_curAddress, _charity) => {
 		  return new Promise(function(resolve, reject){
 			  Token.getAssoName(address, (err, res) => {
 				  if (err) return reject(err);
-				  let name = web3.utils.hexToUtf8(res);
+				  let name = web3.hexToUtf8(res);
 					resolve(name);
 		  })
 	  })}	

@@ -2,7 +2,7 @@ const addMember = async () => {
 	// Called when clicking on Add button
 	var _address = document.getElementById("adress1").value;
 	var _name = document.getElementById("name1").value;
-	_name = web3.utils.fromAscii(_name);
+	_name = web3.fromAscii(_name);
 	var _grade = document.getElementById ("grade1").value;
 
 	const addM = async (address,name,grade) =>{                         

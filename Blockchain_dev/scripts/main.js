@@ -878,7 +878,7 @@ const getLog = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.utils.hexToUtf8(res);
+				let name = web3.hexToUtf8(res);
 				resolve(name);
 			})
 		})
@@ -943,7 +943,7 @@ const getUsers = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.utils.hexToUtf8(res);
+				let name = web3.hexToUtf8(res);
 				resolve(name);
 		})
   })}	

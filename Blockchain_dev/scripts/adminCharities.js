@@ -2,7 +2,7 @@ const addCharity = async () => {
 	// Called when clicking on Add button
 	var _address = document.getElementById("adress1").value;
 	var _name = document.getElementById("name1").value;
-	_name = web3.utils.fromAscii(_name);
+	_name = web3.fromAscii(_name);
 
 	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
@@ -179,7 +179,7 @@ const getCharityList = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getAssoName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.utils.hexToUtf8(res);
+				let name = web3.hexToUtf8(res);
 				resolve(name);
 			})
 		})
