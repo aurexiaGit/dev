@@ -39,35 +39,16 @@ const getUserTable = (_users, _taille) => {
 const getUsersList = async () =>{
 
 	let users = {};
-	let listAddress;
+	let listAddressNameBalance;
 	let name;
 	let i = 0;
   
-	const getMembers = async () =>{                        
+	const getMembersNameBalance = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
+			Token.getMembersAndNameAndBalance((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  		})
-		})
-	};
-
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, res) => {
-				if (err) return reject(err);
-				let name = web3.toAscii(res);
-				resolve(name);
-			})
-		})
-	};
-	
-	const getBalance = async (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
 		})
 	};
 
@@ -79,14 +60,14 @@ const getUsersList = async () =>{
 		})
 	  })}
 
-	listAddress = await getMembers();
+	listAddressNameBalance = await getMembersNameBalance();
 	let taille = await getTaille();
 	console.log("get list of addresses")
-	console.log(listAddress);
+	console.log(listAddressNameBalance);
 	while (i < taille) {
-		var address = listAddress[i];
-		name = await getName(address);
-		balance = await getBalance(address);
+		var address = listAddressNameBalance[0][i];
+		name = web3.toAscii(listAddressNameBalance[0][i]);
+		balance = (listAddressNameBalance[0][i])*Math.pow(10,-18);
 		users[i]={};
 		users[i].address=address;
 		users[i].name=name;

@@ -61,25 +61,6 @@ const getRankingList = async () =>{
 		})
 	};
 
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, res) => {
-				if (err) return reject(err);
-				let name = web3.toAscii(res);
-				resolve(name);
-			})
-		})
-	};
-	
-	const getBalance = async (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
-		})
-	};
-
 	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
 		  Token.sizeListAccount((err, result) => {
