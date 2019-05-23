@@ -943,8 +943,7 @@ const getUsers = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.toUtf8(res);
-				resolve(name);
+				resolve(web3.toUtf8(res));
 		})
   })}	
   
