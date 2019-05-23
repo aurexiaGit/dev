@@ -942,8 +942,11 @@ const getUsers = async () =>{
 	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
-				if (err) return reject(err);
-				resolve(web3.toUtf8(res));
+        if (err) return reject(err);
+        console.log("get name dropdown");
+        console.log(res);
+				let name = web3.toUtf8(res);
+				resolve(name);
 		})
   })}	
   
