@@ -38,7 +38,10 @@ const getHistory = async () =>{
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
-  	}
+	  }
+	users["0x0000000000000000000000000000000000000000"]={};
+	users["0x0000000000000000000000000000000000000000"].address="0x0000000000000000000000000000000000000000";
+	users["0x0000000000000000000000000000000000000000"].name="";
   	console.log("users");
   	console.log(users);
 
