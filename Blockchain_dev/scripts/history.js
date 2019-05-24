@@ -38,7 +38,7 @@ const getHistory = async () =>{
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
-  }
+  	}
   	console.log("users");
   	console.log(users);
 
