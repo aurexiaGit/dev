@@ -4,14 +4,17 @@
 ////////////////////////////////////////////////////////
 
 const getUserTable = (_users, _taille) => {
+	//ciblage de la borne html du tableau
 	var table = document.getElementById("content");
 	var i = 1;
 
 	for (var k=0; k<_taille; k++){
 
+		//creation d'une nouvelle ligne
 		var row = table.insertRow(-1);
 		row.className = "row" + i.toString() + " body";
 
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
 		column1.innerHTML = i;
@@ -38,11 +41,12 @@ const getUserTable = (_users, _taille) => {
 
 const getUsersList = async () =>{
 
-	let users = {};
+	let users = {}; //objet stockant tous les users coté utilisateur (frontend)
 	let listAddressNameBalance;
 	let name;
 	let i = 0;
   
+	//fonction interagissant avec le smartcontract pour renvoyer une liste contenant la liste de tous les utilisateurs, leur nom et leur balance
 	const getMembersNameBalance = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembersAndNameAndBalance((err, members) => {
@@ -52,6 +56,7 @@ const getUsersList = async () =>{
 		})
 	};
 
+	//fonction interagissant avec le SC et renvoyant la taille de la liste précédente
 	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
 		  Token.sizeListAccount((err, result) => {
@@ -59,11 +64,12 @@ const getUsersList = async () =>{
 			resolve(result);
 		})
 	  })}
-
+	
+	//Récupération des listes
 	listAddressNameBalance = await getMembersNameBalance();
 	let taille = await getTaille();
-	console.log("get list of addresses")
-	console.log(listAddressNameBalance);
+
+	//Remplissage de l'objet js users afin de l'afficher dans le tableau html plus tard 
 	while (i < taille) {
 		var address = listAddressNameBalance[0][i];
 		name = web3.toAscii(listAddressNameBalance[1][i]);
@@ -75,8 +81,7 @@ const getUsersList = async () =>{
 		i++;
 	}
 
-	console.log(users);
-
+	//Triage des utilisateurs en fonction de leur balance. Tri bulle décroissant 
 	for (var k = taille-1; k > 0 ; k--){
 		for (var j = 0; j < k; j++){
 			if (users[j].balance < users[j+1].balance){
@@ -88,6 +93,7 @@ const getUsersList = async () =>{
 	}
 	console.log(users);
 
+	//On retourne la fonction pour afficher la table html
 	return getUserTable(users, taille)
 };
 
