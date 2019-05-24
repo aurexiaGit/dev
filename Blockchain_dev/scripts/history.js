@@ -39,6 +39,8 @@ const getHistory = async () =>{
 		users[address].address=address;
 		users[address].name=name;
   }
+  	console.log("users");
+  	console.log(users);
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
@@ -52,6 +54,8 @@ const getHistory = async () =>{
 		const fillHistory = async (resultArray, curAddress, _users) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
+			console.log("_users");
+			console.log(_users);
 			for (var key in resultArray){
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
@@ -82,6 +86,8 @@ const getHistory = async () =>{
 				var column3 = document.createElement('td')
 				column3.className = "column3History";
 				let addressFrom = resultArray[key].from;
+				console.log("addressFrom")
+				console.log(addressFrom)
 				column3.innerHTML = _users[addressFrom].name;
 				row.appendChild(column3)
 
