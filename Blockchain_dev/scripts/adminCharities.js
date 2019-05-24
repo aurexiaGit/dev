@@ -199,7 +199,7 @@ const getCharityList = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getAssoName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.toAscii(res);
+				let name = web3.toAscii(res);     //les noms sont stockés sont forme de bytes dans le smart contract il faut donc les traduire en ascii
 				resolve(name);
 			})
 		})
