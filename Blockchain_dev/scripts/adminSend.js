@@ -13,53 +13,44 @@ const dropdownListFrom = (_curAddress, _users) => {
 	}
   }
   
-  const getUsersFrom = async () =>{
+const getUsersFrom = async () =>{
   
-	let users = {};
-	  let listAddress;
-	  let name;
-	  var i = 0;
-	
-	  const getMembers = async () =>{                        
-		  return new Promise(function(resolve, reject){
-			  Token.getMembers((err, members) => {
-				  if (err) return reject(err);
-				  resolve(members);
-			})
-	  })}
+  let users = {};
+	let listAddressAndName;
+	let name;
+	var i = 0;
   
-	  const getName = async (address) =>{                        
-		  return new Promise(function(resolve, reject){
-			  Token.getName(address, (err, res) => {
-				  if (err) return reject(err);
-				  let name = web3.toAscii(res);
-					resolve(name);
-		  })
-	})}	
-	
-	const getTaille = async () =>{
-	  return new Promise(function(resolve, reject){
-		Token.sizeListAccount((err, result) => {
-		  if (err) return reject(err);
-		  resolve(result);
-	  })
+	const getMembersAndName = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getMembersAndName((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
 	})}
   
-	  listAddress = await getMembers();
-	  console.log("get list of addresses")
-	console.log(listAddress);
-	let taille = await getTaille();
-	  while (i < taille) {
-		  var address = listAddress[i];
-		  console.log(address)
-		  name = await getName(address);
-		  users[name]={}
-		  users[name].address=address
-		  users[name].name=name
-		  i++
-		  console.log(users[name].address)
-		  console.log(users[name].name)
-	}
+  const getTaille = async () =>{
+    return new Promise(function(resolve, reject){
+      Token.sizeListAccount((err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+    })
+  })}
+
+	listAddressAndName = await getMembersAndName();
+	console.log("get list of addresses");
+  console.log(listAddressAndName);
+  let taille = await getTaille();
+	while (i < taille) {
+		var address = listAddressAndName[0][i];
+		console.log(address)
+		name = web3.toAscii(listAddressAndName[1][i]);
+		users[name]={};
+		users[name].address=address;
+		users[name].name=name;
+		i++
+		console.log(users[name].address);
+		console.log(users[name].name);
+  }
 	
 	//get current address before dropdownlist call, to remove own name from dropdown list
 	let curAddress;
@@ -75,7 +66,7 @@ const dropdownListFrom = (_curAddress, _users) => {
   
 	curAddress = await getCurAddress();
 	return dropdownListFrom(curAddress, users);
-  };
+};
   
 getUsersFrom();
 
