@@ -87,7 +87,7 @@ const getHistory = async () =>{
 				column3.className = "column3History";
 				let addressFrom = resultArray[key].from;
 				console.log("addressFrom")
-				console.log(addressFrom)
+				console.log(resultArray[key].from)
 				column3.innerHTML = _users[addressFrom].name;
 				row.appendChild(column3)
 
