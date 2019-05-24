@@ -2,7 +2,7 @@ const dropdownListFrom = (_curAddress, _users) => {
 
 	var select = document.getElementById("from-select");
 	for (var key in _users){
-		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
+		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
 		console.log(_users[key].address)
 		console.log(_users[key].name)
 		var opt = document.createElement('option');
