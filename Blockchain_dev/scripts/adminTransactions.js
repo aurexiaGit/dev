@@ -1,8 +1,9 @@
-const getHistory = async () =>{
+const getAdminHistory = async () =>{
 
 	let curAddress;
 	let users = {};
   
+//Foncions qui intéragissent avec le SC pour récupérer les adresses des utilisateurs et leur nom ainsi que la taille de cette liste dans le coté front.
 	const getCurAddress = async () =>{                         
 	  return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
@@ -10,8 +11,6 @@ const getHistory = async () =>{
 		  resolve(accounts[0]);
 	  })
 	})}
-  
-	curAddress = await getCurAddress();
 
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
@@ -29,9 +28,12 @@ const getHistory = async () =>{
 		})
 	  })}
 
+	//récupération des informations
+	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
 
+	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
 		let address = listAddressAndName[0][i];
 		name = web3.toAscii(listAddressAndName[1][i]);
@@ -39,11 +41,11 @@ const getHistory = async () =>{
 		users[address].address=address;
 		users[address].name=name;
 	  }
+
+	//On doit intégrer l'adresse null car lors de le création d'un smart contract, l'admin est crédité par cette adresse (sans l'intégrer cela fait crasher la page)
 	users["0x0000000000000000000000000000000000000000"]={};
 	users["0x0000000000000000000000000000000000000000"].address="0x0000000000000000000000000000000000000000";
 	users["0x0000000000000000000000000000000000000000"].name="";
-  	console.log("users");
-  	console.log(users);
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
@@ -57,13 +59,7 @@ const getHistory = async () =>{
 		const fillHistory = async (resultArray, curAddress, _users) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
-			console.log("_users");
-			console.log(_users);
-			console.log("resultat array");
-			console.log (resultArray);
 			for (var key in resultArray){
-				console.log("key");
-				console.log(key);
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
 				table.appendChild(row)
@@ -93,8 +89,6 @@ const getHistory = async () =>{
 				var column3 = document.createElement('td')
 				column3.className = "column3History";
 				let addressFrom = resultArray[key].from;
-				console.log("addressFrom")
-				console.log(resultArray[key].from)
 				column3.innerHTML = _users[addressFrom].name;
 				row.appendChild(column3)
 
@@ -120,4 +114,4 @@ const getHistory = async () =>{
 		fillHistory(resultArray, curAddress, users);
 	});
 };
-getHistory();
+getAdminHistory();
