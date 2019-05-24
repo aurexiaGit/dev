@@ -6,10 +6,6 @@ function adminPage() {
 	window.location="admin.html"
 }
 
-function eventsPage() {
-	window.location="events.html"
-}
-
 function followTransactions() {
 	window.location="adminTransactions.html"
 }
