@@ -116,9 +116,6 @@ const closeDonation = async () => {
 }
 
 
-// Cette partie nécessite une modification du smartcontract sur les fonction Charities. En effet il faut faire comme pour les members, une liste stockant toutes les adresses des charities
-// afin de pouvoir les récupérer et faire le tableau. 
-
 ////////////////////////////////////////////////////////
 //     Creation de la table listant les charity         //
 ////////////////////////////////////////////////////////
