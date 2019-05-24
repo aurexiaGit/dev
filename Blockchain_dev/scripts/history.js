@@ -59,6 +59,8 @@ const getHistory = async () =>{
 			console.log("resultat array");
 			console.log (resultArray);
 			for (var key in resultArray){
+				console.log("key");
+				console.log(key);
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
 				table.appendChild(row)
