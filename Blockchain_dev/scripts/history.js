@@ -1,6 +1,7 @@
 const getHistory = async () =>{
 
 	let curAddress;
+	let users = {};
   
 	const getCurAddress = async () =>{                         
 	  return new Promise(function(resolve, reject){
@@ -12,14 +13,33 @@ const getHistory = async () =>{
   
 	curAddress = await getCurAddress();
 
-	const getName = async (address) =>{                        
+	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, res) => {
+			Token.getMembersAndName((err, members) => {
 				if (err) return reject(err);
-				let name = web3.toAscii(res);
-				resolve(name);
+				resolve(members);
+	  	})
+	})}
+
+	const getTaille = async () =>{
+		return new Promise(function(resolve, reject){
+		  Token.sizeListAccount((err, result) => {
+			if (err) return reject(err);
+			resolve(result);
 		})
-	})}	
+	  })}
+
+	let listAddressAndName = await getMembersAndName();
+	let taille = await getTaille();
+
+	while (i < taille) {
+		let address = listAddressAndName[0][i];
+		name = web3.toAscii(listAddressAndName[1][i]);
+		users[address]={};
+		users[address].address=address;
+		users[address].name=name;
+		i++
+  }
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
@@ -30,7 +50,7 @@ const getHistory = async () =>{
 		//2) from: originator of the transaction
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
-		const fillHistory = async (resultArray, curAddress) =>{
+		const fillHistory = async (resultArray, curAddress, _users) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
 			for (var key in resultArray){
@@ -61,13 +81,15 @@ const getHistory = async () =>{
 				row.appendChild(column2)
 
 				var column3 = document.createElement('td')
-				column3.className = "column3History"
-				column3.innerHTML = await getName(resultArray[key].from)
+				column3.className = "column3History";
+				let addressFrom = resultArray[key].from;
+				column3.innerHTML = _users[addressFrom].name;
 				row.appendChild(column3)
 
 				var column4 = document.createElement('td')
 				column4.className = "column4History"
-				column4.innerHTML = await getName(resultArray[key].to)
+				let addressTo = resultArray[key].to;
+				column4.innerHTML = _users[addressTo].name;
 				row.appendChild(column4)
 				
 				var column5 = document.createElement('td')
@@ -83,7 +105,7 @@ const getHistory = async () =>{
 				i++
 			}
 		}
-		fillHistory(resultArray, curAddress);
+		fillHistory(resultArray, curAddress, users);
 	});
 };
 getHistory();
