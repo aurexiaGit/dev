@@ -32,13 +32,12 @@ const getHistory = async () =>{
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
 
-	while (i < taille) {
+	for (let i=0; i<taille; i++) {
 		let address = listAddressAndName[0][i];
 		name = web3.toAscii(listAddressAndName[1][i]);
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
-		i++
   }
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
