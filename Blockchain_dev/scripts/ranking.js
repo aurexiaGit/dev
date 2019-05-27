@@ -24,7 +24,6 @@ const getRankingTable = (_usersTop) => {
 		var column2 = document.createElement('td');
 		column2.className = "column2";
 		column2.innerHTML = _usersTop[key].name;
-		console.log (_usersTop[key].name);
 		row.appendChild(column2);
 
 		var column3 = document.createElement('td');
@@ -32,7 +31,6 @@ const getRankingTable = (_usersTop) => {
 		column3.innerHTML = Math.round(_usersTop[key].balance);
 		row.appendChild(column3);
 
-		console.log(i);
 		i++;
 		
 	}
