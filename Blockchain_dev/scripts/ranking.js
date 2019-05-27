@@ -1,17 +1,21 @@
+////////////////////////////////////////////////////////
+//     Creation de la table ranking                   //
+////////////////////////////////////////////////////////
 
 const getRankingTable = (_usersTop) => {
+	//ciblage de la borne html du tableau
 	var table = document.getElementById("content");
 	var i = 0;
-	console.log("userTop");
-	console.log(_usersTop);
-	console.log('ranking table');
 
 	for (key in _usersTop){
 
-		var number = i + 2;
+		var number = i + 1;
+
+		//creation d'une nouvelle ligne
 		var row = table.insertRow(-1);
 		row.className = "row" + number.toString() + " body";
 
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
 		column1.innerHTML = _usersTop[key].classement;
@@ -34,11 +38,10 @@ const getRankingTable = (_usersTop) => {
 	}
 }
 
-
+//récupération des utilisateurs (addresse nom balance pour la ranking table)
 const getRankingList = async () =>{
 
-	console.log("ranking")
-	var users = {};
+	var users = {}; //objet stockant tous les users coté utilisateur (frontend)
 	var listAddressNameBalance;
 	var name;
 	var i = 0;
@@ -52,6 +55,7 @@ const getRankingList = async () =>{
 	  })
 	}
 
+	//fonction interagissant avec le smartcontract pour renvoyer une liste contenant la liste de tous les utilisateurs, leur nom et leur balance
 	const getMembersNameBalance = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembersAndNameAndBalance((err, members) => {
@@ -61,6 +65,7 @@ const getRankingList = async () =>{
 		})
 	};
 
+	//fonction interagissant avec le SC et renvoyant la taille de la liste précédente
 	const getTaille = async () =>{
 		return new Promise(function(resolve, reject){
 		  Token.sizeListAccount((err, result) => {
@@ -68,25 +73,19 @@ const getRankingList = async () =>{
 			resolve(result);
 		})
 	  })}
-	
+
+	//Récupération des listes + adresse de l'utilisateur
 	listAddressNameBalance = await getMembersNameBalance();
 	curAddress = await getCurAddress();
 	var taille = await getTaille();
-	console.log("taille1");
-	console.log(taille);
 
-	listAddressNameBalance[0].splice(0,1);       // cette fonction supprime l'administrateur de la liste des personnes (pour ne pas l'afficher). je le garde car on a peu de membre pour le moment mais a terme on activera la fonction
+	//On retire l'administrator de la liste des utilisateurs car ce n'est pas vraiment un utilisateur mais la banque
+	listAddressNameBalance[0].splice(0,1);       
 	listAddressNameBalance[1].splice(0,1);
 	listAddressNameBalance[2].splice(0,1);
 	taille = taille - 1;
-	console.log("taille 1");
-	console.log(taille);
-	
-	console.log('cur address')
-	console.log(curAddress)
-	console.log("list address")
-	console.log(listAddressNameBalance)
 
+	//remplissage de l'objet user
 	while (i < taille) {
 		var address = listAddressNameBalance[0][i];
 		name = web3.toAscii(listAddressNameBalance[1][i]);
@@ -98,7 +97,10 @@ const getRankingList = async () =>{
 		i++
 	}
 
+	//Création de usersTop qui contiendra le top3 des utilisateurs ayant le plus de token
 	var usersTop = {};
+
+	//Création de users Perso qui est un objet contenant les info de l'utilisateur dont son classement. On l'initialise pour avoir une valeur par défaut (notamment pour tester la page coté admin)
 	var usersPerso = {
 					Perso:{
 						name: "err",
@@ -109,6 +111,7 @@ const getRankingList = async () =>{
 				};
 
 
+	//tri bulle décroissant des utilisateurs afin d'avoir le top3 utilisateurs dans les 3 premiers slot de l'objet (la key de cette objet est 0,1,2, ... , n)
 	for (var i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
@@ -118,10 +121,9 @@ const getRankingList = async () =>{
 			}
 		}
 	}
-	console.log(users);
 	
+	// Assignation du top3. On crée un condition if si le nombre d'utilisateur est < 3 car dans ce cas ranking devra afficher l'entiereté de user (soit 1 ou 2 ou 3 personnes)
 	if (taille <= 3){
-		console.log("dans if1")
 		for (var i=0; i<taille; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
@@ -131,7 +133,6 @@ const getRankingList = async () =>{
 		}
 	}
 	else{
-		console.log("dans if2")
 		for (var i=0; i<3; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
@@ -141,6 +142,7 @@ const getRankingList = async () =>{
 		}
 	}
 
+	//Assignation de users perso avec son classement
 	for (var i=0; i<taille; i++){
 		if (users[i].address.toLowerCase() == curAddress.toLowerCase()){
 			usersPerso["Perso"].name = users[i].name;
