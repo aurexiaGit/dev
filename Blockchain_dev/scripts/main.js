@@ -883,6 +883,7 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x289DB38Dbc605cd087f143F5d353e36653666838');
 
+
 // check that user has Metamask installed 
 
 if (window.ethereum===undefined) {
@@ -894,13 +895,15 @@ else {
 }
 
 
+//fonction de log (notamment pour le bandeau => reconnaissance js de l'admin)
 
 const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = async () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  //fonction intéragissant avec le SC 
+  const getCurAddress = async () =>{        
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
@@ -926,13 +929,16 @@ const getLog = async () =>{
 		})
 	}
 
+  //assignation des valeurs 
   curAddress = await getCurAddress();
   ownerAddress = await getOwner();
   curName = await getName(curAddress);
 
+  //on retourne l'affichage de la banner
   return getBanner(curAddress, ownerAddress, curName);
 };
 
+//fonction affichant la banner
 const getBanner = (_curAddress, _ownerAddress, _name) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
@@ -947,17 +953,17 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
+/************************************** */
+/*        update drop-down list         */
+/************************************** */
 
-//update drop-down list
-//var select = document.getElementById("dest-select");
-
+//fonction créant la dropdown list
 const dropdownList = (_curAddress, _users) => {
-
+  //ciblage via la borne html
   var select = document.getElementById("dest-select");
+  //remplissage de la dropdown list via l'object _users'
   for (var key in _users){
 	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
-      console.log(_users[key].address)
-      console.log(_users[key].name)
       var opt = document.createElement('option');
       opt.value = _users[key].address.toLowerCase();
       opt.innerHTML = _users[key].name;
@@ -966,13 +972,15 @@ const dropdownList = (_curAddress, _users) => {
   }
 }
 
+//fonction récupérant les utilisateurs et stockant ces données dans un objet js
 const getUsers = async () =>{
 
-  let users = {};
+  let users = {}; //objet js
 	let listAddressAndName;
 	let name;
 	var i = 0;
   
+  //fonctions intéragissant avec le SC pour récupérer la liste (membre, name) ainsi que sa taille
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getMembersAndName((err, members) => {
@@ -989,20 +997,18 @@ const getUsers = async () =>{
     })
   })}
 
+  //assignation des valeurs (le await permet de stopper la compilation d'une fonction asynchrone tant que la promesse n'a pas fini son execution, c'est nécessaire car l'appel au smart contract est plus lent que la compilation js). 
 	listAddressAndName = await getMembersAndName();
-	console.log("get list of addresses");
-  console.log(listAddressAndName);
   let taille = await getTaille();
+
+  // Remplissage de l'objet js
 	while (i < taille) {
 		var address = listAddressAndName[0][i];
-		console.log(address)
 		name = web3.toAscii(listAddressAndName[1][i]);
 		users[name]={};
 		users[name].address=address;
 		users[name].name=name;
 		i++
-		console.log(users[name].address);
-		console.log(users[name].name);
   }
   
   //get current address before dropdownlist call, to remove own name from dropdown list
