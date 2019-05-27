@@ -1,25 +1,27 @@
-const dropdownListCharity = (_curAddress, _charity) => {
-
-	var select = document.getElementById("dest-select1");
-	for (var key in _charity){
-		if (_charity.hasOwnProperty(key) && _charity[key].address.toLowerCase() !== _curAddress.toLowerCase()) {
-		console.log(_charity[key].address)
-		console.log(_charity[key].name)
-		var opt = document.createElement('option');
-		opt.value = _charity[key].address.toLowerCase();
-		opt.innerHTML = _charity[key].name;
-		select.appendChild(opt);
-	  }
-	}
+	//fonction créant le dropdown en prenant en entrée un objet js contenant les charities
+	const dropdownListCharity = (_charity) => {
+		//ciblage de la borne html
+		var select = document.getElementById("dest-select1");
+		//creation de la dropdown
+		for (var key in _charity){
+			if (_charity.hasOwnProperty(key)) {
+			var opt = document.createElement('option');
+			opt.value = _charity[key].address.toLowerCase();
+			opt.innerHTML = _charity[key].name;
+			select.appendChild(opt);
+			}
+		}
   }
-  
+	
+	//fonction récupérant les charities 
   const getCharity = async () =>{
   
-	let charity = {};
+		let charity = {}; //objet js de stockage
 	  let listCharity;
 	  let name;
 	  var i = 0;
 	
+		//fonctions intéragissant avec le smart contract, récuparant la liste des adresses des charities ainsi que leur nom et la taille de la liste
 	  const getCharity = async () =>{                        
 		  return new Promise(function(resolve, reject){
 			  Token.getCharityAddress((err, charities) => {
@@ -44,41 +46,27 @@ const dropdownListCharity = (_curAddress, _charity) => {
 			resolve(result);
 		})
 	  })}
-  
+	
+		//remplissage de l'objet js
 	  listCharity = await getCharity();
-	  console.log("get list of addresses")
 	  let taille = await getTaille();
-	  console.log(listCharity);
 	  while (i < taille) {
 		  var address = listCharity[i];
-		  console.log(address)
 		  name = await getName(address);
 		  charity[name]={}
 		  charity[name].address=address.toLowerCase();
 		  charity[name].name=name
 		  i++
-		  console.log(charity[name].address)
-		  console.log(charity[name].name)
 	}
 	
-	//get current address before dropdownlist call, to remove own name from dropdown list
-	let curAddress;
-  
-	const getCurAddress = async () =>{                         
-	return new Promise(function(resolve, reject){
-	  web3.eth.getAccounts((err, accounts) => {
-		if (err) return reject(err);
-		resolve(accounts[0]);
-	})
-	})}
-  
-	curAddress = await getCurAddress();
-	return dropdownListCharity(curAddress, charity);
+// call de la fonction d'affichage du dropdown avec l'objet crée en paramètre
+	return dropdownListCharity(charity);
   };
   
   getCharity();
 
 
+	//fonction intéragissant avec le SC lorsqu'on appuie sur transfert. Elle active la fonction transferToAssociation du SC qui transfert tous les tokens de l'utilisateurs à l'association
 	const transferCharity = async() => {
 
 		let address = document.getElementById("dest-select1").value
