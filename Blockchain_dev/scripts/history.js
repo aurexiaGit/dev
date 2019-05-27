@@ -3,6 +3,7 @@ const getHistory = async () =>{
 	let curAddress;
 	let users = {};
   
+//Foncions qui intéragissent avec le SC pour récupérer les adresses des utilisateurs et leur nom ainsi que la taille de cette liste dans le coté front.
 	const getCurAddress = async () =>{                         
 	  return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
@@ -10,8 +11,6 @@ const getHistory = async () =>{
 		  resolve(accounts[0]);
 	  })
 	})}
-  
-	curAddress = await getCurAddress();
 
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
@@ -29,16 +28,21 @@ const getHistory = async () =>{
 		})
 	  })}
 
+	//récupération des informations
+	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
 
+	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
 		let address = listAddressAndName[0][i];
 		name = web3.toAscii(listAddressAndName[1][i]);
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
-	  }
+	}
+
+	//On doit intégrer l'adresse null car lors de le création d'un smart contract, l'admin est crédité par cette adresse (sans l'intégrer cela fait crasher la page)
 	users["0x0000000000000000000000000000000000000000"]={};
 	users["0x0000000000000000000000000000000000000000"].address="0x0000000000000000000000000000000000000000";
 	users["0x0000000000000000000000000000000000000000"].name="";
@@ -46,6 +50,7 @@ const getHistory = async () =>{
   	console.log(users);
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
+	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
 		var resultArray = data.result;
 
