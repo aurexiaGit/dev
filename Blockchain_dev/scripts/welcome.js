@@ -1,3 +1,5 @@
+//Page pour se logger
+
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
