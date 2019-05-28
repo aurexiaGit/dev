@@ -28,10 +28,19 @@ const getHistory = async () =>{
 		})
 	  })}
 
+	  const getPersoWordings = async (_address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getPersonalWordings(_address, (err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
+	})}
+
 	//récupération des informations
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
+	let listPersoWording = await getPersoWordings(curAddress);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
@@ -59,7 +68,7 @@ const getHistory = async () =>{
 		//2) from: originator of the transaction
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
-		const fillHistory = async (resultArray, curAddress, _users) =>{
+		const fillHistory = async (resultArray, curAddress, _users, _listPersoWording) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
 			console.log("_users");
@@ -118,11 +127,16 @@ const getHistory = async () =>{
 					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
 				}
 				row.appendChild(column5)
+
+				var column6 = document.createElement('td');
+				column6.className = "column6History";
+				column6.innerHTML = web3.toAscii(_listPersoWording[3][key]);
+				row.appendChild(column6);
 				
 				i++
 			}
 		}
-		fillHistory(resultArray, curAddress, users);
+		fillHistory(resultArray, curAddress, users, listPersoWording);
 	});
 };
 getHistory();
