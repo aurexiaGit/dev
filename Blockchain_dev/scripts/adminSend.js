@@ -64,6 +64,8 @@ const transferFromTo = async() => {
 	let addressTo = document.getElementById("dest-select").value;
 	let amount = document.getElementById("amount").value;
 	amount = amount*Math.pow(10,18);
+	let message = document.getElementById("wording").value;
+	message = web3.fromAscii(message);
 
 	//Récupération de l'adresse de l'utilisateur (admin)
 	const getCurAddress = async () =>{                         
@@ -77,16 +79,16 @@ const transferFromTo = async() => {
 	let curAddress = await getCurAddress();
 
 	//fonction de transfert de token (formulation différente mais un peu plus rigoureuse que dans index.js)
-	const transferEvent = async (_address1, _address2, amount, _curAddress) =>{
+	const transferEvent = async (_address1, _address2, amount, _message, _curAddress) =>{
 		return new Promise(function(resolve, reject){
-			Token.transferFrom.sendTransaction(_address1, _address2, amount, {from: _curAddress}, (err, result) => {
+			Token.transferFrom.sendTransaction(_address1, _address2, amount, _message, {from: _curAddress}, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	let transferTransaction = await transferEvent(addressFrom, addressTo, amount, curAddress);
+	let transferTransaction = await transferEvent(addressFrom, addressTo, amount, message, curAddress);
 
 	//reset des champs input
 	var frm = document.getElementById("send");
