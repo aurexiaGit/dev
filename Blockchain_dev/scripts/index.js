@@ -105,20 +105,22 @@ accountManagement ();
 const Transfer = async() => {
 
 	//récupération des infos 
-	let address = document.getElementById("dest-select").value
-	let amount = document.getElementById("amount").value
+	let address = document.getElementById("dest-select").value;
+	let amount = document.getElementById("amount").value;
+	let wording = document.getElementById("wording").value;
+	wording = web3.fromAscii(wording);
 
 	//fonction intéragissant avec le SC pour le transfert de token
-	const transferEvent = async (address, amount) =>{
+	const transferEvent = async (address, amount, _wording) =>{
 		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+			Token.transfer(address, amount*Math.pow(10,18), _wording, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	transferTransaction = await transferEvent(address,amount);
+	transferTransaction = await transferEvent(address,amount, wording);
 
 	//reset de la page
 	var frm = document.getElementById("send");
