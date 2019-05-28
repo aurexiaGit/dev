@@ -2,10 +2,10 @@
 /*                     Creation de token                           */
 /***************************************************************** */
 
+//fonction qui interagit avec le SC pour créer de nouveaux tokens. 
 const create = async (_curAddress, _address, _amount) =>{
-	Token.mint(_address,_amount, {from: _curAddress}, (err,result) => {
+	Token.mint.sendTransaction(_address,_amount, {from: _curAddress}, (err,result) => {
 		if (err) throw (err);
-		console.log(result);
 	})
 	return result;
 }
@@ -26,8 +26,11 @@ const createTokens = async () => {
 	  })};
 
 	let curAddress = await getCurAddress();
+
+	//reset des champs
 	var frm = document.getElementById("addMember");
 	frm.reset();
+	//on retourne la fonction interagissant avec le SC
 	return create(curAddress, address, amount);
 }
 
@@ -36,10 +39,10 @@ const createTokens = async () => {
 /*                     Suppression de token                        */
 /***************************************************************** */
 
+//fonction qui interagit avec le SC pour détruire de nouveaux tokens. 
 const destroy = async (_curAddress, _address, _amount) =>{
-	Token.burn(_address,_amount, {from: _curAddress}, (err,result) => {
+	Token.burn.sendTransaction(_address,_amount, {from: _curAddress}, (err,result) => {
 		if (err) throw (err);
-		console.log(result);
 	})
 	return result;
 }
@@ -59,7 +62,9 @@ const destroyTokens = async () => {
 	  })};
 
 	let curAddress = await getCurAddress();
+	//reset des champs
 	var frm = document.getElementById("supMember");
 	frm.reset();
+	//on retourne la fonction intéragissant avec le SC
 	return destroy(curAddress, address, amount);
 }

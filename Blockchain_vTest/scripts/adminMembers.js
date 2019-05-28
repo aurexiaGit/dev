@@ -1,8 +1,9 @@
 const addMember = async () => {
 	// Called when clicking on Add button
-	var _address = document.getElementById("adress1").value
-	var _name = document.getElementById("name1").value
-	var _grade = document.getElementById ("grade1").value
+	var _address = document.getElementById("adress1").value;
+	var _name = document.getElementById("name1").value;
+	_name = web3.fromAscii(_name); //car le smart contract stocke les noms en bytes 
+	var _grade = document.getElementById ("grade1").value;
 
 	const addM = async (address,name,grade) =>{                         
 		return new Promise(function(resolve, reject){
@@ -15,7 +16,6 @@ const addMember = async () => {
 	let assigment = await addM(_address,_name,_grade)
 	var frm = document.getElementById("addMember");
 	frm.reset();
-	console.log(assigment)
 	return false;
 }
 

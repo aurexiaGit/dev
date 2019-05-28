@@ -64,14 +64,17 @@ const refreshBalance= async () => {
 refreshBalance();
 // *******************************************
 
+//Affichage de la balance
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
 		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
 	}
 }
 
+//Fonction récupérant la balance de l'utilisateur
 const accountManagement = async () => {
 
+	//fonctions interagissant avec le smart contract pour la fonction SC balanceOf
 	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
@@ -89,6 +92,7 @@ const accountManagement = async () => {
 		})
 	};
 
+	//assignation des valeurs
 	let curAddress = await getCurAddress();
 	let balance = await getBalance(curAddress);
 
@@ -97,21 +101,14 @@ const accountManagement = async () => {
 
 accountManagement ();
 
-const loading = (_sending) => {
-	var elmt = document.getElementById("loading")
-	if (_sending == true) {
-		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
-	}
-}
-
 //Transfer tokens when clicking on "send" in home page
 const Transfer = async() => {
 
+	//récupération des infos 
 	let address = document.getElementById("dest-select").value
 	let amount = document.getElementById("amount").value
-	
-	sending = true
 
+	//fonction intéragissant avec le SC pour le transfert de token
 	const transferEvent = async (address, amount) =>{
 		return new Promise(function(resolve, reject){
 			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
@@ -122,6 +119,8 @@ const Transfer = async() => {
 	};
 
 	transferTransaction = await transferEvent(address,amount);
+
+	//reset de la page
 	var frm = document.getElementById("send");
 	frm.reset();
 	return transferTransaction
