@@ -41,6 +41,8 @@ const getAdminHistory = async () =>{
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
 	let listeWordings = await getAllWordings();
+	console.log("wordings");
+	console.log(listeWordings)
 	let taille = await getTaille();
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
