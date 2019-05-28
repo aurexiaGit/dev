@@ -140,6 +140,21 @@ var TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
+    "name": "indexNewWording",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xd3c49371"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "newOwner",
     "outputs": [
       {
@@ -316,6 +331,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transfer",
@@ -328,7 +347,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0xa9059cbb"
+    "signature": "0x57cfeeee"
   },
   {
     "constant": false,
@@ -344,6 +363,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transferFrom",
@@ -356,7 +379,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0x23b872dd"
+    "signature": "0x401e3367"
   },
   {
     "constant": false,
@@ -865,10 +888,69 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x11f7b854"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xe0fcd9ff"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersonalWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xcecb2a88"
   }
 ]);
 
-var Token = TokenABI.at('0x289DB38Dbc605cd087f143F5d353e36653666838');
+var Token = TokenABI.at('0xEa75b2a060a4cA9f69679d735b4534c8D792C0d6');
 
 // check that user has Metamask installed 
 
