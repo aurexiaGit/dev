@@ -42,7 +42,7 @@ const getHistory = async () =>{
 	let taille = await getTaille();
 	let listPersoWording = await getPersoWordings(curAddress);
 	console.log("liste perso");
-	console.log(_listPersoWording);
+	console.log(listPersoWording);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
