@@ -2,6 +2,7 @@ const getAdminHistory = async () =>{
 
 	let curAddress;
 	let users = {};
+	let wording = {};
   
 //Foncions qui intéragissent avec le SC pour récupérer les adresses des utilisateurs et leur nom ainsi que la taille de cette liste dans le coté front.
 	const getCurAddress = async () =>{                         
@@ -28,9 +29,18 @@ const getAdminHistory = async () =>{
 		})
 	  })}
 
+	const getAllWordings = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getAllWordings((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
+	})}
+
 	//récupération des informations
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
+	let listeWordings = await getAllWordings();
 	let taille = await getTaille();
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
@@ -49,7 +59,7 @@ const getAdminHistory = async () =>{
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
-	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0x289DB38Dbc605cd087f143F5d353e36653666838&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
+	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0xEa75b2a060a4cA9f69679d735b4534c8D792C0d6&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
 		var resultArray = data.result;
 
 		// fill the history with data from json file. Required/relevant columns from json are:
