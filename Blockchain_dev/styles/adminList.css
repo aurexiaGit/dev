@@ -52,23 +52,27 @@ th, td {
 }
 
 .column1History {
-  width: 15%;
+  width: 10%;
 }
 
 .column2History {
-  width: 15%;
+  width: 10%;
 }
 
 .column3History {
-  width: 25%;
+  width: 20%;
 }
 
 .column4History {
-  width: 25%;
+  width: 20%;
 }
 
 .column5History {
-  width: 15%;
+  width: 10%;
+}
+
+.column6History {
+  width: 25%;
 }
 
 .table-head th {

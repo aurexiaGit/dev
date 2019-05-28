@@ -69,10 +69,12 @@ const getAdminHistory = async () =>{
 		//2) from: originator of the transaction
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
-		const fillHistory = async (resultArray, curAddress, _users) =>{
+		const fillHistory = async (resultArray, curAddress, _users, _listeWordings) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
 			for (var key in resultArray){
+				console.log("key");
+				console.log(key);
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
 				table.appendChild(row)
@@ -89,42 +91,47 @@ const getAdminHistory = async () =>{
 				column1.innerHTML = dateString
 				row.appendChild(column1)
 
-				var column2 = document.createElement('td')
-				column2.className = "column2History"
+				var column2 = document.createElement('td');
+				column2.className = "column2History";
 				if (resultArray[key].from == curAddress) {
-					column2.innerHTML = "Transfer"
+					column2.innerHTML = "Transfer";
 				}
 				else {
-					column2.innerHTML = "Reception"
+					column2.innerHTML = "Reception";
 				}
-				row.appendChild(column2)
+				row.appendChild(column2);
 
-				var column3 = document.createElement('td')
+				var column3 = document.createElement('td');
 				column3.className = "column3History";
 				let addressFrom = resultArray[key].from;
 				column3.innerHTML = _users[addressFrom].name;
-				row.appendChild(column3)
+				row.appendChild(column3);
 
-				var column4 = document.createElement('td')
-				column4.className = "column4History"
+				var column4 = document.createElement('td');
+				column4.className = "column4History";
 				let addressTo = resultArray[key].to;
 				column4.innerHTML = _users[addressTo].name;
-				row.appendChild(column4)
+				row.appendChild(column4);
 				
-				var column5 = document.createElement('td')
-				column5.className = "column5History"
+				var column5 = document.createElement('td');
+				column5.className = "column5History";
 				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
+					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18));
 				}
 				else {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
+					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18));
 				}
-				row.appendChild(column5)
+				row.appendChild(column5);
+
+				var column6 = document.createElement('td');
+				column6.className = "column6History";
+				column6.innerHTML = web3.toAscii(_listeWordings[3][key]);
+				row.appendChild(column6);
 				
 				i++
 			}
 		}
-		fillHistory(resultArray, curAddress, users);
+		fillHistory(resultArray, curAddress, users, listeWordings);
 	});
 };
 getAdminHistory();
