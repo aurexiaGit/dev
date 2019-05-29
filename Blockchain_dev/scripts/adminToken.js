@@ -1,14 +1,6 @@
 /***************************************************************** */
 /*                     Creation de token                           */
-/***************************************************************** */
-
-//fonction qui interagit avec le SC pour créer de nouveaux tokens. 
-const create = async (_curAddress, _address, _amount) =>{
-	Token.mint.sendTransaction(_address,_amount, {from: _curAddress}, (err,result) => {
-		if (err) throw (err);
-	})
-	return result;
-}
+/***************************************************************** */ 
 
 const createTokens = async () => {
 	// Creates tokens on an account
@@ -25,27 +17,30 @@ const createTokens = async () => {
 		})
 	  })};
 
+	//fonction qui interagit avec le SC pour créer de nouveaux tokens.
+	const create = async (_curAddress, _address, _amount) =>{
+		return new Promise(function(resolve, reject){
+		Token.mint.sendTransaction(_address,_amount, {from: _curAddress}, (err,result) => {
+			if (err) return reject (err);
+			resolve (result)
+		})
+	})}
+
 	let curAddress = await getCurAddress();
+
+	//on retourne la fonction interagissant avec le SC
+	let creation = await create(curAddress, address, amount);
 
 	//reset des champs
 	var frm = document.getElementById("addMember");
 	frm.reset();
-	//on retourne la fonction interagissant avec le SC
-	return create(curAddress, address, amount);
+	return true;
 }
 
 
 /***************************************************************** */
 /*                     Suppression de token                        */
 /***************************************************************** */
-
-//fonction qui interagit avec le SC pour détruire de nouveaux tokens. 
-const destroy = async (_curAddress, _address, _amount) =>{
-	Token.burn.sendTransaction(_address,_amount, {from:_curAddress}, (err,result) => {
-		if (err) throw (err);
-	})
-	return result;
-}
 
 const destroyTokens = async () => {
 	var amount = document.getElementById("amount2").value
@@ -61,10 +56,23 @@ const destroyTokens = async () => {
 		})
 	  })};
 
+	//fonction qui interagit avec le SC pour détruire de nouveaux tokens. 
+	const destroy = async (_curAddress, _address, _amount) =>{
+		return new Promise(function(resolve, reject){
+		Token.burn.sendTransaction(_address,_amount, {from:_curAddress}, (err,result) => {
+			if (err) return reject(err);
+			resolve (result);
+		})
+	})}
+
 	let curAddress = await getCurAddress();
+	
+	//on retourne la fonction intéragissant avec le SC
+	let destroyed = await destroy(curAddress, address, amount);
+
 	//reset des champs
 	var frm = document.getElementById("supMember");
 	frm.reset();
-	//on retourne la fonction intéragissant avec le SC
-	return destroy(curAddress, address, amount);
+
+	return true;
 }
