@@ -56,6 +56,8 @@ const getHistory = async () =>{
 		var resultArray = data.result;
 		console.log("result Array");
 		console.log(resultArray);
+		console.log("data.result");
+		console.log(data.result);
 		// fill the history with data from json file. Required/relevant columns from json are:
 		//1) timeStamp (nb of seconds since 01/01/1970)
 		//2) from: originator of the transaction
@@ -119,7 +121,7 @@ const getHistory = async () =>{
 
 				var column6 = document.createElement('td');
 				column6.className = "column6History";
-				column6.innerHTML = web3.toAscii(resultArray[key].text);
+				column6.innerHTML = "";
 				row.appendChild(column6);
 				
 				i++
