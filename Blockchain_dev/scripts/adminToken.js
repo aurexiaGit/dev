@@ -41,7 +41,7 @@ const createTokens = async () => {
 
 //fonction qui interagit avec le SC pour détruire de nouveaux tokens. 
 const destroy = async (_curAddress, _address, _amount) =>{
-	Token.burn.sendTransaction(_address,_amount, {from: _curAddress}, (err,result) => {
+	Token.burn.sendTransaction(_address,_amount, {from:_curAddress}, (err,result) => {
 		if (err) throw (err);
 	})
 	return result;
