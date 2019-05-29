@@ -29,20 +29,10 @@ const getAdminHistory = async () =>{
 		})
 	  })}
 
-	const getAllWordings = async () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getAllWordings((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
 
 	//récupération des informations
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
-	let listeWordings = await getAllWordings();
-	console.log("wordings");
-	console.log(listeWordings)
 	let taille = await getTaille();
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
@@ -69,7 +59,7 @@ const getAdminHistory = async () =>{
 		//2) from: originator of the transaction
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
-		const fillHistory = async (resultArray, curAddress, _users, _listeWordings) =>{
+		const fillHistory = async (resultArray, curAddress, _users) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
 			for (var key in resultArray){
@@ -125,13 +115,13 @@ const getAdminHistory = async () =>{
 
 				var column6 = document.createElement('td');
 				column6.className = "column6History";
-				column6.innerHTML = web3.toAscii(_listeWordings[3][key]);
+				column6.innerHTML = web3.toAscii(resultArray[key].text);
 				row.appendChild(column6);
 				
 				i++
 			}
 		}
-		fillHistory(resultArray, curAddress, users, listeWordings);
+		fillHistory(resultArray, curAddress, users);
 	});
 };
 getAdminHistory();

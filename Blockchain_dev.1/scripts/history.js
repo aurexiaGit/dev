@@ -124,7 +124,7 @@ const getHistory = async () =>{
 				i++
 			}
 		}
-		fillHistory(resultArray, curAddress, users, listPersoWording);
+		fillHistory(resultArray, curAddress, users);
 	});
 };
 getHistory();
