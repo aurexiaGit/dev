@@ -48,7 +48,7 @@ const getAdminHistory = async () =>{
 	users["0x0000000000000000000000000000000000000000"].address="0x0000000000000000000000000000000000000000";
 	users["0x0000000000000000000000000000000000000000"].name="";
 
-	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
+	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON files
 	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0xD16A5ec89500Cf37EE825adBf3E4f0044466261a&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
 		var resultArray = data.result;
