@@ -950,7 +950,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x5328DB28f50b1c56d68Fb91879f0Dd0036AC5485');
+var Token = TokenABI.at('0x457FB8742133133384B2393f40a7322E487E5CbC');
 
 // check that user has Metamask installed 
 
