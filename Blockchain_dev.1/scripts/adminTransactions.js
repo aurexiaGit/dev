@@ -2,7 +2,6 @@ const getAdminHistory = async () =>{
 
 	let curAddress;
 	let users = {};
-	let wording = {};
   
 //Foncions qui intéragissent avec le SC pour récupérer les adresses des utilisateurs et leur nom ainsi que la taille de cette liste dans le coté front.
 	const getCurAddress = async () =>{                         
@@ -53,6 +52,8 @@ const getAdminHistory = async () =>{
 	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
 	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0xD16A5ec89500Cf37EE825adBf3E4f0044466261a&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
 		var resultArray = data.result;
+		console.log("result Array");
+		console.log(resultArray);
 
 		// fill the history with data from json file. Required/relevant columns from json are:
 		//1) timeStamp (nb of seconds since 01/01/1970)
