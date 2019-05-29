@@ -28,21 +28,11 @@ const getHistory = async () =>{
 		})
 	  })}
 
-	  const getPersoWordings = async (_address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getPersonalWordings(_address, (err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
 
 	//récupération des informations
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
-	let listPersoWording = await getPersoWordings(curAddress);
-	console.log("liste perso");
-	console.log(listPersoWording);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
@@ -70,7 +60,7 @@ const getHistory = async () =>{
 		//2) from: originator of the transaction
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
-		const fillHistory = async (resultArray, curAddress, _users, _listPersoWording) =>{
+		const fillHistory = async (resultArray, curAddress, _users) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
 			console.log("_users");
@@ -78,8 +68,6 @@ const getHistory = async () =>{
 			console.log("resultat array");
 			console.log (resultArray);
 			for (var key in resultArray){
-				console.log("key");
-				console.log(key);
 				var row = document.createElement('tr')
 				row.class = "row" + i.toString() + " body"
 				table.appendChild(row)
@@ -109,8 +97,6 @@ const getHistory = async () =>{
 				var column3 = document.createElement('td')
 				column3.className = "column3History";
 				let addressFrom = resultArray[key].from;
-				console.log("addressFrom")
-				console.log(resultArray[key].from)
 				column3.innerHTML = _users[addressFrom].name;
 				row.appendChild(column3)
 
@@ -132,7 +118,7 @@ const getHistory = async () =>{
 
 				var column6 = document.createElement('td');
 				column6.className = "column6History";
-				column6.innerHTML = web3.toAscii(_listPersoWording[3][key]);
+				column6.innerHTML = web3.toAscii(resultArray[key].text);
 				row.appendChild(column6);
 				
 				i++
