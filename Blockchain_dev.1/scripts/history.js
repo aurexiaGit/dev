@@ -62,7 +62,7 @@ const getHistory = async () =>{
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
 		const fillHistory = async (resultArray, curAddress, _users) =>{
-			var table = document.getElementById("content-history")
+			var table = document.getElementById("content-history");
 			var i = 1
 			console.log("_users");
 			console.log(_users);
