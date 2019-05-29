@@ -19,7 +19,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x06fdde03"
   },
   {
     "constant": true,
@@ -33,7 +34,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x1c6c72b0"
   },
   {
     "constant": true,
@@ -47,7 +49,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x30e3fcad"
   },
   {
     "constant": true,
@@ -61,7 +64,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x313ce567"
   },
   {
     "constant": true,
@@ -75,7 +79,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x378dc3dc"
   },
   {
     "constant": true,
@@ -89,7 +94,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x3eaaf86b"
   },
   {
     "constant": false,
@@ -98,7 +104,8 @@ var TokenABI = web3.eth.contract([
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x79ba5097"
   },
   {
     "constant": true,
@@ -112,7 +119,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x8da5cb5b"
   },
   {
     "constant": true,
@@ -126,7 +134,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x95d89b41"
   },
   {
     "constant": true,
@@ -140,7 +149,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xd4ee1d90"
   },
   {
     "constant": true,
@@ -154,7 +164,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xd6eb5782"
   },
   {
     "constant": false,
@@ -168,13 +179,15 @@ var TokenABI = web3.eth.contract([
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0xf2fde38b"
   },
   {
     "inputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor"
+    "type": "constructor",
+    "signature": "constructor"
   },
   {
     "anonymous": false,
@@ -201,7 +214,8 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "Transfer",
-    "type": "event"
+    "type": "event",
+    "signature": "0x10d85eb696556cf89e382ad2be46259009e783f0060ef100faa456da4d834add"
   },
   {
     "anonymous": false,
@@ -218,7 +232,8 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "Burn",
-    "type": "event"
+    "type": "event",
+    "signature": "0xcc16f5dbb4873280815c1ee09dbd06736cffcc184412cf7a71a0fdb75d397ca5"
   },
   {
     "anonymous": false,
@@ -240,7 +255,8 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "Approval",
-    "type": "event"
+    "type": "event",
+    "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
   },
   {
     "anonymous": false,
@@ -257,7 +273,8 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
   },
   {
     "constant": true,
@@ -271,7 +288,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x18160ddd"
   },
   {
     "constant": true,
@@ -290,7 +308,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x70a08231"
   },
   {
     "constant": false,
@@ -317,7 +336,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x57cfeeee"
   },
   {
     "constant": false,
@@ -348,7 +368,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x401e3367"
   },
   {
     "constant": false,
@@ -371,7 +392,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x095ea7b3"
   },
   {
     "constant": true,
@@ -394,7 +416,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xdd62ed3e"
   },
   {
     "constant": false,
@@ -412,7 +435,8 @@ var TokenABI = web3.eth.contract([
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x40c10f19"
   },
   {
     "constant": false,
@@ -435,7 +459,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x9dc29fac"
   },
   {
     "constant": false,
@@ -454,7 +479,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x52435bb8"
   },
   {
     "constant": false,
@@ -481,7 +507,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x7112ba11"
   },
   {
     "constant": false,
@@ -500,7 +527,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x53e18bdc"
   },
   {
     "constant": true,
@@ -514,7 +542,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x9eab5253"
   },
   {
     "constant": true,
@@ -532,7 +561,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xd9543bb6"
   },
   {
     "constant": true,
@@ -554,7 +584,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x77f36225"
   },
   {
     "constant": true,
@@ -573,7 +604,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xb93f9b0a"
   },
   {
     "constant": true,
@@ -592,7 +624,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xfb108820"
   },
   {
     "constant": true,
@@ -611,7 +644,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x5fd4b08a"
   },
   {
     "constant": true,
@@ -630,7 +664,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x313739a3"
   },
   {
     "constant": false,
@@ -653,7 +688,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0xf09d0874"
   },
   {
     "constant": false,
@@ -676,7 +712,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x9ca1221c"
   },
   {
     "constant": false,
@@ -699,7 +736,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x097a80b8"
   },
   {
     "constant": false,
@@ -718,7 +756,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x1a76e209"
   },
   {
     "constant": false,
@@ -737,7 +776,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0xd980151c"
   },
   {
     "constant": true,
@@ -751,7 +791,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x1ad06393"
   },
   {
     "constant": true,
@@ -765,7 +806,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xae1de61c"
   },
   {
     "constant": false,
@@ -779,7 +821,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x60aa8c73"
   },
   {
     "constant": false,
@@ -793,7 +836,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x59abef9a"
   },
   {
     "constant": true,
@@ -812,7 +856,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xb1affcfd"
   },
   {
     "constant": true,
@@ -831,7 +876,8 @@ var TokenABI = web3.eth.contract([
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x11f7b854"
   }
 ]);
 
