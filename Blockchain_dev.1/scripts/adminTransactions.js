@@ -116,7 +116,7 @@ const getAdminHistory = async () =>{
 
 				var column6 = document.createElement('td');
 				column6.className = "column6History";
-				column6.innerHTML = web3.toAscii(resultArray[key].text);
+				column6.innerHTML = ""//web3.toAscii(resultArray[key].text);
 				row.appendChild(column6);
 				
 				i++
