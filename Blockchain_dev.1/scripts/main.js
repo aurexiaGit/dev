@@ -894,7 +894,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-let tokenAddress = '0xD16A5ec89500Cf37EE825adBf3E4f0044466261a';
+let tokenAddress = '0x7c7695ab0F8df3989F1D816A458F09d172aE99cC';
 
 var Token = TokenABI.at(tokenAddress);
 
