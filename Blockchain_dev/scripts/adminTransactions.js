@@ -73,7 +73,7 @@ const getAdminHistory = async () =>{
 		const fillHistory = async (resultArray, curAddress, _users, _listeWordings) =>{
 			var table = document.getElementById("content-history")
 			var i = 1
-			for (let key = tailleWording-1; key>=0; i--){
+			for (let key = tailleWording-1; key>=0; key--){
 				console.log("key");
 				console.log(key);
 				var row = document.createElement('tr')
