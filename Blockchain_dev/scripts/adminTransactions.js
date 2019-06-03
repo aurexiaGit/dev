@@ -44,7 +44,7 @@ const getAdminHistory = async () =>{
 	console.log("wordings");
 	console.log(listeWordings)
 	let taille = await getTaille();
-	let tailleWording = listeWordings[0];
+	let tailleWording = listeWordings[0].length;
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {

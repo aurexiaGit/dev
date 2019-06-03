@@ -41,7 +41,7 @@ const getHistory = async () =>{
 	let listAddressAndName = await getMembersAndName();
 	let taille = await getTaille();
 	let listPersoWording = await getPersoWordings(curAddress);
-	let tailleWording = listPersoWording[0];
+	let tailleWording = listPersoWording[0].length;
 	console.log("liste perso");
 	console.log(listPersoWording);
 
