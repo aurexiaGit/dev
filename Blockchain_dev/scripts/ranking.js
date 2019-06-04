@@ -178,7 +178,7 @@ const getRankingList = async () =>{
 	})}
 
 
-	let listPersoTransaction = await getPersoWordings();
+	let listPersoTransaction = await getPersoWordings(curAddress);
 	let tailleTransactions = listPersoTransaction[0].length;
 	let nbrEnvoie = 0;
 	let nbrRecu = 0;
