@@ -84,7 +84,7 @@ const destroyTokens = async () => {
 
 const dropdownListCreaRem = (_users, _keyName) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
 
-	var select = document.getElementById("from-select-crea");
+	var select = document.getElementById("dest-select-crea");
 	for (let i=0; i<_keyName.length; i++){
 		key = _keyName[i];
 			if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
@@ -94,7 +94,7 @@ const dropdownListCreaRem = (_users, _keyName) => {  //on récupère l'addresse 
 			select.appendChild(opt);
 		}
 	}
-	var select1 = document.getElementById("from-select-rem");
+	var select1 = document.getElementById("dest-select-rem");
   	for (let i=0; i<_keyName.length; i++){
 		key = _keyName[i];
 			if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
