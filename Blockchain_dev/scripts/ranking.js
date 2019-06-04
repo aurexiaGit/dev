@@ -169,6 +169,35 @@ const getRankingList = async () =>{
 	var rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
+	const getPersoWordings = async (_address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getPersonalWordings(_address, (err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
+	})}
+
+
+	let listPersoTransaction = await getPersoWordings();
+	let taille = listPersoTransaction[0].length;
+	let nbrEnvoie = 0;
+	let nbrRecu = 0;
+	for (let i=0; i<taille; i++){
+		if (listPersoTransaction[0][i].toLowerCase() == curAddress.toLowerCase()){
+			nbrEnvoie++;
+		}
+		if (listPersoTransaction[1][i].toLowerCase() == curAddress.toLowerCase()){
+			nbrRecu++;
+		}
+	}
+	console.log("nbrEnvoie");
+	console.log(nbrEnvoie);
+	console.log("nbrRecu");
+	console.log(nbrRecu);
+
+
+
+
 	return getRankingTable(usersTop, usersPerso);
 };
 
