@@ -1095,6 +1095,7 @@ const getUsers = async () =>{
   }
   
   let keyName = listAddressAndName[1];
+  console.log(keyName);
   for (let i=0; i<keyName.length; i++){
     keyName[0]=web3.toAscii(keyName[0]);
   }
