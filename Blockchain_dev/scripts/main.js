@@ -1094,7 +1094,7 @@ const getUsers = async () =>{
 		i++
   }
   
-  let keyName = web3.toAscii(listAddressAndName[1][i]);
+  let keyName = web3.toAscii(listAddressAndName[1]);
   keyName.splice(0,1);
   keyName.sort();
   keyName.splice(0,0, "Administrator");
