@@ -53,10 +53,10 @@ const getUsersFrom = async () =>{
 	}
 
 	let keyName = listAddressAndName[1];
-  console.log(keyName);
   for (let i=0; i<keyName.length; i++){
     keyName[i]=web3.toAscii(keyName[i]);
-  }
+	}
+	keyName.sort();
 
 	//on retourne l'affichage du dropdown
 	return dropdownListFrom(users, keyName);
