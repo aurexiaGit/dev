@@ -179,10 +179,10 @@ const getRankingList = async () =>{
 
 
 	let listPersoTransaction = await getPersoWordings();
-	let taille = listPersoTransaction[0].length;
+	let tailleTransactions = listPersoTransaction[0].length;
 	let nbrEnvoie = 0;
 	let nbrRecu = 0;
-	for (let i=0; i<taille; i++){
+	for (let i=0; i<tailleTransactions; i++){
 		if (listPersoTransaction[0][i].toLowerCase() == curAddress.toLowerCase()){
 			nbrEnvoie++;
 		}
