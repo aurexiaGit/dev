@@ -94,14 +94,14 @@ const dropdownListCreaRem = (_users, _keyName) => {  //on récupère l'addresse 
 			select.appendChild(opt);
 		}
 	}
-	var select = document.getElementById("from-select-rem");
+	var select1 = document.getElementById("from-select-rem");
   	for (let i=0; i<_keyName.length; i++){
 		key = _keyName[i];
 			if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
 			var opt = document.createElement('option');
 			opt.value = _users[key].address.toLowerCase();
 			opt.innerHTML = _users[key].name;
-			select.appendChild(opt);
+			select1.appendChild(opt);
 		}
 	}
 }
@@ -110,7 +110,7 @@ const dropdownListCreaRem = (_users, _keyName) => {  //on récupère l'addresse 
 // Création d'un objet javascript qui stocke importe les utilisateurs du smartcontract
 const getUsersFrom = async () =>{
   
-  let users = {}; //objet js
+  	let users = {}; //objet js
 	let listAddressAndName;
 	let name;
 	var i = 0;
@@ -125,17 +125,17 @@ const getUsersFrom = async () =>{
 	})}
 	
 	//fonction interagissant avec le SC récupérant la taille de la liste 
-  const getTaille = async () =>{
+  	const getTaille = async () =>{
     return new Promise(function(resolve, reject){
       Token.sizeListAccount((err, result) => {
         if (err) return reject(err);
         resolve(result);
-    })
-  })}
+    	})
+  	})}
 
 	//Création de l'objet JS users
 	listAddressAndName = await getMembersAndName();
-  let taille = await getTaille();
+ 	let taille = await getTaille();
 	while (i < taille) {
 		var address = listAddressAndName[0][i];
 		name = web3.toAscii(listAddressAndName[1][i]);
@@ -146,10 +146,12 @@ const getUsersFrom = async () =>{
 	}
 
 	let keyName = listAddressAndName[1];
-  for (let i=0; i<keyName.length; i++){
+  	for (let i=0; i<keyName.length; i++){
     keyName[i]=web3.toAscii(keyName[i]);
 	}
 	keyName.sort();
+	console.log("keyName");
+	console.log(keyName);
 
 	//on retourne l'affichage du dropdown
 	return dropdownListCreaRem(users, keyName);
