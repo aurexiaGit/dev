@@ -195,6 +195,11 @@ const getRankingList = async () =>{
 	console.log("nbrRecu");
 	console.log(nbrRecu);
 
+	let recu = document.getElementById("transactionRecu");
+	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction " + nbrRecu.toString() + "</p>";
+	let send = document.getElementById("transactionSend");
+	send.innerHTML="<p class='ownRankingTxt'>Number of send transaction " + nbrEnvoie.toString() + "</p>";
+
 
 
 
