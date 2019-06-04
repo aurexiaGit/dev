@@ -1,8 +1,9 @@
 //fonction affichant les utilisateurs dans le dropdown de la page (uniquement le from car le to est importé par le main)
-const dropdownListFrom = (_users) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
+const dropdownListFrom = (_users, _keyName) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
 
 	var select = document.getElementById("from-select");
-	for (var key in _users){
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
 		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
 		var opt = document.createElement('option');
 		opt.value = _users[key].address.toLowerCase();
@@ -50,8 +51,15 @@ const getUsersFrom = async () =>{
 		users[name].name=name;
 		i++
 	}
+
+	let keyName = listAddressAndName[1];
+  console.log(keyName);
+  for (let i=0; i<keyName.length; i++){
+    keyName[i]=web3.toAscii(keyName[i]);
+  }
+
 	//on retourne l'affichage du dropdown
-	return dropdownListFrom(users);
+	return dropdownListFrom(users, keyName);
 };
   
 getUsersFrom();
