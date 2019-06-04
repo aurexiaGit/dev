@@ -1040,11 +1040,12 @@ getLog();
 /************************************** */
 
 //fonction créant la dropdown list
-const dropdownList = (_curAddress, _users) => {
+const dropdownList = (_curAddress, _users, _keyName) => {
   //ciblage via la borne html
   var select = document.getElementById("dest-select");
   //remplissage de la dropdown list via l'object _users'
-  for (var key in _users){
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
 	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
       var opt = document.createElement('option');
       opt.value = _users[key].address.toLowerCase();
@@ -1093,6 +1094,12 @@ const getUsers = async () =>{
 		i++
   }
   
+  let keyName = web3.toAscii(listAddressAndName[1][i]);
+  keyName.splice(0,1);
+  keyName.sort();
+  keyName.splice(0,0, "Administrator");
+  console.log(keyName);
+
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
 
@@ -1106,7 +1113,7 @@ const getUsers = async () =>{
 
 
   curAddress = await getCurAddress();
-  return dropdownList(curAddress, users);
+  return dropdownList(curAddress, users, keyName);
 };
 
 getUsers();
