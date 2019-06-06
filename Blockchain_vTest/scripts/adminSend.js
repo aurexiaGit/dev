@@ -1,8 +1,9 @@
 //fonction affichant les utilisateurs dans le dropdown de la page (uniquement le from car le to est importé par le main)
-const dropdownListFrom = (_users) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
+const dropdownListFrom = (_users, _keyName) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
 
 	var select = document.getElementById("from-select");
-	for (var key in _users){
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
 		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
 		var opt = document.createElement('option');
 		opt.value = _users[key].address.toLowerCase();
@@ -50,8 +51,15 @@ const getUsersFrom = async () =>{
 		users[name].name=name;
 		i++
 	}
+
+	let keyName = listAddressAndName[1];
+  for (let i=0; i<keyName.length; i++){
+    keyName[i]=web3.toAscii(keyName[i]);
+	}
+	keyName.sort();
+
 	//on retourne l'affichage du dropdown
-	return dropdownListFrom(users);
+	return dropdownListFrom(users, keyName);
 };
   
 getUsersFrom();
@@ -64,6 +72,8 @@ const transferFromTo = async() => {
 	let addressTo = document.getElementById("dest-select").value;
 	let amount = document.getElementById("amount").value;
 	amount = amount*Math.pow(10,18);
+	let message = document.getElementById("wording").value;
+	message = web3.fromAscii(message);
 
 	//Récupération de l'adresse de l'utilisateur (admin)
 	const getCurAddress = async () =>{                         
@@ -77,16 +87,16 @@ const transferFromTo = async() => {
 	let curAddress = await getCurAddress();
 
 	//fonction de transfert de token (formulation différente mais un peu plus rigoureuse que dans index.js)
-	const transferEvent = async (_address1, _address2, amount, _curAddress) =>{
+	const transferEvent = async (_address1, _address2, amount, _message, _curAddress) =>{
 		return new Promise(function(resolve, reject){
-			Token.transferFrom.sendTransaction(_address1, _address2, amount, {from: _curAddress}, (err, result) => {
+			Token.transferFrom.sendTransaction(_address1, _address2, amount, _message, {from: _curAddress}, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	let transferTransaction = await transferEvent(addressFrom, addressTo, amount, curAddress);
+	let transferTransaction = await transferEvent(addressFrom, addressTo, amount, message, curAddress);
 
 	//reset des champs input
 	var frm = document.getElementById("send");

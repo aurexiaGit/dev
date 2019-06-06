@@ -153,6 +153,21 @@ var TokenABI = web3.eth.contract([
   {
     "constant": true,
     "inputs": [],
+    "name": "indexNewWording",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xd3c49371"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "newOwner",
     "outputs": [
       {
@@ -329,6 +344,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transfer",
@@ -341,7 +360,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0xa9059cbb"
+    "signature": "0x57cfeeee"
   },
   {
     "constant": false,
@@ -357,6 +376,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transferFrom",
@@ -369,7 +392,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0x23b872dd"
+    "signature": "0x401e3367"
   },
   {
     "constant": false,
@@ -878,10 +901,69 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x11f7b854"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xe0fcd9ff"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersonalWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xcecb2a88"
   }
 ]);
 
-var Token = TokenABI.at('0x289DB38Dbc605cd087f143F5d353e36653666838');
+var Token = TokenABI.at('0x7c7695ab0F8df3989F1D816A458F09d172aE99cC');
 
 
 // check that user has Metamask installed 
@@ -958,11 +1040,12 @@ getLog();
 /************************************** */
 
 //fonction créant la dropdown list
-const dropdownList = (_curAddress, _users) => {
+const dropdownList = (_curAddress, _users, _keyName) => {
   //ciblage via la borne html
   var select = document.getElementById("dest-select");
   //remplissage de la dropdown list via l'object _users'
-  for (var key in _users){
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
 	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
       var opt = document.createElement('option');
       opt.value = _users[key].address.toLowerCase();
@@ -1011,6 +1094,16 @@ const getUsers = async () =>{
 		i++
   }
   
+  let keyName = listAddressAndName[1];
+  console.log(keyName);
+  for (let i=0; i<keyName.length; i++){
+    keyName[i]=web3.toAscii(keyName[i]);
+  }
+  keyName.splice(0,1);
+  keyName.sort();
+  keyName.splice(0,0, "Administrator");
+  console.log(keyName);
+
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
 
@@ -1024,7 +1117,7 @@ const getUsers = async () =>{
 
 
   curAddress = await getCurAddress();
-  return dropdownList(curAddress, users);
+  return dropdownList(curAddress, users, keyName);
 };
 
 getUsers();
