@@ -169,27 +169,21 @@ const getRankingList = async () =>{
 	var rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
 
-	const getPersoWordings = async (_address) =>{                        
+	const getPersoTransactions = async (_address) =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getPersonalWordings(_address, (err, members) => {
-				if (err) return reject(err);
-				resolve(members);
+			Token.getPersoStatTransactions(_address, (err, members) => {
+			if (err) return reject(err);
+			resolve(members);
 	  	})
 	})}
 
+	let result = await getPersoStatTransactions();
+	console.log("result");
+	console.log(result);
+	let nbrRecu = result[2];
+	let total = result[0];
+	let send = result[1];
 
-	let listPersoTransaction = await getPersoWordings(curAddress);
-	let tailleTransactions = listPersoTransaction[0].length;
-	let nbrEnvoie = 0;
-	let nbrRecu = 0;
-	for (let i=0; i<tailleTransactions; i++){
-		if (listPersoTransaction[0][i].toLowerCase() == curAddress.toLowerCase()){
-			nbrEnvoie++;
-		}
-		if (listPersoTransaction[1][i].toLowerCase() == curAddress.toLowerCase()){
-			nbrRecu++;
-		}
-	}
 
 	let recu = document.getElementById("transactionRecu");
 	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
