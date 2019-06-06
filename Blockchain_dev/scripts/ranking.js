@@ -182,7 +182,7 @@ const getRankingList = async () =>{
 	console.log(result);
 	let nbrRecu = result[2];
 	let total = result[0];
-	let send = result[1];
+	let nbrEnvoie = result[1];
 
 
 	let recu = document.getElementById("transactionRecu");
