@@ -28,11 +28,11 @@ const getHistory = async () =>{
 		})
 	  })}
 
-	  const getPersoWordings = async (_address) =>{                        
+	const getPersoWordings = async (_address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getPersonalWordings(_address, (err, members) => {
-				if (err) return reject(err);
-				resolve(members);
+			if (err) return reject(err);
+			resolve(members);
 	  	})
 	})}
 
