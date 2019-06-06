@@ -177,7 +177,7 @@ const getRankingList = async () =>{
 	  	})
 	})}
 
-	let result = await getPersoStatTransactions();
+	let result = await getPersoTransactions();
 	console.log("result");
 	console.log(result);
 	let nbrRecu = result[2];
