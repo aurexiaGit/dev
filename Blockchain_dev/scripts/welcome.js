@@ -525,6 +525,38 @@ var TokenABI = web3.eth.contract([
     "inputs": [
       {
         "name": "_address",
+        "type": "address[]"
+      },
+      {
+        "name": "_name",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "_grade",
+        "type": "uint8[]"
+      },
+      {
+        "name": "taille",
+        "type": "uint256"
+      }
+    ],
+    "name": "authorizeManyMembers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xeed414b8"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_address",
         "type": "address"
       }
     ],
@@ -947,10 +979,61 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0xcecb2a88"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllStatTransactions",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x626d9818"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersoStatTransactions",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x0a1b3115"
   }
 ]);
 
-var Token = TokenABI.at('0x7c7695ab0F8df3989F1D816A458F09d172aE99cC');
+var Token = TokenABI.at('0x55Bd15e52Fd2d1676BBc4F559E1b1d5641f4a683');
 
 // check that user has Metamask installed 
 
