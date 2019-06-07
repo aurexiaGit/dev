@@ -72,6 +72,18 @@ const getRankingList = async () =>{
 		})
 	  })}
 
+	  const getName = async (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, res) => {
+				if (err) return reject(err);
+				let name = web3.toAscii(res);
+				resolve(name);
+			})
+		})
+	}
+
+	let userName = await getName();
+	userName = web3.toAscii(userName);
 	//Récupération des listes + adresse de l'utilisateur
 	listAddressNameBalance = await getMembersNameBalance();
 	curAddress = await getCurAddress();
@@ -151,6 +163,9 @@ const getRankingList = async () =>{
 		}
 	}
 
+	//on affiche le top3 dans le tableau
+	getRankingTable(usersTop, usersPerso);
+
 	// Display current user's ranking
 	var ownRankEnd = "th";
 	var ownRank = usersPerso["Perso"].classement
@@ -168,6 +183,11 @@ const getRankingList = async () =>{
 
 	var rank = document.getElementById("ownRanking");
 	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
+	
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//                              Stats transactions Perso                                              //
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	const getPersoTransactions = async (_address) =>{                        
 		return new Promise(function(resolve, reject){
@@ -178,12 +198,9 @@ const getRankingList = async () =>{
 	})}
 
 	let result = await getPersoTransactions(curAddress);
-	console.log("result");
-	console.log(result);
 	let nbrRecu = result[2];
 	let total = result[0];
 	let nbrEnvoie = result[1];
-
 
 	let recu = document.getElementById("transactionRecu");
 	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
@@ -191,7 +208,185 @@ const getRankingList = async () =>{
 	send.innerHTML="<p class='ownRankingTxt'>Number of send transaction : " + nbrEnvoie.toString() + "</p>";
 
 
-	return getRankingTable(usersTop, usersPerso);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//                                Stats all transactions                                              //
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	const getTransactions = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getAllStatTransactions((err, members) => {
+			if (err) return reject(err);
+			resolve(members);
+	  	})
+	})}
+
+	//on retire les stats admins pour le ranking (mais on garde les stats)
+	let resultAll = await getTransactions();
+	resultAll[0].splice(0,1);       
+	resultAll[1].splice(0,1);
+	resultAll[2].splice(0,1);
+	resultAll[3].splice(0,1);
+
+	console.log("resultall");
+	console.log(resultAll);
+
+	let nbrTransactionPerso = {};
+	for (let i=0; i<taille; i++){
+		nbrTransactionPerso[i]= {};
+		nbrTransactionPerso[i].nbrTransaction = resultAll[0][i];
+		nbrTransactionPerso[i].send = resultAll[1][i];
+		nbrTransactionPerso[i].receive = resultAll[2][i];
+		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
+	}
+
+	console.log("remplissage nbrTransaction")
+	console.log(nbrTransactionPerso);
+
+
+	//tri pour le top transaction
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].nbrTransaction < nbrTransactionPerso[j+1].nbrTransaction){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+
+	console.log("tri nbr transaction")
+	console.log(nbrTransactionPerso)
+	
+	let topTransaction = {};
+	
+	if (taille <= 3){
+		for (var i=0; i<taille; i++){
+			topTransaction[i] = {};
+			topTransaction[i].nbrTransaction = nbrTransactionPerso[i].nbrTransaction;
+			topTransaction[i].name = nbrTransactionPerso[i].name;
+			topTransaction[i].classement = i + 1;
+		}
+	}
+	else{
+		for (var i=0; i<3; i++){
+			topTransaction[i] = {};
+			topTransaction[i].nbrTransaction = nbrTransactionPerso[i].nbrTransaction;
+			topTransaction[i].name = nbrTransactionPerso[i].name;
+			topTransaction[i].classement = i + 1;
+		}
+	}
+
+	console.log("top transaction");
+	console.log(topTransaction);
+
+	//Ranking user du nbr transactions
+	let rankingNbrTransaction = "err";
+	for (let i=0; i<taille; i++){
+		if (nbrTransactionPerso[i].name = userName){
+			rankingNbrTransaction = i+1;
+			break;
+		}
+	}
+
+	//top pour le send transaction
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+	
+	console.log("tri send transaction");
+	console.log(nbrTransactionPerso);
+
+	let topTransactionSend = {};
+	
+	if (taille <= 3){
+		for (var i=0; i<taille; i++){
+			topTransactionSend[i] = {};
+			topTransactionSend[i].send = nbrTransactionPerso[i].send;
+			topTransactionSend[i].name = nbrTransactionPerso[i].name;
+			topTransactionSend[i].classement = i + 1;
+		}
+	}
+	else{
+		for (var i=0; i<3; i++){
+			topTransactionSend[i] = {};
+			topTransactionSend[i].send = nbrTransactionPerso[i].send;
+			topTransactionSend[i].name = nbrTransactionPerso[i].name;
+			topTransactionSend[i].classement = i + 1;
+		}
+	}
+
+	console.log("top send transaction");
+	console.log(topTransactionSend)
+
+	//Ranking user du nbr transactions
+	let rankingSendTransaction = "err";
+	for (let i=0; i<taille; i++){
+		if (nbrTransactionPerso[i].name = userName){
+			rankingSendTransaction = i+1;
+			break;
+		}
+	}
+
+	//top ranking pour le receive transactions
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+	
+	console;log("tri receive transaction");
+	console.log(nbrTransactionPerso);
+	
+	let topTransactionReceive = {};
+	
+	if (taille <= 3){
+		for (var i=0; i<taille; i++){
+			topTransactionReceive[i] = {};
+			topTransactionReceive[i].receive = nbrTransactionPerso[i].receive;
+			topTransactionReceive[i].name = nbrTransactionPerso[i].name;
+			topTransactionReceive[i].classement = i + 1;
+		}
+	}
+	else{
+		for (var i=0; i<3; i++){
+			topTransactionReceive[i] = {};
+			topTransactionReceive[i].receive = nbrTransactionPerso[i].receive;
+			topTransactionReceive[i].name = nbrTransactionPerso[i].name;
+			topTransactionReceive[i].classement = i + 1;
+		}
+	}
+
+	console.log("top receive transaction");
+	console.log(topTransactionReceive);
+
+	// Retour de tous les rankings de transactions
+	let rankingReceiveTransaction = "err";
+	for (let i=0; i<taille; i++){
+		if (nbrTransactionPerso[i].name = userName){
+			rankingReceiveTransaction = i+1;
+			break;
+		}
+	}
+
+	console.log("ranking total transaction");
+	console.log(rankingNbrTransaction);
+	console.log("ranking send transaction");
+	console.log(rankingSendTransaction);
+	console.log("ranking receive transaction");
+	console.log(rankingReceiveTransaction);
+
+	
 };
 
 getRankingList();
