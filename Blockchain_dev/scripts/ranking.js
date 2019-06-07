@@ -348,7 +348,7 @@ const getRankingList = async () =>{
 		}
 	}
 	
-	console;log("tri receive transaction");
+	console.log("tri receive transaction");
 	console.log(nbrTransactionPerso);
 	
 	let topTransactionReceive = {};
