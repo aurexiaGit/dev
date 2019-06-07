@@ -286,7 +286,7 @@ const getRankingList = async () =>{
 	//Ranking user du nbr transactions
 	let rankingNbrTransaction = "err";
 	for (let i=0; i<taille; i++){
-		if (nbrTransactionPerso[i].name = userName){
+		if (nbrTransactionPerso[i].name == userName){
 			rankingNbrTransaction = i+1;
 			break;
 		}
@@ -331,7 +331,7 @@ const getRankingList = async () =>{
 	//Ranking user du nbr transactions
 	let rankingSendTransaction = "err";
 	for (let i=0; i<taille; i++){
-		if (nbrTransactionPerso[i].name = userName){
+		if (nbrTransactionPerso[i].name == userName){
 			rankingSendTransaction = i+1;
 			break;
 		}
@@ -376,7 +376,7 @@ const getRankingList = async () =>{
 	// Retour de tous les rankings de transactions
 	let rankingReceiveTransaction = "err";
 	for (let i=0; i<taille; i++){
-		if (nbrTransactionPerso[i].name = userName){
+		if (nbrTransactionPerso[i].name == userName){
 			rankingReceiveTransaction = i+1;
 			break;
 		}
