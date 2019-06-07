@@ -223,6 +223,9 @@ const getRankingList = async () =>{
 
 	//on retire les stats admins pour le ranking (mais on garde les stats)
 	let resultAll = await getTransactions();
+	console.log("resultall");
+	console.log(resultAll);
+	
 	resultAll[0].splice(0,1);       
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
