@@ -82,11 +82,11 @@ const getRankingList = async () =>{
 		})
 	}
 
-	let userName = await getName();
-	userName = web3.toAscii(userName);
 	//Récupération des listes + adresse de l'utilisateur
 	listAddressNameBalance = await getMembersNameBalance();
 	curAddress = await getCurAddress();
+	let userName = await getName(curAddress);
+	userName = web3.toAscii(userName);
 	var taille = await getTaille();
 
 	//On retire l'administrator de la liste des utilisateurs car ce n'est pas vraiment un utilisateur mais la banque
