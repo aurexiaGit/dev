@@ -340,7 +340,7 @@ const getRankingList = async () =>{
 	//top ranking pour le receive transactions
 	for (var i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
-			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
+			if (nbrTransactionPerso[j].receive < nbrTransactionPerso[j+1].receive){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
 				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
 				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
