@@ -72,7 +72,7 @@ const getRankingList = async () =>{
 		})
 	  })}
 
-	  const getName = async (address) =>{                        
+	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
@@ -233,6 +233,8 @@ const getRankingList = async () =>{
 
 	console.log("resultall");
 	console.log(resultAll);
+	console.log("taille");
+	console.log(taille);
 
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
