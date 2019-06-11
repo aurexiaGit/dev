@@ -212,7 +212,7 @@ const getRankingList = async () =>{
 	//                                Stats all transactions                                              //
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-/*
+
 	const getTransactions = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getAllStatTransactions((err, members) => {
@@ -220,7 +220,7 @@ const getRankingList = async () =>{
 			resolve(members);
 	  	})
 	})}
-
+/*
 	//on retire les stats admins pour le ranking (mais on garde les stats)
 	let resultAll = await getTransactions();
 	console.log("resultall");
