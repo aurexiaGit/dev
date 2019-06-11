@@ -235,7 +235,7 @@ const getRankingList = async () =>{
 	console.log(resultAll);
 	console.log("taille");
 	console.log(taille);
-
+/*
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
 		nbrTransactionPerso[i]= {};
@@ -391,7 +391,7 @@ const getRankingList = async () =>{
 	console.log("ranking receive transaction");
 	console.log(rankingReceiveTransaction);
 
-	
+	*/
 };
 
 getRankingList();
