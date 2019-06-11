@@ -710,6 +710,66 @@ var TokenABI = web3.eth.contract([
     "signature": "0x313739a3"
   },
   {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x61a48dcf"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalSend",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x6f485075"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalReceive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x33352d03"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -982,8 +1042,36 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersoInfoTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x04c6928c"
+  },
+  {
+    "constant": true,
     "inputs": [],
-    "name": "getAllStatTransactions",
+    "name": "getAllInfoTransaction",
     "outputs": [
       {
         "name": "",
@@ -1005,43 +1093,11 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0x626d9818"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getPersoStatTransactions",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x0a1b3115"
+    "signature": "0xabbf7a73"
   }
 ]);
 
-var Token = TokenABI.at('0x55Bd15e52Fd2d1676BBc4F559E1b1d5641f4a683');
+var Token = TokenABI.at('0x2c9ec190C019CF245781e910C63AC488b855f7f8');
 
 // check that user has Metamask installed 
 

@@ -191,7 +191,7 @@ const getRankingList = async () =>{
 
 	const getPersoTransactions = async (_address) =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getPersoStatTransactions(_address, (err, members) => {
+			Token.getPersoInfoTransaction(_address, (err, members) => {
 			if (err) return reject(err);
 			resolve(members);
 	  	})
@@ -215,18 +215,18 @@ const getRankingList = async () =>{
 
 	const getTransactions = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getAllStatTransactions((err, members) => {
+			Token.getAllInfoTransaction((err, members) => {
 			if (err) return reject(err);
 			resolve(members);
 	  	})
 	})}
-/*
+
 	//on retire les stats admins pour le ranking (mais on garde les stats)
 	let resultAll = await getTransactions();
 	console.log("resultall");
 	console.log(resultAll);
 	
-	
+	/*
 	resultAll[0].splice(0,1);       
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
