@@ -198,9 +198,9 @@ const getRankingList = async () =>{
 	})}
 
 	let result = await getPersoTransactions(curAddress);
-	let nbrRecu = result[2];
+	let nbrRecu = result[4];
 	let total = result[0];
-	let nbrEnvoie = result[1];
+	let nbrEnvoie = result[3];
 
 	let recu = document.getElementById("transactionRecu");
 	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
