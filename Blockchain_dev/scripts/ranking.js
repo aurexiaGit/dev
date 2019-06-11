@@ -212,7 +212,7 @@ const getRankingList = async () =>{
 	//                                Stats all transactions                                              //
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-
+/*
 	const getTransactions = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getAllStatTransactions((err, members) => {
@@ -226,7 +226,7 @@ const getRankingList = async () =>{
 	console.log("resultall");
 	console.log(resultAll);
 	
-	/*
+	
 	resultAll[0].splice(0,1);       
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
