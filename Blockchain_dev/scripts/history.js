@@ -68,7 +68,7 @@ const getHistory = async () =>{
 
 		// fill the history with data from json file. Required/relevant columns from json are:
 		//1) timeStamp (nb of seconds since 01/01/1970)
-		//2) from: originator of the transaction
+		//2) from: originator of the transactions
 		//3) to: receiver of the transaction
 		//4) value: transaction value (to divide by 10^18)
 		const fillHistory = async (resultArray, curAddress, _users, _listPersoWording) =>{
