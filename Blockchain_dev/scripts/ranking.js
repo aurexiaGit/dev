@@ -344,7 +344,7 @@ const getRankingList = async () =>{
 		nbrTransactionPerso[i]= {};
 		nbrTransactionPerso[i].nbrTransaction = resultAll[0][i];
 		nbrTransactionPerso[i].send = resultAll[1][i]*Math.pow(10,-18);
-		nbrTransactionPerso[i].receive = resultAll[2][i];
+		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
 	}
 
