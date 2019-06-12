@@ -304,7 +304,7 @@ const getRankingList = async () =>{
 	let totalTrans = result[0];
 	let nbrEnvoie = result[3];
 	let totalSend = result[1]*Math.pow(10,-18);
-	let totalReceive = result[i].Mat.pow(10,-18);
+	let totalReceive = result[i]*Math.pow(10,-18);
 
 	let recu = document.getElementById("transactionRecu");
 	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
