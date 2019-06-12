@@ -301,8 +301,10 @@ const getRankingList = async () =>{
 
 	let result = await getPersoTransactions(curAddress);
 	let nbrRecu = result[4];
-	let total = result[0];
+	let totalTrans = result[0];
 	let nbrEnvoie = result[3];
+	let totalSend = result[1]*Math.pow(10,-18);
+	let totalReceive = result[i].Mat.pow(10,-18);
 
 	let recu = document.getElementById("transactionRecu");
 	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
@@ -501,6 +503,18 @@ const getRankingList = async () =>{
 	console.log(rankingSendTransaction);
 	console.log("ranking receive transaction");
 	console.log(rankingReceiveTransaction);
+
+	let TR = document.getElementById("RankingTransaction");
+	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +". You have made "+ totalTrans.toString() +" transactions</p>";
+	let SR = document.getElementById("RankingSend");
+	SR.innerHTML="<p class='ownRankingTxt'>Send rank : "+ rankingNbrTransaction.toString() +"</p>";
+	let TAS = document.getElementById("totalSend");
+	TAS.innerHTML="<p class='ownRankingTxt'>Total AST Send : "+ totalSend.toString() +"</p>";
+	let RR = document.getElementById("RankingReceive");
+	RR.innerHTML="<p class='ownRankingTxt'>Receive rank : "+ rankingReceiveTransaction.toString() +"</p>";
+	let TAR = document.getElementById("totalReceive");
+	TAR.innerHTML="<p class='ownRankingTxt'>Total AST Receive : "+ totalReceive.toString() +"</p>";
+
 
 	
 };
