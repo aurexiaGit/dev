@@ -38,7 +38,7 @@ const getRankingTable = (_usersTop) => {
 
 const getTransactionTable = (_usersTop) => {
 	//ciblage de la borne html du tableau
-	var table = document.getElementById("content1");
+	var table = document.getElementById("content2");
 	var i = 0;
 
 	for (key in _usersTop){
