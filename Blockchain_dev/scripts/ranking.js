@@ -506,7 +506,7 @@ const getRankingList = async () =>{
 	let TR = document.getElementById("RankingTransaction");
 	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +". You have made "+ totalTrans.toString() +" transactions</p>";
 	let SR = document.getElementById("RankingSend");
-	SR.innerHTML="<p class='ownRankingTxt'>Send rank : "+ rankingNbrTransaction.toString() +"</p>";
+	SR.innerHTML="<p class='ownRankingTxt'>Send rank : "+ rankingSendTransaction.toString() +"</p>";
 	let TAS = document.getElementById("totalSend");
 	TAS.innerHTML="<p class='ownRankingTxt'>Total AST Send : "+ totalSend.toString() +"</p>";
 	let RR = document.getElementById("RankingReceive");
