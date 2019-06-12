@@ -226,7 +226,7 @@ const getRankingList = async () =>{
 	console.log("resultall");
 	console.log(resultAll);
 	
-	/*
+	
 	resultAll[0].splice(0,1);       
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
@@ -236,7 +236,7 @@ const getRankingList = async () =>{
 	console.log(resultAll);
 	console.log("taille");
 	console.log(taille);
-
+/*
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
 		nbrTransactionPerso[i]= {};
