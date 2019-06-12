@@ -70,6 +70,40 @@ const getTransactionTable = (_usersTop) => {
 	}
 }
 
+const getSendTable = (_usersTop) => {
+	//ciblage de la borne html du tableau
+	var table = document.getElementById("content3");
+	var i = 0;
+
+	for (key in _usersTop){
+
+		var number = i + 1;
+
+		//creation d'une nouvelle ligne
+		var row = table.insertRow(-1);
+		row.className = "row" + number.toString() + " body";
+
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = _usersTop[key].classement;
+		row.appendChild(column1);
+
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _usersTop[key].name;
+		row.appendChild(column2);
+
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = Math.round(_usersTop[key].send);
+		row.appendChild(column3);
+
+		i++;
+		
+	}
+}
+
 //récupération des utilisateurs (addresse nom balance pour la ranking table)
 const getRankingList = async () =>{
 
@@ -322,7 +356,7 @@ const getRankingList = async () =>{
 
 	getTransactionTable(topTransaction);
 
-/*
+
 
 	//Ranking user du nbr transactions
 	let rankingNbrTransaction = "err";
@@ -369,6 +403,9 @@ const getRankingList = async () =>{
 	console.log("top send transaction");
 	console.log(topTransactionSend)
 
+	getSendTable(topTransactionSend);
+
+	/*
 	//Ranking user du nbr transactions
 	let rankingSendTransaction = "err";
 	for (let i=0; i<taille; i++){
