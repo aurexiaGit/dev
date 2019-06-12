@@ -188,9 +188,6 @@ const getRankingList = async () =>{
 	listAddressNameBalance = await getMembersNameBalance();
 	curAddress = await getCurAddress();
 	let userName = await getName(curAddress);
-	userName = web3.toAscii(userName);
-	console.log("userName");
-	console.log(userName);
 	var taille = await getTaille();
 
 	//On retire l'administrator de la liste des utilisateurs car ce n'est pas vraiment un utilisateur mais la banque
@@ -350,8 +347,6 @@ const getRankingList = async () =>{
 		nbrTransactionPerso[i].send = resultAll[1][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
-		console.log("nom TP");
-		console.log(nbrTransactionPerso[i].name);
 	}
 
 	console.log("remplissage nbrTransaction")
