@@ -88,7 +88,7 @@ const getTransactionList = (_usersTop, _taille) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = number;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -106,7 +106,7 @@ const getTransactionList = (_usersTop, _taille) => {
 	}
 }
 
-const getSendTable = (_usersTop, _taille) => {
+const getSendList = (_usersTop, _taille) => {
 	//ciblage de la borne html du tableau
 	var table = document.getElementById("content3");
 	var i = 0;
@@ -122,7 +122,7 @@ const getSendTable = (_usersTop, _taille) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = number;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -140,7 +140,7 @@ const getSendTable = (_usersTop, _taille) => {
 	}
 }
 
-const getReceiveTable = (_usersTop, _taille) => {
+const getReceiveList = (_usersTop, _taille) => {
 	//ciblage de la borne html du tableau
 	var table = document.getElementById("content4");
 	var i = 0;
@@ -156,7 +156,7 @@ const getReceiveTable = (_usersTop, _taille) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = number;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
