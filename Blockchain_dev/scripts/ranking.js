@@ -1,3 +1,9 @@
+document.getElementById("table1").style.display = "none";
+document.getElementById("table2").style.display = "none";
+document.getElementById("table3").style.display = "none";
+document.getElementById("table4").style.display = "none";
+
+
 ////////////////////////////////////////////////////////
 //     Creation de la table ranking                   //
 ////////////////////////////////////////////////////////
@@ -326,19 +332,12 @@ const getRankingList = async () =>{
 
 	//on retire les stats admins pour le ranking (mais on garde les stats)
 	let resultAll = await getTransactions();
-	console.log("resultall");
-	console.log(resultAll);
-	
 	
 	resultAll[0].splice(0,1);       
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
 	resultAll[3].splice(0,1);
 
-	console.log("resultall");
-	console.log(resultAll);
-	console.log("taille");
-	console.log(taille);
 
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
@@ -348,9 +347,6 @@ const getRankingList = async () =>{
 		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
 	}
-
-	console.log("remplissage nbrTransaction")
-	console.log(nbrTransactionPerso);
 
 
 	//tri pour le top transaction
@@ -363,9 +359,6 @@ const getRankingList = async () =>{
 			}
 		}
 	}
-
-	console.log("tri nbr transaction")
-	console.log(nbrTransactionPerso)
 	
 	let topTransaction = {};
 	
@@ -385,9 +378,6 @@ const getRankingList = async () =>{
 			topTransaction[i].classement = i + 1;
 		}
 	}
-
-	console.log("top transaction");
-	console.log(topTransaction);
 
 	getTransactionTable(topTransaction);
 
@@ -412,9 +402,6 @@ const getRankingList = async () =>{
 			}
 		}
 	}
-	
-	console.log("tri send transaction");
-	console.log(nbrTransactionPerso);
 
 	let topTransactionSend = {};
 	
@@ -434,9 +421,6 @@ const getRankingList = async () =>{
 			topTransactionSend[i].classement = i + 1;
 		}
 	}
-
-	console.log("top send transaction");
-	console.log(topTransactionSend)
 
 	getSendTable(topTransactionSend);
 
@@ -460,9 +444,6 @@ const getRankingList = async () =>{
 		}
 	}
 	
-	console.log("tri receive transaction");
-	console.log(nbrTransactionPerso);
-	
 	let topTransactionReceive = {};
 	
 	if (taille <= 3){
@@ -482,8 +463,6 @@ const getRankingList = async () =>{
 		}
 	}
 
-	console.log("top receive transaction");
-	console.log(topTransactionReceive);
 
 	// Retour de tous les rankings de transactions
 	let rankingReceiveTransaction = "err";
@@ -495,13 +474,6 @@ const getRankingList = async () =>{
 	}
 
 	getReceiveTable(topTransactionReceive);
-
-	console.log("ranking total transaction");
-	console.log(rankingNbrTransaction);
-	console.log("ranking send transaction");
-	console.log(rankingSendTransaction);
-	console.log("ranking receive transaction");
-	console.log(rankingReceiveTransaction);
 
 	let TR = document.getElementById("RankingTransaction");
 	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +". You have made "+ totalTrans.toString() +" transactions</p>";
