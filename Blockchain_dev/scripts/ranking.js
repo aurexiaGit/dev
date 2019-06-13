@@ -14,6 +14,30 @@ document.getElementById("RankingReceive").style.display = "none";
 document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
+const chooseRanking = () =>{
+	let type = document.getElementById("dest-select-ranking").value;
+	if (type == "balance"){
+		document.getElementById("ownRanking").style.display = "block";
+		document.getElementById("table1").style.display = "block";
+	}
+	if (type == "transaction"){
+		document.getElementById("RankingTransaction").style.display = "block";
+		document.getElementById("transactionRecu").style.display = "block";
+		document.getElementById("transactionSend").style.display = "block";
+		document.getElementById("table2").style.display = "block";
+	}
+	if (type == "send"){
+		document.getElementById("RankingSend").style.display = "block";
+		document.getElementById("totalSend").style.display = "block";
+		document.getElementById("table3").style.display = "block";
+	}
+	if (type == "receive"){
+		document.getElementById("RankingReceive").style.display = "block";
+		document.getElementById("totalReceive").style.display = "block";
+		document.getElementById("table4").style.display = "block";
+	}
+}
+
 
 ////////////////////////////////////////////////////////
 //     Creation de la table ranking                   //
