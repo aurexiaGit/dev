@@ -262,7 +262,7 @@ const getUsersList = async () =>{
 
 
 	//tri pour le top transaction
-	for (var i = taille-1; i >= 0 ; i--){
+	for (var i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].nbrTransaction < nbrTransactionPerso[j+1].nbrTransaction){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
@@ -274,7 +274,7 @@ const getUsersList = async () =>{
 
 	getTransactionList(nbrTransactionPerso, taille);
 
-	for (var i = taille-1; i >= 0 ; i--){
+	for (var i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
@@ -286,7 +286,7 @@ const getUsersList = async () =>{
 
 	getSendList(nbrTransactionPerso, taille);
 
-	for (var i = taille-1; i >= 0 ; i--){
+	for (var i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].receive < nbrTransactionPerso[j+1].receive){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
