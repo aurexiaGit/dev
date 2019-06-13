@@ -1,6 +1,3 @@
-document.getElementById("ownRanking").style.display = "none";
-document.getElementById("table1").style.display = "none";
-
 document.getElementById("RankingTransaction").style.display = "none";
 document.getElementById("transactionRecu").style.display = "none";
 document.getElementById("transactionSend").style.display = "none";
