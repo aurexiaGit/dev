@@ -14,16 +14,13 @@ document.getElementById("RankingReceive").style.display = "none";
 document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
-document.getElementById("RankingReceive").style.display = "inline";
-document.getElementById("totalReceive").style.display = "inline";
-document.getElementById("table4").style.display = "block";
 
 
 const chooseRanking = () =>{
 	let type = document.getElementById("dest-select-ranking").value;
 	if (type == "balance"){
 		document.getElementById("ownRanking").style.display = "inline";
-		document.getElementById("table1").style.display = "table";
+		document.getElementById("table1").style.display = "block";
 
 		document.getElementById("RankingTransaction").style.display = "none";
 		document.getElementById("transactionRecu").style.display = "none";
@@ -45,7 +42,7 @@ const chooseRanking = () =>{
 		document.getElementById("RankingTransaction").style.display = "inline";
 		document.getElementById("transactionRecu").style.display = "inline";
 		document.getElementById("transactionSend").style.display = "inline";
-		document.getElementById("table2").style.display = "table";
+		document.getElementById("table2").style.display = "block";
 
 		document.getElementById("RankingSend").style.display = "none";
 		document.getElementById("totalSend").style.display = "none";
@@ -66,7 +63,7 @@ const chooseRanking = () =>{
 
 		document.getElementById("RankingSend").style.display = "inline";
 		document.getElementById("totalSend").style.display = "inline";
-		document.getElementById("table3").style.display = "table";
+		document.getElementById("table3").style.display = "block";
 	}
 	if (type == "receive"){
 		document.getElementById("ownRanking").style.display = "none";
@@ -83,7 +80,7 @@ const chooseRanking = () =>{
 
 		document.getElementById("RankingReceive").style.display = "inline";
 		document.getElementById("totalReceive").style.display = "inline";
-		document.getElementById("table4").style.display = "table";
+		document.getElementById("table4").style.display = "block";
 	}
 	return false;
 }
