@@ -16,7 +16,7 @@ document.getElementById("table4").style.display = "none";
 
 const chooseRanking = () =>{
 	let type = document.getElementById("dest-select-ranking").value;
-	type == "balance";
+	type = "balance";
 	if (type == "balance"){
 		document.getElementById("ownRanking").style.display = "block";
 		document.getElementById("table1").style.display = "block";
