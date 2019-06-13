@@ -3,7 +3,7 @@ document.getElementById("table3").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
 const chooseList = () =>{
-	let type = document.getElementById("dest-select-ranking").value;
+	let type = document.getElementById("dest-select-list").value;
 	if (type == "balance"){
 		document.getElementById("table1").style.display = "block";
 		document.getElementById("table2").style.display = "none";
