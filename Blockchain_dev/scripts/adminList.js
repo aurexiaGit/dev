@@ -296,7 +296,7 @@ const getUsersList = async () =>{
 		}
 	}
 
-	getReceiveTable(nbrTransactionPerso, taille);
+	getReceiveList(nbrTransactionPerso, taille);
 
 };
 
