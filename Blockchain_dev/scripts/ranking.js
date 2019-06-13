@@ -14,8 +14,8 @@ document.getElementById("RankingReceive").style.display = "none";
 document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
-document.getElementById("ownRanking").style.display;
-document.getElementById("table1").style.display;
+document.getElementById("ownRanking").style.display = "inline";
+document.getElementById("table1").style.display = "table";
 
 const chooseRanking = () =>{
 	let type = document.getElementById("dest-select-ranking").value;
