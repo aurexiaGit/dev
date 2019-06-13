@@ -1,3 +1,36 @@
+document.getElementById("table2").style.display = "none";
+document.getElementById("table3").style.display = "none";
+document.getElementById("table4").style.display = "none";
+
+const chooseList = () =>{
+	let type = document.getElementById("dest-select-ranking").value;
+	if (type == "balance"){
+		document.getElementById("table1").style.display = "block";
+		document.getElementById("table2").style.display = "none";
+		document.getElementById("table3").style.display = "none";
+		document.getElementById("table4").style.display = "none";
+	}
+	if (type == "transaction"){
+		document.getElementById("table2").style.display = "block";
+		document.getElementById("table1").style.display = "none";
+		document.getElementById("table3").style.display = "none";
+		document.getElementById("table4").style.display = "none";
+	}
+	if (type == "send"){
+		document.getElementById("table3").style.display = "block";
+		document.getElementById("table2").style.display = "none";
+		document.getElementById("table1").style.display = "none";
+		document.getElementById("table4").style.display = "none";
+	}
+	if (type == "receive"){
+		document.getElementById("table4").style.display = "block";
+		document.getElementById("table2").style.display = "none";
+		document.getElementById("table3").style.display = "none";
+		document.getElementById("table1").style.display = "none";
+	}
+	return false;
+}
+
 
 ////////////////////////////////////////////////////////
 //     Creation de la table listant les users         //
@@ -38,6 +71,113 @@ const getUserTable = (_users, _taille) => {
 		i++;
 	}
 }
+
+const getTransactionList = (_usersTop, _taille) => {
+	//ciblage de la borne html du tableau
+	var table = document.getElementById("content2");
+	var i = 0;
+
+	for (var key=0; key<_taille; key++){
+
+		var number = i + 1;
+
+		//creation d'une nouvelle ligne
+		var row = table.insertRow(-1);
+		row.className = "row" + number.toString() + " body";
+
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = _usersTop[key].classement;
+		row.appendChild(column1);
+
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _usersTop[key].name;
+		row.appendChild(column2);
+
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = Math.round(_usersTop[key].nbrTransaction);
+		row.appendChild(column3);
+
+		i++;
+		
+	}
+}
+
+const getSendTable = (_usersTop, _taille) => {
+	//ciblage de la borne html du tableau
+	var table = document.getElementById("content3");
+	var i = 0;
+
+	for (var key=0; key<_taille; key++){
+
+		var number = i + 1;
+
+		//creation d'une nouvelle ligne
+		var row = table.insertRow(-1);
+		row.className = "row" + number.toString() + " body";
+
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = _usersTop[key].classement;
+		row.appendChild(column1);
+
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _usersTop[key].name;
+		row.appendChild(column2);
+
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = Math.round(_usersTop[key].send);
+		row.appendChild(column3);
+
+		i++;
+		
+	}
+}
+
+const getReceiveTable = (_usersTop, _taille) => {
+	//ciblage de la borne html du tableau
+	var table = document.getElementById("content4");
+	var i = 0;
+
+	for (var key=0; key<_taille; key++){
+
+		var number = i + 1;
+
+		//creation d'une nouvelle ligne
+		var row = table.insertRow(-1);
+		row.className = "row" + number.toString() + " body";
+
+		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
+		var column1 = document.createElement('td');
+		column1.className = "column1";
+		column1.innerHTML = _usersTop[key].classement;
+		row.appendChild(column1);
+
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _usersTop[key].name;
+		row.appendChild(column2);
+
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = Math.round(_usersTop[key].receive);
+		row.appendChild(column3);
+
+		i++;
+		
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//                     Récupération des valeurs                                 //
+//////////////////////////////////////////////////////////////////////////////////
+
 
 const getUsersList = async () =>{
 
@@ -94,7 +234,70 @@ const getUsersList = async () =>{
 	console.log(users);
 
 	//On retourne la fonction pour afficher la table html
-	return getUserTable(users, taille)
+	getUserTable(users, taille)
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//                                Stats all transactions                                              //
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	const getTransactions = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getAllInfoTransaction((err, members) => {
+			if (err) return reject(err);
+			resolve(members);
+	  	})
+	})}
+
+	let resultAll = await getTransactions();
+
+	let nbrTransactionPerso = {};
+	for (let i=0; i<taille; i++){
+		nbrTransactionPerso[i]= {};
+		nbrTransactionPerso[i].nbrTransaction = resultAll[0][i];
+		nbrTransactionPerso[i].send = resultAll[1][i]*Math.pow(10,-18);
+		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
+		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
+	}
+
+
+	//tri pour le top transaction
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].nbrTransaction < nbrTransactionPerso[j+1].nbrTransaction){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+
+	getTransactionList(nbrTransactionPerso, taille);
+
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+
+	getSendList(nbrTransactionPerso, taille);
+
+	for (var i = taille-1; i > 0 ; i--){
+		for (var j = 0; j < i; j++){
+			if (nbrTransactionPerso[j].receive < nbrTransactionPerso[j+1].receive){
+				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
+				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
+				nbrTransactionPerso[j+1] = nbrTransactionPerso["tempo"];
+			}
+		}
+	}
+
+	getReceiveTable(nbrTransactionPerso, taille);
+
 };
 
 getUsersList();

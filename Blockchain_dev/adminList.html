@@ -35,7 +35,24 @@
                 </div>
             </div>
         </section>
-		<div class="container-table">
+
+        <section id="rankingsPage">
+            <div class="form">
+              <h1> Choose the ranking </h1>
+              <form id="rankingChoice">
+                <select id="dest-select-ranking" required>
+                      <option value="balance">Balance List</option>
+                      <option value="transaction">Total Transaction List</option>
+                      <option value="send">Total Send List</option>
+                      <option value="receive">Total Receive List</option>
+                  </select>
+                <button onclick="return chooseList()">Validate</button>
+              </form>
+            </div>
+        </section>
+
+        <div id="table1">
+		    <div class="container-table">
                 <div class="wrap-table">
                     <div class="table">
                         <table id="table">
@@ -53,6 +70,68 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="table2">
+		    <div class="container-table">
+                <div class="wrap-table">
+                    <div class="table">
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th class="column1">Ranking</th>
+                                    <th class="column2">Name</th>
+                                    <th class="column3">Total Transactions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="content2" class="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="table3">
+		    <div class="container-table">
+                <div class="wrap-table">
+                    <div class="table">
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th class="column1">Ranking</th>
+                                    <th class="column2">Name</th>
+                                    <th class="column3">Total Send</th>
+                                </tr>
+                            </thead>
+                            <tbody id="content3" class="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="table4">
+		    <div class="container-table">
+                <div class="wrap-table">
+                    <div class="table">
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th class="column1">Ranking</th>
+                                    <th class="column2">Name</th>
+                                    <th class="column3">Total Receive</th>
+                                </tr>
+                            </thead>
+                            <tbody id="content4" class="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>© Copyright Aurexia – All rights reserved<br /></p>
         </footer>
