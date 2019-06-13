@@ -14,9 +14,11 @@ document.getElementById("RankingReceive").style.display = "none";
 document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
+document.getElementById("ownRanking").style.display = "block";
+document.getElementById("table1").style.display = "block";
+
 const chooseRanking = () =>{
 	let type = document.getElementById("dest-select-ranking").value;
-	type = "balance";
 	if (type == "balance"){
 		document.getElementById("ownRanking").style.display = "block";
 		document.getElementById("table1").style.display = "block";
