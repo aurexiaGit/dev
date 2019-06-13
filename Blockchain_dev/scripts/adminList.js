@@ -184,7 +184,7 @@ const getUsersList = async () =>{
 	let users = {}; //objet stockant tous les users coté utilisateur (frontend)
 	let listAddressNameBalance;
 	let name;
-	let i = 0;
+	let p = 0;
   
 	//fonction interagissant avec le smartcontract pour renvoyer une liste contenant la liste de tous les utilisateurs, leur nom et leur balance
 	const getMembersNameBalance = async () =>{                        
@@ -210,15 +210,15 @@ const getUsersList = async () =>{
 	let taille = await getTaille();
 
 	//Remplissage de l'objet js users afin de l'afficher dans le tableau html plus tard 
-	while (i < taille) {
-		var address = listAddressNameBalance[0][i];
-		name = web3.toAscii(listAddressNameBalance[1][i]);
-		balance = (listAddressNameBalance[2][i])*Math.pow(10,-18);
-		users[i]={};
-		users[i].address=address;
-		users[i].name=name;
-		users[i].balance=balance;
-		i++;
+	while (p < taille) {
+		var address = listAddressNameBalance[0][p];
+		name = web3.toAscii(listAddressNameBalance[1][p]);
+		balance = (listAddressNameBalance[2][p])*Math.pow(10,-18);
+		users[p]={};
+		users[p].address=address;
+		users[p].name=name;
+		users[p].balance=balance;
+		p++;
 	}
 
 	//Triage des utilisateurs en fonction de leur balance. Tri bulle décroissant 
