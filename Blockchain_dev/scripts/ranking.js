@@ -14,30 +14,27 @@ document.getElementById("RankingReceive").style.display = "none";
 document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
-document.getElementById("ownRanking").style.display = "inline";
-document.getElementById("table1").style.display = "table";
-
 const chooseRanking = () =>{
 	let type = document.getElementById("dest-select-ranking").value;
 	if (type == "balance"){
-		document.getElementById("ownRanking").style.display = "block";
-		document.getElementById("table1").style.display = "block";
+		document.getElementById("ownRanking").style.display = "inline";
+		document.getElementById("table1").style.display = "table";
 	}
 	if (type == "transaction"){
-		document.getElementById("RankingTransaction").style.display = "block";
-		document.getElementById("transactionRecu").style.display = "block";
-		document.getElementById("transactionSend").style.display = "block";
-		document.getElementById("table2").style.display = "block";
+		document.getElementById("RankingTransaction").style.display = "inline";
+		document.getElementById("transactionRecu").style.display = "inline";
+		document.getElementById("transactionSend").style.display = "inline";
+		document.getElementById("table2").style.display = "table";
 	}
 	if (type == "send"){
-		document.getElementById("RankingSend").style.display = "block";
-		document.getElementById("totalSend").style.display = "block";
-		document.getElementById("table3").style.display = "block";
+		document.getElementById("RankingSend").style.display = "inline";
+		document.getElementById("totalSend").style.display = "inline";
+		document.getElementById("table3").style.display = "table";
 	}
 	if (type == "receive"){
-		document.getElementById("RankingReceive").style.display = "block";
-		document.getElementById("totalReceive").style.display = "block";
-		document.getElementById("table4").style.display = "block";
+		document.getElementById("RankingReceive").style.display = "inline";
+		document.getElementById("totalReceive").style.display = "inline";
+		document.getElementById("table4").style.display = "table";
 	}
 }
 
