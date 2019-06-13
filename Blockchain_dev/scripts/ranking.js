@@ -36,6 +36,7 @@ const chooseRanking = () =>{
 		document.getElementById("totalReceive").style.display = "inline";
 		document.getElementById("table4").style.display = "table";
 	}
+	return false;
 }
 
 
