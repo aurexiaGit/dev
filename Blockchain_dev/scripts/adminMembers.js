@@ -41,6 +41,9 @@ async function massAssign(){
 
 	async function csvRead(local) {
 	  return new Promise (function(resolve, reject){
+		const csv = require('csv-parser');  
+		const fs = require('fs');
+		
 		let nameList = [];
 		let addressList = [];
 		let seedList = [];
