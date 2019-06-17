@@ -34,6 +34,6 @@ const remMember = async () => {
 	let assigment = await remM(_address)
 	var frm = document.getElementById("remMember");
 	frm.reset();
-	return false
+	return false;
 }
 
