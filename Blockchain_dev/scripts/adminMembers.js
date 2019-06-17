@@ -70,6 +70,9 @@ async function massAssign(){
 	console.log("result Data");
 	console.log(allData);
 	let taille = allData[0].length;
+	for (let i=0; i<taille; i++){
+		allData[0][i] = web3.fromAscii(allData[0][i]);
+	}
 
 	const massAssignement = async (address, name, grade, _taille) =>{                        
 		return new Promise(function(resolve, reject){
