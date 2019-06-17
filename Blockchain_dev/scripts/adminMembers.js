@@ -19,10 +19,19 @@ const addMember = async () => {
 	return false;
 }
 
-function remMember() {
+const remMember = async () => {
 	// Called when clicking on remove button
-	var address = document.getElementById("adress2").value
-	Token.remAurexiaMembers(address,function(err,result) {console.log("")})
+	var _address = document.getElementById("adress2").value;
+
+	const remM = async (address) =>{                      
+		return new Promise(function(resolve, reject){
+			Token.remAurexiaMembers(address,(err,result) => {
+				if (err) return reject(err);
+				resolve(result);
+			})
+	  	})
+	};
+	let assigment = await remM(_address)
 	var frm = document.getElementById("remMember");
 	frm.reset();
 	return false
