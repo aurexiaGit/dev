@@ -36,3 +36,52 @@ const remMember = async () => {
 	frm.reset();
 	return false
 }
+
+async function massAssign(){
+
+	async function csvRead(local) {
+	  return new Promise (function(resolve, reject){
+		let nameList = [];
+		let addressList = [];
+		let seedList = [];
+		let gradeList = [];
+		fs.createReadStream(local)  
+		.pipe(csv())
+		.on('data', (row) => {
+		  nameList.push(row.Name);
+		  gradeList.push(row.Grade);
+		  addressList.push(row.Address);
+		  seedList.push(row.Seed);
+		})
+		.on('end', () => {
+		  console.log('CSV file successfully processed');
+		  let result=[];
+		  result.push(nameList);
+		  result.push(addressList);
+		  result.push(seedList);
+		  result.push(gradeList)
+		  if (result=="") return reject(result);
+		  resolve (result);
+		})
+	  })
+	}
+	
+	let allData = await csvRead("massAssignement.csv");
+	console.log("result Data");
+	console.log(allData);
+	let taille = allData[0].length;
+
+	const massAssignement = async (address, name, grade, _taille) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getAllInfoTransaction(address, name, grade, _taille,(err, members) => {
+			if (err) return reject(err);
+			resolve(members);
+	  	})
+	})}
+
+	let assign = await massAssignement(allData[1],allData[0],allData[2],taille);
+	return false;
+}
+
+
+
