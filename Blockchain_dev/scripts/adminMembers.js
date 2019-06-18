@@ -37,31 +37,28 @@ const remMember = async () => {
 	return false;
 }
 
-const massAssign = () => {
-
-	function print (results) {
-		console.log(results.data)
-	}
-
-	$('#submit-file').on("click",function(e){
-		e.preventDefault();
-		$('#files').parse({
-			config: {
-				delimiter: "auto",
-				complete: print,
-			},
-			before: function(file, inputElem)
-			{
-				console.log("Parsing file...", file);
-			},
-			error: function(err, file)
-			{
-				console.log("ERROR:", err, file);
-			},
-			complete: function()
-			{
-				console.log("Done with all files");
-			}
-		});
-	});
+function print (results) {
+	console.log(results.data)
 }
+
+$('#submit-file').on("click",function(e){
+	e.preventDefault();
+	$('#files').parse({
+		config: {
+			delimiter: "auto",
+			complete: print,
+		},
+		before: function(file, inputElem)
+		{
+			console.log("Parsing file...", file);
+		},
+		error: function(err, file)
+		{
+			console.log("ERROR:", err, file);
+		},
+		complete: function()
+		{
+			console.log("Done with all files");
+		}
+	});
+});
