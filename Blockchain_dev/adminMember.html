@@ -59,19 +59,17 @@
                   </div>
                 </div>
                 <div id="new_member">
-                  <form class="form-inline">
-                    <div class="form-group">
-                      <h1 for="files">Upload a CSV formatted file:</h1>
-                      <input type="file" id="files"  class="form-control" accept=".csv" required />
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
-                      </div>
+                  <div class="form">
+                    <form id="upload">
+                        <h1> Upload a CSV formatted file:</h1>
+                        <input type="file" id="files"  class="form-control" accept=".csv" required />
+                        <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
                     </form>
-                  <form id="addMany">
-                    <h1>Mass Assignment </h1>
-                    <button onclick="return massAssign()">Assign</button>
-                  </form>
+                    <form id="addMany">
+                      <h1>Mass Assignment </h1>
+                      <button onclick="return massAssign()">Assign</button>
+                    </form>
+                  </div>
                 </div>
             </section>
 
