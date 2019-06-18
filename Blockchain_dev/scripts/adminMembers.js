@@ -45,6 +45,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#files').parse({
 			config: {
+				delimiter: "",	// auto-detect
+				newline: "",	// auto-detect
 				header: true,
 				complete: print,
 			},
