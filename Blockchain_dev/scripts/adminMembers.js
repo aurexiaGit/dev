@@ -45,7 +45,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#files').parse({
 			config: {
-				header=true,
+				header: true,
 				complete: print,
 			},
 			before: function(file, inputElem)
