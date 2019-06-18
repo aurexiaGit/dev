@@ -37,3 +37,18 @@ const remMember = async () => {
 	return false;
 }
 
+const massAssign = async () => {
+
+	var data;
+		$.ajax({
+		type: "GET",  
+		url: "js-tutorials.com_sample_file.csv",
+		dataType: "text",       
+		success: function(response)  
+		{
+			data = $.csv.toArrays(response);
+			console.log("data");
+			console.log(data);
+		}   
+	});
+}
