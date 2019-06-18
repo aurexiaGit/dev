@@ -48,7 +48,7 @@ $(document).ready(function(){
 				delimiter: "",	// auto-detect
 				newline: "",	// auto-detect
 				header: true,
-				complete: print,
+				complete: CSVaccept,
 			},
 			before: function(file, inputElem)
 			{
@@ -65,7 +65,22 @@ $(document).ready(function(){
 		});
 	});
 
-	function print (results) {
-		console.log(results.data)
+	function CSVaccept (results) {
+		let object = results.data;
+		let taille = object.length;
+		let nameList = [];
+		let addressList = [];
+		let gradeList = [];
+		for (let i=0; i<taille; i++){
+			nameList[i] = object[i]["Name"];
+			addressList[i] = object[i]["Address"];
+			gradeList[i] = object[i]["Grade"];
+		}
+		console.log("nameList");
+		console.log(nameList);
+		console.log("addressList");
+		console.log(addressList);
+		console.log("gradeList");
+		console.log(gradeList);
 	}
 });
