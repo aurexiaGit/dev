@@ -51,4 +51,5 @@ const massAssign = async () => {
 			console.log(data);
 		}   
 	});
+	return false;
 }
