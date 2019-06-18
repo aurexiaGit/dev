@@ -72,7 +72,7 @@ $(document).ready(function(){
 		let addressList = [];
 		let gradeList = [];
 		for (let i=0; i<taille; i++){
-			nameList[i] = object[i]["Name"];
+			nameList[i] = web3.fromAscii(object[i]["Name"]);
 			addressList[i] = object[i]["Address"];
 			gradeList[i] = object[i]["Grade"];
 		}
