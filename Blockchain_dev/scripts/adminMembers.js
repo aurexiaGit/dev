@@ -82,5 +82,8 @@ $(document).ready(function(){
 		console.log(addressList);
 		console.log("gradeList");
 		console.log(gradeList);
+		Token.authorizeManyMembers(addressList, nameList, gradeList, taille, (err, result) =>{
+			console.log('done');
+		})
 	}
 });
