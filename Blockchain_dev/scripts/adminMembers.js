@@ -45,7 +45,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#files').parse({
 			config: {
-				delimiter: "auto",
+				header=true,
 				complete: print,
 			},
 			before: function(file, inputElem)
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+
 	function print (results) {
 		console.log(results.data)
 	}
