@@ -37,10 +37,6 @@ const remMember = async () => {
 	return false;
 }
 
-function print (results) {
-	console.log(results.data)
-}
-
 
 $(document).ready(function(){
 	$('#header').load('../header-ads.html');
@@ -66,3 +62,8 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	function print (results) {
+		console.log(results.data)
+	}
+});
