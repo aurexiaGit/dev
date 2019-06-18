@@ -64,5 +64,4 @@ const massAssign = () => {
 			}
 		});
 	});
-	return false;
 }
