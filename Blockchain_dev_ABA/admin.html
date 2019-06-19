@@ -14,38 +14,33 @@
     </head>
 
     <body>
-        <div id="block_page">
-            <header>
-                <div id="logo">
-                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+        <header>
+            <nav>
+            <p class = "heading" onclick="window.location='main.html'">HOME </p>
+            <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
+            <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
+            <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
+            </nav>
+            <div id="identity">
+                <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+            </div>
+        </header>
+        <section id='notifBanner'>
+            <img id="arrow" src="images/pageArrow.png">
+            <div id="notifs">
+                <div id="history">
                 </div>
-                <nav>
-                <p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
-                <p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
-                </nav>
-                <div id="identity">
-                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
-                </div>
-            </header>
-            <section id='notifBanner'>
-                <img id="arrow" src="images/pageArrow.png">
-                <div id="notifs">
-                    <div id="history">
-                    </div>
-                </div>
-            </section>
-            <section class = "buttonsAdmin">
-                <button onclick="initialDonations()">INITIAL DONATIONS <img src="images/exchange.png"/> </button>
-                <button onclick="manageMembership()">MANAGE MEMBERSHIP <img src="images/memberIcon.png"/> </button>
-                <button onclick="memList()">MEMBERS LIST <img src="images/memberIcon.png"/> </button>
-                <button onclick="sendTokens()">SEND TOKENS <img src="images/send.png"/> </button>
-                <button onclick="createdestroyTokens()">CREATE / DESTROY TOKENS <img src="images/token.png"/> </button>
-                <button onclick="followTransactions()">FOLLOW TRANSACTIONS <img src="images/followTransactions.png"/> </button>
-                <button onclick="charities()">CHARITIES<img src="images/charity.png"/> </button>
-            </section>
-        </div>
+            </div>
+        </section>
+        <section class = "buttonsAdmin">
+            <button onclick="initialDonations()">INITIAL DONATIONS <img src="images/exchange.png"/> </button>
+            <button onclick="manageMembership()">MANAGE MEMBERSHIP <img src="images/memberIcon.png"/> </button>
+            <button onclick="memList()">MEMBERS LIST <img src="images/memberIcon.png"/> </button>
+            <button onclick="sendTokens()">SEND TOKENS <img src="images/send.png"/> </button>
+            <button onclick="createdestroyTokens()">CREATE / DESTROY TOKENS <img src="images/token.png"/> </button>
+            <button onclick="followTransactions()">FOLLOW TRANSACTIONS <img src="images/followTransactions.png"/> </button>
+            <button onclick="charities()">CHARITIES<img src="images/charity.png"/> </button>
+        </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>      
         <script type="text/javascript" src="scripts/links.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>

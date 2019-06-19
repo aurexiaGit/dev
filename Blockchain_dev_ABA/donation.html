@@ -15,51 +15,46 @@
     </head>
 
     <body>
-        <div id="block_page">
-            <header>
-                <div id="logo">
-                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+        <header>
+            <nav>
+            <p class = "heading" onclick="window.location='main.html'">HOME </p>
+            <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
+            <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
+            <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
+            </nav>
+            <div id="identity">
+                <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+            </div>
+        </header>
+        <section id='notifBanner'>
+            <img id="arrow" src="images/pageArrow.png">
+            <div id="notifs">
+                <div id="history">
                 </div>
-                <nav>
-                <p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
-                <p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
-                </nav>
-                <div id="identity">
-                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+            </div>
+        </section>
+        <section id="donationPage">
+            <div id="ast_balance">
+                <div class="form">
+                <h1> <em>Donation Day</em> </h1>
+                <img src="images/donationDay.png"/>
+                <br><br>
+                One year has past, it is now time for your great work to be rewarded! You have
+                <div id="astValue">0 AST</div>
+                to donate. Choose a charity, and all your tokens will be given to this association.
+                <br><br>
+                <form id="donate">
+                    <select id="dest-select1" required>
+                        <option value="init">Select Charity</option>
+                    </select>
+                    <button onclick="return transferCharity()">Donate</button>
+                </form>
                 </div>
-            </header>
-            <section id='notifBanner'>
-                <img id="arrow" src="images/pageArrow.png">
-                <div id="notifs">
-                    <div id="history">
-                    </div>
-                </div>
-            </section>
-            <section id="donationPage">
-                <div id="ast_balance">
-                  <div class="form">
-                    <h1> <em>Donation Day</em> </h1>
-                    <img src="images/donationDay.png"/>
-                    <br><br>
-                    One year has past, it is now time for your great work to be rewarded! You have
-                    <div id="astValue">0 AST</div>
-                    to donate. Choose a charity, and all your tokens will be given to this association.
-                    <br><br>
-                    <form id="donate">
-                      <select id="dest-select1" required>
-                            <option value="init">Select Charity</option>
-                        </select>
-                      <button onclick="return transferCharity()">Donate</button>
-                    </form>
-                  </div>
-                </div>
-                <br>
-                <div id="rankPage">
-                </div>
-            </section>
-        </div>
+            </div>
+            <br>
+            <div id="rankPage">
+            </div>
+        </section>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/donation.js"></script>
     </body>

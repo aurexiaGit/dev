@@ -14,34 +14,29 @@
     </head>
 
     <body>
-        <div id="block_page">
-            <header>
-                <div id="logo">
-                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+        <header>
+            <nav>
+            <p class = "heading" onclick="window.location='main.html'">HOME </p>
+            <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
+            <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
+            <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
+            </nav>
+            <div id="identity">
+                <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
+            </div>
+        </header>
+        <section id='notifBanner'>
+            <img id="arrow" src="images/pageArrow.png">
+            <div id="notifs">
+                <div id="history">
                 </div>
-                <nav>
-                <p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
-                <p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
-                </nav>
-                <div id="identity">
-                    <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
-                </div>
-            </header>
-            <section id='notifBanner'>
-                <img id="arrow" src="images/pageArrow.png">
-                <div id="notifs">
-                    <div id="history">
-                    </div>
-                </div>
-            </section> 
-            <section id="donationPage">
-                <h1> Sorry, this event is not yet available ! <br> Come back later ! </h1>
-                <br>
-                <h1> <img src="images/disapointed.gif"> </h1>
-            </section>
-        </div>
+            </div>
+        </section> 
+        <section id="donationPage">
+            <h1> Sorry, this event is not yet available ! <br> Come back later ! </h1>
+            <br>
+            <h1> <img src="images/disapointed.gif"> </h1>
+        </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/users.js"></script>
         <script type="text/javascript" src="scripts/links.js"></script>

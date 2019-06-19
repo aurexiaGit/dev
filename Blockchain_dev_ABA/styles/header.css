@@ -58,18 +58,18 @@ header
   height:90px;
 }
 
-.button {
+.heading {
   color : white;
   font-size: 30px;
   margin-left : 50px;
 }
 
-.button:hover {
+.heading:hover {
   cursor : pointer;
 
 }
 
-.button::after {
+.heading::after {
     content: '';
     display: block;
     width: 0;
@@ -78,7 +78,7 @@ header
     transition: width .3s;
 }
 
-.button:hover::after {
+.heading:hover::after {
     width: 100%;
     transition: width .3s;
 }
@@ -112,11 +112,7 @@ nav {
     font-size:0;
   }
 
-  #logo img{
-    width: 120px;
-  }
-
-  .button {
+  .heading {
     color : white;
     font-size: 15px;
     margin-left : 5px;
