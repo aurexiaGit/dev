@@ -18,7 +18,7 @@ button#Enter {
   border: none;
   color: white;
   padding: 5px 28px;
-  margin : 140px;
+  margin : 450px;
   text-align: center;
   justify-content: center;
   font-weight: normal;
@@ -28,6 +28,8 @@ button#Enter {
   font-size: 38px;
   width: 500px;
   background-color: rgb(105,215,26);
+  height: 70px;
+  border-radius: 15px;
 }
 
 #buttons {
@@ -44,8 +46,8 @@ button:hover {
 
 @media (max-width: 1000px) and (orientation: portrait) {
   button#Enter { 
-    font-size: 30px;
-    width: 350px;
+    font-size: 12px;
+    width: 250px;
   }
   
 }
