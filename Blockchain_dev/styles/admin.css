@@ -17,8 +17,8 @@ button {
 button#Enter { 
   border: none;
   color: white;
-  padding: 100px 32px;
-  margin : -80px;
+  padding: 5px 28px;
+  margin : 140px;
   text-align: center;
   justify-content: center;
   font-weight: normal;
@@ -27,7 +27,7 @@ button#Enter {
   display: flex;
   font-size: 38px;
   width: 500px;
-  background-color: rgb(29,74,105);
+  background-color: rgb(105,215,26);
 }
 
 #buttons {
