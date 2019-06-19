@@ -9,7 +9,6 @@ src: local('Calibri Light'), url('calibril.woff') format('woff');
 body
 {
 	font-family: 'Calibri Light';
-	background-image: url("../images/background.png");
 	background-size: 100%;
 	margin:0px;
 	margin-top: 150px;
