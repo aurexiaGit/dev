@@ -21,3 +21,13 @@
 #receiving {
   list-style-image: url('../images/receiveTokens.png');
 }
+
+.AurexiaName{
+  position: absolute;
+  left: 50%;
+}
+
+.WalletName{
+  position: absolute;
+  left: 50%;
+}
