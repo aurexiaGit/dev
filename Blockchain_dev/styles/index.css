@@ -38,3 +38,8 @@
   font-size: 21px;
   font-weight: bold;
 }
+
+hr{
+  margin-top: 0.5em;
+  border-width: 1px;
+}
