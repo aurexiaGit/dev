@@ -3,7 +3,10 @@
 	flex-direction : column;
 	align-items: center;
 	justify-content: space-between;
-    margin: 100px;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    right: 10%;
 }
 
 button { 
@@ -25,18 +28,13 @@ button {
 button#Enter { 
     border: none;
     color: white;
-    padding: 5px 28px;
-    margin : 380px;
     text-align: center;
     justify-content: center;
     font-weight: normal;
     align-items: center;
     text-decoration: none;
-    display: flex;
-    font-size: 38px;
-    width: 500px;
     background-color: rgb(105,215,26);
-    height: 70px;
+    height: 70px; 
     border-radius: 15px;
 }
   

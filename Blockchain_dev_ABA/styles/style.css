@@ -12,9 +12,11 @@
 body
 {
   font-family: 'Lato', sans-serif;
-	background-size: 100%;
-	margin:0px;
-	margin-top: 150px;
+  background-image: url("../images/background_SVG_white.svg"), linear-gradient(#1554DF, #24C69A);
+  background-size: contain;
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom;
+  background-attachment:fixed;
 }
 
 
