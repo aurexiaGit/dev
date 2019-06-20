@@ -167,10 +167,19 @@ h1 {
 }
 
 
-/*
-@media (max-width: 1000px) and (orientation: portrait) {
+
+@media (orientation: portrait) {
   .form {
   margin-top: -50px;
   }
-  
-}*/
+
+  body
+  {
+  font-family: 'Lato', sans-serif;
+  background-image:linear-gradient(#1554DF, #24C69A);
+  background-size: contain;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment:fixed;
+  background-position: bottom;
+  }
+}
