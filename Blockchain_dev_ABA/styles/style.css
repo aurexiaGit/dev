@@ -12,7 +12,7 @@
 body
 {
   font-family: 'Lato', sans-serif;
-  background-color: linear-gradient(#1554DF, #24C69A);
+  background: linear-gradient(#1554DF, #24C69A);
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment:fixed;
@@ -176,7 +176,7 @@ h1 {
   body
   {
   font-family: 'Lato', sans-serif;
-  background-color:linear-gradient(#1554DF, #24C69A);
+  background:linear-gradient(#1554DF, #24C69A);
   background-size: contain;
   background-repeat: no-repeat, no-repeat;
   background-attachment:fixed;
