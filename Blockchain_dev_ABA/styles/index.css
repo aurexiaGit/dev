@@ -1,3 +1,5 @@
+/*CSS for Welcome to Aurexia Blockchain*/
+
 #welcomeName{
   position: absolute;
   top: 35%;
@@ -30,6 +32,8 @@
   right: 10%;
 }
 
+/*CSS for button div and button*/
+
 button#Enter { 
   border: none;
   color: white;
@@ -39,16 +43,14 @@ button#Enter {
   align-items: center;
   text-decoration: none;
   background-color: rgb(105,215,26);
-  height: 4.375em; 
+  height: 4.5em; 
   border-radius: 1em;
+  font-size: 0.75em;
+  width: 16em;
 }
 
-@media (max-width: 1000px) and (orientation: portrait) {
-  button#Enter { 
-      font-size: 0.75em;
-      width: 15.625em;
-  }
-}
+
+/*Autres*/
 
 #transactionPage {
   display: flex;
