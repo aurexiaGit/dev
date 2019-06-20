@@ -30,7 +30,10 @@ html {
 
 hr{
   color:white;
-  position: static;
+  position: absolute;
+  top:100%;
+  right:0%;
+  left: 0%;
 }
 
 
