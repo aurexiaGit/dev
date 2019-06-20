@@ -44,15 +44,20 @@ hr{
 /*Menu Header*/
 
 nav{
-  display:inline;
   position:relative;
 }
-/*
-.heading {
-  color : white;
-  font-size: 1em;
+
+li {
+  float:left;
 }
 
+.heading {
+  color: white;
+  display: block;
+  padding: 0.5em;
+  font-size: 1em;
+}
+/*
 .heading:hover {
   cursor : pointer;
 }
