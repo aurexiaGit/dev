@@ -1,3 +1,54 @@
+html {
+  height: 100%;
+  font-size: 100%;
+}
+
+/* CSS Body*/
+
+body {
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(#1554DF, #24C69A);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/*CSS Header*/
+
+#blockHeader{
+  position: absolute;
+  top: 2%;
+  left:0%;
+  right:0%;
+  text-align: center;
+}
+
+#aurexiaName{
+  position: relative;
+  text-align: center;
+  font-size: 1em;
+  color: white;
+}
+
+#walletName{
+  position: relative;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: white;
+}
+
+hr{
+  color:white;
+  position: absolute;
+  top:100%;
+  right:0%;
+  left: 0%;
+}
+
+
 /*CSS for Welcome to Aurexia Blockchain*/
 
 #welcomeName{
@@ -51,7 +102,7 @@ button#Enter {
 
 
 /*Autres*/
-
+/*
 #transactionPage {
   display: flex;
   justify-content: center;
@@ -75,3 +126,4 @@ button#Enter {
   list-style-image: url('../images/receiveTokens.png');
 }
 
+*/
