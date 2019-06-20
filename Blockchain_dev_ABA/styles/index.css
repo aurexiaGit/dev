@@ -21,18 +21,18 @@
   color: white;
 }
 
+/*CSS for button div and button*/
+
 #buttons {
 	display : flex;
 	flex-direction : column;
 	align-items: center;
 	justify-content: space-between;
   position: absolute;
-  top: 78%;
+  top: 60%;
   left: 10%;
   right: 10%;
 }
-
-/*CSS for button div and button*/
 
 button#Enter { 
   border: none;
