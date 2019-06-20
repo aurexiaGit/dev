@@ -1,4 +1,4 @@
-/*@font-face {
+@font-face {
   font-family: "Lato";
   src: url('698242188-Lato-Bla.eot');
   src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
@@ -7,7 +7,7 @@
   url('698242188-Lato-Bla.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 
 body
 {
@@ -166,8 +166,8 @@ h1 {
   background: rgb(35,85,110);
 }
 
-/*
 
+/*
 @media (max-width: 1000px) and (orientation: portrait) {
   .form {
   margin-top: -50px;
