@@ -18,11 +18,8 @@ body {
 /*CSS Header*/
 
 #blockHeader{
-  position: absolute;
-  top: 2%;
-  left:0%;
-  right:0%;
-  text-align: center;
+  position: relative;
+  margin-top: 3%;
 }
 
 #aurexiaName{
@@ -42,10 +39,7 @@ body {
 
 hr{
   color:white;
-  position: absolute;
-  top:100%;
-  right:0%;
-  left: 0%;
+  position: relative;
 }
 
 

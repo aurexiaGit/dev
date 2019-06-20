@@ -7,34 +7,28 @@
         <!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/index.css" />
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-        <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script> 
+        <link rel = "stylesheet" href = "styles/main.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
     <body>
         <header>
-            <nav>
-                <p class = "heading" onclick="window.location='main.html'">HOME </p>
-                <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
-            </nav>
-            <div id="identity">
-                <br><div id = "name">Loading</div>
-            </div>
-        </header>
-        <section id='notifBanner'>
-            <img id="arrow" src="images/pageArrow.png">
-            <div id="notifs">
-                <div data-simplebar id="history">
+            <div id="blockHeader">
+                <div id = "aurexiaName">AUREXIA</div>
+                <div id = "walletName">WALLET</div>
+                <div id="identity">
+                    <div id = "name">Loading</div>
                 </div>
             </div>
-        </section>
+            <hr>
+            <nav>
+                <a class = "heading" href='main.html'">HOME </a>
+                <a class = "heading" href='ranking.html'">RANKING </a>
+                <a class = "heading" href='history.html'">HISTORY </a>
+                <a class = "heading" href='admin.html'">ADMIN </a>
+            </nav>
+        </header>
+
         <section id="transactionPage">
                 <div class="form">
                 <img src="images/ast.png" alt="icon ast" /> <br>
