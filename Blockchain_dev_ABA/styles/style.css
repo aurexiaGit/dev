@@ -16,8 +16,15 @@ body
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment:fixed;
-  background-position: bottom;
 }
+
+@media screen and (min-width: 200px) and (max-width: 640px){
+  body
+  {
+    color: linear-gradient(#1554DF, #24C69A);
+  }
+}
+
 
 
 h1 {
@@ -171,15 +178,5 @@ h1 {
 @media (orientation: portrait) {
   .form {
   margin-top: -50px;
-  }
-
-  body
-  {
-  font-family: 'Lato', sans-serif;
-  background:linear-gradient(#1554DF, #24C69A);
-  background-size: contain;
-  background-repeat: no-repeat, no-repeat;
-  background-attachment:fixed;
-  background-position: bottom;
   }
 }
