@@ -50,9 +50,10 @@ button:hover {
     margin: 100px;
 }
 
+/*
 @media (max-width: 1000px) and (orientation: portrait) {
     button#Enter { 
         font-size: 12px;
         width: 250px;
     }
-}
+}*/
