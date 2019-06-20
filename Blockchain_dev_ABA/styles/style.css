@@ -12,10 +12,7 @@
 body
 {
   font-family: 'Lato', sans-serif;
-  background: linear-gradient(#1554DF, #24C69A);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment:fixed;
+  color: linear-gradient(#1554DF, #24C69A);
 }
 
 @media screen and (min-width: 200px) and (max-width: 640px){
