@@ -5,26 +5,34 @@ html {
 
 /*CSS Header*/
 
-#aurexiaName{
+#blockHeader{
   position: absolute;
-  left: 10%;
-  right: 10%;
   top: 2%;
+  left:0%;
+  right:0%;
+  text-align: center;
+}
+
+#aurexiaName{
+  position: relative;
   text-align: center;
   font-size: 1em;
-  color: black;
+  color: white;
 }
 
 #walletName{
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 5%;
+  position: relative;
   text-align: center;
   font-size: 1.3em;
   font-weight: bold;
-  color: black;
+  color: white;
 }
+
+hr{
+  color:white;
+  position: static;
+}
+
 
 
 /* CSS Body*/

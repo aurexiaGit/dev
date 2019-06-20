@@ -1,13 +1,4 @@
-#buttons {
-	display : flex;
-	flex-direction : column;
-	align-items: center;
-	justify-content: space-between;
-    position: absolute;
-    top: 60%;
-    left: 10%;
-    right: 10%;
-}
+
 
 button { 
     border: none;
@@ -24,19 +15,7 @@ button {
     width: 500px;
     background-color: rgb(255,92,95);
 }
-  
-button#Enter { 
-    border: none;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    font-weight: normal;
-    align-items: center;
-    text-decoration: none;
-    background-color: rgb(105,215,26);
-    height: 70px; 
-    border-radius: 15px;
-}
+
   
 button:hover {
     cursor : pointer;
@@ -51,9 +30,3 @@ button:hover {
 }
 
 
-@media (max-width: 1000px) and (orientation: portrait) {
-    button#Enter { 
-        font-size: 12px;
-        width: 250px;
-    }
-}
