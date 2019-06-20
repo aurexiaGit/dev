@@ -27,7 +27,7 @@
 	align-items: center;
 	justify-content: space-between;
   position: absolute;
-  top: 80%;
+  top: 78%;
   left: 10%;
   right: 10%;
 }
@@ -43,10 +43,10 @@ button#Enter {
   align-items: center;
   text-decoration: none;
   background-color: rgb(105,215,26);
-  height: 5em; 
   border-radius: 1em;
-  font-size: 0.75em;
-  width: 16em;
+  height: 6em; 
+  font-size: 1em;
+  width: 17em;
 }
 
 
