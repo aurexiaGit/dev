@@ -1,4 +1,57 @@
-/*@font-face {
+html {
+  height: 100%;
+}
+
+/*CSS Header*/
+
+#aurexiaName{
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 2%;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}
+
+#walletName{
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 5%;
+  text-align: center;
+  font-size: 21px;
+  font-weight: bold;
+  color: black;
+}
+
+/* CSS Body*/
+
+body {
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(#1554DF, #24C69A);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+@font-face {
   font-family: "Lato";
   src: url('698242188-Lato-Bla.eot');
   src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
@@ -8,17 +61,19 @@
   font-weight: normal;
   font-style: normal;
 }*/
-
+/*
 body
 {
   font-family: 'Lato', sans-serif;
-  color: linear-gradient(#1554DF, #24C69A);
+  background: linear-gradient(#1554DF, #24C69A);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
 }
-
-@media screen and (min-width: 200px) and (max-width: 640px){
+@media only screen {
   body
   {
-    color: linear-gradient(#1554DF, #24C69A);
+    color: linear-gradient(#1554DF, #24C69A)
   }
 }
 
@@ -119,8 +174,8 @@ h1 {
     overflow: auto;
 }
 
-/*//////////////////////////////////////////////////////////////////
-[ Forms ]*/
+//////////////////////////////////////////////////////////////////
+[ Forms ]
 
 .form {
   position: relative;
@@ -177,3 +232,5 @@ h1 {
   margin-top: -50px;
   }
 }
+*/
+
