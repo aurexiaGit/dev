@@ -33,17 +33,19 @@
 
         <section id="transactionPage">
             <div class="form">
-            <h1> Aurexia Social Token </h1>
-            <div id="astValue">0 AST</div>
-            <form id="send">
-                <input placeholder="Amount" id="amount" required/>
-                <input placeholder="Message" id="wording" required/>
-                <select id="dest-select" required>
-                    <option value="init">Select Beneficiary</option>
-                </select>
-                <button onclick="return Transfer()">send</button>
-                <div id="loading"></div>
-            </form>
+                <div id="balance">
+                    <div id="astValue">0</div>
+                    <div id="ast">AST</div>
+                </div>
+                <form id="send">
+                    <input placeholder="Amount" id="amount" required/>
+                    <input placeholder="Message" id="wording" required/>
+                    <select id="dest-select" required>
+                        <option value="init">Select Beneficiary</option>
+                    </select>
+                    <button onclick="return Transfer()">send</button>
+                    <div id="loading"></div>
+                </form>
             </div>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
