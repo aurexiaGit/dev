@@ -67,7 +67,7 @@ refreshBalance();
 //Affichage de la balance
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
+		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString()	
 	}
 }
 
