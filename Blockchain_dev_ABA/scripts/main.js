@@ -7,12 +7,6 @@ var sending = false;
 
 document.getElementById("adminPage").style.display = "none";
 
-// hide notif banner
-
-var show = false;
-var elmt = document.getElementById("notifBanner");
-elmt.style.display = "none";
-
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
