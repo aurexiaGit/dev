@@ -109,11 +109,11 @@ li a:hover:not(.active) {
 }
 #astValue{
   position: relative;
-  /*font-weight: bold;*/
-  font-size: 4em;
+  font-weight: bold;
+  font-size: 3.5em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 17%;
+  margin-top: 22%;
   color: #1554DF;
 }
 #ast{
@@ -122,6 +122,63 @@ li a:hover:not(.active) {
   color: #1554DF;
 }
 
+#send{
+  position: relative;
+  text-align : center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+label {
+  display: block;
+  font-weight: none;
+  color: #1554DF;
+  margin-bottom: 1%;
+}
+
+input{
+  position: relative;
+  border: none;
+  border-bottom: 1px solid;
+  border-color: #1554DF;
+  color:black;
+  margin-bottom: 7%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+input:focus {
+  border: 1px solid #1554DF;
+}
+
+option{
+  color: black
+}
+
+#dest-select{
+  margin-bottom: 4%;
+  border: none;
+  border-bottom: 1px solid;
+  border-color: #1554DF;
+  font-size: 1.2em;
+}
+
+button { 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #1554DF;
+  border-radius: 1em;
+  height: 3.5em; 
+  font-size: 0.9em;
+  width: 15em;
+}
 
 
 
@@ -133,8 +190,8 @@ body {
   height: 100%;
   margin: 0;
   background-color: #E9F7FF;
-  background-image: linear-gradient(25deg, #24C69A, #1554DF);
-  background-size:100% 45%;
+  background-image: linear-gradient(20deg, #24C69A, #1554DF);
+  background-size:100% 48%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }

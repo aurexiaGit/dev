@@ -34,16 +34,19 @@
         <section id="transactionPage">
             <div class="form">
                 <div id="balance">
-                    <div id="astValue">0</div>
+                    <div id="astValue">2000</div>
                     <div id="ast">AST</div>
                 </div>
                 <form id="send">
-                    <input placeholder="Amount" id="amount" required/>
-                    <input placeholder="Message" id="wording" required/>
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" required/>
+                    <label for="wording">Message</label>
+                    <input type="text" id="wording" required/>
+                    <label for="wording">Select Beneficiary</label>
                     <select id="dest-select" required>
-                        <option value="init">Select Beneficiary</option>
+                        <option value="init"></option>
                     </select>
-                    <button onclick="return Transfer()">send</button>
+                    <button onclick="return Transfer()">Send</button>
                     <div id="loading"></div>
                 </form>
             </div>
