@@ -89,11 +89,10 @@ html {
   }
   
   
-  /*CSS Section Transaction */
-  #transactionPage{
-    background: white;
+  /*CSS Section Rankings Table */
+  #rankingsPage{
+    background: #1554DF;
     margin-left: 4%;
-    margin-bottom: 4%;
     margin-right:4%;
   
     /*ABA 25062019
@@ -102,128 +101,87 @@ html {
   
     /*ABA 25062019
     height: 75%;*/
-    height: 100%;
+    height: 27.2%;
   
     border-width:1px;
     border-style:solid;
     border-color:#1554DF;
-    border-radius: 0.6em
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;
   }
-  
-  #balance{
-    position: relative;
-    text-align : center;
-    border-width:1px;
-    border-style:solid;
-    border-color:#1554DF;
-    border-radius: 50%;
-  
-    /* ABA 25062019 
-    height: 10em;
-    width: 10em; */
-    height: 7em;
-    width: 7em;
-  
-  
-    margin-left: auto;
-    margin-right: auto;
-  
-    /* ABA 25062019 
-    margin-top: 10%; */
-    margin-top: 5%;
-  
-    margin-bottom: 10%;
-  }
-  #astValue{
-    position: relative;
-    font-weight: bold;
-  
-    /*ABA 25062019
-    font-size: 3.5em; */
-    font-size: 2em;
-  
-    margin-left: auto;
-    margin-right: auto;
-  
-    /*ABA 25062019
-    margin-top: 22%; */
-    margin-top: 20%;
-  
-    color: #1554DF;
-  }
-  #ast{
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #1554DF;
-  }
-  
-  #send{
+
+  #rankingChoice{
     position: relative;
     text-align : center;
     margin-left: auto;
     margin-right: auto;
-  
-    /*ABA 25062019
-    margin-top: 10%; */
-    margin-top: -6%;
+    margin-top: 4%;
   }
+  
   
   label {
     display: block;
     font-weight: none;
-    color: #1554DF;
+    color: white;
     margin-bottom: 1%;
-  
-    /*ABA 25062019 */
-    margin-top: -2%;
-    
-     
+    font-size: 1.1em;
   }
-  
-  input{
-    position: relative;
-    border: none;
-    border-bottom: 1px solid;
-    border-color: #1554DF;
-    color:black;
-    margin-bottom: 7%;
-    text-align: center;
-    font-size: 1.2em;
-  }
-  
-  input:focus {
-    border: 1px solid #1554DF;
-  }
-  
+
   option{
-    color: black
+    color: white
   }
   
   #dest-select{
     margin-bottom: 4%;
     border: none;
     border-bottom: 1px solid;
-    border-color: #1554DF;
+    border-color: white;
+    background-color: #1554DF;
     font-size: 1.2em;
     text-align: center;
+  }
+
+  #ownRanking{
+      position: relative;
+      text-align:center;
+      font-size:1.3em;
+      color: white;
   }
   
   button { 
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 4%;
     border: none;
     color: white;
     text-align: center;
     justify-content: center;
     text-decoration: none;
-    background-color: #1554DF;
+    background-color: #24C69A;
     border-radius: 1em;
-    height: 3.5em; 
+    height: 2.5em; 
     font-size: 0.9em;
-    width: 15em;
+    width: 13em;
   }
   
+/*CSS allTable */
+
+#allTableau{
+    background: white;
+    margin-left: 4%;
+    margin-bottom: 4%;
+    margin-right:4%;
+
+    height: 50%;
+  
+    border-width:1px;
+    border-style:solid;
+    border-color:#1554DF;
+    border-top: none;
+    border-bottom-left-radius: 0.6em;
+    border-bottom-right-radius: 0.6em;
+}
   
   
   
@@ -235,6 +193,6 @@ html {
     margin: 0;
     background-color: #E9F7FF;
     background-image: linear-gradient(20deg, #24C69A, #1554DF);
-    background-size:100% 48%;
+    background-size:100% 45%;
     background-repeat: no-repeat;
   }
