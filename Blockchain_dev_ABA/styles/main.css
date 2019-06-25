@@ -53,8 +53,9 @@ nav{
   height: 3em;
 
   /* ABA 25/06/2019 */
-  left: 12%;
   font-size: 85%;
+  margin: 0 auto;
+  display:table;
 
 }
 
