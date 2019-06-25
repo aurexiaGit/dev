@@ -29,7 +29,11 @@ html {
 
 #identity{
   position: absolute;
-  top:15%;
+
+  /* ABA 25/06/2019 */
+  /*top:15%; */
+  top: -20%;
+
   right:6%;
   text-align: right;
   font-size:1em;
@@ -47,6 +51,11 @@ hr{
 nav{
   position: relative;
   height: 3em;
+
+  /* ABA 25/06/2019 */
+  left: 12%;
+  font-size: 85%;
+
 }
 
 ul {
@@ -86,7 +95,11 @@ li a:hover:not(.active) {
   margin-bottom: 4%;
   margin-right:4%;
   margin-top:4%;
-  height: 75%;
+
+  /*ABA 25062019
+  height: 75%;*/
+  height: 60%;
+  
   border-width:1px;
   border-style:solid;
   border-color:#1554DF;
@@ -100,20 +113,38 @@ li a:hover:not(.active) {
   border-style:solid;
   border-color:#1554DF;
   border-radius: 50%;
+
+  /* ABA 25062019 
   height: 10em;
-  width: 10em;
+  width: 10em; */
+  height: 7em;
+  width: 7em;
+
+
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+
+  /* ABA 25062019 
+  margin-top: 10%; */
+  margin-top: 5%;
+
   margin-bottom: 10%;
 }
 #astValue{
   position: relative;
   font-weight: bold;
-  font-size: 3.5em;
+
+  /*ABA 25062019
+  font-size: 3.5em; */
+  font-size: 2.5em;
+
   margin-left: auto;
   margin-right: auto;
-  margin-top: 22%;
+
+  /*ABA 25062019
+  margin-top: 22%; */
+  margin-top: 16%;
+
   color: #1554DF;
 }
 #ast{
@@ -127,7 +158,10 @@ li a:hover:not(.active) {
   text-align : center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+
+  /*ABA 25062019
+  margin-top: 10%; */
+  margin-top: -6%;
 }
 
 label {
@@ -135,6 +169,11 @@ label {
   font-weight: none;
   color: #1554DF;
   margin-bottom: 1%;
+
+  /*ABA 25062019 */
+  margin-top: -2%;
+  
+   
 }
 
 input{
