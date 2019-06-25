@@ -17,6 +17,7 @@
         <title>MyWallet - Aurexia</title> 
     </head>
 
+		<!--ABA 25062019
     <body>
 			<header>
 				<nav>
@@ -159,6 +160,45 @@
 					</div>
 				</div>
 			</div>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script type="text/javascript" src="scripts/main.js"></script>
+			<script type="text/javascript" src="scripts/ranking.js"></script>
+		</body>
+		-->
+
+		<body>
+			<header>
+					<div id="blockHeader">
+							<div id = "aurexiaName">AUREXIA</div>
+							<div id = "walletName">WALLET</div>
+							<div id="identity">
+									<div id = "name">Loading</div>
+							</div>
+					</div>
+					<hr>
+					<nav>
+							<ul>
+									<li><a class = "active" href='main.html'>HOME </a></li>
+									<li><a href='ranking.html'>RANKING </a></li>
+									<li><a href='history.html'>HISTORY </a></li>
+									<li><a href='donation.html'>DONATION </a></li>
+									<li><a id="adminPage" href='admin.html'>ADMIN </a></li>
+							</ul>
+					</nav>
+			</header>
+
+			<section id="rankingPage">
+					<div class="form">
+							<form id="rankingType">
+									<label for="ranking">Select the Ranking</label>
+									<select id="rankingChoice" required>
+											<option value="init"></option>
+									</select>
+									<button onclick="return chooseRanking()">Send</button>
+									<div id="loading"></div>
+							</form>
+					</div>
+			</section>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 			<script type="text/javascript" src="scripts/main.js"></script>
 			<script type="text/javascript" src="scripts/ranking.js"></script>

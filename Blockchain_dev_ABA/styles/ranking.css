@@ -89,7 +89,7 @@ li a:hover:not(.active) {
 
 
 /*CSS Section Transaction */
-#transactionPage{
+#rankingPage{
   background: white;
   margin-left: 4%;
   margin-bottom: 4%;
@@ -109,54 +109,7 @@ li a:hover:not(.active) {
   border-radius: 0.6em
 }
 
-#balance{
-  position: relative;
-  text-align : center;
-  border-width:1px;
-  border-style:solid;
-  border-color:#1554DF;
-  border-radius: 50%;
-
-  /* ABA 25062019 
-  height: 10em;
-  width: 10em; */
-  height: 7em;
-  width: 7em;
-
-
-  margin-left: auto;
-  margin-right: auto;
-
-  /* ABA 25062019 
-  margin-top: 10%; */
-  margin-top: 5%;
-
-  margin-bottom: 10%;
-}
-#astValue{
-  position: relative;
-  font-weight: bold;
-
-  /*ABA 25062019
-  font-size: 3.5em; */
-  font-size: 2em;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  /*ABA 25062019
-  margin-top: 22%; */
-  margin-top: 20%;
-
-  color: #1554DF;
-}
-#ast{
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #1554DF;
-}
-
-#send{
+#rankingType{
   position: relative;
   text-align : center;
   margin-left: auto;
