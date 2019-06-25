@@ -183,6 +183,48 @@ html {
     border-bottom-right-radius: 0.6em;
 }
   
+thead{
+    display:none;
+}
+
+.table{
+    position: relative;
+}
+
+#table_content1{
+    position:relative;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+#table_content2{
+    position:relative;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+#table_content3{
+    position:relative;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+#table_content4{
+    position:relative;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.column3{
+    padding-left: 15%;
+    size: 40%
+}
+
+th{
+    font-size:1em;
+    color:#1554DF;
+    padding-top:10%;
+}
   
   
   /* CSS Body*/
