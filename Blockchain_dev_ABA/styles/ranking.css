@@ -1,193 +1,167 @@
-html {
-  height: 100%;
-  font-size: 100%;
+html {
+height: 100%;
+font-size: 100%;
 }
 
 /* Header */
 
 #blockHeader{
-  position: relative;
-  margin-top: 3%;
+position: relative;
+margin-top: 3%;
 }
 
 #aurexiaName{
-  position: relative;
-  text-align: left;
-  font-size: 1em;
-  color: white;
-  margin-left: 6%;
+position: relative;
+text-align: left;
+font-size: 1em;
+color: white;
+margin-left: 6%;
 }
 
 #walletName{
-  position: relative;
-  text-align: left;
-  font-size: 1.3em;
-  font-weight: bold;
-  color: white;
-  margin-left: 6%;
+position: relative;
+text-align: left;
+font-size: 1.3em;
+font-weight: bold;
+color: white;
+margin-left: 6%;
 }
 
 #identity{
-  position: absolute;
+position: absolute;
 
-  /* ABA 25/06/2019 */
-  /*top:15%; */
-  top: -20%;
+/* ABA 25/06/2019 */
+/*top:15%; */
+top: -20%;
 
-  right:6%;
-  text-align: right;
-  font-size:1em;
-  color: white;
+right:6%;
+text-align: right;
+font-size:1em;
+color: white;
 }
 
 hr{
-  color:white;
-  position: relative;
-  opacity: 0.33;
+color:white;
+position: relative;
+opacity: 0.33;
 }
 
 /*Menu Header*/
 
 nav{
-  position: relative;
-  height: 3em;
+position: relative;
+height: 3em;
 
-  /* ABA 25/06/2019 */
-  left: 12%;
-  font-size: 85%;
+/* ABA 25/06/2019 */
+left: 12%;
+font-size: 85%;
 
 }
 
-ul {
-  position: relative;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+ul {
+position: relative;
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
 }
 
-li {
-  float:left;
+li {
+float:left;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 0.7em;
-  text-decoration: none;
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 0.7em;
+text-decoration: none;
 }
 
-li a:hover:not(.active) {
-  background-color: #1554DF;
-  border-radius: 3em;
+li a:hover:not(.active) {
+background-color: #1554DF;
+border-radius: 3em;
 }
-.active {
-  background-color: #1554DF;
-  border-radius: 3em;
-}
-
-
-/*CSS Section Transaction */
-#rankingPage{
-  background: white;
-  margin-left: 4%;
-  margin-bottom: 4%;
-  margin-right:4%;
-
-  /*ABA 25062019
-  margin-top:4%; */
-  margin-top: 1%;
-
-  /*ABA 25062019
-  height: 75%;*/
-  height: 60%;
-
-  border-width:1px;
-  border-style:solid;
-  border-color:#1554DF;
-  border-radius: 0.6em
+.active {
+background-color: #1554DF;
+border-radius: 3em;
 }
 
-#rankingType{
-  position: relative;
-  text-align : center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6%;
+/*CSS Section Ranking Page */
+#rankingsPage{
+background: white;
+margin-left: 4%;
+margin-bottom: 4%;
+margin-right:4%;
+
+/*ABA 25062019
+margin-top:4%; */
+margin-top: 1%;
+
+/*ABA 25062019
+height: 75%;*/
+height: 60%;
+
+border-width:1px;
+border-style:solid;
+border-color:#1554DF;
+border-radius: 0.6em
 }
 
-label {
-  display: block;
-  font-weight: none;
-  color: #1554DF;
-  margin-bottom: 1%;
+label {
+display: block;
+font-weight: none;
+color: #1554DF;
+margin-bottom: 1%;
 }
 
-#rankingChoice {
-  margin-top: 3%;
-}
-
-input{
-  position: relative;
-  border: none;
-  border-bottom: 1px solid;
-  border-color: #1554DF;
-  color:black;
-  margin-bottom: 7%;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-input:focus {
-  border: 1px solid #1554DF;
+#rankingChoice {
+margin-top: 3%;
 }
 
 option{
-  color: black
+color: black
 }
 
 #dest-select{
-  margin-bottom: 4%;
-  border: none;
-  border-bottom: 1px solid;
-  border-color: #1554DF;
-  font-size: 1.2em;
-  text-align: center;
+margin-bottom: 4%;
+border: none;
+border-bottom: 1px solid;
+border-color: #1554DF;
+font-size: 1.2em;
+text-align: center;
 }
 
-button { 
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  color: white;
-  text-align: center;
-  justify-content: center;
-  text-decoration: none;
-  background-color: #1554DF;
-  border-radius: 1em;
-  height: 3.5em; 
-  font-size: 0.9em;
-  width: 15em;
-  margin-top:3%
+button { 
+display: block;
+margin-left: auto;
+margin-right: auto;
+border: none;
+color: white;
+text-align: center;
+justify-content: center;
+text-decoration: none;
+background-color: #1554DF;
+border-radius: 1em;
+height: 3.5em; 
+font-size: 0.9em;
+width: 15em;
+margin-top:3%
 }
-
 
 
 
 /* CSS Body*/
 
-body {
-  font-family: 'Lato', sans-serif;
-  height: 700px;
-  margin: 0;
-  background-color: #E9F7FF;
-  background-image: linear-gradient(20deg, #24C69A, #1554DF);
-  background-size:100% 48%;
-  background-repeat: no-repeat;
+body {
+font-family: 'Lato', sans-serif;
+height: 700px;
+margin: 0;
+background-color: #E9F7FF;
+background-image: linear-gradient(20deg, #24C69A, #1554DF);
+background-size:100% 40%;
+background-repeat: no-repeat;
 }
-
 
 
 
@@ -204,185 +178,182 @@ body {
 
 /*
 @font-face {
-  font-family: "Lato";
-  src: url('698242188-Lato-Bla.eot');
-  src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
-  url('698242188-Lato-Bla.svg#Lato Black') format('svg'),
-  url('698242188-Lato-Bla.woff') format('woff'),
-  url('698242188-Lato-Bla.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+font-family: "Lato";
+src: url('698242188-Lato-Bla.eot');
+src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
+url('698242188-Lato-Bla.svg#Lato Black') format('svg'),
+url('698242188-Lato-Bla.woff') format('woff'),
+url('698242188-Lato-Bla.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
 }*/
 /*
 body
 {
-  font-family: 'Lato', sans-serif;
-  background: linear-gradient(#1554DF, #24C69A);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment:fixed;
+font-family: 'Lato', sans-serif;
+background: linear-gradient(#1554DF, #24C69A);
+background-size: contain;
+background-repeat: no-repeat;
+background-attachment:fixed;
 }
 @media only screen {
-  body
-  {
-    color: linear-gradient(#1554DF, #24C69A)
-  }
+body
+{
+color: linear-gradient(#1554DF, #24C69A)
 }
-
+}
 
 
 h1 {
-  text-align: center;
-  color: rgb(2,59,89);
+text-align: center;
+color: rgb(2,59,89);
 }
 
 #title {
-	font-size: 50px;
-	width:400px;
-	text-align: center;
-	position: relative;
-	margin:auto;
-    text-shadow: 0px 0px 10px white;
+  font-size: 50px;
+  width:400px;
+  text-align: center;
+  position: relative;
+  margin:auto;
+text-shadow: 0px 0px 10px white;
 }
 
 #leader {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
+display: flex;
+align-items: center;
+font-size: 15px;
 }
 
 #upper_section
 {
-	display :flex;
-	justify-content: space-around;
-	margin-top: 50px;
-	padding-left:100px;
-	padding-right:100px;
-	padding-bottom: 50px;
-	align-items: center;
-	border-bottom: 1px solid;
+  display :flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding-left:100px;
+  padding-right:100px;
+  padding-bottom: 50px;
+  align-items: center;
+  border-bottom: 1px solid;
 }
-
 
 #ast_balance
 {
-	display : flex;
-	flex-direction : column;
-	align-items: center;
-	justify-content: space-around;
-  	margin: 18px;
+  display : flex;
+  flex-direction : column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 18px;
 }
 
 #ast_balance > * {
-    margin: 10px 0;
+margin: 10px 0;
 }
 
 #astValue {
-	font-size: 40px;
-	color: rgb(2,59,89);
-	margin: 10px;
+  font-size: 40px;
+  color: rgb(2,59,89);
+  margin: 10px;
 }
 
 #new_member
 {
-  margin: 40px;
+margin: 40px;
 }
 
 #new_member > * {
-    margin: 10px 0;
+margin: 10px 0;
 }
 
 #new_charity
 {
-  margin: 40px;
+margin: 40px;
 }
 
 #new_charity > * {
-    margin: 10px 0;
+margin: 10px 0;
 }
 
 #profile_picture
 {
-	position : relative;
-	width : 80px;
-	bottom : 70px;
-	margin : auto;
-	background-color: white;
-	padding : 20px;
-	border : 1px solid;
+  position : relative;
+  width : 80px;
+  bottom : 70px;
+  margin : auto;
+  background-color: white;
+  padding : 20px;
+  border : 1px solid;
 }
 
 #lower_section
 {
-	display : flex;
-	align-items: center;
-	justify-content: space-between;
+  display : flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #history {
-    width: auto;
-    height: 300px;
-    text-align: justify;
-    overflow: auto;
+width: auto;
+height: 300px;
+text-align: justify;
+overflow: auto;
 }
 
 //////////////////////////////////////////////////////////////////
 [ Forms ]
 
 .form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  width: 300px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 40px 0 rgba(2, 59, 89, 0.4), 0 5px 5px 0 rgba(2, 59, 89, 0.4);
-  margin-top: -20px;
+position: relative;
+z-index: 1;
+background: #FFFFFF;
+width: 300px;
+margin: 0 auto 100px;
+padding: 45px;
+text-align: center;
+box-shadow: 0 0 40px 0 rgba(2, 59, 89, 0.4), 0 5px 5px 0 rgba(2, 59, 89, 0.4);
+margin-top: -20px;
 }
 .form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+outline: 0;
+background: #f2f2f2;
+width: 100%;
+border: 0;
+margin: 0 0 15px;
+padding: 15px;
+box-sizing: border-box;
+font-size: 14px;
 }
 .form select {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+outline: 0;
+background: #f2f2f2;
+width: 100%;
+border: 0;
+margin: 0 0 15px;
+padding: 15px;
+box-sizing: border-box;
+font-size: 14px;
 }
 .form button {
-  text-transform: uppercase;
-  outline: 0;
-  background: rgb(29,74,105);
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
+text-transform: uppercase;
+outline: 0;
+background: rgb(29,74,105);
+width: 100%;
+border: 0;
+padding: 15px;
+color: #FFFFFF;
+font-size: 14px;
+-webkit-transition: all 0.3 ease;
+transition: all 0.3 ease;
+cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: rgb(35,85,110);
+background: rgb(35,85,110);
 }
-
 
 
 @media (orientation: portrait) {
-  .form {
-  margin-top: -50px;
-  }
+.form {
+margin-top: -50px;
 }
-*/
-
+}
+*/ 
+  
