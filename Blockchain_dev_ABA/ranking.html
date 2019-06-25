@@ -1,162 +1,170 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-        <meta charset="utf-8" />
-        <!-- ABA - Balise to enhance mobile display-->
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, target-densitydpi=device-dpi"/>
-        <!-- ABA - Balise to enhance mobile display - End -->
-        <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href="styles/ranking.css" />
-        <title>MyWallet - Aurexia</title> 
-    </head>
-    
-<body>
-        <header>
-            <div id="blockHeader">
-                <div id = "aurexiaName">AUREXIA</div>
-                <div id = "walletName">WALLET</div>
-                <div id="identity">
-                    <div id = "name">Loading</div>
-                </div>
-            </div>
-            <hr>
-            <nav>
-                <ul>
-                    <li><a href='main.html'>HOME </a></li>
-                    <li><a href='ranking.html'>RANKING </a></li>
-                    <li><a class = "active" href='history.html'>HISTORY </a></li>
-                    <li><a href='donation.html'>DONATION </a></li>
-                    <li><a id="adminPage" href='admin.html'>ADMIN </a></li>
-                </ul>
-            </nav>
-        </header>
-            <section id="rankingsPage">
-                <div class="form">
-                    <form id="rankingChoice">
-                        <label for="dest-select-ranking"> Choose the ranking </label>
-                        <select id="dest-select-ranking" required>
-                            <option value="balance">Balance Ranking</option>
-                            <option value="transaction">Total Transaction Ranking</option>
-                            <option value="send">Total Send Ranking</option>
-                            <option value="receive">Total Receive Ranking</option>
-                        </select>
-                        <button onclick="return chooseRanking()">Validate</button>
-                    </form>
-                </div>
-    </section>
+    <head>
+		<meta charset="utf-8" />
+		<!-- ABA - Balise to enhance mobile display-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, target-densitydpi=device-dpi"/>
+		<!-- ABA - Balise to enhance mobile display - End -->
+        <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
+        <link rel = "stylesheet" href = "styles/style.css" />
+        <link rel = "stylesheet" href = "styles/header.css" />
+		<link rel = "stylesheet"  href="styles/adminList.css" />
+        <title>MyWallet - Aurexia</title> 
+    </head>
 
-            <div id = "ownRanking">
-                <p class="ownRankingTxt">You are currently ranked </p>
-            </div>
-<!--
+    <body>
+		<div id="block_page">
+	<header>
+		<div id="logo">
+			<img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
+		</div>
+		<nav>
+		<p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
+		<p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
+		<p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
+		<p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
+		</nav>
+		<div id="identity">
+			<br> <div id = "name">Loading </div>
+		</div>
+	</header>
+	<section id='notifBanner'>
+		<img id="arrow" src="images/pageArrow.png">
+		<div id="notifs">
+			<div data-simplebar id="history">
+			</div>
+		</div>
+	</section>
 
-            <div id="table1">
-                <div class="container-table">
-                    <div class="wrap-table">
-                        <div class="table">
-                            <table id="table_content1">
-                                <thead>
-                                    <tr>
-                                        <th class="column1">Ranking</th>
-                                        <th class="column2">Name</th>
-                                        <th class="column3">AST Balance</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="content" class="table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+	<section id="rankingsPage">
+		<div class="form">
+		  <h1> Choose the ranking </h1>
+		  <form id="rankingChoice">
+			<select id="dest-select-ranking" required>
+				  <option value="balance">Balance Ranking</option>
+				  <option value="transaction">Total Transaction Ranking</option>
+				  <option value="send">Total Send Ranking</option>
+				  <option value="receive">Total Receive Ranking</option>
+			  </select>
+			<button onclick="return chooseRanking()">Validate</button>
+		  </form>
+		</div>
+    </section>
 
-            <div id = "RankingTransaction">
-                <p class="ownRankingTxt">Transaction rank : . You have made ..... transactions </p>
-            </div>
-            <div id = "transactionRecu">
-                <p class="ownRankingTxt">Number of send transactions : </p>
-            </div>
-            <div id = "transactionSend">
-                <p class="ownRankingTxt">Number of receive transactions : </p>
-            </div>
+	<div id = "ownRanking">
+		<p class="ownRankingTxt">You are currently ranked </p>
+	</div>
 
-            <div id="table2">
-                <div class="container-table">
-                    <div class="wrap-table">
-                        <div class="table">
-                            <table id="table_content2">
-                                <thead>
-                                    <tr>
-                                        <th class="column1">Ranking</th>
-                                        <th class="column2">Name</th>
-                                        <th class="column3">Total transaction</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="content2" class="table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+	<div id="table1">
+		<div class="container-table">
+			<div class="wrap-table">
+				<div class="table">
+					<table id="table_content1">
+						<thead>
+							<tr>
+								<th class="column1">Ranking</th>
+								<th class="column2">Name</th>
+								<th class="column3">AST Balance</th>
+							</tr>
+						</thead>
+						<tbody id="content" class="table-body">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            <div id = "RankingSend">
-                <p class="ownRankingTxt">Send rank : .</p>
-            </div>
-            <div id = "totalSend">
-                <p class="ownRankingTxt">Total AST Send : .</p>
-            </div>
+	<div id = "RankingTransaction">
+		<p class="ownRankingTxt">Transaction rank :       . You have made ..... transactions </p>
+	</div>
+	<div id = "transactionRecu">
+		<p class="ownRankingTxt">Number of send transactions : </p>
+	</div>
+	<div id = "transactionSend">
+		<p class="ownRankingTxt">Number of receive transactions : </p>
+	</div>
 
-            <div id="table3">
-                <div class="container-table">
-                    <div class="wrap-table">
-                        <div class="table">
-                            <table id="table_content3">
-                                <thead>
-                                    <tr>
-                                        <th class="column1">Ranking</th>
-                                        <th class="column2">Name</th>
-                                        <th class="column3">Total AST Send</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="content3" class="table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+	<div id="table2">
+		<div class="container-table">
+			<div class="wrap-table">
+				<div class="table">
+					<table id="table_content2">
+						<thead>
+							<tr>
+								<th class="column1">Ranking</th>
+								<th class="column2">Name</th>
+								<th class="column3">Total transaction</th>
+							</tr>
+						</thead>
+						<tbody id="content2" class="table-body">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            <div id = "RankingReceive">
-                <p class="ownRankingTxt">Receive rank : .</p>
-            </div>
-            <div id = "totalReceive">
-                <p class="ownRankingTxt">Total AST Receive : .</p>
-            </div>
+	<div id = "RankingSend">
+		<p class="ownRankingTxt">Send rank :       .</p>
+	</div>
+	<div id = "totalSend">
+		<p class="ownRankingTxt">Total AST Send :       .</p>
+	</div>
 
-            <div id="table4">
-                <div class="container-table">
-                    <div class="wrap-table">
-                        <div class="table">
-                            <table id="table_content4">
-                                <thead>
-                                    <tr>
-                                        <th class="column1">Ranking</th>
-                                        <th class="column2">Name</th>
-                                        <th class="column3">Total AST Receive</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="content4" class="table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>  
--->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            <script type="text/javascript" src="scripts/main.js"></script>
-            <script type="text/javascript" src="scripts/ranking.js"></script>
-        </body>
-</html> 
+	<div id="table3">
+		<div class="container-table">
+			<div class="wrap-table">
+				<div class="table">
+					<table id="table_content3">
+						<thead>
+							<tr>
+								<th class="column1">Ranking</th>
+								<th class="column2">Name</th>
+								<th class="column3">Total AST Send</th>
+							</tr>
+						</thead>
+						<tbody id="content3" class="table-body">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id = "RankingReceive">
+		<p class="ownRankingTxt">Receive rank :       .</p>
+	</div>
+	<div id = "totalReceive">
+		<p class="ownRankingTxt">Total AST Receive :       .</p>
+	</div>
+
+	<div id="table4">
+		<div class="container-table">
+			<div class="wrap-table">
+				<div class="table">
+					<table id="table_content4">
+						<thead>
+							<tr>
+								<th class="column1">Ranking</th>
+								<th class="column2">Name</th>
+								<th class="column3">Total AST Receive</th>
+							</tr>
+						</thead>
+						<tbody id="content4" class="table-body">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>© Copyright Aurexia – All rights reserved<br /></p>
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/ranking.js"></script>
+	</body>
+</html>
+
