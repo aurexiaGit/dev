@@ -455,6 +455,8 @@ const getRankingList = async () =>{
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
 	resultAll[3].splice(0,1);
+	resultAll[4].splice(0,1);
+	resultAll[5].splice(0,1);
 
 
 	let nbrTransactionPerso = {};
