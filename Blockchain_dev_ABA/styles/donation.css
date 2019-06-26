@@ -108,6 +108,14 @@ html {
     border-color:#1554DF;
     border-radius: 0.6em
   }
+
+  #opening{
+      margin-top: 4%;
+      text-align: center;
+      color:#1554DF;
+      font-weight: bold;
+      font-size: 1.1em;
+  }
   
   #balance{
     position: relative;
@@ -131,7 +139,7 @@ html {
     margin-top: 10%; */
     margin-top: 5%;
   
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
   #astValue{
     position: relative;
@@ -163,21 +171,8 @@ html {
   
     /*ABA 25062019
     margin-top: 10%; */
-    margin-top: -6%;
   }
-  
-  label {
-    display: block;
-    font-weight: none;
-    color: #1554DF;
-    margin-bottom: 1%;
-  
-    /*ABA 25062019 */
-    margin-top: -2%;
-    
-     
-  }
-  
+
   input{
     position: relative;
     border: none;
@@ -189,8 +184,11 @@ html {
     font-size: 1.2em;
   }
   
-  input:focus {
-    border: 1px solid #1554DF;
+  label {
+    display: block;
+    font-weight: none;
+    color: #1554DF;
+    margin-bottom: 1%;
   }
   
   option{
@@ -198,6 +196,7 @@ html {
   }
   
   #dest-select1{
+    position: relative;
     margin-bottom: 4%;
     border: none;
     border-bottom: 1px solid;
