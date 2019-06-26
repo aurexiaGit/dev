@@ -92,7 +92,7 @@ html {
   /*CSS Section Rankings Table */
   #rankingsPage{
     position:relative;
-    
+
     /* ABA 26 06 2019 
     background-color: #1554DF; */
     background-color: white;
@@ -119,7 +119,11 @@ html {
   label {
     display: block;
     font-weight: none;
-    color: white;
+
+    /* ABA 26 06 2019
+    color: white; */
+    color: #1554DF;
+    
     margin-bottom: 1%;
     font-size: 1.1em;
   }
