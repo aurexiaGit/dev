@@ -447,13 +447,12 @@ contract AurexiaSocialToken is Owned, SafeMath {
         }
         return true; 
     }
-    function transferToAssociation (address _address) public returns (bool){
+    function transferToAssociation (address _address, uint256 _amount) public returns (bool){
         require (aurexiaMembers[msg.sender].isMember == true);
         require (openDonation == true);
         require (associationList[_address].isPartner == true);
-        uint256 value = balanceOf(msg.sender);
         bytes32 donationText = "Sending to Association";
-        _transfer (msg.sender, _address, value, donationText);
+        _transfer (msg.sender, _address, _amount, donationText);
         return true; 
     }
 
@@ -487,6 +486,10 @@ contract AurexiaSocialToken is Owned, SafeMath {
 
     function getAssoName (address _address) public view returns (bytes32){
         return associationList[_address].name;
+    }
+
+    function isDonationOpen () public view returns (bool){
+        return openDonation;
     }
 
 

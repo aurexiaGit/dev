@@ -899,6 +899,10 @@
         {
           "name": "_address",
           "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
         }
       ],
       "name": "transferToAssociation",
@@ -911,7 +915,7 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xd980151c"
+      "signature": "0x32e639e4"
     },
     {
       "constant": true,
@@ -1012,6 +1016,21 @@
       "stateMutability": "view",
       "type": "function",
       "signature": "0x11f7b854"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isDonationOpen",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x33ccaffa"
     },
     {
       "constant": true,
