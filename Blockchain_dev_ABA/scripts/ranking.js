@@ -146,7 +146,7 @@ const getRankingTable = (_usersTop) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = "#" + _usersTop[key].classement;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
