@@ -93,21 +93,13 @@ html {
 
   #historyPage{
     position:relative;
-
-    /* ABA 26 06 2019 
-    background-color: #1554DF; */
-    background-color: white;
-
+    background-color: #1554DF;
     margin-left: 4%;
     margin-right:4%;
     margin-top: 1%;
     border-width:1px;
     border-style:solid;
     border-color:#1554DF;
-    /* ABA 26 06 2019 
-    border-top-left-radius: 0.6em;
-    border-top-right-radius: 0.6em;
-    */
     border-radius: 0.6em;
   }
   
@@ -133,6 +125,10 @@ html {
 
 thead{
   background-color: #1554DF;
+}
+
+tbody{
+  background-color: white;
 }
 
 #topTable{
