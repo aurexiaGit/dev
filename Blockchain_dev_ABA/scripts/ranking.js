@@ -606,31 +606,45 @@ const getRankingList = async () =>{
 	//ABA 26 06 2019
 	//TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ totalTrans.toString() +" transactions</p>";
 	if (rankingNbrTransaction == 1){
-		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"st</p>";
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"st</div>";
 	}
 	else if (rankingNbrTransaction == 2){
-		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"nd</p>";
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"nd</div>";
 	}
 	else if (rankingNbrTransaction == 3){
-		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"rd</p>";
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"rd</div>";
 	}
 	else {
-		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"th</p>";
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"th</div>";
 	}
 
 	//ABA 26 06 2019
 	let SR = document.getElementById("RankingSend");
 	if (rankingSendTransaction == 1){
-		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"st</p>";
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"st</div>";
 	}
 	else if (rankingSendTransaction == 2){
-		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"nd</p>";
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"nd</div>";
 	}
 	else if (rankingSendTransaction == 3){
-		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"rd</p>";
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"rd</div>";
 	}
 	else {
-		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"</p>";
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"</div>";
+	}
+
+	let RR = document.getElementById("RankingReceive");
+	if (rankingSendTransaction == 1){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"st</div>";
+	}
+	else if (rankingSendTransaction == 2){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"nd</div>";
+	}
+	else if (rankingSendTransaction == 3){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"rd</div>";
+	}
+	else {
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"</div>";
 	}
 	
 	//SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"</p>";

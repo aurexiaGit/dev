@@ -180,11 +180,21 @@ html {
     border-bottom-right-radius: 0.6em;
 }
 
+#ownRankingPhrase{
+  position: relative;
+  margin-top:10%;
+  text-align:center;
+  font-size:1em;
+  color: #1554DF;
+}
+
+
 #ownRanking{
     position: relative;
     text-align:center;
-    font-size:1.3em;
+    font-size:2em;
     color: #1554DF;
+    margin-top:1%;
 }
 
 /* ABA 26 06 2019 */
@@ -194,6 +204,7 @@ html {
   text-align:center;
   font-size:1.3em;
   color: #1554DF;
+  margin-top:1%;
 }
 
 #RankingReceive{
@@ -201,6 +212,7 @@ html {
   text-align:center;
   font-size:1.3em;
   color: #1554DF;
+  margin-top:1%;
 }
 
 #RankingSend{
@@ -208,13 +220,11 @@ html {
   text-align:center;
   font-size:1.3em;
   color: #1554DF;
+  margin-top:1%;
 }
 
 /* END ABA 26 06 2019 */
 
-.ownRankingText{
-    margin-top:4%;
-}
 
 #bodyTrait{
     color:#1554DF;
