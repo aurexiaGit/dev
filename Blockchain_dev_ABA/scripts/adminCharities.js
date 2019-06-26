@@ -153,11 +153,6 @@ const getCharityTable = (_charity) => {
 		table.appendChild(row)
 
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
-		var column1 = document.createElement('td')
-		column1.className = "column1"
-		column1.innerHTML = "<img src = '" + _charity[key].pic + "'>"
-		row.appendChild(column1)
-
 		var column2 = document.createElement('td')
 		column2.className = "column2"
 		column2.innerHTML = _charity[key].name
