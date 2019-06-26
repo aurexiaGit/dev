@@ -148,24 +148,24 @@ const getCharityTable = (_charity) => {
 	for (var key in _charity){
 		
 		//création de la nouvelle ligne
-		var row = document.createElement('tr')
-		row.class = "row" + i.toString() + " body"
-		table.appendChild(row)
+		var row = document.createElement('tr');
+		row.class = "row" + i.toString() + " body";
+		table.appendChild(row);
 
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
-		var column2 = document.createElement('td')
-		column2.className = "column2"
-		column2.innerHTML = _charity[key].name
-		row.appendChild(column2)
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _charity[key].name;
+		row.appendChild(column2);
 
-		var column3 = document.createElement('td')
-		column3.className = "column3"
-		column3.innerHTML = _charity[key].address
-		row.appendChild(column3)
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = _charity[key].address;
+		row.appendChild(column3);
 
-		var column4 = document.createElement('td')
-		column4.className = "column4"
-		column4.innerHTML = _charity[key].balance
+		var column4 = document.createElement('td');
+		column4.className = "column4";
+		column4.innerHTML = Math.round(_charity[key].balance*Math.pow(10,-18));
 		row.appendChild(column4)
 
 		i++
