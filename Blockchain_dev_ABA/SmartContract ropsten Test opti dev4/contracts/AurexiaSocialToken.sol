@@ -530,18 +530,22 @@ contract AurexiaSocialToken is Owned, SafeMath {
         return (_nbrTransaction, _totalSend, _totalReceive, _nbrSend, _nbrReceive);
     }
 
-    function getAllInfoTransaction () public view returns (uint256[]memory, uint256[]memory, uint256[]memory, bytes32[]memory){
+    function getAllInfoTransaction () public view returns (uint256[]memory, uint256[]memory, uint256[]memory, uint256[]memory, uint256[]memory, bytes32[]memory){
         uint256[] memory _nbrTransaction = new uint256[](sizeListAccount);
         uint256[] memory _nbrSend = new uint256[](sizeListAccount);
+        uint256[] memory _totalReceive = new uint256[](sizeListAccount);
+        uint256[] memory _totalSend = new uint256[](sizeListAccount);
         uint256[] memory _nbrReceive = new uint256[](sizeListAccount);
         bytes32[] memory _nameUser = new bytes32[](sizeListAccount);
         for (uint256 i=0; i<sizeListAccount; i++){
           _nbrTransaction[i] = getNbrTransaction(aurexiaAccounts[i]);
-          _nbrSend[i] = getTotalSend(aurexiaAccounts[i]);
-          _nbrReceive[i] = getTotalReceive(aurexiaAccounts[i]);
+          _nbrSend[i] = getNbrSend(aurexiaAccounts[i]);
+          _totalReceive[i] = getTotalReceive(aurexiaAccounts[i]);
+          _totalSend[i] = getTotalSend(aurexiaAccounts[i]);
+          _nbrReceive[i] = getNbrReceive(aurexiaAccounts[i]);
           _nameUser[i] = getName(aurexiaAccounts[i]);
         }
-        return (_nbrTransaction, _nbrSend, _nbrReceive, _nameUser);
+        return (_nbrTransaction, _nbrSend, _totalReceive, _totalSend, _nbrReceive, _nameUser);
     }
 
 
