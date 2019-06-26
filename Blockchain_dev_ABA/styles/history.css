@@ -150,19 +150,19 @@ thead{
     margin-right:auto;
     text-align: center;
     border-collapse: collapse;
+    border-width: 1px;
 }
 
 th{
   color:white;
-  border-width: 1px;
+  border-width: thin;
   border: solid #1554DF
 }
 
 td{
     font-size:1em;
     color:#1554DF;
-    padding-top:10%;
-    border-width: 1px;
+    border-width: thin;
     border: solid #1554DF
 }
 
