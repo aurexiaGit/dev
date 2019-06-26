@@ -594,11 +594,37 @@ const getRankingList = async () =>{
 	getReceiveTable(topTransactionReceive);
 
 	let TR = document.getElementById("RankingTransaction");
-	//ABA 26 06 2019 - Only display the nb of transactions SENT
+	//ABA 26 06 2019
 	//TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ totalTrans.toString() +" transactions</p>";
-	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ nbrEnvoie.toString() +" transactions</p>";
+	if (rankingNbrTransaction == 1){
+		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"st</p>";
+	}
+	else if (rankingNbrTransaction == 2){
+		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"nd</p>";
+	}
+	else if (rankingNbrTransaction == 3){
+		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"rd</p>";
+	}
+	else {
+		TR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingNbrTransaction.toString() +"th</p>";
+	}
+
+	//ABA 26 06 2019
 	let SR = document.getElementById("RankingSend");
-	SR.innerHTML="<p class='ownRankingTxt'>Rank : "+ rankingSendTransaction.toString() +"</p>";
+	if (rankingSendTransaction == 1){
+		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"st</p>";
+	}
+	else if (rankingSendTransaction == 2){
+		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"nd</p>";
+	}
+	else if (rankingSendTransaction == 3){
+		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"rd</p>";
+	}
+	else {
+		SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"</p>";
+	}
+	
+	//SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"</p>";
 	
 	//ABA 26 06 2019
 	//let TAS = document.getElementById("totalSend");
