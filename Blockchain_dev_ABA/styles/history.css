@@ -132,8 +132,13 @@ html {
 /*CSS allTable */
 
 thead{
-    display:none;
+  background-color: #1554DF;
 }
+
+#topTable{
+  color:white;
+}
+
 
 .table{
     position: relative;
@@ -143,14 +148,39 @@ thead{
     position:relative;
     margin-left: auto;
     margin-right:auto;
+    text-align: center;
+    border-collapse: collapse;
 }
 
 th{
+  color:white;
+  border-width: 1px;
+  border: solid #1554DF
+}
+
+td{
     font-size:1em;
     color:#1554DF;
     padding-top:10%;
+    border-width: 1px;
+    border: solid #1554DF
 }
-  
+
+.column1History{
+  width: 20%;
+}
+
+.column2History{
+  width: 25%;
+}
+
+.column3History{
+  width: 20%;
+}
+
+.column4History{
+  width: 27%;
+}
   
   /* CSS Body*/
   
