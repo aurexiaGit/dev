@@ -6,13 +6,58 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, target-densitydpi=device-dpi"/>
         <!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
-        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet"  href="styles/adminList.css" />
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel = "stylesheet" href = "styles/history.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
+    <body>
+        <header>
+                <div id="blockHeader">
+                    <div id = "aurexiaName">AUREXIA</div>
+                    <div id = "walletName">WALLET</div>
+                    <div id="identity">
+                        <div id = "name">Loading</div>
+                    </div>
+                </div>
+                <hr>
+                <nav>
+                    <ul>
+                        <li><a href='main.html'>HOME </a></li>
+                        <li><a href='ranking.html'>RANKING </a></li>
+                        <li><a class = "active" href='history.html'>HISTORY </a></li>
+                        <li><a href='donation.html'>DONATION </a></li>
+                        <li><a id="adminPage" href='admin.html'>ADMIN </a></li>
+                    </ul>
+                </nav>
+        </header>
+        
+        <section id="historyPage">
+            <div id="container-table-history">
+                <table id ="historyTable">
+                    <thead>
+                        <tr>
+                            <th class="column1History">Date</th>
+                            <th class="column2History">Type</th>
+                            <th class="column3History">From</th>
+                            <th class="column4History">To</th>
+                            <th class="column5History">Amount</th>
+                            <th class="column6History">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content-history" class="table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/history.js"></script>
+        <script type="text/javascript" src="scripts/ranking.js"></script>
+    </body>
+
+
+    <!--
     <body>
     	<header>
             <nav>
@@ -58,5 +103,6 @@
 		<script type="text/javascript" src="scripts/history.js"></script>
         <script type="text/javascript" src="scripts/ranking.js"></script>
     </body>
+    -->
 </html>
 
