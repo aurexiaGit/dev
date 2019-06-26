@@ -146,11 +146,8 @@ thead{
 
 #historyTable{
     position:relative;
-    margin-left: auto;
-    margin-right:auto;
     text-align: center;
     border-collapse: collapse;
-    border-width: 1px;
 }
 
 th{
