@@ -1,14 +1,17 @@
 document.getElementById("RankingTransaction").style.display = "none";
-document.getElementById("transactionRecu").style.display = "none";
-document.getElementById("transactionSend").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("transactionRecu").style.display = "none";
+//document.getElementById("transactionSend").style.display = "none";
 document.getElementById("table2").style.display = "none";
 
 document.getElementById("RankingSend").style.display = "none";
-document.getElementById("totalSend").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("totalSend").style.display = "none";
 document.getElementById("table3").style.display = "none";
 
 document.getElementById("RankingReceive").style.display = "none";
-document.getElementById("totalReceive").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
 
