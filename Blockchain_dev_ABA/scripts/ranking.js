@@ -80,14 +80,14 @@ const chooseRanking = () =>{
 		//document.getElementById("transactionRecu").style.display = "inline";
 		//document.getElementById("transactionSend").style.display = "inline";
 
-		document.getElementById("table2").style.display = "block";
+		document.getElementById("table2").style.display = "none";
 
 		document.getElementById("RankingSend").style.display = "inline";
 
 		//ABA 26 06 2019 
 		//document.getElementById("totalSend").style.display = "none";
 
-		document.getElementById("table3").style.display = "inline";
+		document.getElementById("table3").style.display = "block";
 
 		document.getElementById("RankingReceive").style.display = "none";
 
