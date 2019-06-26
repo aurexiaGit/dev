@@ -95,6 +95,7 @@ const chooseRanking = () =>{
 		//document.getElementById("totalReceive").style.display = "none";
 
 		document.getElementById("table4").style.display = "none";
+	}
 	if (type == "receive"){
 		document.getElementById("ownRanking").style.display = "none";
 		document.getElementById("table1").style.display = "none";
