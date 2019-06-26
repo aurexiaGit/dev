@@ -7,13 +7,53 @@
 		<!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/header.css" />
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+        <link rel = "stylesheet" href = "styles/donation.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
+    <body>
+        <header>
+            <div id="blockHeader">
+                <div id = "aurexiaName">AUREXIA</div>
+                <div id = "walletName">WALLET</div>
+                <div id="identity">
+                    <div id = "name">Loading</div>
+                </div>
+            </div>
+            <hr>
+            <nav>
+                <ul>
+                    <li><a class = "active" href='main.html'>HOME </a></li>
+                    <li><a href='ranking.html'>RANKING </a></li>
+                    <li><a href='history.html'>HISTORY </a></li>
+                    <li><a href='donation.html'>DONATION </a></li>
+                    <li><a id="adminPage" href='admin.html'>ADMIN </a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="donationPage">
+            <div class="form" style="margin:0 0 10% 0;">
+                <div id="balance">
+                    <div id="astValue">0</div>
+                    <div id="ast">AST</div>
+                </div>
+                <form id="send">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" required/>
+                    <label for="dest-select">Select Charity</label>
+                    <select id="dest-select" required>
+                        <option value="init"></option>
+                    </select>
+                    <button onclick="return transferCharity()">Send</button>
+                    <div id="loading"></div>
+                </form>
+            </div>
+        </div>
+
+
+
+    <!--
     <body>
         <header>
             <nav>
@@ -55,6 +95,9 @@
             <div id="rankPage">
             </div>
         </section>
+-->
+    
+
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/donation.js"></script>
     </body>
