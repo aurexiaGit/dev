@@ -86,6 +86,7 @@ getCharity();
 const transferCharity = async() => {
 	let amount = document.getElementById("amount").value
 	let address = document.getElementById("dest-select1").value
+	amount = amount*Math.pow(10,18);
 	
 	const transferEvent = async (_address, _amount) =>{
 		return new Promise(function(resolve, reject){
