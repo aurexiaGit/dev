@@ -907,6 +907,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_address",
         "type": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
     "name": "transferToAssociation",
@@ -919,7 +923,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0xd980151c"
+    "signature": "0x32e639e4"
   },
   {
     "constant": true,
@@ -1020,6 +1024,21 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x11f7b854"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isDonationOpen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x33ccaffa"
   },
   {
     "constant": true,
@@ -1153,7 +1172,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x9080D5b49aDb5B82F3E1740DDA5A40E19C0D8937');
+var Token = TokenABI.at('0xD16dE630876E4d5f58b8B6366df23F4Fe5bA53eA');
 
 // check that user has Metamask installed 
 
