@@ -232,7 +232,7 @@ const getCharityList = async () =>{
 		charity[name]={};
 		charity[name].address=address;
 		charity[name].name=name;
-		charity[name].balance=balance*Math.pow(10,-18);
+		charity[name].balance=balance;
 		console.log("charity balance");
 		console.log(charity[name].balance);
 		i++
