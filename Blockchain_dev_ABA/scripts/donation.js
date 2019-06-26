@@ -57,6 +57,7 @@ const getCharity = async () =>{
 	}
 
 	let donationOpen = await isOpen();
+	console.log(donationOpen);
 	if (donationOpen == true){
 		let open = getElementById("opening");
 		open.innerHTML="<div id='opening'>Donation Status: Open</div>"
