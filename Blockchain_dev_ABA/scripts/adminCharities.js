@@ -165,7 +165,7 @@ const getCharityTable = (_charity) => {
 
 		var column4 = document.createElement('td');
 		column4.className = "column4";
-		column4.innerHTML = Math.round(_charity[key].balance*Math.pow(10,-18));
+		column4.innerHTML = Math.round(_charity[key].balance);
 		row.appendChild(column4)
 
 		i++
@@ -232,7 +232,9 @@ const getCharityList = async () =>{
 		charity[name]={};
 		charity[name].address=address;
 		charity[name].name=name;
-		charity[name].balance=balance;
+		charity[name].balance=balance*Math.pow(10,-18);
+		console.log("charity balance");
+		console.log(charity[name].balance);
 		i++
 	}
 
