@@ -411,7 +411,7 @@ const getRankingList = async () =>{
 	}
 
 	var rank = document.getElementById("ownRanking");
-	rank.innerHTML="<p class='ownRankingTxt'>" + ownRank.toString() + ownRankEnd  + "</p>";
+	rank.innerHTML="<div class='ownRankingTxt'>" + ownRank.toString() + ownRankEnd  + "</div>";
 	
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
