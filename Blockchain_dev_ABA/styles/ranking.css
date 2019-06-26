@@ -259,6 +259,15 @@ th{
     color:#1554DF;
     padding-top:10%;
 }
+
+/*ABA 26 09 2019 */
+.table-body{
+  font-size: 120%;
+  color: #1554DF;
+  display: table;
+  margin: 0 0 20% 0;
+  border-spacing: 1em;
+}
   
   
   /* CSS Body*/
