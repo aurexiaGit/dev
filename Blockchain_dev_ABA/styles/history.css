@@ -90,6 +90,7 @@ html {
   
   
   /*CSS Section Rankings Table */
+
   #historyPage{
     position:relative;
 
@@ -109,15 +110,6 @@ html {
     */
     border-radius: 0.6em;
   }
-
-  #rankingChoice{
-    position: relative;
-    text-align : center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-  }
-  
   
   label {
     display: block;
@@ -136,73 +128,8 @@ html {
     color: #1554DF
   }
   
-  #dest-select{
-    margin-bottom: 4%;
-    border: none;
-    border-bottom: 1px solid;
-    border-color: white;
-    background-color: #1554DF;
-    font-size: 1.2em;
-    text-align: center;
-  }
-  
   
 /*CSS allTable */
-
-#allTableau{
-    position:relative;
-    background: white;
-    margin-left: 4%;
-    margin-bottom: 4%;
-    margin-right:4%;
-    border-width:1px;
-    border-style:solid;
-    border-color:#1554DF;
-    border-top: none;
-    border-bottom-left-radius: 0.6em;
-    border-bottom-right-radius: 0.6em;
-}
-
-#ownRanking{
-    position: relative;
-    text-align:center;
-    font-size:1.3em;
-    color: #1554DF;
-}
-
-/* ABA 26 06 2019 */
-
-#RankingTransaction{
-  position: relative;
-  text-align:center;
-  font-size:1.3em;
-  color: #1554DF;
-}
-
-#RankingReceive{
-  position: relative;
-  text-align:center;
-  font-size:1.3em;
-  color: #1554DF;
-}
-
-#RankingSend{
-  position: relative;
-  text-align:center;
-  font-size:1.3em;
-  color: #1554DF;
-}
-
-/* END ABA 26 06 2019 */
-
-.ownRankingText{
-    margin-top:4%;
-}
-
-#bodyTrait{
-    color:#1554DF;
-    position: relative;
-}
 
 thead{
     display:none;
@@ -222,15 +149,6 @@ th{
     font-size:1em;
     color:#1554DF;
     padding-top:10%;
-}
-
-/*ABA 26 09 2019 */
-.table-body{
-  font-size: 120%;
-  color: #1554DF;
-  display: table;
-  margin: 0 0 5% 0;
-  border-spacing: 1em;
 }
   
   

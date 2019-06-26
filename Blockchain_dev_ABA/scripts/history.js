@@ -91,50 +91,40 @@ const getHistory = async () =>{
 				var d = new Date(parseInt(resultArray[key].timeStamp)*1000);
 				var date = d.getDate();
 				var month = d.getMonth(); 
-				var year = d.getFullYear();
-				var dateString = date + "-" + (month + 1) + "-" + year;
+				var dateString = date + "-" + (month + 1);
 
-				column1.innerHTML = dateString
-				row.appendChild(column1)
+				column1.innerHTML = dateString;
+				row.appendChild(column1);
 
-				var column2 = document.createElement('td')
-				column2.className = "column2History"
 				if (resultArray[key].from == curAddress) {
-					column2.innerHTML = "Transfer"
+					var column2 = document.createElement('td');
+					column2.className = "column2History";
+					let addressTo = resultArray[key].to;
+					column2.innerHTML = _users[addressTo].name;
+					row.appendChild(column2);
+
+					var column3 = document.createElement('td');
+					column3.className = "column3History";
+					column3.innerHTML = "-" + Math.round(resultArray[key].value*Math.pow(10,-18));
+					row.appendChild(column3)
 				}
 				else {
-					column2.innerHTML = "Reception"
-				}
-				row.appendChild(column2)
+					var column2 = document.createElement('td')
+					column2.className = "column2History";
+					let addressFrom = resultArray[key].from;
+					column2.innerHTML = _users[addressFrom].name;
+					row.appendChild(column2)
 
-				var column3 = document.createElement('td')
-				column3.className = "column3History";
-				let addressFrom = resultArray[key].from;
-				console.log("addressFrom")
-				console.log(resultArray[key].from)
-				column3.innerHTML = _users[addressFrom].name;
-				row.appendChild(column3)
-
-				var column4 = document.createElement('td')
-				column4.className = "column4History"
-				let addressTo = resultArray[key].to;
-				column4.innerHTML = _users[addressTo].name;
-				row.appendChild(column4)
-				
-				var column5 = document.createElement('td')
-				column5.className = "column5History"
-				if (resultArray[key].from == "0xc4d446c6B924c431f89214319D5A3e6bb67e7627") {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
+					var column3 = document.createElement('td');
+					column3.className = "column3History";
+					column3.innerHTML = "+" + Math.round(resultArray[key].value*Math.pow(10,-18));
+					row.appendChild(column3)
 				}
-				else {
-					column5.innerHTML = Math.round(resultArray[key].value*Math.pow(10,-18))
-				}
-				row.appendChild(column5)
 
-				var column6 = document.createElement('td');
-				column6.className = "column6History";
-				column6.innerHTML = web3.toAscii(_listPersoWording[3][key]);
-				row.appendChild(column6);
+				var column4 = document.createElement('td');
+				column4.className = "column4History";
+				column4.innerHTML = web3.toAscii(_listPersoWording[3][key]);
+				row.appendChild(column4);
 				
 				i++
 			}
