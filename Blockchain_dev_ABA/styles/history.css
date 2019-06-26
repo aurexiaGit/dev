@@ -150,6 +150,7 @@ thead{
     margin-right:auto;
     text-align: center;
     border-collapse: collapse;
+    border-radius: 0.6em;
 }
 
 th{
