@@ -391,9 +391,11 @@ const getRankingList = async () =>{
 	let totalReceive = Math.round(result[2]*Math.pow(10,-18));
 
 	let recu = document.getElementById("transactionRecu");
-	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
+	//ABA 26 06 2019 - No need to display the nb of transactions received and send
+	//recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
 	let send = document.getElementById("transactionSend");
-	send.innerHTML="<p class='ownRankingTxt'>Number of send transaction : " + nbrEnvoie.toString() + "</p>";
+	//ABA 26 06 2019 - No need to display the nb of transactions received and send
+	//send.innerHTML="<p class='ownRankingTxt'>Number of send transaction : " + nbrEnvoie.toString() + "</p>";
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -555,13 +557,15 @@ const getRankingList = async () =>{
 	getReceiveTable(topTransactionReceive);
 
 	let TR = document.getElementById("RankingTransaction");
-	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +". You have made "+ totalTrans.toString() +" transactions</p>";
+	//ABA 26 06 2019 - Only display the nb of transactions SENT
+	//TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ totalTrans.toString() +" transactions</p>";
+	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ nbrEnvoie.toString() +" transactions</p>";
 	let SR = document.getElementById("RankingSend");
-	SR.innerHTML="<p class='ownRankingTxt'>Send rank : "+ rankingSendTransaction.toString() +"</p>";
+	SR.innerHTML="<p class='ownRankingTxt'>Rank : "+ rankingSendTransaction.toString() +"</p>";
 	let TAS = document.getElementById("totalSend");
 	TAS.innerHTML="<p class='ownRankingTxt'>Total AST Send : "+ totalSend.toString() +"</p>";
 	let RR = document.getElementById("RankingReceive");
-	RR.innerHTML="<p class='ownRankingTxt'>Receive rank : "+ rankingReceiveTransaction.toString() +"</p>";
+	RR.innerHTML="<p class='ownRankingTxt'>Rank : "+ rankingReceiveTransaction.toString() +"</p>";
 	let TAR = document.getElementById("totalReceive");
 	TAR.innerHTML="<p class='ownRankingTxt'>Total AST Receive : "+ totalReceive.toString() +"</p>";
 

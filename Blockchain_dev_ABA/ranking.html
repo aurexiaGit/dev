@@ -35,18 +35,170 @@
         <section id="rankingsPage">
             <div class="form">
             <form id="rankingChoice">
-                <label for="dest-select-ranking">Choose the ranking type</label>
+                <label for="dest-select-ranking">Select the ranking type</label>
                 <select id="dest-select-ranking" required>
-                    <option value="balance">Balance Ranking</option>
-                    <option value="transaction">Total Transaction Ranking</option>
-                    <option value="send">Total Send Ranking</option>
-                    <option value="receive">Total Receive Ranking</option>
+                    <option value="balance">Balance</option>
+                    <option value="transaction">Number of transactions</option>
+                    <option value="send">Number of tokens sent</option>
+                    <option value="receive">Number of tokens received</option>
                 </select>
                 <button onclick="return chooseRanking()">Validate</button>
             </form>
             </div>
+
+            <div id = "ownRanking">
+                <p class="ownRankingTxt">You are currently ranked </p>
+            </div>
+            
+            <div id = "RankingTransaction">
+                    <p class="ownRankingTxt">Transaction rank :       . You have made ..... transactions </p>
+            </div>
+
+            <div id = "RankingReceive">
+                    <p class="ownRankingTxt">Rank :       .</p>
+            </div>
+            <div id = "RankingSend">
+                    <p class="ownRankingTxt">Rank :       .</p>
+            </div>
+
+            <hr id="bodyTrait" color=#1554DF>
+
+            <!--
+            <div id = "transactionRecu">
+                <p class="ownRankingTxt">Number of send transactions : </p>
+            </div>
+            <div id = "transactionSend">
+                <p class="ownRankingTxt">Number of receive transactions : </p>
+            </div>
+            
+            <div id = "totalSend">
+                <p class="ownRankingTxt">Total AST Send :       .</p>
+            </div>
+            
+            <div id = "totalReceive">
+                <p class="ownRankingTxt">Total AST Receive :       .</p>
+            </div>
+
+            -->
+
+            <div id="table1">
+                <table id="table_content1">
+                    <thead>
+                        <tr>
+                            <th class="column1">Ranking</th>
+                            <th class="column2">Name</th>
+                            <th class="column3">AST Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content" class="table-body">
+                        <tr>
+                            <th class="column1">#1</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">100  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#2</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">1000  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#3</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">10000  AST</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="table2">
+                <table id="table_content2">
+                    <thead>
+                            <tr>
+                            <th class="column1">Ranking</th>
+                            <th class="column2">Name</th>
+                            <th class="column3">Total transaction</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content2" class="table-body">
+                        <tr>
+                            <th class="column1">#1</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">200  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#2</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">2000  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#3</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">20000  AST</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="table3">
+                <table id="table_content3">
+                    <thead>
+                        <tr>
+                            <th class="column1">Ranking</th>
+                            <th class="column2">Name</th>
+                            <th class="column3">Total AST Send</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content3" class="table-body">
+                        <tr>
+                            <th class="column1">#1</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">300  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#2</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">3000  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#3</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">30000  AST</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="table4">
+                <table id="table_content4">
+                    <thead>
+                        <tr>
+                            <th class="column1">Ranking</th>
+                            <th class="column2">Name</th>
+                            <th class="column3">Total AST Receive</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content4" class="table-body">
+                        <tr>
+                            <th class="column1">#1</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">400  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#2</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">4000  AST</th>
+                        </tr>
+                        <tr>
+                            <th class="column1">#3</th>
+                            <th class="column2">Sébastien Pierre</th>
+                            <th class="column3">40000  AST</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
+        <!--
         <section id="allTableau">
 
             <div id = "ownRanking">
@@ -199,7 +351,7 @@
                 </table>
             </div>
         </section>
-
+        -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
 	<script type="text/javascript" src="scripts/ranking.js"></script>
