@@ -103,8 +103,11 @@ html {
     border-width:1px;
     border-style:solid;
     border-color:#1554DF;
+    /* ABA 26 06 2019 
     border-top-left-radius: 0.6em;
     border-top-right-radius: 0.6em;
+    */
+    border-radius: 0.6em;
   }
 
   #rankingChoice{
