@@ -46,7 +46,7 @@ const getHistory = async () =>{
 
 	const getCharityTaille = async () =>{
 		return new Promise(function(resolve, reject){
-		  Token.sizeListAccount((err, result) => {
+		  Token.getCharitySize((err, result) => {
 			if (err) return reject(err);
 			resolve(result);
 		})
@@ -63,7 +63,9 @@ const getHistory = async () =>{
 
 	//on inclue les charities dans les users (pour indiquer les transactions vers les charities)
 	let listCharityAndName = await getCharityAndName();
+	console.log(listCharityAndName);
 	let charityTaille = await getCharityTaille();
+	console.log(charityTaille);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
