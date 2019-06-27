@@ -62,8 +62,6 @@ const getHistory = async () =>{
 	console.log(listPersoWording);
 
 	//on inclue les charities dans les users (pour indiquer les transactions vers les charities)
-	let listCharityAndName = await getCharityAndName();
-	console.log(listCharityAndName);
 	let charityTaille = await getCharityTaille();
 	console.log(charityTaille);
 
@@ -75,14 +73,20 @@ const getHistory = async () =>{
 		users[address].address=address;
 		users[address].name=name;
 	}
+	
+	if (charityTaille !=0){
+		let listCharityAndName = await getCharityAndName();
+		console.log(listCharityAndName);
 
-	for (let i=0; i<charityTaille; i++) {
-		let address = listCharityAndName[0][i];
-		let name = web3.toAscii(listCharityAndName[1][i]);
-		users[address]={};
-		users[address].address=address;
-		users[address].name=name;
+		for (let i=0; i<charityTaille; i++) {
+			let address = listCharityAndName[0][i];
+			let name = web3.toAscii(listCharityAndName[1][i]);
+			users[address]={};
+			users[address].address=address;
+			users[address].name=name;
+		}
 	}
+	
 
 	//On doit intégrer l'adresse null car lors de le création d'un smart contract, l'admin est crédité par cette adresse (sans l'intégrer cela fait crasher la page)
 	users["0x0000000000000000000000000000000000000000"]={};
