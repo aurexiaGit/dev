@@ -36,6 +36,22 @@ const getHistory = async () =>{
 	  	})
 	})}
 
+	const getCharityAndName = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getCharityAddressAndName((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
+	})}
+
+	const getCharityTaille = async () =>{
+		return new Promise(function(resolve, reject){
+		  Token.sizeListAccount((err, result) => {
+			if (err) return reject(err);
+			resolve(result);
+		})
+	  })}
+
 	//récupération des informations
 	curAddress = await getCurAddress();
 	let listAddressAndName = await getMembersAndName();
@@ -45,10 +61,22 @@ const getHistory = async () =>{
 	console.log("liste perso");
 	console.log(listPersoWording);
 
+	//on inclue les charities dans les users (pour indiquer les transactions vers les charities)
+	let listCharityAndName = await getCharityAndName();
+	let charityTaille = await getCharityTaille();
+
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
 		let address = listAddressAndName[0][i];
 		name = web3.toAscii(listAddressAndName[1][i]);
+		users[address]={};
+		users[address].address=address;
+		users[address].name=name;
+	}
+
+	for (let i=0; i<charityTaille; i++) {
+		let address = listCharityAndName[0][i];
+		name = web3.toAscii(listCharityAndName[1][i]);
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
