@@ -68,7 +68,7 @@ const getHistory = async () =>{
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
 		let address = listAddressAndName[0][i];
-		name = web3.toAscii(listAddressAndName[1][i]);
+		let name = web3.toAscii(listAddressAndName[1][i]);
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
@@ -76,7 +76,7 @@ const getHistory = async () =>{
 
 	for (let i=0; i<charityTaille; i++) {
 		let address = listCharityAndName[0][i];
-		name = web3.toAscii(listCharityAndName[1][i]);
+		let name = web3.toAscii(listCharityAndName[1][i]);
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
