@@ -478,6 +478,14 @@ contract AurexiaSocialToken is Owned, SafeMath {
         return true;
     }
 
+    function getCharityAddressAndName () public view returns (address[] memory, bytes32[] memory){
+        bytes32[] memory nameCharity = new bytes32[](sizeListCharity);
+        for (uint256 i=0; i<sizeListCharity; i++){
+          nameCharity[i] = getAssoName(charityAccounts[i]);
+        }
+        return (charityAccounts, nameCharity);
+    }
+
   //Read function for associations
 
     function isAssoPartner (address _address) public view returns (bool){

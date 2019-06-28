@@ -979,6 +979,25 @@
     },
     {
       "constant": true,
+      "inputs": [],
+      "name": "getCharityAddressAndName",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x5eac2f0e"
+    },
+    {
+      "constant": true,
       "inputs": [
         {
           "name": "_address",
