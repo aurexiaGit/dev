@@ -1,3 +1,5 @@
+//Page pour se logger
+
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
@@ -12,7 +14,7 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "payable": false,
@@ -119,7 +121,21 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "indexNewWording",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -295,6 +311,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transfer",
@@ -322,6 +342,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transferFrom",
@@ -450,7 +474,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "_name",
-        "type": "string"
+        "type": "bytes32"
       },
       {
         "name": "_grade",
@@ -458,6 +482,37 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "addToAurexiaMembers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address[]"
+      },
+      {
+        "name": "_name",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "_grade",
+        "type": "uint8[]"
+      },
+      {
+        "name": "taille",
+        "type": "uint256"
+      }
+    ],
+    "name": "authorizeManyMembers",
     "outputs": [
       {
         "name": "",
@@ -495,6 +550,46 @@ var TokenABI = web3.eth.contract([
       {
         "name": "",
         "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMembersAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMembersAndNameAndBalance",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
       }
     ],
     "payable": false,
@@ -551,7 +646,7 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "payable": false,
@@ -571,6 +666,101 @@ var TokenABI = web3.eth.contract([
       {
         "name": "",
         "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalSend",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalReceive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrSend",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrReceive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -609,7 +799,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "newName",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "name": "modifyName",
@@ -632,7 +822,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "_name",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "name": "addAssociation",
@@ -671,6 +861,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_address",
         "type": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
     "name": "transferToAssociation",
@@ -742,6 +936,24 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "getCharityAddressAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "name": "_address",
@@ -771,7 +983,147 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isDonationOpen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersonalWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersoInfoTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllInfoTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
       }
     ],
     "payable": false,
@@ -780,7 +1132,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x0D11BCD1cffaeAe611dED024b0264Be8325D53C4');
+var Token = TokenABI.at('0x5B4E78423d27E28e7723b17062e5047b643c175B');
 
 // check that user has Metamask installed 
 

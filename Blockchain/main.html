@@ -6,59 +6,51 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, target-densitydpi=device-dpi"/>
         <!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
-        <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/index.css" />
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-        <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/web3@0.20.7/dist/web3.min.js"></script>     
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel = "stylesheet" href = "styles/main.css" />
         <title>MyWallet - Aurexia</title> 
     </head>
 
     <body>
-        <div id="block_page">
-            <header>
-                <div id="logo">
-                    <img id = "logo" src="images/logoAurexia.png" alt="Logo Aurexia" />
-                </div>
-                <nav>
-                <p class = "button" id = "homePage" onclick="window.location='main.html'">HOME </p>
-                <p class = "button" id = "rankingPage" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "button" id = "historyPage" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "button" id = "adminPage" onclick="window.location='admin.html'">ADMIN </p>
-                </nav>
+        <header>
+            <div id="blockHeader">
+                <div id = "aurexiaName">AUREXIA</div>
+                <div id = "walletName">WALLET</div>
                 <div id="identity">
-                    <br><div id = "name">Loading</div>
+                    <div id = "name">Loading</div>
                 </div>
-            </header>
-            <section id='notifBanner'>
-                <img id="arrow" src="images/pageArrow.png">
-                <div id="notifs">
-                    <div data-simplebar id="history">
-                    </div>
+            </div>
+            <hr>
+            <nav>
+                <ul>
+                    <li><a class = "active" href='main.html'>HOME </a></li>
+                    <li><a href='ranking.html'>RANKING </a></li>
+                    <li><a href='history.html'>HISTORY </a></li>
+                    <li><a href='donation.html'>DONATION </a></li>
+                    <li><a id="adminPage" href='admin.html'>ADMIN </a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="transactionPage">
+            <div class="form" style="margin:0 0 10% 0;">
+                <div id="balance">
+                    <div id="astValue">0</div>
+                    <div id="ast">AST</div>
                 </div>
-            </section>
-            <section id="transactionPage">
-                  <div class="form">
-                    <img src="images/ast.png" alt="icon ast" /> <br>
-                    <h1> Aurexia Social Token </h1>
-                    <div id="astValue">0 AST</div>
-                    <form id="send">
-                      <input placeholder="Amount" id="amount" required/>
-                      <select id="dest-select" required>
-                            <option value="init">Select Beneficiary</option>
-                        </select>
-                      <button onclick="return Transfer()">send</button>
-                      <div id="loading"></div>
-                    </form>
-                  </div>
-            </section>
-
-
-            <footer>
-                <p>© Copyright Aurexia – All rights reserved<br /></p>
-            </footer>
+                <form id="send">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" required/>
+                    <label for="wording">Message</label>
+                    <input type="text" id="wording" required/>
+                    <label for="dest-select">Select Beneficiary</label>
+                    <select id="dest-select" required>
+                        <option value="init"></option>
+                    </select>
+                    <button onclick="return Transfer()">Send</button>
+                    <div id="loading"></div>
+                </form>
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>

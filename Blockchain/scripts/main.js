@@ -7,12 +7,6 @@ var sending = false;
 
 document.getElementById("adminPage").style.display = "none";
 
-// hide notif banner
-
-var show = false;
-var elmt = document.getElementById("notifBanner");
-elmt.style.display = "none";
-
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
@@ -27,7 +21,7 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "payable": false,
@@ -134,7 +128,21 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "indexNewWording",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -310,6 +318,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transfer",
@@ -337,6 +349,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "_text",
+        "type": "bytes32"
       }
     ],
     "name": "transferFrom",
@@ -465,7 +481,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "_name",
-        "type": "string"
+        "type": "bytes32"
       },
       {
         "name": "_grade",
@@ -473,6 +489,37 @@ var TokenABI = web3.eth.contract([
       }
     ],
     "name": "addToAurexiaMembers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address[]"
+      },
+      {
+        "name": "_name",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "_grade",
+        "type": "uint8[]"
+      },
+      {
+        "name": "taille",
+        "type": "uint256"
+      }
+    ],
+    "name": "authorizeManyMembers",
     "outputs": [
       {
         "name": "",
@@ -510,6 +557,46 @@ var TokenABI = web3.eth.contract([
       {
         "name": "",
         "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMembersAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMembersAndNameAndBalance",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
       }
     ],
     "payable": false,
@@ -566,7 +653,7 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "payable": false,
@@ -586,6 +673,101 @@ var TokenABI = web3.eth.contract([
       {
         "name": "",
         "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalSend",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalReceive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrSend",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getNbrReceive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -624,7 +806,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "newName",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "name": "modifyName",
@@ -647,7 +829,7 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "_name",
-        "type": "string"
+        "type": "bytes32"
       }
     ],
     "name": "addAssociation",
@@ -686,6 +868,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_address",
         "type": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
     "name": "transferToAssociation",
@@ -757,6 +943,24 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "getCharityAddressAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "name": "_address",
@@ -786,7 +990,147 @@ var TokenABI = web3.eth.contract([
     "outputs": [
       {
         "name": "",
-        "type": "string"
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isDonationOpen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersonalWordings",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getPersoInfoTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAllInfoTransaction",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
       }
     ],
     "payable": false,
@@ -795,7 +1139,8 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x0D11BCD1cffaeAe611dED024b0264Be8325D53C4');
+var Token = TokenABI.at('0x5B4E78423d27E28e7723b17062e5047b643c175B');
+
 
 // check that user has Metamask installed 
 
@@ -808,13 +1153,15 @@ else {
 }
 
 
+//fonction de log (notamment pour le bandeau => reconnaissance js de l'admin)
 
 const getLog = async () =>{
 
   let curAddress;
   let ownerAddress;
 
-  const getCurAddress = async () =>{                         // fonctionne mais on a besoin de reloader la page pour que ca s'initialise (le await ne marche pas pour la fonction getAccounts de web3)
+  //fonction intéragissant avec le SC 
+  const getCurAddress = async () =>{        
     return new Promise(function(resolve, reject){
       web3.eth.getAccounts((err, accounts) => {
         if (err) return reject(err);
@@ -832,20 +1179,24 @@ const getLog = async () =>{
 
   const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
+			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
+				let name = web3.toAscii(res);
 				resolve(name);
 			})
 		})
 	}
 
+  //assignation des valeurs 
   curAddress = await getCurAddress();
   ownerAddress = await getOwner();
   curName = await getName(curAddress);
 
+  //on retourne l'affichage de la banner
   return getBanner(curAddress, ownerAddress, curName);
 };
 
+//fonction affichant la banner
 const getBanner = (_curAddress, _ownerAddress, _name) => {
   if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
     var identity = document.getElementById("identity");
@@ -860,17 +1211,18 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
 
 getLog();
 
+/************************************** */
+/*        update drop-down list         */
+/************************************** */
 
-//update drop-down list
-//var select = document.getElementById("dest-select");
-
-const dropdownList = (_curAddress, _users) => {
-
+//fonction créant la dropdown list
+const dropdownList = (_curAddress, _users, _keyName) => {
+  //ciblage via la borne html
   var select = document.getElementById("dest-select");
-  for (var key in _users){
+  //remplissage de la dropdown list via l'object _users'
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
 	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
-      console.log(_users[key].address)
-      console.log(_users[key].name)
       var opt = document.createElement('option');
       opt.value = _users[key].address.toLowerCase();
       opt.innerHTML = _users[key].name;
@@ -879,28 +1231,22 @@ const dropdownList = (_curAddress, _users) => {
   }
 }
 
+//fonction récupérant les utilisateurs et stockant ces données dans un objet js
 const getUsers = async () =>{
 
-  let users = {};
-	let listAddress;
+  let users = {}; //objet js
+	let listAddressAndName;
 	let name;
 	var i = 0;
   
-	const getMembers = async () =>{                        
+  //fonctions intéragissant avec le SC pour récupérer la liste (membre, name) ainsi que sa taille
+	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getMembers((err, members) => {
+			Token.getMembersAndName((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  	})
 	})}
-
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getName(address, (err, name) => {
-				if (err) return reject(err);
-				resolve(name);
-		})
-  })}	
   
   const getTaille = async () =>{
     return new Promise(function(resolve, reject){
@@ -910,22 +1256,30 @@ const getUsers = async () =>{
     })
   })}
 
-	listAddress = await getMembers();
-	console.log("get list of addresses")
-  console.log(listAddress);
+  //assignation des valeurs (le await permet de stopper la compilation d'une fonction asynchrone tant que la promesse n'a pas fini son execution, c'est nécessaire car l'appel au smart contract est plus lent que la compilation js). 
+	listAddressAndName = await getMembersAndName();
   let taille = await getTaille();
+
+  // Remplissage de l'objet js
 	while (i < taille) {
-		var address = listAddress[i];
-		console.log(address)
-		name = await getName(address);
-		users[name]={}
-		users[name].address=address
-		users[name].name=name
+		var address = listAddressAndName[0][i];
+		name = web3.toAscii(listAddressAndName[1][i]);
+		users[name]={};
+		users[name].address=address;
+		users[name].name=name;
 		i++
-		console.log(users[name].address)
-		console.log(users[name].name)
   }
   
+  let keyName = listAddressAndName[1];
+  console.log(keyName);
+  for (let i=0; i<keyName.length; i++){
+    keyName[i]=web3.toAscii(keyName[i]);
+  }
+  keyName.splice(0,1);
+  keyName.sort();
+  keyName.splice(0,0, "Administrator");
+  console.log(keyName);
+
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
 
@@ -939,7 +1293,7 @@ const getUsers = async () =>{
 
 
   curAddress = await getCurAddress();
-  return dropdownList(curAddress, users);
+  return dropdownList(curAddress, users, keyName);
 };
 
 getUsers();

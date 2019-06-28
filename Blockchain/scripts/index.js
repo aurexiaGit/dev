@@ -42,14 +42,14 @@ const refreshBalance= async () => {
 				//alert("Your transaction has been executed!")
 				balance = bal;
 				console.log("Transaction has been executed, balance is " + balance);
-				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString() + " AST"
+				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString()
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			} else if (balance < bal) {
 				//alert("You have received " + (balance - bal).toString() + " AST!")
 				balance = bal;
 				console.log("Reception of tokens, balance is " + balance);
-				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString() + " AST"
+				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString()
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			}
@@ -64,14 +64,17 @@ const refreshBalance= async () => {
 refreshBalance();
 // *******************************************
 
+//Affichage de la balance
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
+		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString()	
 	}
 }
 
+//Fonction récupérant la balance de l'utilisateur
 const accountManagement = async () => {
 
+	//fonctions interagissant avec le smart contract pour la fonction SC balanceOf
 	const getCurAddress = async () =>{                         
 		return new Promise(function(resolve, reject){
 		web3.eth.getAccounts((err, accounts) => {
@@ -89,6 +92,7 @@ const accountManagement = async () => {
 		})
 	};
 
+	//assignation des valeurs
 	let curAddress = await getCurAddress();
 	let balance = await getBalance(curAddress);
 
@@ -97,31 +101,28 @@ const accountManagement = async () => {
 
 accountManagement ();
 
-const loading = (_sending) => {
-	var elmt = document.getElementById("loading")
-	if (_sending == true) {
-		elmt.innerHTML = "<br><div>Sending tokens </div><img src='images/Spinner-1s-40px.gif'/>"
-	}
-}
-
 //Transfer tokens when clicking on "send" in home page
 const Transfer = async() => {
 
-	let address = document.getElementById("dest-select").value
-	let amount = document.getElementById("amount").value
-	
-	sending = true
+	//récupération des infos 
+	let address = document.getElementById("dest-select").value;
+	let amount = document.getElementById("amount").value;
+	let wording = document.getElementById("wording").value;
+	wording = web3.fromAscii(wording);
 
-	const transferEvent = async (address, amount) =>{
+	//fonction intéragissant avec le SC pour le transfert de token
+	const transferEvent = async (address, amount, _wording) =>{
 		return new Promise(function(resolve, reject){
-			Token.transfer(address, amount*Math.pow(10,18), (err, result) => {
+			Token.transfer(address, amount*Math.pow(10,18), _wording, (err, result) => {
 				if (err) return reject (err);
 				resolve(result);
 			})
 		})
 	};
 
-	transferTransaction = await transferEvent(address,amount);
+	transferTransaction = await transferEvent(address,amount, wording);
+
+	//reset de la page
 	var frm = document.getElementById("send");
 	frm.reset();
 	return transferTransaction
