@@ -47,7 +47,7 @@ const getAdminHistory = async () =>{
 
 	const getCharityTaille = async () =>{
 		return new Promise(function(resolve, reject){
-		  Token.sizeListAccount((err, result) => {
+		  Token.getCharitySize((err, result) => {
 			if (err) return reject(err);
 			resolve(result);
 		})
@@ -62,8 +62,9 @@ const getAdminHistory = async () =>{
 	let taille = await getTaille();
 	let tailleWording = listeWordings[0].length;
 
-	let listCharityAndName = await getCharityAndName();
+	//on inclue les charities dans les users (pour indiquer les transactions vers les charities)
 	let charityTaille = await getCharityTaille();
+	console.log(charityTaille);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
@@ -72,16 +73,20 @@ const getAdminHistory = async () =>{
 		users[address]={};
 		users[address].address=address;
 		users[address].name=name;
-	  }
-
-	for (let i=0; i<charityTaille; i++) {
-		let address = listCharityAndName[0][i];
-		let name = web3.toAscii(listCharityAndName[1][i]);
-		users[address]={};
-		users[address].address=address;
-		users[address].name=name;
 	}
+	
+	if (charityTaille !=0){
+		let listCharityAndName = await getCharityAndName();
+		console.log(listCharityAndName);
 
+		for (let i=0; i<charityTaille; i++) {
+			let address = listCharityAndName[0][i];
+			let name = web3.toAscii(listCharityAndName[1][i]);
+			users[address]={};
+			users[address].address=address;
+			users[address].name=name;
+		}
+	}
 
 	//On doit intégrer l'adresse null car lors de le création d'un smart contract, l'admin est crédité par cette adresse (sans l'intégrer cela fait crasher la page)
 	users["0x0000000000000000000000000000000000000000"]={};
