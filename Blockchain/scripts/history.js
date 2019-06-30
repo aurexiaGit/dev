@@ -97,7 +97,7 @@ const getHistory = async () =>{
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
-	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x1A04F1B397Ee7d245cfFe0a93219f675E00e239C&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
+	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&address=' + curAddress + '&contractaddress=0x19495DBE107E5Bc90B6Daa62BdA759629A8AD0f3&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B', function(data) {
 		var resultArray = data.result;
 
 		// fill the history with data from json file. Required/relevant columns from json are:

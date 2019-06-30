@@ -18,7 +18,7 @@ Aussi le site est un peu instable, il se peut que la page se reloade toute seule
 
 Pour int�ragir avec le contrat selection ropsten en haut a droite et entre juste : 
 
-- adresse du contrat : 0x1A04F1B397Ee7d245cfFe0a93219f675E00e239C
+- adresse du contrat : 0x19495DBE107E5Bc90B6Daa62BdA759629A8AD0f3
 
 
 let token = await AurexiaSocialToken.deployed()
