@@ -6,7 +6,7 @@ const createTokens = async () => {
 	// Creates tokens on an account
 	var amount = document.getElementById("amount1").value
 	amount = amount * Math.pow(10,18);
-	var address = document.getElementById("adress1").value
+	var address = document.getElementById("dest-select-crea").value
 
 	//fonction qui interagit avec le SC pour créer de nouveaux tokens.
 	const create = async (_address, _amount) =>{
@@ -34,7 +34,7 @@ const createTokens = async () => {
 const destroyTokens = async () => {
 	var amount = document.getElementById("amount2").value
 	amount = amount * Math.pow(10,18);
-	var address = document.getElementById("adress2").value
+	var address = document.getElementById("dest-select-rem").value
 
 	//fonction qui interagit avec le SC pour détruire de nouveaux tokens. 
 	const destroy = async (_address, _amount) =>{
