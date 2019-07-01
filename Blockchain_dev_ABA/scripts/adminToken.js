@@ -11,7 +11,7 @@ const createTokens = async () => {
 	//fonction qui interagit avec le SC pour créer de nouveaux tokens.
 	const create = async (_address, _amount) =>{
 		return new Promise(function(resolve, reject){
-		Token.mint.sendTransaction(_address,_amount, (err,result) => {
+		Token.mint(_address,_amount, (err,result) => {
 			if (err) return reject (err);
 			resolve (result)
 		})
