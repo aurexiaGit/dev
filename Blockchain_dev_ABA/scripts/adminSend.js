@@ -2,7 +2,21 @@
 const dropdownListFrom = (_users, _keyName) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
 
 	var select = document.getElementById("from-select");
-  for (let i=0; i<_keyName.length; i++){
+  	for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
+		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
+		var opt = document.createElement('option');
+		opt.value = _users[key].address.toLowerCase();
+		opt.innerHTML = _users[key].name;
+		select.appendChild(opt);
+	  }
+	}
+}
+
+const dropdownListTo = (_users, _keyName) => {  //on récupère l'addresse de l'utilisateur et l'objet javascript qui stockent les utilisateurs
+
+	var select = document.getElementById("to-select");
+  	for (let i=0; i<_keyName.length; i++){
     key = _keyName[i];
 		if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address !== "0x0000000000000000000000000000000000000000") {
 		var opt = document.createElement('option');
@@ -59,7 +73,8 @@ const getUsersFrom = async () =>{
 	keyName.sort();
 
 	//on retourne l'affichage du dropdown
-	return dropdownListFrom(users, keyName);
+	dropdownListFrom(users, keyName);
+	dropdownListTo(users, keyName);
 };
   
 getUsersFrom();
