@@ -84,7 +84,7 @@ const transferFromTo = async() => {
 
 	//Récupération des différents inputs
 	let addressFrom = document.getElementById("from-select").value;
-	let addressTo = document.getElementById("dest-select").value;
+	let addressTo = document.getElementById("to-select").value;
 	let amount = document.getElementById("amount").value;
 	amount = amount*Math.pow(10,18);
 	let message = document.getElementById("wording").value;
