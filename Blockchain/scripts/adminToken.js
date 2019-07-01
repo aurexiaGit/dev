@@ -34,7 +34,7 @@ const createTokens = async () => {
 	//reset des champs
 	var frm = document.getElementById("addMember");
 	frm.reset();
-	return true;
+	return false;
 }
 
 
@@ -74,7 +74,7 @@ const destroyTokens = async () => {
 	var frm = document.getElementById("supMember");
 	frm.reset();
 
-	return true;
+	return false;
 }
 
 /***************************************************************** */

@@ -101,5 +101,5 @@ const transferFromTo = async() => {
 	//reset des champs input
 	var frm = document.getElementById("send");
 	frm.reset();
-	return transferTransaction
+	return false;
 }
