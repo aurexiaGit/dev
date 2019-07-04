@@ -1,0 +1,190 @@
+html {
+    height: 100%;
+    font-size: 100%;
+  }
+  
+  /* Header */
+  
+  #blockHeader{
+    position: relative;
+    margin-top: 3%;
+  }
+  
+  #aurexiaName{
+    position: relative;
+    text-align: left;
+    font-size: 1em;
+    color: white;
+    margin-left: 6%;
+  }
+  
+  #walletName{
+    position: relative;
+    text-align: left;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+    margin-left: 6%;
+  }
+  
+  #identity{
+    position: absolute;
+  
+    /* ABA 25/06/2019 */
+    /*top:15%; */
+    top: -20%;
+  
+    right:6%;
+    text-align: right;
+    font-size:1em;
+    color: white;
+  }
+  
+  hr{
+    color:white;
+    position: relative;
+    opacity: 0.33;
+  }
+  
+  /*Menu Header*/
+  
+  nav{
+    position: relative;
+    height: 3em;
+  
+    /* ABA 25/06/2019 */
+    font-size: 85%;
+    margin: 0 auto;
+    display:table;
+  
+  }
+  
+  ul {
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float:left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0.7em;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #1554DF;
+    border-radius: 3em;
+  }
+  .active {
+    background-color: #1554DF;
+    border-radius: 3em;
+  }
+  
+  
+  /*CSS Section Rankings Table */
+
+  #historyPage{
+    position:relative;
+    background-color: #1554DF;
+    margin-left: 4%;
+    margin-right:4%;
+    margin-top: 1%;
+    border-width:1px;
+    border-style:solid;
+    border-color:#1554DF;
+    border-radius: 0.6em;
+  }
+  
+  label {
+    display: block;
+    font-weight: none;
+
+    /* ABA 26 06 2019
+    color: white; */
+    color: #1554DF;
+
+    margin-bottom: 1%;
+    font-size: 120%;
+    margin: 6% 0% 6% 0%;
+  }
+
+  option{
+    color: #1554DF
+  }
+  
+  
+/*CSS allTable */
+
+thead{
+  background-color: #1554DF;
+}
+
+tbody{
+  background-color: white;
+}
+
+#topTable{
+  color:white;
+}
+
+
+.table{
+    position: relative;
+}
+
+#historyTable{
+    position:relative;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th{
+  color:white;
+  border-width: thin;
+  border: solid #1554DF
+}
+
+td{
+    font-size:1em;
+    color:#1554DF;
+    border-width: thin;
+    border: solid #1554DF
+}
+
+.column1History{
+  width: 20%;
+}
+
+.column2History{
+  width: 25%;
+}
+
+.column3History{
+  width: 20%;
+}
+
+.column4History{
+  width: 27%;
+}
+  
+  /* CSS Body*/
+  
+  body {
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    margin: 0;
+    background-color: #E9F7FF;
+    background-image: linear-gradient(20deg, #24C69A, #1554DF);
+    background-size:100% 45%;
+    background-repeat: no-repeat;
+  }

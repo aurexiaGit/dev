@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, target-densitydpi=device-dpi"/>
 		<!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
-        <link rel = "stylesheet" href = "styles/style.css" />
-        <link rel = "stylesheet" href = "styles/header.css" />
-        <link rel = "stylesheet" href = "styles/index.css" />
+        <link rel = "stylesheet" href = "styles/style_ex.css" />
+        <link rel = "stylesheet" href = "styles/header_ex.css" />
+        <link rel = "stylesheet" href = "styles/index_ex.css" />
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <title>MyWallet - Aurexia</title> 
     </head>
@@ -42,11 +42,11 @@
                     <h1> Send Aurexia Social Token </h1>
                     <form id="send">
                       <input placeholder="Amount" id="amount" required/>
-                      <input placeholder="Message" id="wording" required/>
+                      <input placeholder="Message" type="text" id="wording" required/>
                       <select id="from-select" required>
                             <option value="init">Select Originator</option>
                       </select>
-                      <select id="dest-select" required>
+                      <select id="to-select" required>
                             <option value="init">Select Beneficiary</option>
                       </select>
                       <button onclick="return transferFromTo()">send</button>
@@ -54,10 +54,15 @@
                     </form>
                   </div>
             </section>
+
+
+            <footer>
+                <p>© Copyright Aurexia – All rights reserved<br /></p>
+            </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/links.js"></script>
-        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/main_ex.js"></script>
         <script type="text/javascript" src="scripts/adminSend.js"></script>
     </body>
 </html>

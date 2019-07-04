@@ -254,10 +254,10 @@ const getUsersList = async () =>{
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
 		nbrTransactionPerso[i]= {};
-		nbrTransactionPerso[i].nbrTransaction = resultAll[0][i];
-		nbrTransactionPerso[i].send = resultAll[1][i]*Math.pow(10,-18);
+		nbrTransactionPerso[i].nbrTransaction = resultAll[1][i];
+		nbrTransactionPerso[i].send = resultAll[3][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
-		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
+		nbrTransactionPerso[i].name = web3.toAscii(resultAll[5][i]);
 	}
 
 

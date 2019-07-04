@@ -1,14 +1,17 @@
 document.getElementById("RankingTransaction").style.display = "none";
-document.getElementById("transactionRecu").style.display = "none";
-document.getElementById("transactionSend").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("transactionRecu").style.display = "none";
+//document.getElementById("transactionSend").style.display = "none";
 document.getElementById("table2").style.display = "none";
 
 document.getElementById("RankingSend").style.display = "none";
-document.getElementById("totalSend").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("totalSend").style.display = "none";
 document.getElementById("table3").style.display = "none";
 
 document.getElementById("RankingReceive").style.display = "none";
-document.getElementById("totalReceive").style.display = "none";
+//ABA 26 06 2019 
+//document.getElementById("totalReceive").style.display = "none";
 document.getElementById("table4").style.display = "none";
 
 
@@ -20,16 +23,25 @@ const chooseRanking = () =>{
 		document.getElementById("table1").style.display = "block";
 
 		document.getElementById("RankingTransaction").style.display = "none";
-		document.getElementById("transactionRecu").style.display = "none";
-		document.getElementById("transactionSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("transactionRecu").style.display = "none";
+		//document.getElementById("transactionSend").style.display = "none";
+
 		document.getElementById("table2").style.display = "none";
 
 		document.getElementById("RankingSend").style.display = "none";
-		document.getElementById("totalSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalSend").style.display = "none";
+
 		document.getElementById("table3").style.display = "none";
 
 		document.getElementById("RankingReceive").style.display = "none";
-		document.getElementById("totalReceive").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalReceive").style.display = "none";
+
 		document.getElementById("table4").style.display = "none";
 	}
 	if (type == "transaction"){
@@ -37,16 +49,25 @@ const chooseRanking = () =>{
 		document.getElementById("table1").style.display = "none";
 
 		document.getElementById("RankingTransaction").style.display = "inline";
-		document.getElementById("transactionRecu").style.display = "inline";
-		document.getElementById("transactionSend").style.display = "inline";
+
+		//ABA 26 06 2019 
+		//document.getElementById("transactionRecu").style.display = "inline";
+		//document.getElementById("transactionSend").style.display = "inline";
+
 		document.getElementById("table2").style.display = "block";
 
 		document.getElementById("RankingSend").style.display = "none";
-		document.getElementById("totalSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalSend").style.display = "none";
+
 		document.getElementById("table3").style.display = "none";
 
 		document.getElementById("RankingReceive").style.display = "none";
-		document.getElementById("totalReceive").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalReceive").style.display = "none";
+
 		document.getElementById("table4").style.display = "none";
 	}
 	if (type == "send"){
@@ -54,29 +75,51 @@ const chooseRanking = () =>{
 		document.getElementById("table1").style.display = "none";
 
 		document.getElementById("RankingTransaction").style.display = "none";
-		document.getElementById("transactionRecu").style.display = "none";
-		document.getElementById("transactionSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("transactionRecu").style.display = "inline";
+		//document.getElementById("transactionSend").style.display = "inline";
+
 		document.getElementById("table2").style.display = "none";
 
 		document.getElementById("RankingSend").style.display = "inline";
-		document.getElementById("totalSend").style.display = "inline";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalSend").style.display = "none";
+
 		document.getElementById("table3").style.display = "block";
+
+		document.getElementById("RankingReceive").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalReceive").style.display = "none";
+
+		document.getElementById("table4").style.display = "none";
 	}
 	if (type == "receive"){
 		document.getElementById("ownRanking").style.display = "none";
 		document.getElementById("table1").style.display = "none";
 
 		document.getElementById("RankingTransaction").style.display = "none";
-		document.getElementById("transactionRecu").style.display = "none";
-		document.getElementById("transactionSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("transactionRecu").style.display = "none";
+		//document.getElementById("transactionSend").style.display = "none";
+
 		document.getElementById("table2").style.display = "none";
 
 		document.getElementById("RankingSend").style.display = "none";
-		document.getElementById("totalSend").style.display = "none";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalSend").style.display = "none";
+
 		document.getElementById("table3").style.display = "none";
 
 		document.getElementById("RankingReceive").style.display = "inline";
-		document.getElementById("totalReceive").style.display = "inline";
+
+		//ABA 26 06 2019 
+		//document.getElementById("totalReceive").style.display = "inline";
+
 		document.getElementById("table4").style.display = "block";
 	}
 	return false;
@@ -103,7 +146,7 @@ const getRankingTable = (_usersTop) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = "#" + _usersTop[key].classement;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -137,7 +180,7 @@ const getTransactionTable = (_usersTop) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = "#" + _usersTop[key].classement;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -171,7 +214,7 @@ const getSendTable = (_usersTop) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = "#" + _usersTop[key].classement;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -205,7 +248,7 @@ const getReceiveTable = (_usersTop) => {
 		//Ajout des valeurs pour chacune des colonnes de la nouvelle ligne
 		var column1 = document.createElement('td');
 		column1.className = "column1";
-		column1.innerHTML = _usersTop[key].classement;
+		column1.innerHTML = "#" + _usersTop[key].classement;
 		row.appendChild(column1);
 
 		var column2 = document.createElement('td');
@@ -368,7 +411,7 @@ const getRankingList = async () =>{
 	}
 
 	var rank = document.getElementById("ownRanking");
-	rank.innerHTML="<p class='ownRankingTxt'>You are currently ranked " + ownRank.toString() + ownRankEnd  + "</p>";
+	rank.innerHTML="<div class='ownRankingTxt'>" + ownRank.toString() + ownRankEnd  + "</div>";
 	
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -390,10 +433,13 @@ const getRankingList = async () =>{
 	let totalSend = Math.round(result[1]*Math.pow(10,-18));
 	let totalReceive = Math.round(result[2]*Math.pow(10,-18));
 
-	let recu = document.getElementById("transactionRecu");
-	recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
-	let send = document.getElementById("transactionSend");
-	send.innerHTML="<p class='ownRankingTxt'>Number of send transaction : " + nbrEnvoie.toString() + "</p>";
+
+	//ABA 26 06 2019 - No need to display the nb of transactions received and send
+	//let recu = document.getElementById("transactionRecu");
+	//recu.innerHTML="<p class='ownRankingTxt'>Number of receive transaction : " + nbrRecu.toString() + "</p>";
+	//let send = document.getElementById("transactionSend");
+	//ABA 26 06 2019 - No need to display the nb of transactions received and send
+	//send.innerHTML="<p class='ownRankingTxt'>Number of send transaction : " + nbrEnvoie.toString() + "</p>";
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -416,15 +462,17 @@ const getRankingList = async () =>{
 	resultAll[1].splice(0,1);
 	resultAll[2].splice(0,1);
 	resultAll[3].splice(0,1);
+	resultAll[4].splice(0,1);
+	resultAll[5].splice(0,1);
 
 
 	let nbrTransactionPerso = {};
 	for (let i=0; i<taille; i++){
 		nbrTransactionPerso[i]= {};
-		nbrTransactionPerso[i].nbrTransaction = resultAll[0][i];
-		nbrTransactionPerso[i].send = resultAll[1][i]*Math.pow(10,-18);
+		nbrTransactionPerso[i].nbrTransaction = resultAll[1][i];
+		nbrTransactionPerso[i].send = resultAll[3][i]*Math.pow(10,-18);
 		nbrTransactionPerso[i].receive = resultAll[2][i]*Math.pow(10,-18);
-		nbrTransactionPerso[i].name = web3.toAscii(resultAll[3][i]);
+		nbrTransactionPerso[i].name = web3.toAscii(resultAll[5][i]);
 	}
 
 
@@ -555,15 +603,59 @@ const getRankingList = async () =>{
 	getReceiveTable(topTransactionReceive);
 
 	let TR = document.getElementById("RankingTransaction");
-	TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +". You have made "+ totalTrans.toString() +" transactions</p>";
+	//ABA 26 06 2019
+	//TR.innerHTML="<p class='ownRankingTxt'>Transaction rank : "+ rankingNbrTransaction.toString() +" - You have done "+ totalTrans.toString() +" transactions</p>";
+	if (rankingNbrTransaction == 1){
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"st</div>";
+	}
+	else if (rankingNbrTransaction == 2){
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"nd</div>";
+	}
+	else if (rankingNbrTransaction == 3){
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"rd</div>";
+	}
+	else {
+		TR.innerHTML="<div class='ownRankingTxt'>"+ rankingNbrTransaction.toString() +"th</div>";
+	}
+
+	//ABA 26 06 2019
 	let SR = document.getElementById("RankingSend");
-	SR.innerHTML="<p class='ownRankingTxt'>Send rank : "+ rankingSendTransaction.toString() +"</p>";
-	let TAS = document.getElementById("totalSend");
-	TAS.innerHTML="<p class='ownRankingTxt'>Total AST Send : "+ totalSend.toString() +"</p>";
+	if (rankingSendTransaction == 1){
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"st</div>";
+	}
+	else if (rankingSendTransaction == 2){
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"nd</div>";
+	}
+	else if (rankingSendTransaction == 3){
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"rd</div>";
+	}
+	else {
+		SR.innerHTML="<div class='ownRankingTxt'>"+ rankingSendTransaction.toString() +"</div>";
+	}
+
 	let RR = document.getElementById("RankingReceive");
-	RR.innerHTML="<p class='ownRankingTxt'>Receive rank : "+ rankingReceiveTransaction.toString() +"</p>";
-	let TAR = document.getElementById("totalReceive");
-	TAR.innerHTML="<p class='ownRankingTxt'>Total AST Receive : "+ totalReceive.toString() +"</p>";
+	if (rankingSendTransaction == 1){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"st</div>";
+	}
+	else if (rankingSendTransaction == 2){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"nd</div>";
+	}
+	else if (rankingSendTransaction == 3){
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"rd</div>";
+	}
+	else {
+		RR.innerHTML="<div class='ownRankingTxt'>"+ rankingReceiveTransaction.toString() +"</div>";
+	}
+	
+	//SR.innerHTML="<p class='ownRankingTxt'>You are currently ranked "+ rankingSendTransaction.toString() +"</p>";
+	
+	//ABA 26 06 2019
+	//let TAS = document.getElementById("totalSend");
+	//TAS.innerHTML="<p class='ownRankingTxt'>Total AST Send : "+ totalSend.toString() +"</p>";
+	//let RR = document.getElementById("RankingReceive");
+	//RR.innerHTML="<p class='ownRankingTxt'>Rank : "+ rankingReceiveTransaction.toString() +"</p>";
+	//let TAR = document.getElementById("totalReceive");
+	//TAR.innerHTML="<p class='ownRankingTxt'>Total AST Receive : "+ totalReceive.toString() +"</p>";
 
 
 	

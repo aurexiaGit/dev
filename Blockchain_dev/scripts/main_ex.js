@@ -1,4 +1,17 @@
-//Page pour se logger
+
+// for the "sending tokens" loading sentence
+
+var sending = false; 
+
+// hide admin logo 
+
+document.getElementById("adminPage").style.display = "none";
+
+// hide notif banner
+
+var show = false;
+var elmt = document.getElementById("notifBanner");
+elmt.style.display = "none";
 
 // connect to ethereum API web3
 
@@ -1193,6 +1206,7 @@ var TokenABI = web3.eth.contract([
 
 var Token = TokenABI.at('0x5B4E78423d27E28e7723b17062e5047b643c175B');
 
+
 // check that user has Metamask installed 
 
 if (window.ethereum===undefined) {
@@ -1203,3 +1217,148 @@ else {
   ethereum.enable()
 }
 
+
+//fonction de log (notamment pour le bandeau => reconnaissance js de l'admin)
+
+const getLog = async () =>{
+
+  let curAddress;
+  let ownerAddress;
+
+  //fonction intéragissant avec le SC 
+  const getCurAddress = async () =>{        
+    return new Promise(function(resolve, reject){
+      web3.eth.getAccounts((err, accounts) => {
+        if (err) return reject(err);
+        resolve(accounts[0]);
+    })
+  })}
+
+  const getOwner = async () =>{
+    return new Promise(function(resolve, reject){
+      Token.owner((err, accounts) => {
+        if (err) return reject(err);
+        resolve(accounts);
+    })
+  })}
+
+  const getName = async (address) =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getName(address, (err, res) => {
+				if (err) return reject(err);
+				let name = web3.toAscii(res);
+				resolve(name);
+			})
+		})
+	}
+
+  //assignation des valeurs 
+  curAddress = await getCurAddress();
+  ownerAddress = await getOwner();
+  curName = await getName(curAddress);
+
+  //on retourne l'affichage de la banner
+  return getBanner(curAddress, ownerAddress, curName);
+};
+
+//fonction affichant la banner
+const getBanner = (_curAddress, _ownerAddress, _name) => {
+  if (_curAddress == _ownerAddress && _curAddress !== undefined && _ownerAddress!== undefined) {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
+    document.getElementById("adminPage").style.display = "block";
+    }
+  else {
+    var identity = document.getElementById("identity");
+    identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
+  }
+};
+
+getLog();
+
+/************************************** */
+/*        update drop-down list         */
+/************************************** */
+
+//fonction créant la dropdown list
+const dropdownList = (_curAddress, _users, _keyName) => {
+  //ciblage via la borne html
+  var select = document.getElementById("dest-select");
+  //remplissage de la dropdown list via l'object _users'
+  for (let i=0; i<_keyName.length; i++){
+    key = _keyName[i];
+	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
+      var opt = document.createElement('option');
+      opt.value = _users[key].address.toLowerCase();
+      opt.innerHTML = _users[key].name;
+      select.appendChild(opt);
+    }
+  }
+}
+
+//fonction récupérant les utilisateurs et stockant ces données dans un objet js
+const getUsers = async () =>{
+
+  let users = {}; //objet js
+	let listAddressAndName;
+	let name;
+	var i = 0;
+  
+  //fonctions intéragissant avec le SC pour récupérer la liste (membre, name) ainsi que sa taille
+	const getMembersAndName = async () =>{                        
+		return new Promise(function(resolve, reject){
+			Token.getMembersAndName((err, members) => {
+				if (err) return reject(err);
+				resolve(members);
+	  	})
+	})}
+  
+  const getTaille = async () =>{
+    return new Promise(function(resolve, reject){
+      Token.sizeListAccount((err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+    })
+  })}
+
+  //assignation des valeurs (le await permet de stopper la compilation d'une fonction asynchrone tant que la promesse n'a pas fini son execution, c'est nécessaire car l'appel au smart contract est plus lent que la compilation js). 
+	listAddressAndName = await getMembersAndName();
+  let taille = await getTaille();
+
+  // Remplissage de l'objet js
+	while (i < taille) {
+		var address = listAddressAndName[0][i];
+		name = web3.toAscii(listAddressAndName[1][i]);
+		users[name]={};
+		users[name].address=address;
+		users[name].name=name;
+		i++
+  }
+  
+  let keyName = listAddressAndName[1];
+  console.log(keyName);
+  for (let i=0; i<keyName.length; i++){
+    keyName[i]=web3.toAscii(keyName[i]);
+  }
+  keyName.splice(0,1);
+  keyName.sort();
+  keyName.splice(0,0, "Administrator");
+  console.log(keyName);
+
+  //get current address before dropdownlist call, to remove own name from dropdown list
+  let curAddress;
+
+  const getCurAddress = async () =>{                         
+  return new Promise(function(resolve, reject){
+    web3.eth.getAccounts((err, accounts) => {
+      if (err) return reject(err);
+      resolve(accounts[0]);
+  })
+  })}
+
+
+  curAddress = await getCurAddress();
+  return dropdownList(curAddress, users, keyName);
+};
+
+getUsers();

@@ -447,13 +447,12 @@ contract AurexiaSocialToken is Owned, SafeMath {
         }
         return true; 
     }
-    function transferToAssociation (address _address) public returns (bool){
+    function transferToAssociation (address _address, uint256 _amount) public returns (bool){
         require (aurexiaMembers[msg.sender].isMember == true);
         require (openDonation == true);
         require (associationList[_address].isPartner == true);
-        uint256 value = balanceOf(msg.sender);
         bytes32 donationText = "Sending to Association";
-        _transfer (msg.sender, _address, value, donationText);
+        _transfer (msg.sender, _address, _amount, donationText);
         return true; 
     }
 
@@ -479,6 +478,14 @@ contract AurexiaSocialToken is Owned, SafeMath {
         return true;
     }
 
+    function getCharityAddressAndName () public view returns (address[] memory, bytes32[] memory){
+        bytes32[] memory nameCharity = new bytes32[](sizeListCharity);
+        for (uint256 i=0; i<sizeListCharity; i++){
+          nameCharity[i] = getAssoName(charityAccounts[i]);
+        }
+        return (charityAccounts, nameCharity);
+    }
+
   //Read function for associations
 
     function isAssoPartner (address _address) public view returns (bool){
@@ -487,6 +494,10 @@ contract AurexiaSocialToken is Owned, SafeMath {
 
     function getAssoName (address _address) public view returns (bytes32){
         return associationList[_address].name;
+    }
+
+    function isDonationOpen () public view returns (bool){
+        return openDonation;
     }
 
 
@@ -530,18 +541,22 @@ contract AurexiaSocialToken is Owned, SafeMath {
         return (_nbrTransaction, _totalSend, _totalReceive, _nbrSend, _nbrReceive);
     }
 
-    function getAllInfoTransaction () public view returns (uint256[]memory, uint256[]memory, uint256[]memory, bytes32[]memory){
+    function getAllInfoTransaction () public view returns (uint256[]memory, uint256[]memory, uint256[]memory, uint256[]memory, uint256[]memory, bytes32[]memory){
         uint256[] memory _nbrTransaction = new uint256[](sizeListAccount);
         uint256[] memory _nbrSend = new uint256[](sizeListAccount);
+        uint256[] memory _totalReceive = new uint256[](sizeListAccount);
+        uint256[] memory _totalSend = new uint256[](sizeListAccount);
         uint256[] memory _nbrReceive = new uint256[](sizeListAccount);
         bytes32[] memory _nameUser = new bytes32[](sizeListAccount);
         for (uint256 i=0; i<sizeListAccount; i++){
           _nbrTransaction[i] = getNbrTransaction(aurexiaAccounts[i]);
-          _nbrSend[i] = getTotalSend(aurexiaAccounts[i]);
-          _nbrReceive[i] = getTotalReceive(aurexiaAccounts[i]);
+          _nbrSend[i] = getNbrSend(aurexiaAccounts[i]);
+          _totalReceive[i] = getTotalReceive(aurexiaAccounts[i]);
+          _totalSend[i] = getTotalSend(aurexiaAccounts[i]);
+          _nbrReceive[i] = getNbrReceive(aurexiaAccounts[i]);
           _nameUser[i] = getName(aurexiaAccounts[i]);
         }
-        return (_nbrTransaction, _nbrSend, _nbrReceive, _nameUser);
+        return (_nbrTransaction, _nbrSend, _totalReceive, _totalSend, _nbrReceive, _nameUser);
     }
 
 

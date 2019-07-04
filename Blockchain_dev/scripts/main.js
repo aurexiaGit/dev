@@ -7,12 +7,6 @@ var sending = false;
 
 document.getElementById("adminPage").style.display = "none";
 
-// hide notif banner
-
-var show = false;
-var elmt = document.getElementById("notifBanner");
-elmt.style.display = "none";
-
 // connect to ethereum API web3
 
 var web3 = new Web3(web3.currentProvider);
@@ -920,6 +914,10 @@ var TokenABI = web3.eth.contract([
       {
         "name": "_address",
         "type": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
     "name": "transferToAssociation",
@@ -932,7 +930,7 @@ var TokenABI = web3.eth.contract([
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0xd980151c"
+    "signature": "0x32e639e4"
   },
   {
     "constant": true,
@@ -996,6 +994,25 @@ var TokenABI = web3.eth.contract([
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "getCharityAddressAndName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5eac2f0e"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "name": "_address",
@@ -1033,6 +1050,21 @@ var TokenABI = web3.eth.contract([
     "stateMutability": "view",
     "type": "function",
     "signature": "0x11f7b854"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isDonationOpen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x33ccaffa"
   },
   {
     "constant": true,
@@ -1148,6 +1180,14 @@ var TokenABI = web3.eth.contract([
       },
       {
         "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]"
+      },
+      {
+        "name": "",
         "type": "bytes32[]"
       }
     ],
@@ -1158,7 +1198,7 @@ var TokenABI = web3.eth.contract([
   }
 ]);
 
-var Token = TokenABI.at('0x20D60152e6FE3D1fC56828dA3F2Bf73e5d092cde');
+var Token = TokenABI.at('0x5B4E78423d27E28e7723b17062e5047b643c175B');
 
 
 // check that user has Metamask installed 

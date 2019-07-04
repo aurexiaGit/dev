@@ -42,14 +42,14 @@ const refreshBalance= async () => {
 				//alert("Your transaction has been executed!")
 				balance = bal;
 				console.log("Transaction has been executed, balance is " + balance);
-				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString() + " AST"
+				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString()
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			} else if (balance < bal) {
 				//alert("You have received " + (balance - bal).toString() + " AST!")
 				balance = bal;
 				console.log("Reception of tokens, balance is " + balance);
-				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString() + " AST"
+				document.getElementById("astValue").innerHTML = (Math.round(balance)).toString()
 				balance = await getBalance(curAddress)
 				bal = await getBalance(curAddress)
 			}
@@ -67,7 +67,7 @@ refreshBalance();
 //Affichage de la balance
 function createPage(Balance) {	
 	if (document.getElementById("astValue") !== undefined) {
-		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString() + " AST"	
+		document.getElementById("astValue").innerHTML = (Math.round(Balance)).toString()	
 	}
 }
 

@@ -68,6 +68,8 @@ $(document).ready(function(){
 	function CSVaccept (results) {
 		let object = results.data;
 		let taille = object.length;
+		console.log("taille");
+		console.log(taille);
 		let nameList = [];
 		let addressList = [];
 		let gradeList = [];
@@ -75,8 +77,14 @@ $(document).ready(function(){
 			nameList[i] = web3.fromAscii(object[i]["Name"]);
 			console.log(object[i]["Name"])
 			addressList[i] = object[i]["Address"];
+			console.log(object[i]["Address"])
 			gradeList[i] = object[i]["Grade"];
+			console.log(object[i]["Grade"])
 		}
+		console.log("taille list");
+		console.log(nameList.length);
+		console.log(addressList.length)
+		console.log(gradeList.length)
 		console.log("nameList");
 		console.log(nameList);
 		console.log("addressList");
