@@ -67,8 +67,8 @@ const getUsersFrom = async () =>{
 	}
 
 	let keyName = listAddressAndName[1];
-  for (let i=0; i<keyName.length; i++){
-    keyName[i]=web3.toAscii(keyName[i]);
+  	for (let i=0; i<keyName.length; i++){
+    	keyName[i]=web3.toAscii(keyName[i]);
 	}
 	keyName.sort();
 
