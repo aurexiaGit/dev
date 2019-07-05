@@ -21,7 +21,7 @@ const addMember = async () => {
 
 const remMember = async () => {
 	// Called when clicking on remove button
-	var _address = document.getElementById("adress2").value;
+	var _address = document.getElementById("dest-select").value;
 
 	const remM = async (address) =>{                      
 		return new Promise(function(resolve, reject){
