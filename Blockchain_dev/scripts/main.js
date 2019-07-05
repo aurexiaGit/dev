@@ -1334,7 +1334,10 @@ const getUsers = async () =>{
   for (let i=0; i<keyName.length; i++){
     keyName[i]=web3.toAscii(keyName[i]);
   }
+  keyName.splice(0,1);
   keyName.sort();
+  keyName.splice(0,0, "Administrator");
+  console.log(keyName);
 
   //get current address before dropdownlist call, to remove own name from dropdown list
   let curAddress;
