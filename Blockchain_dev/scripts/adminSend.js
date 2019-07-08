@@ -39,7 +39,7 @@ const getUsersFrom = async () =>{
 	//fonction interagissant avec le SC recupérant une liste composé des noms et addresse des utilisateurs 
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getMembersAndName((err, members) => {
+			Token.getMembersAndNameAndBalance((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  	})

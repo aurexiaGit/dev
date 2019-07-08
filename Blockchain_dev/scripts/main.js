@@ -1182,7 +1182,7 @@ const getUsers = async () =>{
   //fonctions intéragissant avec le SC pour récupérer la liste (membre, name) ainsi que sa taille
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getMembersAndName((err, members) => {
+			Token.getMembersAndNameAndBalance((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  	})
