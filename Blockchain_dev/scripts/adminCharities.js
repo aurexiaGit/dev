@@ -4,21 +4,11 @@ const addCharity = async () => {
 	var _address = document.getElementById("adress1").value;
 	var _name = document.getElementById("name1").value;
 	_name = web3.fromAscii(_name);
-
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-  	})};
 	
 	//Fonction pour ajouter une association (on appelle une fonction du smart contract)
-	const addC = async (address, name, curAddress) =>{                         
+	const addC = async (address, name) =>{                         
 		return new Promise(function(resolve, reject){     // utilisation de promesse pour le await
-			Token.addAssociation.sendTransaction(address,name,{from:curAddress},(err,result) => {
+			Token.addAssociation.sendTransaction(address,name,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -26,8 +16,7 @@ const addCharity = async () => {
 	};
 
 	//On assigne les valeurs. Await permet d'attendre la résolution d'une promesse: dans notre cas les fonctions asynchrone getCurAddress et addC. 
-	let _curAddress = await getCurAddress();
-	let assigment = await addC(_address,_name, _curAddress);
+	let assigment = await addC(_address,_name);
 
 	//mise a 0 des champes d'input
 	var frm = document.getElementById("addCharity");
@@ -39,20 +28,10 @@ const remCharity = async () => {
 	// Called when clicking on remove button
 	var _address = document.getElementById("adress2").value
 
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-  	})};
-
 	//Fonction pour retirer une association (on appelle une fonction du smart contract)
-	const remC = async (address, curAddress) =>{                         
+	const remC = async (address) =>{                         
 		return new Promise(function(resolve, reject){		 // utilisation de promesse pour le await
-			Token.remAssociation.sendTransaction(address,{from:curAddress},(err,result) => {
+			Token.remAssociation.sendTransaction(address,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -60,8 +39,7 @@ const remCharity = async () => {
 	};
 
 	//On assigne les valeurs. Await permet d'attendre la résolution d'une promesse: dans notre cas les fonctions asynchrone getCurAddress et addC.
-	let _curAddress = await getCurAddress();
-	let assigment = await remC(_address, _curAddress);
+	let assigment = await remC(_address);
 
 	//mise a 0 des champes d'input
 	var frm = document.getElementById("remCharity");
