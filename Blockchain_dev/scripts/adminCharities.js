@@ -191,7 +191,7 @@ const getCharityList = async () =>{
 	};
 
 	listAddress = await getCharity();
-	let taille = await getTaille();
+	let taille = listAddress[0].length;
 
 	//Création d'un objet js des charities (key=name, caracteristique=name, address, balance) afin de les stocker coté utilisateur et les afficher dans le tableau html
 	while (i < taille) {
