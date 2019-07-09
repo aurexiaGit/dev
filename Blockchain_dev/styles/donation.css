@@ -221,6 +221,14 @@ html {
     font-size: 0.9em;
     width: 15em;
   }
+
+  .redText{
+    color: red;
+  }
+
+  .greenText{
+    color: green;
+  }
   
   
   
