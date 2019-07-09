@@ -196,7 +196,7 @@ const getCharityList = async () =>{
 	//Création d'un objet js des charities (key=name, caracteristique=name, address, balance) afin de les stocker coté utilisateur et les afficher dans le tableau html
 	while (i < taille) {
 		var address = listAddress[0][i];
-		name = listAddress[1][i];
+		name = web3.toAscii(listAddress[1][i]);
 		balance = listAddress[2][i];
 
 		//création d'un item de l'objet js
