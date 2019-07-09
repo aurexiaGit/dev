@@ -32,7 +32,7 @@ const getCharity = async () =>{
   
 	const getName = async (address) =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getAssoName(address, (err, res) => {
+			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
 				let name = web3.toAscii(res);
 				resolve(name);
