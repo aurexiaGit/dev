@@ -95,7 +95,7 @@ html {
 
     /* ABA 26 06 2019 
     background-color: #1554DF; */
-    background:linear-gradient(#1554DF 10em, white 10em );
+    background:linear-gradient(#1554DF 10.2em, white 10.2em );
 
     margin-left: 4%;
     margin-right:4%;
@@ -133,17 +133,19 @@ html {
   }
 
   option{
-    color: #1554DF
+    color: white;
+    background-color: #1554DF;
   }
   
-  #dest-select{
-    margin-bottom: 4%;
+  #dest-select-ranking{
+    margin-bottom: 1%;
     border: none;
     border-bottom: 1px solid;
     border-color: white;
     background-color: #1554DF;
-    font-size: 1.2em;
+    font-size: 1em;
     text-align: center;
+    color: white;
   }
   
   button { 
