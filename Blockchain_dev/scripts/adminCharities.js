@@ -57,20 +57,10 @@ const remCharity = async () => {
 
 const openDonation = async () => {
 
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-	})};
-
 	//On ouvre les donations aux utilisateurs (fonction du smartcontract). Au niveau du smart contract c'est un booléan qui passe en true et qui active les fonctions transfertToAssociation
-	const open = async (curAddress) =>{                         
+	const open = async () =>{                         
 		return new Promise(function(resolve, reject){
-			Token.launchDonation.sendTransaction({from:curAddress},(err,result) => {
+			Token.launchDonation((err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -78,8 +68,7 @@ const openDonation = async () => {
 	};
 
 	//appelle des fonctions d'intéraction au smart contract
-	let curAddress = await getCurAddress();
-	let result = await open (curAddress);
+	let result = await open ();
 	console.log(result)
 	return false;
 }
@@ -87,26 +76,16 @@ const openDonation = async () => {
 
 const closeDonation = async () => {     //Meme principe que ci dessus 
 
-	const getCurAddress = async () =>{                         
+	const close = async () =>{                         
 		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-		})};
-
-	const close = async (curAddress) =>{                         
-		return new Promise(function(resolve, reject){
-			Token.closeDonation.sendTransaction({from:curAddress},(err,result) => {
+			Token.closeDonation((err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
 	  	})
 	};
 
-	let curAddress = await getCurAddress();
-	let result = await close (curAddress);
+	let result = await close ();
 	console.log(result)
 	return false;
 }
