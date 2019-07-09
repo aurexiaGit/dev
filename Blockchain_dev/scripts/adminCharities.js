@@ -122,7 +122,7 @@ const getCharityTable = (_charity) => {
 
 		var column4 = document.createElement('td');
 		column4.className = "column4";
-		column4.innerHTML = Math.round(_charity[key].balance);
+		column4.innerHTML = Math.round(_charity[key].balance * Math.pow(10,-18));
 		row.appendChild(column4)
 
 		i++
