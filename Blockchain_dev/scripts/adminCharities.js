@@ -8,7 +8,7 @@ const addCharity = async () => {
 	//Fonction pour ajouter une association (on appelle une fonction du smart contract)
 	const addC = async (address, name) =>{                         
 		return new Promise(function(resolve, reject){     // utilisation de promesse pour le await
-			Token.addAssociation.sendTransaction(address,name,(err,result) => {
+			Token.addAssociation(address,name,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -31,7 +31,7 @@ const remCharity = async () => {
 	//Fonction pour retirer une association (on appelle une fonction du smart contract)
 	const remC = async (address) =>{                         
 		return new Promise(function(resolve, reject){		 // utilisation de promesse pour le await
-			Token.remAssociation.sendTransaction(address,(err,result) => {
+			Token.remAssociation(address,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
