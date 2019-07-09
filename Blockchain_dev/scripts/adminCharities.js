@@ -81,7 +81,7 @@ const openDonation = async () => {
 	let curAddress = await getCurAddress();
 	let result = await open (curAddress);
 	console.log(result)
-	return result;
+	return false;
 }
 
 
@@ -108,7 +108,7 @@ const closeDonation = async () => {     //Meme principe que ci dessus
 	let curAddress = await getCurAddress();
 	let result = await close (curAddress);
 	console.log(result)
-	return result;
+	return false;
 }
 
 
