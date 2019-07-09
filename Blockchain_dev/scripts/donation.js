@@ -60,7 +60,7 @@ const getCharity = async () =>{
 	console.log(donationOpen);
 	if (donationOpen == true){
 		let open = document.getElementById("opening");
-		open.innerHTML="<div id='opening'>Donation Status: Open</div>"
+		open.innerHTML="<div id='opening'>Donation Status: <span class='greenText'>Open</span></div>"
 	}
 	
 	//remplissage de l'objet js
