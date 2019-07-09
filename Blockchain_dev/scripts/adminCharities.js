@@ -183,50 +183,21 @@ const getCharityList = async () =>{
 //Création de 4 fonctions intéragissant avec le Smart contract pour récupérer la liste des Charity's address, la taille de la liste, leur nom, leur balance
 	const getCharity = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getCharityAddress((err, members) => {
+			Token.getCharityAndNameAndBalance((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  		})
 		})
 	};
 
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getAssoName(address, (err, res) => {
-				if (err) return reject(err);
-				let name = web3.toAscii(res);     //les noms sont stockés sont forme de bytes dans le smart contract il faut donc les traduire en ascii
-				resolve(name);
-			})
-		})
-	};
-	
-	const getBalance = async (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
-		})
-	}
-
-	const getTaille = async () =>{
-		return new Promise(function(resolve, reject){
-		  Token.getCharitySize((err, result) => {
-			if (err) return reject(err);
-			console.log(result);
-			resolve(result);
-		})
-	  })}
-
-	
 	listAddress = await getCharity();
 	let taille = await getTaille();
 
 	//Création d'un objet js des charities (key=name, caracteristique=name, address, balance) afin de les stocker coté utilisateur et les afficher dans le tableau html
 	while (i < taille) {
-		var address = listAddress[i];
-		name = await getName(address);
-		balance = await getBalance(address);
+		var address = listAddress[0][i];
+		name = listAddress[1][i];
+		balance = listAddress[2][i];
 
 		//création d'un item de l'objet js
 		charity[name]={};
