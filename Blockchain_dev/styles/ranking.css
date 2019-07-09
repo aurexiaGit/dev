@@ -95,7 +95,7 @@ html {
 
     /* ABA 26 06 2019 
     background-color: #1554DF; */
-    background-color: white;
+    background:linear-gradient(#1554DF 10em, white 10em );
 
     margin-left: 4%;
     margin-right:4%;
@@ -125,7 +125,7 @@ html {
 
     /* ABA 26 06 2019
     color: white; */
-    color: #1554DF;
+    color: white;
 
     margin-bottom: 1%;
     font-size: 120%;
