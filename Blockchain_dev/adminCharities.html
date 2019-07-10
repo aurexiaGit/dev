@@ -54,8 +54,10 @@
                     <img src="images/delete.png" alt="icon charityRem" />
                     <h1>Remove a Charity</h1>
                     <form id="remCharity">
-                      <input type="text" placeholder="Address" id="adress2" required/>
-                      <button onclick="return remCharity()">REMOVE</button>
+                        <select id="dest-select1" required>
+                            <option value="init">Select a charity</option>
+                        </select>
+                        <button onclick="return remCharity()">REMOVE</button>
                     </form>
                   </div>
                 </div>

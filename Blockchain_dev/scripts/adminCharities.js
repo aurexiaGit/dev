@@ -129,6 +129,20 @@ const getCharityTable = (_charity) => {
 	}
 }
 
+const dropdownListCharity = (_charity) => {
+	//ciblage de la borne html
+	var select = document.getElementById("dest-select1");
+	//creation de la dropdown
+	for (var key in _charity){
+		if (_charity.hasOwnProperty(key)) {
+		var opt = document.createElement('option');
+		opt.value = _charity[key].address.toLowerCase();
+		opt.innerHTML = _charity[key].name;
+		select.appendChild(opt);
+		}
+	}
+}
+
 const getCharityList = async () =>{
 
 	let charity = {}; //objet js permettant de stocker les charity avec toutes leurs caractéristiques 
@@ -166,7 +180,9 @@ const getCharityList = async () =>{
 		i++
 	}
 
-	return getCharityTable(charity)
+	getCharityTable(charity);
+	dropdownListCharity(charity);
+	return false;
 };
 
 getCharityList();
