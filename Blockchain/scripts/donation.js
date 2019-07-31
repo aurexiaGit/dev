@@ -24,27 +24,10 @@ const getCharity = async () =>{
 	//fonctions intéragissant avec le smart contract, récuparant la liste des adresses des charities ainsi que leur nom et la taille de la liste
 	const getCharity = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getCharityAddress((err, charities) => {
+			Token.getCharityAndNameAndBalance((err, charities) => {
 				if (err) return reject(err);
 				resolve(charities);
 			})
-	})}
-  
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getAssoName(address, (err, res) => {
-				if (err) return reject(err);
-				let name = web3.toAscii(res);
-				resolve(name);
-		  })
-	})}	
-
-	const getTaille = async () =>{
-		return new Promise(function(resolve, reject){
-		  	Token.sizeListCharity((err, result) => {
-			if (err) return reject(err);
-			resolve(result);
-		})
 	})}
 
 	const isOpen = async () =>{
@@ -60,15 +43,15 @@ const getCharity = async () =>{
 	console.log(donationOpen);
 	if (donationOpen == true){
 		let open = document.getElementById("opening");
-		open.innerHTML="<div id='opening'>Donation Status: Open</div>"
+		open.innerHTML="<div id='opening'>Donation Status: <span class='greenText'>Open</span></div>"
 	}
 	
 	//remplissage de l'objet js
 	listCharity = await getCharity();
-	let taille = await getTaille();
+	let taille = listCharity[0].length;
 	while (i < taille) {
-		var address = listCharity[i];
-		name = await getName(address);
+		var address = listCharity[0][i];
+		name = web3.toAscii(listCharity[1][i])
 		charity[name]={}
 		charity[name].address=address.toLowerCase();
 		charity[name].name=name

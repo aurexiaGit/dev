@@ -15,19 +15,12 @@ const getAdminHistory = async () =>{
 
 	const getMembersAndName = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getMembersAndName((err, members) => {
+			Token.getMembersCharityAndName((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  	})
 	})}
 
-	const getTaille = async () =>{
-		return new Promise(function(resolve, reject){
-		  Token.sizeListAccount((err, result) => {
-			if (err) return reject(err);
-			resolve(result);
-		})
-	  })}
 
 	const getAllWordings = async () =>{                        
 		return new Promise(function(resolve, reject){
@@ -37,21 +30,7 @@ const getAdminHistory = async () =>{
 	  	})
 	})}
 
-	const getCharityAndName = async () =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getCharityAddressAndName((err, members) => {
-				if (err) return reject(err);
-				resolve(members);
-	  	})
-	})}
 
-	const getCharityTaille = async () =>{
-		return new Promise(function(resolve, reject){
-		  Token.getCharitySize((err, result) => {
-			if (err) return reject(err);
-			resolve(result);
-		})
-	  })}
 
 	//récupération des informations
 	curAddress = await getCurAddress();
@@ -59,12 +38,8 @@ const getAdminHistory = async () =>{
 	let listeWordings = await getAllWordings();
 	console.log("wordings");
 	console.log(listeWordings)
-	let taille = await getTaille();
+	let taille = listAddressAndName[0].length;
 	let tailleWording = listeWordings[0].length;
-
-	//on inclue les charities dans les users (pour indiquer les transactions vers les charities)
-	let charityTaille = await getCharityTaille();
-	console.log(charityTaille);
 
 	//stockage de ces données dans un objet javascript (cette méthode permet une meilleur rapidité lorsqu'on cherchera le nom d'un utilisateur grâce à son adresse publique)
 	for (let i=0; i<taille; i++) {
@@ -74,19 +49,6 @@ const getAdminHistory = async () =>{
 		users[address].address=address;
 		users[address].name=name;
 	}
-	
-	if (charityTaille !=0){
-		let listCharityAndName = await getCharityAndName();
-		console.log(listCharityAndName);
-
-		for (let i=0; i<charityTaille; i++) {
-			let address = listCharityAndName[0][i];
-			let name = web3.toAscii(listCharityAndName[1][i]);
-			users[address]={};
-			users[address].address=address;
-			users[address].name=name;
-		}
-	}
 
 	//On doit intégrer l'adresse null car lors de le création d'un smart contract, l'admin est crédité par cette adresse (sans l'intégrer cela fait crasher la page)
 	users["0x0000000000000000000000000000000000000000"]={};
@@ -95,7 +57,7 @@ const getAdminHistory = async () =>{
 
 	//use of Etherscan API to get the list of transactions for current user. Results are saved in a JSON file
 	//On ajoute et retire les parametres dans l'adresse afin d'avoir ce qu'on veut  "&ce_qu'on_veut=paramtre"
-	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0xA7DFE4e2E2111B07919fbC28138f02eeCc398274&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
+	$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=tokentx&contractaddress=0x639E345136aBBCE3828887b7365d8a462c82db1E&startblock=0&endblock=999999999&sort=asc&apikey=NSAMUW521D6CQ63KHUPRQEERSW8FVRAF9B' , function(data) {
 		var resultArray = data.result;
 
 		// fill the history with data from json file. Required/relevant columns from json are:

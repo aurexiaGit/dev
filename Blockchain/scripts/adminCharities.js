@@ -4,21 +4,11 @@ const addCharity = async () => {
 	var _address = document.getElementById("adress1").value;
 	var _name = document.getElementById("name1").value;
 	_name = web3.fromAscii(_name);
-
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-  	})};
 	
 	//Fonction pour ajouter une association (on appelle une fonction du smart contract)
-	const addC = async (address, name, curAddress) =>{                         
+	const addC = async (address, name) =>{                         
 		return new Promise(function(resolve, reject){     // utilisation de promesse pour le await
-			Token.addAssociation.sendTransaction(address,name,{from:curAddress},(err,result) => {
+			Token.addAssociation(address,name,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -26,8 +16,7 @@ const addCharity = async () => {
 	};
 
 	//On assigne les valeurs. Await permet d'attendre la résolution d'une promesse: dans notre cas les fonctions asynchrone getCurAddress et addC. 
-	let _curAddress = await getCurAddress();
-	let assigment = await addC(_address,_name, _curAddress);
+	let assigment = await addC(_address,_name);
 
 	//mise a 0 des champes d'input
 	var frm = document.getElementById("addCharity");
@@ -39,20 +28,10 @@ const remCharity = async () => {
 	// Called when clicking on remove button
 	var _address = document.getElementById("adress2").value
 
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-  	})};
-
 	//Fonction pour retirer une association (on appelle une fonction du smart contract)
-	const remC = async (address, curAddress) =>{                         
+	const remC = async (address) =>{                         
 		return new Promise(function(resolve, reject){		 // utilisation de promesse pour le await
-			Token.remAssociation.sendTransaction(address,{from:curAddress},(err,result) => {
+			Token.remAssociation(address,(err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -60,8 +39,7 @@ const remCharity = async () => {
 	};
 
 	//On assigne les valeurs. Await permet d'attendre la résolution d'une promesse: dans notre cas les fonctions asynchrone getCurAddress et addC.
-	let _curAddress = await getCurAddress();
-	let assigment = await remC(_address, _curAddress);
+	let assigment = await remC(_address);
 
 	//mise a 0 des champes d'input
 	var frm = document.getElementById("remCharity");
@@ -79,20 +57,10 @@ const remCharity = async () => {
 
 const openDonation = async () => {
 
-	// fonction de recuperation l'adresse de l'utilisateur
-	const getCurAddress = async () =>{                         
-		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-	})};
-
 	//On ouvre les donations aux utilisateurs (fonction du smartcontract). Au niveau du smart contract c'est un booléan qui passe en true et qui active les fonctions transfertToAssociation
-	const open = async (curAddress) =>{                         
+	const open = async () =>{                         
 		return new Promise(function(resolve, reject){
-			Token.launchDonation.sendTransaction({from:curAddress},(err,result) => {
+			Token.launchDonation((err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
@@ -100,37 +68,26 @@ const openDonation = async () => {
 	};
 
 	//appelle des fonctions d'intéraction au smart contract
-	let curAddress = await getCurAddress();
-	let result = await open (curAddress);
+	let result = await open ();
 	console.log(result)
-	return result;
+	return false;
 }
 
 
 const closeDonation = async () => {     //Meme principe que ci dessus 
 
-	const getCurAddress = async () =>{                         
+	const close = async () =>{                         
 		return new Promise(function(resolve, reject){
-		web3.eth.getAccounts((err, accounts) => {
-			if (err) return reject(err);
-			let result = accounts[0].toLowerCase();
-			resolve(result);
-		})
-		})};
-
-	const close = async (curAddress) =>{                         
-		return new Promise(function(resolve, reject){
-			Token.closeDonation.sendTransaction({from:curAddress},(err,result) => {
+			Token.closeDonation((err,result) => {
 				if (err) return reject(err);
 				resolve(result);
 			})
 	  	})
 	};
 
-	let curAddress = await getCurAddress();
-	let result = await close (curAddress);
+	let result = await close ();
 	console.log(result)
-	return result;
+	return false;
 }
 
 
@@ -165,10 +122,24 @@ const getCharityTable = (_charity) => {
 
 		var column4 = document.createElement('td');
 		column4.className = "column4";
-		column4.innerHTML = Math.round(_charity[key].balance);
+		column4.innerHTML = Math.round(_charity[key].balance * Math.pow(10,-18));
 		row.appendChild(column4)
 
 		i++
+	}
+}
+
+const dropdownListCharity = (_charity) => {
+	//ciblage de la borne html
+	var select = document.getElementById("dest-select1");
+	//creation de la dropdown
+	for (var key in _charity){
+		if (_charity.hasOwnProperty(key)) {
+		var opt = document.createElement('option');
+		opt.value = _charity[key].address.toLowerCase();
+		opt.innerHTML = _charity[key].name;
+		select.appendChild(opt);
+		}
 	}
 }
 
@@ -183,50 +154,21 @@ const getCharityList = async () =>{
 //Création de 4 fonctions intéragissant avec le Smart contract pour récupérer la liste des Charity's address, la taille de la liste, leur nom, leur balance
 	const getCharity = async () =>{                        
 		return new Promise(function(resolve, reject){
-			Token.getCharityAddress((err, members) => {
+			Token.getCharityAndNameAndBalance((err, members) => {
 				if (err) return reject(err);
 				resolve(members);
 	  		})
 		})
 	};
 
-	const getName = async (address) =>{                        
-		return new Promise(function(resolve, reject){
-			Token.getAssoName(address, (err, res) => {
-				if (err) return reject(err);
-				let name = web3.toAscii(res);     //les noms sont stockés sont forme de bytes dans le smart contract il faut donc les traduire en ascii
-				resolve(name);
-			})
-		})
-	};
-	
-	const getBalance = async (_curAddress) =>{
-		return new Promise(function(resolve, reject){
-			Token.balanceOf(_curAddress, (err, result) => {
-				if (err) return reject (err);
-				resolve(result*Math.pow(10,-18));
-			})
-		})
-	}
-
-	const getTaille = async () =>{
-		return new Promise(function(resolve, reject){
-		  Token.getCharitySize((err, result) => {
-			if (err) return reject(err);
-			console.log(result);
-			resolve(result);
-		})
-	  })}
-
-	
 	listAddress = await getCharity();
-	let taille = await getTaille();
+	let taille = listAddress[0].length;
 
 	//Création d'un objet js des charities (key=name, caracteristique=name, address, balance) afin de les stocker coté utilisateur et les afficher dans le tableau html
 	while (i < taille) {
-		var address = listAddress[i];
-		name = await getName(address);
-		balance = await getBalance(address);
+		var address = listAddress[0][i];
+		name = web3.toAscii(listAddress[1][i]);
+		balance = listAddress[2][i];
 
 		//création d'un item de l'objet js
 		charity[name]={};
@@ -238,7 +180,9 @@ const getCharityList = async () =>{
 		i++
 	}
 
-	return getCharityTable(charity)
+	getCharityTable(charity);
+	dropdownListCharity(charity);
+	return false;
 };
 
 getCharityList();

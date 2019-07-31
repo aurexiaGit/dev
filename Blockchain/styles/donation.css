@@ -203,6 +203,7 @@ html {
     border-color: #1554DF;
     font-size: 1.2em;
     text-align: center;
+    background-color: white;
   }
   
   button { 
@@ -219,6 +220,14 @@ html {
     height: 3.5em; 
     font-size: 0.9em;
     width: 15em;
+  }
+
+  .redText{
+    color: red;
+  }
+
+  .greenText{
+    color: #00E100;
   }
   
   
