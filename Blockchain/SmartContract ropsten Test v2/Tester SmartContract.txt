@@ -18,7 +18,7 @@ Aussi le site est un peu instable, il se peut que la page se reloade toute seule
 
 Pour int�ragir avec le contrat selection ropsten en haut a droite et entre juste : 
 
-- adresse du contrat : 0xa43b0Af884867e070Ba5B5116971685DbCF50892
+- adresse du contrat : 0xA7DFE4e2E2111B07919fbC28138f02eeCc398274
 
 
 

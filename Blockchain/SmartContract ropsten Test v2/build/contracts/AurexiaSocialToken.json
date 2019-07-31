@@ -61610,14 +61610,85 @@
   },
   "networks": {
     "3": {
+      "events": {
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "tokens",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event",
+          "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event",
+          "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_to",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0xA7DFE4e2E2111B07919fbC28138f02eeCc398274",
+      "transactionHash": "0xfbae3cc9ac7fcd40ad55981cdd34fc603dcf4c9b7849c453f42ef9e9766c1729"
+    },
+    "5777": {
       "events": {},
       "links": {},
-      "address": "0x639E345136aBBCE3828887b7365d8a462c82db1E",
-      "transactionHash": "0x32b6cb1d2f58abf314ad59d4df039ca62b50164bc2186bce297c8e5ddcd64be6"
+      "address": "0xcb2c9DB0B48887C0E03FcDeD5bF2eEFBea73702d",
+      "transactionHash": "0xd877e737f97eb26ce2f4e06a416f0f6c6312ca1b2cc821693347c10f1108f021"
     }
   },
   "schemaVersion": "3.0.8",
-  "updatedAt": "2019-07-09T08:30:28.130Z",
+  "updatedAt": "2019-07-31T08:46:11.581Z",
   "devdoc": {
     "methods": {}
   },
