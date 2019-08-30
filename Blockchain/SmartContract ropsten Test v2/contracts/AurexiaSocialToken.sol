@@ -248,8 +248,6 @@ contract AurexiaSocialToken is Owned, SafeMath {
         aurexiaMembers[_address].name = _name;
         aurexiaMembers[_address].grade = _grade;
         aurexiaMembers[_address].isMember = true;
-        bytes32 textIniDonation = "Initial Donation";
-        _transfer(owner, _address, initialDonation, textIniDonation);
 
         return true;
     }
