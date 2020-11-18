@@ -1130,7 +1130,7 @@ const getLog = async () =>{
   //assignation des valeurs 
   curAddress = await getCurAddress();
   ownerAddress = await getOwner();
-  curName = await getName(curAddress);
+  let curName = await getName(curAddress);
 
   //on retourne l'affichage de la banner
   return getBanner(curAddress, ownerAddress, curName);
@@ -1144,7 +1144,7 @@ const getBanner = (_curAddress, _ownerAddress, _name) => {
     document.getElementById("adminPage").style.display = "block";
     }
   else {
-    var identity = document.getElementById("identity");
+    identity = document.getElementById("identity");
     identity.innerHTML= "<br><div id = 'name'> " + _name + "</div> </br> ";
   }
 };
@@ -1161,7 +1161,7 @@ const dropdownList = (_curAddress, _users, _keyName) => {
   var select = document.getElementById("dest-select");
   //remplissage de la dropdown list via l'object _users'
   for (let i=0; i<_keyName.length; i++){
-    key = _keyName[i];
+    let key = _keyName[i];
 	  if (_users.hasOwnProperty(key) && key !== "admin" && _users[key].address.toLowerCase() !== _curAddress.toLowerCase() && _users[key].address !== "0x0000000000000000000000000000000000000000") {
       var opt = document.createElement('option');
       opt.value = _users[key].address.toLowerCase();
@@ -1212,7 +1212,7 @@ const getUsers = async () =>{
   
   let keyName = listAddressAndName[1];
   console.log(keyName);
-  for (let i=0; i<keyName.length; i++){
+  for (i=0; i<keyName.length; i++){
     keyName[i]=web3.toAscii(keyName[i]);
   }
   keyName.splice(0,1);

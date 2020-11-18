@@ -135,7 +135,7 @@ const getRankingTable = (_usersTop) => {
 	var table = document.getElementById("content");
 	var i = 0;
 
-	for (key in _usersTop){
+	for (let key in _usersTop){
 
 		var number = i + 1;
 
@@ -169,7 +169,7 @@ const getTransactionTable = (_usersTop) => {
 	var table = document.getElementById("content2");
 	var i = 0;
 
-	for (key in _usersTop){
+	for (let key in _usersTop){
 
 		var number = i + 1;
 
@@ -203,7 +203,7 @@ const getSendTable = (_usersTop) => {
 	var table = document.getElementById("content3");
 	var i = 0;
 
-	for (key in _usersTop){
+	for (let key in _usersTop){
 
 		var number = i + 1;
 
@@ -237,7 +237,7 @@ const getReceiveTable = (_usersTop) => {
 	var table = document.getElementById("content4");
 	var i = 0;
 
-	for (key in _usersTop){
+	for (let key in _usersTop){
 
 		var number = i + 1;
 
@@ -306,7 +306,7 @@ const getRankingList = async () =>{
 		return new Promise(function(resolve, reject){
 			Token.getName(address, (err, res) => {
 				if (err) return reject(err);
-				let name = web3.toAscii(res);
+				name = web3.toAscii(res);
 				resolve(name);
 			})
 		})
@@ -314,7 +314,7 @@ const getRankingList = async () =>{
 
 	//Récupération des listes + adresse de l'utilisateur
 	listAddressNameBalance = await getMembersNameBalance();
-	curAddress = await getCurAddress();
+	let curAddress = await getCurAddress();
 	let userName = await getName(curAddress);
 	var taille = await getTaille();
 
@@ -328,7 +328,7 @@ const getRankingList = async () =>{
 	while (i < taille) {
 		var address = listAddressNameBalance[0][i];
 		name = web3.toAscii(listAddressNameBalance[1][i]);
-		balance = (listAddressNameBalance[2][i])*Math.pow(10,-18);
+		let balance = (listAddressNameBalance[2][i])*Math.pow(10,-18);
 		users[i]={};
 		users[i].address=address;
 		users[i].name=name;
@@ -351,7 +351,7 @@ const getRankingList = async () =>{
 
 
 	//tri bulle décroissant des utilisateurs afin d'avoir le top3 utilisateurs dans les 3 premiers slot de l'objet (la key de cette objet est 0,1,2, ... , n)
-	for (var i = taille-1; i > 0 ; i--){
+	for (i = taille-1; i > 0 ; i--){
 		for (var j = 0; j < i; j++){
 			if (users[j].balance < users[j+1].balance){
 				users["tempo"] = users[j];
@@ -363,7 +363,7 @@ const getRankingList = async () =>{
 	
 	// Assignation du top3. On crée un condition if si le nombre d'utilisateur est < 3 car dans ce cas ranking devra afficher l'entiereté de user (soit 1 ou 2 ou 3 personnes)
 	if (taille <= 3){
-		for (var i=0; i<taille; i++){
+		for (i=0; i<taille; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -372,7 +372,7 @@ const getRankingList = async () =>{
 		}
 	}
 	else{
-		for (var i=0; i<3; i++){
+		for (i=0; i<3; i++){
 			usersTop[i] = {};
 			usersTop[i].name = users[i].name;
 			usersTop[i].address = users[i].address;
@@ -382,7 +382,7 @@ const getRankingList = async () =>{
 	}
 
 	//Assignation de users perso avec son classement
-	for (var i=0; i<taille; i++){
+	for (i=0; i<taille; i++){
 		if (users[i].address.toLowerCase() == curAddress.toLowerCase()){
 			usersPerso["Perso"].name = users[i].name;
 			usersPerso["Perso"].address = curAddress;
@@ -467,7 +467,7 @@ const getRankingList = async () =>{
 
 
 	let nbrTransactionPerso = {};
-	for (let i=0; i<taille; i++){
+	for (i=0; i<taille; i++){
 		nbrTransactionPerso[i]= {};
 		nbrTransactionPerso[i].nbrTransaction = resultAll[1][i];
 		nbrTransactionPerso[i].send = resultAll[3][i]*Math.pow(10,-18);
@@ -477,8 +477,8 @@ const getRankingList = async () =>{
 
 
 	//tri pour le top transaction
-	for (var i = taille-1; i > 0 ; i--){
-		for (var j = 0; j < i; j++){
+	for (i = taille-1; i > 0 ; i--){
+		for (j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].nbrTransaction < nbrTransactionPerso[j+1].nbrTransaction){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
 				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
@@ -490,7 +490,7 @@ const getRankingList = async () =>{
 	let topTransaction = {};
 	
 	if (taille <= 3){
-		for (var i=0; i<taille; i++){
+		for (i=0; i<taille; i++){
 			topTransaction[i] = {};
 			topTransaction[i].nbrTransaction = nbrTransactionPerso[i].nbrTransaction;
 			topTransaction[i].name = nbrTransactionPerso[i].name;
@@ -498,7 +498,7 @@ const getRankingList = async () =>{
 		}
 	}
 	else{
-		for (var i=0; i<3; i++){
+		for (i=0; i<3; i++){
 			topTransaction[i] = {};
 			topTransaction[i].nbrTransaction = nbrTransactionPerso[i].nbrTransaction;
 			topTransaction[i].name = nbrTransactionPerso[i].name;
@@ -512,7 +512,7 @@ const getRankingList = async () =>{
 
 	//Ranking user du nbr transactions
 	let rankingNbrTransaction = "err";
-	for (let i=0; i<taille; i++){
+	for (i=0; i<taille; i++){
 		if (nbrTransactionPerso[i].name == userName){
 			rankingNbrTransaction = i+1;
 			break;
@@ -520,8 +520,8 @@ const getRankingList = async () =>{
 	}
 
 	//top pour le send transaction
-	for (var i = taille-1; i > 0 ; i--){
-		for (var j = 0; j < i; j++){
+	for (i = taille-1; i > 0 ; i--){
+		for (j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].send < nbrTransactionPerso[j+1].send){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
 				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
@@ -533,7 +533,7 @@ const getRankingList = async () =>{
 	let topTransactionSend = {};
 	
 	if (taille <= 3){
-		for (var i=0; i<taille; i++){
+		for (i=0; i<taille; i++){
 			topTransactionSend[i] = {};
 			topTransactionSend[i].send = nbrTransactionPerso[i].send;
 			topTransactionSend[i].name = nbrTransactionPerso[i].name;
@@ -541,7 +541,7 @@ const getRankingList = async () =>{
 		}
 	}
 	else{
-		for (var i=0; i<3; i++){
+		for (i=0; i<3; i++){
 			topTransactionSend[i] = {};
 			topTransactionSend[i].send = nbrTransactionPerso[i].send;
 			topTransactionSend[i].name = nbrTransactionPerso[i].name;
@@ -553,7 +553,7 @@ const getRankingList = async () =>{
 
 	//Ranking user du nbr transactions
 	let rankingSendTransaction = "err";
-	for (let i=0; i<taille; i++){
+	for (i=0; i<taille; i++){
 		if (nbrTransactionPerso[i].name == userName){
 			rankingSendTransaction = i+1;
 			break;
@@ -561,8 +561,8 @@ const getRankingList = async () =>{
 	}
 
 	//top ranking pour le receive transactions
-	for (var i = taille-1; i > 0 ; i--){
-		for (var j = 0; j < i; j++){
+	for (i = taille-1; i > 0 ; i--){
+		for (j = 0; j < i; j++){
 			if (nbrTransactionPerso[j].receive < nbrTransactionPerso[j+1].receive){
 				nbrTransactionPerso["tempo"] = nbrTransactionPerso[j];
 				nbrTransactionPerso[j] = nbrTransactionPerso[j+1];
@@ -574,7 +574,7 @@ const getRankingList = async () =>{
 	let topTransactionReceive = {};
 	
 	if (taille <= 3){
-		for (var i=0; i<taille; i++){
+		for (i=0; i<taille; i++){
 			topTransactionReceive[i] = {};
 			topTransactionReceive[i].receive = nbrTransactionPerso[i].receive;
 			topTransactionReceive[i].name = nbrTransactionPerso[i].name;
@@ -582,7 +582,7 @@ const getRankingList = async () =>{
 		}
 	}
 	else{
-		for (var i=0; i<3; i++){
+		for (i=0; i<3; i++){
 			topTransactionReceive[i] = {};
 			topTransactionReceive[i].receive = nbrTransactionPerso[i].receive;
 			topTransactionReceive[i].name = nbrTransactionPerso[i].name;
@@ -593,7 +593,7 @@ const getRankingList = async () =>{
 
 	// Retour de tous les rankings de transactions
 	let rankingReceiveTransaction = "err";
-	for (let i=0; i<taille; i++){
+	for (i=0; i<taille; i++){
 		if (nbrTransactionPerso[i].name == userName){
 			rankingReceiveTransaction = i+1;
 			break;
