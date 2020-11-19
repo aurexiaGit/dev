@@ -107,7 +107,7 @@ getCharity();
 const transferCharity = async() => {
 	/*let amount = document.getElementById("amount").value
 	let address = document.getElementById("dest-select1").value
-	amount = amount*Math.pow(10,18);*/
+	*/
 	
 	const transferEvent = async (_address, _amount) =>{
 		return new Promise(function(resolve, reject){
@@ -117,7 +117,7 @@ const transferCharity = async() => {
 			})
 		})
 	};
-	let charities = await formatCharities();
+	
 	var tablerows = document.getElementById("content-donation").rows;
 	var taille = tablerows.length;
 
@@ -126,10 +126,9 @@ const transferCharity = async() => {
 		let amount = cells[0].innerHTML
 		if ( amount != 0){
 			name = cells[1].innerHTML
-			for(let taille = name.length; taille < 32; taille++){
-				name += '\u0'
-			}
-			console.log("Send " + amount + " AST to " + name + " at address : " + charities[name].address);
+			let address = cells[2].innerHTML
+			console.log("Send " + amount + " AST to " + name + " at address : " + address);
+			amount = amount*Math.pow(10,18);
 		}
 	}
 
