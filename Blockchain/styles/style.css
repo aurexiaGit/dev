@@ -406,3 +406,7 @@ table{
     border-width: thin;
     border: solid #1554DF
 }
+
+form#container-table-donation {
+  margin: -6% auto 0;
+}
