@@ -24,6 +24,7 @@ const getCharityTable = (_charity) => {
 	var table = document.getElementById("content-donation")
 	var i = 1
 
+	console.log(_charity);
 	for (var key in _charity){
 		
 		//création de la nouvelle ligne
@@ -94,8 +95,7 @@ const getCharity = async () =>{
 	}
 	
 	// call de la fonction d'affichage du dropdown avec l'objet crée en paramètre
-	getCharityTable(charity);
-	return dropdownListCharity(charity);
+	return getCharityTable(charity);
 };
   
 getCharity();
