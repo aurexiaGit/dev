@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <!-- ABA - Balise to enhance mobile display-->
@@ -7,7 +7,7 @@
         <!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href = "styles/history.css" />
+        <link rel="stylesheet" href="styles/style.css"/>
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -32,15 +32,16 @@
                 </nav>
         </header>
         
-        <section id="historyPage">
+        <section id="historyPage" class="card">
             <div id="container-table-history">
                 <table id ="historyTable">
+                    <caption></caption>
                     <thead>
                         <tr id="topTable">
-                            <th class="column1History">Date</th>
-                            <th class="column2History">From/To</th>
-                            <th class="column3History">Amount</th>
-                            <th class="column4History">Description</th>
+                            <th class="column1History" scope="col">Date</th>
+                            <th class="column2History" scope="col">From/To</th>
+                            <th class="column3History" scope="col">Amount</th>
+                            <th class="column4History" scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody id="content-history" class="table-body">
@@ -52,54 +53,4 @@
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/history.js"></script>
     </body>
-
-
-    <!--
-    <body>
-    	<header>
-            <nav>
-                <p class = "heading" onclick="window.location='main.html'">HOME </p>
-                <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
-                <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
-                <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
-            </nav>
-            <div id="identity">
-                <br><div id = "name">Loading</div>
-            </div>
-        </header>
-        <section id='notifBanner'>
-            <img id="arrow" src="images/pageArrow.png">
-            <div id="notifs">
-                <div id="history">
-                </div>
-            </div>
-        </section>
-
-        <div class="container-table">
-            <div class="wrap-table">
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="column1History">Date</th>
-                                <th class="column2History">Type</th>
-								<th class="column3History">From</th>
-								<th class="column4History">To</th>
-                                <th class="column5History">Amount</th>
-                                <th class="column6History">Wording</th>
-                            </tr>
-                        </thead>
-                        <tbody id="content-history" class="table-body">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="scripts/main.js"></script>
-		<script type="text/javascript" src="scripts/history.js"></script>
-        <script type="text/javascript" src="scripts/ranking.js"></script>
-    </body>
-    -->
 </html>
-

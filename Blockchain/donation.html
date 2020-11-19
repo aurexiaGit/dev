@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <!-- ABA - Balise to enhance mobile display-->
@@ -7,7 +7,7 @@
 		<!-- ABA - Balise to enhance mobile display - End -->
         <link rel="icon" type="image/png" href="images/logoBlockchain.png"/>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <link rel = "stylesheet" href = "styles/donation.css" />
+        <link rel="stylesheet" href="styles/style.css"/>
         <title>MyWallet - Aurexia</title> 
     </head>
 
@@ -32,73 +32,40 @@
             </nav>
         </header>
 
-        <div id="donationPage">
+        <div id="donationPage" class="card">
             <div id="opening">Donation Status : <span class="redText">Closed</span></div>
             <div class="form" style="margin:0 0 10% 0;">
                 <div id="balance">
                     <div id="astValue">0</div>
                     <div id="ast">AST</div>
                 </div>
-                <form id="send">
+                <div id="container-table-donation">
+                    <table id ="donationTable">
+                        <caption></caption>
+                        <thead>
+                            <tr id="topTable">
+                                <th class="column3" scope="col">Amount</th>
+                                <th class="column1" scope="col">Charity</th>
+                                <th class="column2" scope="col">Adresse</th>
+                            </tr>
+                        </thead>
+                        <tbody id="content-donation" class="table-body">
+                        </tbody>
+                    </table>
+                </div>
+                <div>&#8287;</div>
+                <button onclick="return transferCharity()">Send</button>
+                <!--form id="send">
                     <label for="amount">Amount</label>
                     <input type="number" id="amount" required/>
                     <label for="dest-select1">Select Charity</label>
                     <select id="dest-select1" required>
                         <option value="init"></option>
                     </select>
-                    <button onclick="return transferCharity()">Send</button>
                     <div id="loading"></div>
-                </form>
+                </form-->
             </div>
         </div>
-
-
-
-    <!--
-    <body>
-        <header>
-            <nav>
-            <p class = "heading" onclick="window.location='main.html'">HOME </p>
-            <p class = "heading" onclick="window.location='ranking.html'">RANKING </p>
-            <p class = "heading" onclick="window.location='history.html'">HISTORY </p>
-            <p class = "heading" onclick="window.location='admin.html'">ADMIN </p>
-            </nav>
-            <div id="identity">
-                <br> <img class = "pic" src="images/blank.png"> <div id = "name"> loading ... </div>
-            </div>
-        </header>
-        <section id='notifBanner'>
-            <img id="arrow" src="images/pageArrow.png">
-            <div id="notifs">
-                <div id="history">
-                </div>
-            </div>
-        </section>
-        <section id="donationPage">
-            <div id="ast_balance">
-                <div class="form">
-                <h1> <em>Donation Day</em> </h1>
-                <img src="images/donationDay.png"/>
-                <br><br>
-                One year has past, it is now time for your great work to be rewarded! You have
-                <div id="astValue">0 AST</div>
-                to donate. Choose a charity, and all your tokens will be given to this association.
-                <br><br>
-                <form id="donate">
-                    <select id="dest-select1" required>
-                        <option value="init">Select Charity</option>
-                    </select>
-                    <button onclick="return transferCharity()">Donate</button>
-                </form>
-                </div>
-            </div>
-            <br>
-            <div id="rankPage">
-            </div>
-        </section>
--->
-    
-
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/donation.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>

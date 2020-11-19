@@ -12,17 +12,53 @@ const dropdownListCharity = (_charity) => {
 		}
 	}
 }
-	
+
+////////////////////////////////////////////////////////
+//     Creation de la table listant les charity         //
+////////////////////////////////////////////////////////
+
+
+//fonction permettant la création d'un tableau dynamique en html/CSS
+const getCharityTable = (_charity) => {
+	//ciblage de la balise html du tableau
+	var table = document.getElementById("content-donation")
+	var i = 1
+
+	for (var key in _charity){
+		
+		//création de la nouvelle ligne
+		var row = document.createElement('tr');
+		row.class = "row" + i.toString() + " body";
+		table.appendChild(row);
+
+		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
+		var column4 = document.createElement('td');
+		column4.className = "column4";
+		column4.isContentEditable = true;
+		column4.innerHTML = 0;
+		row.appendChild(column4)
+
+		var column2 = document.createElement('td');
+		column2.className = "column2";
+		column2.innerHTML = _charity[key].name;
+		row.appendChild(column2);
+
+		var column3 = document.createElement('td');
+		column3.className = "column3";
+		column3.innerHTML = _charity[key].address;
+		row.appendChild(column3);
+
+		i++
+	}
+}
+
 //fonction récupérant les charities 
 const getCharity = async () =>{
   
 	let charity = {}; //objet js de stockage
-	let listCharity;
-	let name;
-	var i = 0;
 	
 	//fonctions intéragissant avec le smart contract, récuparant la liste des adresses des charities ainsi que leur nom et la taille de la liste
-	const getCharity = async () =>{                        
+	const getCharities = async () =>{                        
 		return new Promise(function(resolve, reject){
 			Token.getCharityAndNameAndBalance((err, charities) => {
 				if (err) return reject(err);
@@ -47,23 +83,22 @@ const getCharity = async () =>{
 	}
 	
 	//remplissage de l'objet js
-	listCharity = await getCharity();
+	let listCharity = await getCharities();
 	let taille = listCharity[0].length;
-	while (i < taille) {
+	for (let i = 0; i < taille; i++) {
 		var address = listCharity[0][i];
-		name = web3.toAscii(listCharity[1][i])
+		let name = web3.toAscii(listCharity[1][i])
 		charity[name]={}
 		charity[name].address=address.toLowerCase();
 		charity[name].name=name
-		i++
 	}
 	
 	// call de la fonction d'affichage du dropdown avec l'objet crée en paramètre
+	getCharityTable(charity);
 	return dropdownListCharity(charity);
 };
   
 getCharity();
-
 
 //fonction intéragissant avec le SC lorsqu'on appuie sur transfert. Elle active la fonction transferToAssociation du SC qui transfert tous les tokens de l'utilisateurs à l'association
 const transferCharity = async() => {
@@ -80,7 +115,7 @@ const transferCharity = async() => {
 		})
 	};
 	
-	transferTransaction = await transferEvent(address, amount);
+	let transferTransaction = await transferEvent(address, amount);
 	var frm = document.getElementById("donate");
 	frm.reset();
 	return transferTransaction

@@ -1,9 +1,9 @@
-
 #second_layer {
   display: flex;
   justify-content: center;
   max-height: 500px;
 }
+
 #history {
     width: 300px;
     height: 300px;

@@ -12,7 +12,6 @@ header
   z-index: 100;
 }
 
-
 #identity {
 	color : white;
   margin: 10px;
@@ -39,7 +38,6 @@ header
   text-align: center;
   box-shadow: 0 0 40px 0 rgba(2, 59, 89, 0.4), 0 5px 5px 0 rgba(2, 59, 89, 0.4);
 }
-
 
  #notifButton:hover {
   cursor : pointer;
@@ -83,7 +81,6 @@ header
     transition: width .3s;
 }
 
-
 nav {
   display : flex;
 }
@@ -95,34 +92,3 @@ nav {
   top:90px;
   right:24px;
 }
-
-
-/*@media (max-width: 1000px) and (orientation: portrait) {
-  header {
-    background-color : rgb(29,74,105);
-    /*background-color : #ED7D31;
-    background-size: 100%;
-    display :flex;
-    justify-content: normal;
-    align-items: center;
-    box-shadow: 10px 0px 10px grey;
-    position:fixed;
-    width : 100%;
-    top:0;
-    z-index: 100;
-    font-size:0;
-  }
-
-  .heading {
-    color : white;
-    font-size: 15px;
-    margin-left : 5px;
-  }
-
-  #identity {
-    color : white;
-    font-size: 15px;
-    margin-left : 30px
-  }
-  
-}*/

@@ -69,12 +69,11 @@ const getHistory = async () =>{
 		//4) value: transaction value (to divide by 10^18)
 		const fillHistory = async (resultArray, curAddress, _users, _listPersoWording) =>{
 			var table = document.getElementById("content-history")
-			var i = 1
 			console.log("_users");
 			console.log(_users);
 			console.log("resultat array");
 			console.log (resultArray);
-			for (let key=tailleWording - 1; key>=0; key--){
+			for (let key=tailleWording - 1, i = 1; key>=0; key--, i++){
 				console.log("key");
 				console.log(key);
 				var row = document.createElement('tr')
@@ -105,13 +104,13 @@ const getHistory = async () =>{
 					row.appendChild(column3)
 				}
 				else {
-					var column2 = document.createElement('td')
+					column2 = document.createElement('td')
 					column2.className = "column2History";
 					let addressFrom = resultArray[key].from;
 					column2.innerHTML = _users[addressFrom].name;
 					row.appendChild(column2)
 
-					var column3 = document.createElement('td');
+					column3 = document.createElement('td');
 					column3.className = "column3History";
 					column3.innerHTML = "+" + Math.round(resultArray[key].value*Math.pow(10,-18));
 					row.appendChild(column3)
@@ -121,8 +120,6 @@ const getHistory = async () =>{
 				column4.className = "column4History";
 				column4.innerHTML = web3.toAscii(_listPersoWording[3][key]);
 				row.appendChild(column4);
-				
-				i++
 			}
 		}
 		fillHistory(resultArray, curAddress, users, listPersoWording);
