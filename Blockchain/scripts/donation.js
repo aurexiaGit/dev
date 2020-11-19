@@ -34,7 +34,7 @@ const getCharityTable = (_charity) => {
 
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
 		var column4 = document.createElement('td');
-		column4.ContentEditable = "true";
+		column4.contentEditable = "true";
 		column4.innerHTML = 0;
 		row.appendChild(column4)
 
@@ -42,7 +42,7 @@ const getCharityTable = (_charity) => {
 		column2.innerHTML = _charity[key].name;
 		row.appendChild(column2);
 
-		console.log('is editable : ' + column4.ContentEditable)
+		console.log('is col editable : ' + column4.contentEditable)
 		i++
 	}
 }
