@@ -42,6 +42,7 @@ const getCharityTable = (_charity) => {
 		column2.innerHTML = _charity[key].name;
 		row.appendChild(column2);
 
+		console.log('is editable : ' + column4.ContentEditable)
 		i++
 	}
 }
