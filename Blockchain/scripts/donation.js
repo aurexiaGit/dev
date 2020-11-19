@@ -117,9 +117,10 @@ const transferCharity = async() => {
 	var table = document.getElementById("content-donation").rows;
 
 	for (let row in table){
-		let amount = row[0].innerHTML
+		let cells = row.cells
+		let amount = cells[0].innerHTML
 		if ( amount != 0){
-			name = row[1].innerHTML
+			name = cells[1].innerHTML
 			console.log("Send " + amount + " AST to " + name + " at address : " + charities[name].address);
 		}
 	}
