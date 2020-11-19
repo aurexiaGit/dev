@@ -34,7 +34,7 @@ const getCharityTable = (_charity) => {
 
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
 		var column4 = document.createElement('td');
-		column4.ContentEditable = true;
+		column4.ContentEditable = "true";
 		column4.innerHTML = 0;
 		row.appendChild(column4)
 
