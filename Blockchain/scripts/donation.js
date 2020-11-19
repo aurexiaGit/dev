@@ -114,10 +114,11 @@ const transferCharity = async() => {
 		})
 	};
 	let charities = await formatCharities();
-	var table = document.getElementById("content-donation").rows;
-
-	for (let row in table){
-		let cells = row.cells
+	var tablerows = document.getElementById("content-donation").rows;
+	var taille = tablerows.length;
+	
+	for (let row = 0; row<taille; row++){
+		let cells = tablerows[row].cells
 		let amount = cells[0].innerHTML
 		if ( amount != 0){
 			name = cells[1].innerHTML
