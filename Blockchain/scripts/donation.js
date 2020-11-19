@@ -42,6 +42,10 @@ const getCharityTable = (_charity) => {
 		column2.innerHTML = _charity[key].name;
 		row.appendChild(column2);
 
+		var column3 = document.createElement('td');
+		column3.innerHTML = _charity[key].address;
+		row.appendChild(column3);
+
 		console.log('is col editable : ' + column4.contentEditable)
 		i++
 	}
@@ -116,12 +120,15 @@ const transferCharity = async() => {
 	let charities = await formatCharities();
 	var tablerows = document.getElementById("content-donation").rows;
 	var taille = tablerows.length;
-	
+
 	for (let row = 0; row<taille; row++){
 		let cells = tablerows[row].cells
 		let amount = cells[0].innerHTML
 		if ( amount != 0){
 			name = cells[1].innerHTML
+			for(let taille = name.length; taille < 32; taille++){
+				name += '\u0'
+			}
 			console.log("Send " + amount + " AST to " + name + " at address : " + charities[name].address);
 		}
 	}
