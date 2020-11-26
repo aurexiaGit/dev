@@ -46,7 +46,7 @@
                             <tr id="topTable">
                                 <th scope="col">Amount</th>
                                 <th scope="col">Charity</th>
-                                <th scope="col" visible="false" >Address</th>
+                                <th scope="col" style="display:none;">Address</th>
                             </tr>
                         </thead>
                         <tbody id="content-donation" class="table-body">
@@ -55,15 +55,8 @@
                 </form>
                 <div>&#8287;</div>
                 <button onclick="return transferCharity()">Send</button>
-                <!--form id="send">
-                    <label for="amount">Amount</label>
-                    <input type="number" id="amount" required/>
-                    <label for="dest-select1">Select Charity</label>
-                    <select id="dest-select1" required>
-                        <option value="init"></option>
-                    </select>
-                    <div id="loading"></div>
-                </form-->
+                <div>&#8287;</div>
+                <canvas id="myChart" style="max-width: 500px;"></canvas>
             </div>
         </div>
         <script type="text/javascript" src="scripts/main.js"></script>
