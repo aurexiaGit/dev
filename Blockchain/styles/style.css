@@ -299,8 +299,7 @@ table{
   
   #topTable{
     color:white;
-  }
-  
+  }  
   
   #historyPage .table{
       position: relative;
@@ -378,10 +377,6 @@ table{
   background-color: white;
 }
 
-#topTable{
-  color:white;
-}
-
 #donationTable .table{
     position: relative;
 }
@@ -395,7 +390,6 @@ table{
 }
 
 #donationTable th{
-  color:white;
   border-width: thin;
   border: solid #1554DF
 }
