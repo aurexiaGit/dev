@@ -33,7 +33,7 @@ const getCharityTable = (_charity) => {
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
 		var column4 = document.createElement('td');
 		column4.contentEditable = "true";
-		column4.onchange = checkDonation();
+		column4.addEventListener("change", checkDonation);
 		column4.innerHTML = 0;
 		row.appendChild(column4)
 		var column2 = document.createElement('td');
