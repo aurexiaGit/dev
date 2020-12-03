@@ -33,6 +33,7 @@ const getCharityTable = (_charity) => {
 		//Remplissage des colonnes de la nouvelle ligne avec les valeurs
 		var column4 = document.createElement('td');
 		column4.contentEditable = "true";
+		column4.onchange = checkDonation();
 		column4.innerHTML = 0;
 		row.appendChild(column4)
 		var column2 = document.createElement('td');
@@ -161,19 +162,22 @@ var myChart = new Chart(ctx, {
 		}
 	}
 });
+var checkDonation = () =>{
+	var tablerows = document.getElementById("content-donation").rows;
+	var balance = document.getElementById("astValue");
+	var done = document.getElementById("allAST");
 
-var tablerows = document.getElementById("content-donation").rows;
-var balance = document.getElementById("astValue");
-var done = document.getElementById("allAST");
+	var taille = tablerows.length;
+	let amount = 0;
+	for (let row = 0; row<taille; row++){
+		amount += cells[0].innerHTML
+	}
+	if (amount != balance){
+		done.style = "display:inherit;";
+	}
+	else {
+		done.style = "display:none;";
+	}
+}
 
-var taille = tablerows.length;
-let amount = 0;
-for (let row = 0; row<taille; row++){
-	amount += cells[0].innerHTML
-}
-if (amount != balance){
-	done.style = "display:inherit;";
-}
-else {
-	done.style = "display:none;";
-}
+checkDonation();
